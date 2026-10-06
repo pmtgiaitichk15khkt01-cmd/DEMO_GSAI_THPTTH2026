@@ -390,13 +390,16 @@ st.sidebar.info("💡 **Triết lý:** Dưỡng thiện tâm - Ươm nhân tài 
 # 5. ĐIỀU PHỐI AI BỀN BỈ (GIA PHẢ 3.X TỐI THƯỢNG THEO LỆNH GOOGLE)
 # ==============================================================================
 ALL_GEMINI_MODELS = [
-    "gemini-3.8-flash",
-    "gemini-3.5-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
     "gemini-3.1-flash-lite",
+    "gemini-flash-lite-latest",
+    "gemini-3.7-flash",
+    "gemini-3.5-flash",
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
     "gemini-3-flash-preview",
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-1.5-flash"
+    "gemini-3.1-pro-preview"
 ]
 
 if "working_model" not in st.session_state: st.session_state.working_model = None
