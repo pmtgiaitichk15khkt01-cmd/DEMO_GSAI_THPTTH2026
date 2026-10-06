@@ -3166,9 +3166,44 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
                     else:
                         st.session_state.lab_data = parsed_d
             except Exception as e:
-                # NẾU LÀ MÔN XÃ HỘI -> FALLBACK 100% LÀ MERMAID CỦA MÔN ĐÓ, CẤM FALLBACK VÀO HÀM BẬC 3
-                if is_social_subject:
-                    st.session_state.lab_data = list(available_labs.values())[0]
+                # BẪY CỨU HỘ ĐA TẦNG THÔNG MINH (KẾ THỪA ƯU ĐIỂM LINK 2 & NÂNG CẤP TOÀN DIỆN CHO LINK 1):
+                cmd_low = lab_command.lower()
+                is_mindmap_req = any(kw in cmd_low for kw in [
+                    "sơ đồ", "tư duy", "mindmap", "tóm tắt", "cây thư mục", "hệ thống hóa",
+                    "mind map", "diagram", "summarize", "summary", "tree", "vocabulary", "grammar"
+                ])
+                topic_title = st.session_state.get("current_topic", "") or f"CHỦ ĐỀ {subject.upper()} LỚP {grade_num}"
+                
+                if is_mindmap_req or is_social_subject:
+                    if is_social_subject and not is_mindmap_req:
+                        st.session_state.lab_data = list(available_labs.values())[0]
+                    elif subject == "Tiếng Anh":
+                        st.session_state.lab_data = {
+                            "type": "mermaid",
+                            "code": f"""graph LR\n    Root["🎯 {topic_title.upper()}"] --> A["📖 1. Key Vocabulary (Từ vựng cốt lõi)"]\n    Root --> B["⚡ 2. Core Grammar (Ngữ pháp trọng tâm)"]\n    Root --> C["🔍 3. Reading & Language Skills"]\n    Root --> D["🌐 4. IELTS / Communication Practice"]\n    A --> A1["Topic Vocabulary & Phonetics"]\n    A --> A2["Collocations & Phrasal Verbs"]\n    B --> B1["Sentence Structures & Rules"]\n    B --> B2["Common Errors to Avoid"]\n    C --> C1["Main Ideas & Key Details"]\n    D --> D1["Natural Fluency & Intonation"]"""
+                        }
+                    else:
+                        st.session_state.lab_data = {
+                            "type": "mermaid",
+                            "code": f"""graph LR\n    Root["🎯 {topic_title.upper()}"] --> A["📖 1. Định nghĩa & Khái niệm cốt lõi"]\n    Root --> B["⚡ 2. Công thức & Quy tắc trọng tâm"]\n    Root --> C["🔍 3. Phương pháp giải & Dạng bài tập"]\n    Root --> D["🌐 4. Ứng dụng thực tiễn & Liên môn"]\n    A --> A1["Khái niệm cơ bản chuẩn SGK Kết Nối Tri Thức"]\n    A --> A2["Điều kiện áp dụng & Miền xác định"]\n    B --> B1["Công thức nền tảng & Biến đổi"]\n    C --> C1["Dạng bài nhận biết - thông hiểu"]\n    C --> C2["Dạng bài vận dụng & liên hệ"]\n    D --> D1["Mô hình hóa thực tiễn đời sống"]"""
+                        }
+                elif any(kw in cmd_low for kw in ["hình chóp", "chóp", "lăng trụ", "hình hộp", "lập phương", "song song", "s.abcd", "s.abc"]):
+                    if "tam giác" in cmd_low or "s.abc" in cmd_low:
+                        st.session_state.lab_data = {"type": "geometry_3d", "shape": "pyramid_tri", "title": "Hình chóp tam giác S.ABC"}
+                    elif "hộp" in cmd_low or "lập phương" in cmd_low:
+                        st.session_state.lab_data = {"type": "geometry_3d", "shape": "box", "title": "Hình hộp ABCD.A'B'C'D'"}
+                    elif "lăng trụ" in cmd_low:
+                        st.session_state.lab_data = {"type": "geometry_3d", "shape": "prism_tri", "title": "Hình lăng trụ ABC.A'B'C'"}
+                    elif "song song" in cmd_low:
+                        st.session_state.lab_data = {"type": "geometry_3d", "shape": "parallel_lines", "title": "Hai đường thẳng song song d1 // d2"}
+                    else:
+                        st.session_state.lab_data = {"type": "geometry_3d", "shape": "pyramid_quad", "title": "Hình chóp tứ giác S.ABCD"}
+                elif any(kw in cmd_low for kw in ["hàm mũ", "mũ", "exp", "e^x", "a^x"]):
+                    st.session_state.lab_data = {"type": "func_exp", "base": 2.0, "k": 1.0, "c": 0.0}
+                elif any(kw in cmd_low for kw in ["lôgarit", "logarit", "log", "ln"]):
+                    st.session_state.lab_data = {"type": "func_log", "base": 2.0, "k": 1.0, "c": 0.0}
+                elif any(kw in cmd_low for kw in ["tròn xoay", "xoay quanh ox", "vật thể xoay"]):
+                    st.session_state.lab_data = {"type": "revolve_ox", "func": "2*x + 1", "a": 2.0, "b": 5.0}
                 else:
                     st.warning("⚠️ AI trả về định dạng chưa chuẩn nên hệ thống hiển thị mô hình mẫu. Em thử diễn đạt lại yêu cầu rõ hơn nhé!")
                     st.session_state.lab_data = {"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2}
