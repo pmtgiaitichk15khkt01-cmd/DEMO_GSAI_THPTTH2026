@@ -1,5 +1,5 @@
 streamlit>=1.50
-google-genai
+google-genai>=2.6.0
 pillow
 pandas
 numpy
