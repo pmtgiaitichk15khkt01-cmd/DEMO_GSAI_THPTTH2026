@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from google import genai
 from google.genai import types
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 try:
     import pillow_heif
     pillow_heif.register_heif_opener()
@@ -160,6 +160,63 @@ def get_local_img_as_base64(file_path):
     try:
         with open(file_path, "rb") as img_file: return base64.b64encode(img_file.read()).decode('utf-8')
     except Exception: return ""
+
+def annotate_student_work(image: Image.Image, annotations: list) -> Image.Image:
+    """
+    BÚT TÍCH GIÁO VIÊN CHẤM BÀI TRỰC TIẾP FACE-TO-FACE:
+    - Nét viền xanh lá & Tick xanh [✓ OK CHUẨN CHỈ] cho dòng làm đúng
+    - Nét viền đỏ rực & Khung cảnh báo [🔴 CHECK VAR KHÉT LẸT] cho dòng có chỗ khuất tất/sai sót
+    """
+    try:
+        annotated = image.copy().convert("RGBA")
+        draw = ImageDraw.Draw(annotated)
+        width, height = annotated.size
+
+        if not annotations:
+            return image
+
+        for ann in annotations:
+            box = ann.get("box", ann.get("box_2d", []))
+            ann_type = str(ann.get("type", "ok")).strip().lower()
+            label = str(ann.get("label", "")).strip()
+            if not isinstance(box, (list, tuple)) or len(box) != 4:
+                continue
+            
+            ymin, xmin, ymax, xmax = [float(v) for v in box]
+            if max(ymin, xmin, ymax, xmax) > 1.0:
+                y1 = int(ymin * height / 1000.0)
+                x1 = int(xmin * width / 1000.0)
+                y2 = int(ymax * height / 1000.0)
+                x2 = int(xmax * width / 1000.0)
+            else:
+                y1, x1 = int(ymin * height), int(xmin * width)
+                y2, x2 = int(ymax * height), int(xmax * width)
+
+            x1, x2 = max(0, min(x1, x2)), min(width, max(x1, x2))
+            y1, y2 = max(0, min(y1, y2)), min(height, max(y1, y2))
+            if (x2 - x1) < 15 or (y2 - y1) < 15:
+                continue
+
+            if any(k in ann_type for k in ["var", "sai", "loi", "khuat_tat"]):
+                # DÒNG MỰC ĐỎ CHECK VAR KHÉT LẸT (BÚT ĐỎ CỦA THẦY)
+                draw.rectangle([x1, y1, x2, y2], outline=(239, 68, 68, 255), width=4)
+                badge_text = f"🔴 CHECK VAR: {label}" if label else "🔴 CHECK VAR KHÉT LẸT"
+                badge_w = min(width - x1, len(badge_text) * 10 + 16)
+                badge_y1 = max(0, y1 - 24)
+                draw.rectangle([x1, badge_y1, x1 + badge_w, y1], fill=(220, 38, 38, 235))
+                draw.text((x1 + 6, max(0, badge_y1 + 4)), badge_text[:35], fill=(255, 255, 255, 255))
+            else:
+                # DÒNG TICK XANH OK CHUẨN CHỈ
+                draw.rectangle([x1, y1, x2, y2], outline=(16, 185, 129, 255), width=3)
+                badge_text = f"✅ OK: {label}" if label else "✅ OK CHUẨN CHỈ"
+                badge_w = min(width - x1, len(badge_text) * 9 + 14)
+                badge_y1 = max(0, y1 - 22)
+                draw.rectangle([x1, badge_y1, x1 + badge_w, y1], fill=(5, 150, 105, 225))
+                draw.text((x1 + 5, max(0, badge_y1 + 3)), badge_text[:35], fill=(255, 255, 255, 255))
+
+        return annotated.convert("RGB")
+    except Exception:
+        return image
 
 logo_b64 = get_local_img_as_base64("LOGO THIỆN NHÂN 3D.jpg")
 logo_html = f'<img src="data:image/jpeg;base64,{logo_b64}" class="thiennhan-logo" alt="Logo">' if logo_b64 else '<div style="background: linear-gradient(45deg, #0f172a, #1e293b); padding: 8px 12px; border-radius: 8px; color: #f8fafc; font-weight: 800; font-size: 14px; border: 1.5px solid #38bdf8; box-shadow: 0 0 10px rgba(56,189,248,0.4);">THIỆN NHÂN</div>'
@@ -457,10 +514,16 @@ MỆNH LỆNH SƯ PHẠM THƯỢNG ĐẲNG CỐT TỬ (PHƯƠNG PHÁP SOCRATIC -
 Học sinh: {student_nm} | Môn: {subject_name} | Lớp: {grade_level}.
 
 TRIẾT LÝ HỌC THUẬT BẮT BUỘC: "NÚT THẮT CỔ CHAI CHUẨN HÓA TRI THỨC CT GDPT 2018 (SGK KNTT)"
-Soi từng bước trong ảnh bài làm của {student_nm} với tinh thần Socratic Thượng Đẳng:
+CHẤM BÀI TRỰC TIẾP "FACE TO FACE" - SOI TỪNG DÒNG BÀI LÀM TRÊN ẢNH (BÚT TÍCH GIÁO VIÊN):
 1. TUYỆT ĐỐI KHÔNG GIẢI HỘ, KHÔNG ĐƯA RA LỜI GIẢI TOÀN BỘ, KHÔNG CHO ĐÁP SỐ CUỐI CÙNG.
-2. KHEN NGỢI PHẦN ĐÃ LÀM ĐƯỢC ĐỂ TẠO ĐỘNG LỰC HỌC TẬP.
-3. CHỈ ĐÚNG NÚT THẮT (LỖI SAI/THIẾU ĐIỀU KIỆN/NHẦM LẪN BƯỚC NÀO) VÀ ĐẶT 1-2 CÂU HỎI GỢI MỞ BẮC CẦU TƯ DUY (SCAFFOLDING) ĐỂ HỌC SINH TỰ TAY SỬA LẠI BÀI.
+2. CẤU TRÚC PHẢN HỒI FACE TO FACE BẮT BUỘC (RÕ RÀNG TỪNG DÒNG):
+   - ✅ DÒNG TICK XANH (OK CHUẨN CHỈ): Chỉ rõ cụ thể từng bước, từng công thức, dòng biến đổi hoặc lập luận mà em đã làm đúng và đạt chuẩn mực. Khen ngợi tạo động lực cho học sinh.
+   - 🔴 DÒNG MỰC ĐỎ CHECK VAR KHÉT LẸT (CHỖ KHUẤT TẤT): Khoanh vùng chỉ đích danh dòng nào, bước nào đang có chỗ "khuất tất" (thiếu điều kiện xác định, nhầm dấu, biến đổi chưa chặt chẽ, ngộ nhận hoặc hiểu lầm khái niệm). Phân tích bản chất tại sao chỗ đó bị lỗi.
+   - 💡 GỢI MỞ SOCRATIC (DẪN DẮT BẮC CẦU TƯ DUY): Đặt 1-2 câu hỏi gợi mở xoáy thẳng vào chỗ khuất tất để {student_nm} tự suy ngẫm, tự phát hiện mâu thuẫn và tự tay cầm bút sửa lại bài!
+3. KHỐI TỌA ĐỘ VẼ BÚT TÍCH LÊN ẢNH:
+BẮT BUỘC kẹp khối JSON tọa độ các dòng bài làm giữa cặp thẻ <ANNOTATIONS>...</ANNOTATIONS>:
+<ANNOTATIONS>[{{"box":[ymin,xmin,ymax,xmax],"type":"ok","label":"Biến đổi đúng"}},{{"box":[ymin,xmin,ymax,xmax],"type":"var","label":"Chỗ khuất tất: thiếu điều kiện"}}]</ANNOTATIONS>
+(Tọa độ box là [ymin, xmin, ymax, xmax] theo tỉ lệ 0 đến 1000 trên ảnh. 'type' chỉ nhận 'ok' hoặc 'var').
 4. BẢN SẮC MÔN {subject_name.upper()}:
 {spec}
 5. ĐỊNH DẠNG CHẨN ĐOÁN BẮT BUỘC (Khi nhận xét ảnh bài làm):
@@ -3337,18 +3400,32 @@ if selected_station == station_labels[1]:
         except Exception:
             pass
 
+    ann_key = f"t2_ann_imgs_{current_context_key}"
+
     if student_images:
         total_pages = len(student_images)
         st.success(f"✨ **Đã tiếp nhận thành công {total_pages} trang bài làm!** Em xem trước bên dưới và bấm bắt đầu nhận xét nhé:")
         
-        # Hiển thị ảnh xem trước các trang bài làm
-        if total_pages == 1:
-            st.image(student_images[0], caption="Ảnh bài làm (Trang 1/1)", width="stretch")
+        # Hiển thị ảnh xem trước các trang bài làm (hoặc ảnh đã chấm bút tích của Thầy nếu đã nhận xét)
+        if st.session_state.get(ann_key):
+            st.markdown("### 📝 Bút tích chấm bài trực tiếp của Thầy AI (Mực đỏ Check VAR & Tick xanh OK):")
+            st.caption("🔍 Thầy đã soi trực tiếp từng dòng trên ảnh bài làm: Dòng Tick xanh OK chuẩn chỉ và Dòng Mực đỏ Check VAR khét lẹt khoanh chỗ khuất tất.")
+            ann_imgs_show = st.session_state[ann_key]
+            if len(ann_imgs_show) == 1:
+                st.image(ann_imgs_show[0], caption="Ảnh bài làm đã được Thầy chấm 'Face to Face'", width="stretch")
+            else:
+                col_preview = st.columns(min(len(ann_imgs_show), 3))
+                for p_idx, p_img in enumerate(ann_imgs_show):
+                    with col_preview[p_idx % min(len(ann_imgs_show), 3)]:
+                        st.image(p_img, caption=f"Trang {p_idx + 1}/{len(ann_imgs_show)} (Đã chấm Check VAR)", width="stretch")
         else:
-            col_preview = st.columns(min(total_pages, 3))
-            for p_idx, p_img in enumerate(student_images):
-                with col_preview[p_idx % min(total_pages, 3)]:
-                    st.image(p_img, caption=f"Trang {p_idx + 1}/{total_pages}", width="stretch")
+            if total_pages == 1:
+                st.image(student_images[0], caption="Ảnh bài làm (Trang 1/1)", width="stretch")
+            else:
+                col_preview = st.columns(min(total_pages, 3))
+                for p_idx, p_img in enumerate(student_images):
+                    with col_preview[p_idx % min(total_pages, 3)]:
+                        st.image(p_img, caption=f"Trang {p_idx + 1}/{total_pages}", width="stretch")
 
         col_act1, col_act2 = st.columns([2.5, 1.2])
         with col_act1:
@@ -3361,6 +3438,7 @@ if selected_station == station_labels[1]:
         with col_act2:
             if st.button("🔄 Xóa hết / Đổi ảnh khác", use_container_width=True, key=f"btn_change_photo_{current_context_key}"):
                 st.session_state[cam_pages_key] = []
+                st.session_state[ann_key] = []
                 if f"t2_cam_{current_context_key}" in st.session_state:
                     del st.session_state[f"t2_cam_{current_context_key}"]
                 if f"t2_upload_{current_context_key}" in st.session_state:
@@ -3372,14 +3450,38 @@ if selected_station == station_labels[1]:
             with st.spinner(f"Thầy đang đối chiếu chuẩn kiến thức SGK KNTT Lớp {grade_num} môn {subject} và soi từng bước làm của {student_name} qua {total_pages} trang bài làm..."):
                 try:
                     review_payload = [
-                        f"Học sinh {student_name} nộp {total_pages} trang ảnh bài làm môn {subject} Lớp {grade_num}. Thầy hãy soi kỹ toàn bộ các trang bài làm (theo thứ tự từ trang 1 đến trang {total_pages}) và nhận xét Socratic:",
+                        f"Học sinh {student_name} nộp {total_pages} trang ảnh bài làm môn {subject} Lớp {grade_num}. Thầy hãy soi kỹ toàn bộ các trang bài làm (theo thứ tự từ trang 1 đến trang {total_pages}), chấm từng dòng với Dòng Tick xanh OK chuẩn chỉ và Dòng Mực đỏ Check VAR khét lẹt, kèm khối <ANNOTATIONS>:",
                         *student_images
                     ]
                     full_res = call_gemini_with_fallback(
                         review_payload, 
                         system_instruction=socratic_system_instruction
                     )
-                    student_fb = full_res.split("<DIAGNOSTIC>")[0].strip() if "<DIAGNOSTIC>" in full_res else full_res
+
+                    # 1. Trích xuất Annotations tọa độ để vẽ lên ảnh bài làm
+                    annotations = []
+                    if "<ANNOTATIONS>" in full_res:
+                        try:
+                            ann_part = full_res.split("<ANNOTATIONS>")[1].split("</ANNOTATIONS>")[0].strip()
+                            annotations = json.loads(ann_part)
+                        except Exception:
+                            pass
+
+                    # 2. Vẽ Bút tích trực tiếp lên từng trang ảnh bài làm của học sinh (Mực đỏ Check VAR & Tick xanh OK)
+                    annotated_imgs = []
+                    for s_img in student_images:
+                        ann_res = annotate_student_work(s_img, annotations)
+                        annotated_imgs.append(ann_res)
+                    st.session_state[ann_key] = annotated_imgs
+
+                    # 3. Làm sạch phản hồi của Thầy
+                    clean_res = full_res
+                    if "<ANNOTATIONS>" in clean_res:
+                        p1 = clean_res.split("<ANNOTATIONS>")[0].strip()
+                        p2 = clean_res.split("</ANNOTATIONS>")[-1].strip() if "</ANNOTATIONS>" in clean_res else ""
+                        clean_res = (p1 + "\n\n" + p2).strip()
+
+                    student_fb = clean_res.split("<DIAGNOSTIC>")[0].strip() if "<DIAGNOSTIC>" in clean_res else clean_res
                     if "<DIAGNOSTIC>" in full_res:
                         try:
                             diag = json.loads(full_res.split("<DIAGNOSTIC>")[1].split("</DIAGNOSTIC>")[0].strip())
