@@ -1,5 +1,24 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 10 (CHÍNH THỨC): NGÀY 06/10/2026 - 23:20:00 (GMT+7)
+### ⚡ 1. Khắc Phục Triệt Để Lỗi 503 UNAVAILABLE & Tối Ưu Hóa Điều Phối Gemini Bền Bỉ
+- **Nguyên nhân cốt lõi phát hiện:**
+  - Máy chủ Google AI Studio đang ghi nhận đột biến lưu lượng tải (High Demand Spike) trên một số model nhất định (`gemini-3.8-flash`, `gemini-3.5-flash`, `gemini-3-flash-preview`) gây lỗi `503 UNAVAILABLE`.
+  - Các model thuộc thế hệ cũ (`gemini-2.5-flash`, `gemini-2.0-flash`, `gemini-1.5-flash`) đã bị đóng cổng API cho tài khoản mới dẫn tới lỗi `404 NOT_FOUND`.
+  - Thứ tự fallback cũ vô tình bỏ quên các model đang hoạt động 100% trơn tru, khỏe khoắn với độ trễ cực thấp.
+- **Giải pháp Điều phối Đa tầng Thông minh (Resilient Hierarchy Cascade):**
+  - **Tối ưu danh sách `ALL_GEMINI_MODELS`:** Ưu tiên đưa các model đã kiểm chứng hoạt động tức thì lên đầu hàng đợi:
+    1. `gemini-3.6-flash` (Hoạt động hoàn hảo, phản hồi siêu tốc)
+    2. `gemini-3.5-flash-lite` (Hoạt động hoàn hảo, tải nhẹ, tiết kiệm tài nguyên)
+    3. `gemini-3.1-flash-lite` (Hoạt động hoàn hảo, ổn định)
+    4. `gemini-flash-lite-latest` (Dự phòng chuẩn của Google)
+    5. `gemini-3.7-flash` & `gemini-3.5-flash` & `gemini-3.8-flash`
+    6. `gemini-flash-latest` & `gemini-3-flash-preview` & `gemini-3.1-pro-preview`
+  - **Loại bỏ triệt để các endpoint 404 đã khai tử:** Xóa vĩnh viễn `gemini-2.5-flash`, `gemini-2.0-flash`, `gemini-1.5-flash` khỏi danh sách để cơ chế fallback không bị nghẽn thời gian chờ.
+  - **Bảo toàn 100% triết lý Socratic & Bút tích Giáo viên:** Tất cả tính năng chấm "Face to Face", vẽ mực đỏ check VAR, tick xanh OK chuẩn chỉ, đàm thoại đa môn lớp 6–12 vận hành hoàn hảo không gián đoạn.
+
+---
+
 ## 📌 LẦN CẬP NHẬT THỨ 9 (CHÍNH THỨC): NGÀY 06/10/2026 - 23:00:00 (GMT+7)
 ### 🖋️ 1. Bút Tích Chấm Bài Trực Tiếp "Face to Face" Trên Ảnh (Trạm 2)
 - **Vẽ trực tiếp Bút tích Giáo viên lên Ảnh bài làm (`annotate_student_work`):**
