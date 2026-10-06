@@ -182,7 +182,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### 🔑 ĐƯỜNG TRUYỀN AI CÁ NHÂN (0 ĐỒNG)")
 
 st.sidebar.link_button("👉 Lấy Key riêng miễn phí (15s)", "https://aistudio.google.com/apikey", width="stretch")
-user_custom_key = st.sidebar.text_input("Dán mã API Key của em vào đây:", type="password", placeholder="AIzaSy...")
+user_custom_key = st.sidebar.text_input("Dán mã API Key của em vào đây:", type="password", placeholder="AQ_... hoặc AIzaSy...")
 
 raw_api_key = get_secret("GEMINI_API_KEY")
 raw_sheet_url = get_secret("GOOGLE_SHEET_URL")
@@ -327,7 +327,10 @@ ALL_GEMINI_MODELS = [
     "gemini-3.8-flash",
     "gemini-3.5-flash",
     "gemini-3.1-flash-lite",
-    "gemini-3-flash-preview"
+    "gemini-3-flash-preview",
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-1.5-flash"
 ]
 
 if "working_model" not in st.session_state: st.session_state.working_model = None
@@ -2915,7 +2918,7 @@ if selected_station == station_labels[2]:
                     q["explain"] = f"Phân tích bản chất sư phạm SGK Kết Nối Tri Thức: Nhận dạng cấu trúc, loại trừ các phương án nhiễu sai lầm và áp dụng trực tiếp định lý/tính chất cốt lõi để chọn đáp án chuẩn {ans_val}."
         return exam
 
-    def render_fast_visual(q):
+    def render_fast_visual(q, q_id=None):
         # 1. HIỂN THỊ BẢNG BIẾN THIÊN (BBT) CHUẨN SƯ PHẠM LATEX STYLE
         if q.get("bbt"):
             raw_bbt = str(q["bbt"])
@@ -3062,7 +3065,7 @@ if selected_station == station_labels[2]:
                                 setup_pedagogical_oxy(fig_mini, [-3.5, 4.5], [min(yv) - y_p, max(yv) + y_p])
 
                         fig_mini.update_layout(height=280, margin=dict(l=10, r=10, t=20, b=10), template="plotly_dark")
-                        st.plotly_chart(fig_mini, width="stretch", key=f"mini_chart_{random.randint(1, 99999)}")
+                        st.plotly_chart(fig_mini, width="stretch", key=f"mini_chart_{q_id}" if q_id else None)
                         
                         if tikz_code:
                             with st.expander("📋 Copy mã LaTeX / TikZ (Dành cho Giáo viên in đề TeXStudio / Overleaf)"):
@@ -3322,7 +3325,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 st.markdown("### PHẦN I. Trắc nghiệm nhiều lựa chọn")
                 for idx, q in enumerate(exam["p1"]):
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"test_p1_{idx}")
                     user_ans = st.radio(f"Lựa chọn câu {idx+1}:", q.get("opt", []), key=f"t3_p1_{idx}", label_visibility="collapsed", index=None)
                     st.session_state.exam_answers[f"p1_{idx}"] = user_ans
                     st.markdown("---")
@@ -3331,7 +3334,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 st.markdown("### PHẦN II. Trắc nghiệm Đúng/Sai (Tính điểm bậc 0.1 - 0.25 - 0.5 - 1.0 theo Bộ GD&ĐT)")
                 for idx, q in enumerate(exam["p2"]):
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"test_p2_{idx}")
                     for s_idx, stmt in enumerate(q.get("stmts", [])):
                         c_ans = st.radio(f"Ý {chr(97+s_idx)}) {stmt.get('t')}", ["Chưa chọn", "Đúng", "Sai"], horizontal=True, key=f"t3_p2_{idx}_{s_idx}")
                         st.session_state.exam_answers[f"p2_{idx}_{s_idx}"] = c_ans
@@ -3341,7 +3344,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 st.markdown("### PHẦN III. Trả lời ngắn")
                 for idx, q in enumerate(exam["p3"]):
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"test_p3_{idx}")
                     short_ans = st.text_input(f"Nhập đáp số câu {idx+1}:", key=f"t3_p3_{idx}", placeholder="Ví dụ: 2.5 hoặc -3")
                     st.session_state.exam_answers[f"p3_{idx}"] = short_ans
                     st.markdown("---")
@@ -3474,7 +3477,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                     user_c = str(st.session_state.exam_answers.get(f"p1_{idx}", "Chưa chọn")).strip()
                     correct_a = str(q.get("ans", "")).strip()
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"sol_p1_{idx}")
                     
                     is_p1_right = (re.sub(r'[^A-D]', '', user_c[:3]).upper()[:1] == correct_a)
                     badge_p1 = "✅ Làm đúng" if is_p1_right else "❌ Làm sai"
@@ -3494,7 +3497,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 st.markdown("##### 🔹 Phần II: Trắc nghiệm Đúng/Sai (Chuẩn thang điểm bậc 0.1 - 0.25 - 0.5 - 1.0 của Bộ)")
                 for idx, q in enumerate(exam["p2"]):
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"sol_p2_{idx}")
                     for s_idx, stmt in enumerate(q.get("stmts", [])):
                         user_ans_s = st.session_state.exam_answers.get(f"p2_{idx}_{s_idx}", "Chưa chọn")
                         expected_str = "Đúng" if stmt.get("a", True) else "Sai"
@@ -3511,7 +3514,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                     user_val = str(st.session_state.exam_answers.get(f"p3_{idx}", "Chưa điền")).strip()
                     correct_val = str(q.get("ans", "")).strip()
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
-                    render_fast_visual(q)
+                    render_fast_visual(q, f"sol_p3_{idx}")
                     st.markdown(f"- **Đáp số em điền:** `{user_val}` &nbsp;|&nbsp; **Đáp số chuẩn:** `{correct_val}`")
                     
                     expl3 = q.get('explain', 'Tính toán theo công thức vi phân, tọa độ hoặc mô hình thực tiễn.')
