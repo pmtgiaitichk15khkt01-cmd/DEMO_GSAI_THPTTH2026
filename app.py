@@ -2116,7 +2116,12 @@ if selected_station == station_labels[0]:
         st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
         btn_submit_lesson = st.button("🚀 Soạn bài học", key=f"btn_soan_{current_context_key}")
 
-    q_topics = quick_topics_dict.get(subject, ["Chuyên đề trọng tâm 1", "Chuyên đề trọng tâm 2"])
+    # Quick topics gợi ý chọn nhanh chuẩn theo từng Khối lớp và Môn học (từ BIGDATA_CURRICULUM)
+    curr_curriculum = BIGDATA_CURRICULUM.get(subject, {}).get(grade_num, [])
+    if curr_curriculum:
+        q_topics = [t.split(":")[-1].strip() if ":" in t else t for t in curr_curriculum[:4]]
+    else:
+        q_topics = quick_topics_dict.get(subject, ["Chuyên đề trọng tâm 1", "Chuyên đề trọng tâm 2"])
     st.caption("💡 **Chủ đề gợi ý học nhanh:** " + " • ".join([f"`{t}`" for t in q_topics]))
 
     if btn_submit_lesson and topic_input.strip():
@@ -2127,6 +2132,7 @@ Môn học: {subject} | Khối lớp: {grade_num}. Chủ đề bài học: '{top
 
 YÊU CẦU PHÁP LÝ & HỌC THUẬT BẮT BUỘC:
 1. BÁM SÁT 100% NGỮ LIỆU & BẢN QUYỀN SGK KẾT NỐI TRI THỨC VỚI CUỘC SỐNG:
+   - NGUYÊN TẮC ĐỐI SOÁT TRANG SÁCH & CHUYÊN ĐỀ: Nếu học sinh hỏi theo số trang (ví dụ 'Trang 85 SGK...', 'Trang 12...'), AI BẮT BUỘC đối chiếu với đúng Chương/Bài trong Khung chương trình chuẩn GDPT 2018 của Lớp {grade_num}. Đồng thời nhắc học sinh có thể mở mục '📚 SGK Điện Tử' ở thanh bên trái để lật đúng trang bản in NXBGD xem trực tiếp, TUYỆT ĐỐI KHÔNG đoán mò hay đưa kiến thức ngoài khối Lớp {grade_num}!
    - TOÁN HỌC: TUYỆT ĐỐI CẤM đưa các kiến thức chương trình cũ (2006) vào bài học như: Tích phân từng phần, Tích phân đổi biến số, Đồ thị hàm bậc 4 trùng phương. Chỉ sử dụng tích phân cơ bản và ứng dụng thực tế. VỚI HÀM SỐ, TUYỆT ĐỐI TUÂN THỦ 3 BƯỚC KHẢO SÁT CHUẨN KNTT LỚP 12.
    - HÓA HỌC & KHTN: DÙNG 100% DANH PHÁP QUỐC TẾ IUPAC.
    - NGỮ VĂN: Tiếp cận theo ĐẶC TRƯNG THỂ LOẠI. TUYỆT ĐỐI KHÔNG phân tích cơ học bổ dọc. Ngữ liệu ngoài SGK.
@@ -3376,12 +3382,25 @@ if selected_station == station_labels[2]:
                         exam_prompt = f"""[HỆ THỐNG RA ĐỀ THI NGỮ VĂN CHUẨN KNTT 2026 - QĐ 764/QĐ-BGDĐT]
 Khối lớp: {grade_num}. Chuyên đề ma trận: '{selected_topics_str}'. Mã đề: {st.session_state.exam_code}.
 {custom_user_instructions}
+
+QUY CHẾ PHÁP CHẾ BẮT BUỘC BỘ GD&ĐT (QUY TẮC CHỐNG HỌC TỦ / HỌC VẸT):
+- TUYỆT ĐỐI 100% KHÔNG ĐƯỢC LẤY NGỮ LIỆU ĐÃ CÓ TRONG SGK HIỆN TẠI (kể cả Kết Nối Tri Thức, Cánh Diều, Chân Trời Sáng Tạo).
+- Toàn bộ ngữ liệu Đọc hiểu và văn bản phân tích Viết BẮT BUỘC là văn bản MỚI HOÀN TOÀN NGOÀI SGK, đảm bảo tính thẩm mỹ, giá trị nhân văn và chuẩn mực ngôn ngữ Tiếng Việt, có trích dẫn nguồn tác giả/tác phẩm cụ thể.
+
+CẤU TRÚC ĐỀ THI 100% TỰ LUẬN (120 PHÚT CHUẨN BỘ):
+- PHẦN I: ĐỌC HIỂU (4.0 điểm):
+  + 1 đoạn trích văn học/văn bản thông tin ngoài SGK (ghi rõ nguồn tác giả/tác phẩm).
+  + 3-4 câu hỏi phân hóa chuẩn ma trận năng lực: Nhận biết (thể loại/PTBĐ/chi tiết), Thông hiểu (biện pháp tu từ/ý nghĩa hình tượng), Vận dụng (thông điệp/bài học cuộc sống).
+- PHẦN II: VIẾT (6.0 điểm):
+  + Câu 1 (2.0 điểm): Viết đoạn văn nghị luận xã hội khoảng 200 chữ về một tư tưởng/bài học rút ra từ ngữ liệu Đọc hiểu.
+  + Câu 2 (4.0 điểm): Viết bài văn nghị luận văn học phân tích/đánh giá nét đặc sắc nội dung hoặc nghệ thuật của ngữ liệu trên.
+
 Xuất DUY NHẤT 1 khối JSON hợp lệ dạng:
 {{
   "code": "{st.session_state.exam_code}",
   "subject": "Ngữ văn",
   "part_doc_hieu": {{
-    "text": "Đoạn trích/Ngữ liệu văn học ngoài SGK...",
+    "text": "Đoạn trích/Ngữ liệu văn học ngoài SGK (kèm nguồn dẫn cụ thể)...",
     "questions": [
       {{"q": "Câu 1 (Nhận biết): Xác định thể loại/phương thức biểu đạt...", "ans": "Đáp án gợi ý"}},
       {{"q": "Câu 2 (Thông hiểu): Nêu tác dụng của biện pháp nghệ thuật...", "ans": "Đáp án gợi ý"}},
@@ -3409,9 +3428,15 @@ NGUYÊN TẮC SƯ PHẠM BẮT BUỘC THEO CHƯƠNG TRÌNH GDPT 2018 (SGK KẾT 
    - Khối 11: Cấp số cộng/nhân, Hàm lượng giác, Giới hạn, Đạo hàm, Mẫu số liệu ghép nhóm.
 2. MÔN HÓA HỌC & KHOA HỌC TỰ NHIÊN:
    - 100% sử dụng danh pháp quốc tế IUPAC theo chuẩn CT 2018 (Alkane, Alkene, Alkyne, Alcohol, Aldehyde, Carboxylic acid, Ester, Amine, Amino acid, Carbohydrate, Polymer...). TUYỆT ĐỐI KHÔNG dùng tên cũ (Ancol, Anđehit, Axit axetic, Benzen...).
-3. MÔN TIẾNG ANH:
+3. MÔN TIẾNG ANH (FORM 40 CÂU TRẮC NGHIỆM CHUẨN CEFR & ĐỀ THI BỘ GD&ĐT):
    - Bám sát chuẩn khung năng lực ngoại ngữ 6 bậc VN / CEFR (A2/B1/B2) và cấu trúc đề thi THPT 2026.
-   - TUYỆT ĐỐI BẮT BUỘC: Toàn bộ từ vựng, đoạn văn, câu hỏi trắc nghiệm, và các phương án A/B/C/D PHẢI ĐƯỢC VIẾT 100% BẰNG TIẾNG ANH. Chỉ dùng tiếng Việt khi giải thích đáp án.
+   - TUYỆT ĐỐI BẮT BUỘC: Toàn bộ từ vựng, đoạn văn, câu hỏi trắc nghiệm, và các phương án A/B/C/D PHẢI ĐƯỢC VIẾT 100% BẰNG TIẾNG ANH (Chỉ dùng tiếng Việt khi giải thích ở trường 'explain').
+   - MA TRẬN ĐỀ THI TIẾNG ANH PHÂN BỔ ĐỦ CÁC DẠNG CHUẨN BỘ:
+     + Phát âm & Trọng âm (Phonetics & Word Stress).
+     + Ngữ pháp & Từ vựng theo ngữ cảnh (Vocabulary & Grammar in Context).
+     + Tình huống giao tiếp đời sống (Functional Communication Exchanges).
+     + Đọc hiểu đoạn văn & Đọc điền từ (Reading Comprehension & Cloze Test).
+     + Kết hợp câu & Nhận diện lỗi sai (Sentence Transformation & Error Identification).
 4. ĐỊNH DẠNG CÔNG THỨC:
    - TUYỆT ĐỐI KHÔNG bọc chữ tiếng Việt có dấu trong dấu $...$. Dấu $...$ chỉ dùng cho công thức toán ($x$, $f(x)$).
    - KHÔNG mô tả bảng biến thiên bằng lời rườm rà trong 'q'.
