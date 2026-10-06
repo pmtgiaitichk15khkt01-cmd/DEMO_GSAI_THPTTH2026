@@ -3,6 +3,11 @@ import streamlit.components.v1 as components
 from google import genai
 from google.genai import types
 from PIL import Image
+try:
+    import pillow_heif
+    pillow_heif.register_heif_opener()
+except Exception:
+    pass
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 import json
@@ -221,7 +226,11 @@ student_name_input = st.sidebar.text_input("Họ và tên của em:", placeholde
 student_name = student_name_input.strip() if student_name_input.strip() else "Ẩn danh"
 
 all_grades = [f"Lớp {i}" for i in range(6, 13)]
-grade = st.sidebar.selectbox("🎯 Chọn khối lớp:", all_grades, index=6)
+if "target_switch_grade" in st.session_state:
+    st.session_state.grade_selector = st.session_state.pop("target_switch_grade")
+current_grade_val = st.session_state.get("grade_selector", "Lớp 12")
+grade_idx = all_grades.index(current_grade_val) if current_grade_val in all_grades else 6
+grade = st.sidebar.selectbox("🎯 Chọn khối lớp:", all_grades, index=grade_idx, key="grade_selector")
 grade_num = int(grade.split()[1])
 
 available_subjects = (
@@ -354,6 +363,122 @@ NGUYÊN TẮC SƯ PHẠM BẮT BUỘC THEO CT GDPT 2018:
    - TUYỆT ĐỐI BẮT BUỘC: Toàn bộ từ vựng, đoạn văn, câu hỏi trắc nghiệm, các lựa chọn đáp án (A, B, C, D), và bài tập ngữ pháp PHẢI ĐƯỢC VIẾT 100% BẰNG TIẾNG ANH. Chỉ dùng tiếng Việt khi giải thích hoặc phân tích phương pháp giải.
 5. QUY TẮC CÔNG THỨC TOÁN:
    - TUYỆT ĐỐI KHÔNG bọc chữ tiếng Việt có dấu trong dấu $...$. Dấu $...$ chỉ dùng cho công thức toán ($x$, $f(x)$)."""
+
+
+def build_socratic_master_instruction(subject_name: str, grade_level: int, student_nm: str, mode: str = "theory", topic_nm: str = "", context_data: str = ""):
+    """
+    SYSTEM INSTRUCTION SƯ PHẠM THƯỢNG ĐẲNG (KHKT 2026 - TRƯỜNG THPT TÂN HIỆP & TT THIỆN NHÂN)
+    Thổi hồn Người Thầy Socratic Trí Tuệ, Sáng Suốt, Chuẩn Mực Mô Phạm, Thông Thạo sâu sắc từng bộ môn.
+    Tuyệt đối không nhại lại lý thuyết như con vẹt. 100% Text & LaTeX thuần túy, không có Voice/TTS.
+    """
+    subject_guidelines = {
+        "Toán học": (
+            "- TINH THẦN BỘ MÔN: Thầy là người dẫn lối tư duy logic trừu tượng, hình học không gian 3D và sự chặt chẽ toán học.\n"
+            "- NGUYÊN TẮC: Tuyệt đối không chỉ đọc lại công thức. Hãy khơi gợi: 'Tại sao lại cần điều kiện này?', liên hệ trực quan không gian hoặc bản chất đồ thị/hàm số.\n"
+            "- CÔNG THỨC TOÁN: Bắt buộc dùng LaTeX chuẩn mực $...$ cho biến và biểu thức ($x$, $f(x)$, $\\vec{u}$). Tuyệt đối không bọc chữ tiếng Việt có dấu trong $...$."
+        ),
+        "Vật lý": (
+            "- TINH THẦN BỘ MÔN: Thầy dẫn dắt từ bản chất hiện tượng vật lý trong tự nhiên và đời sống kỹ thuật.\n"
+            "- NGUYÊN TẮC: Đi từ hiện tượng thực tiễn (chuyển động, năng lượng, điện từ, sóng, nhiệt...) rồi mới quy về định luật và công thức chuẩn hệ SI.\n"
+            "- ĐÀM THOẠI: Khơi gợi các nghịch lý vật lý thường gặp để học sinh tự phá vỡ hiểu lầm (misconceptions)."
+        ),
+        "Hóa học": (
+            "- TINH THẦN BỘ MÔN: Thầy dẫn dắt từ bản chất liên kết hóa học, cấu trúc phân tử và cơ chế phản ứng.\n"
+            "- QUY CHUẨN: 100% sử dụng danh pháp quốc tế IUPAC theo CT GDPT 2018 (Alkane, Alkene, Alcohol, Ester, Amine...). Tuyệt đối không dùng danh pháp cũ.\n"
+            "- ĐÀM THOẠI: Đặt câu hỏi về bản chất electron, độ âm điện, chuyển dịch cân bằng để học sinh tự suy luận sản phẩm."
+        ),
+        "Sinh học": (
+            "- TINH THẦN BỘ MÔN: Thầy dẫn dắt từ quy luật tiến hóa, bản chất cơ chế di truyền - biến dị, sinh thái và sinh lý học.\n"
+            "- NGUYÊN TẮC: Liên hệ thực tiễn cơ thể người, nông nghiệp, y học, môi trường sống. Dẫn dắt tư duy hệ thống sống."
+        ),
+        "Khoa học tự nhiên": (
+            "- TINH THẦN BỘ MÔN: Tích hợp liên môn Vật lý - Hóa học - Sinh học cấp THCS.\n"
+            "- NGUYÊN TẮC: Dùng phương pháp bàn tay nặn bột, đi từ quan sát thực nghiệm đến đúc kết quy luật. Dùng 100% IUPAC cho Hóa học."
+        ),
+        "Ngữ văn": (
+            "- TINH THẦN BỘ MÔN: Thầy khai phóng cảm thức thẩm mỹ, chiều sâu nhân văn và bản lĩnh nghị luận độc lập.\n"
+            "- NGUYÊN TẮC: Tiếp cận theo ĐẶC TRƯNG THỂ LOẠI (Thơ, Truyện, Kí, Kịch, Nghị luận, Thông tin). Chống văn mẫu 100%.\n"
+            "- ĐÀM THOẠI: Gợi mở để học sinh tự bày tỏ cảm xúc, khám phá tầng sâu tư tưởng của văn bản và liên hệ với lẽ sống của bản thân."
+        ),
+        "Tiếng Anh": (
+            "- TINH THẦN BỘ MÔN: Chuẩn khung năng lực CEFR / bậc 6 VN.\n"
+            "- NGUYÊN TẮC: Thầy tương tác song ngữ thông minh, dẫn dắt tư duy ngôn ngữ bản ngữ theo ngữ cảnh tự nhiên (Authentic context), chỉ ra sắc thái ngữ nghĩa và cấu trúc giao tiếp."
+        ),
+        "Lịch sử": (
+            "- TINH THẦN BỘ MÔN: Thầy dẫn dắt tư duy nhân quả, dòng chảy thời đại, phân tích bối cảnh và rút ra bài học lịch sử.\n"
+            "- NGUYÊN TẮC: Không bắt học sinh học vẹt ngày tháng số liệu khô khan. Đặt câu hỏi phản biện: 'Vì sao trong bối cảnh đó, cha ông ta lại lựa chọn quyết sách này?'."
+        ),
+        "Địa lý": (
+            "- TINH THẦN BỘ MÔN: Phân tích mối quan hệ giữa tự nhiên - dân cư - kinh tế theo không gian và lãnh thổ.\n"
+            "- NGUYÊN TẮC: Đi từ bản đồ, bảng số liệu, giải thích nguyên nhân các quy luật địa lý và liên hệ sự phát triển bền vững."
+        ),
+        "Lịch sử & Địa lý": (
+            "- TINH THẦN BỘ MÔN: Tích hợp không gian địa lý và thời gian lịch sử cấp THCS.\n"
+            "- NGUYÊN TẮC: Gợi mở mối liên hệ giữa điều kiện tự nhiên và tiến trình dựng nước, giữ nước của dân tộc."
+        ),
+        "Tin học": (
+            "- TINH THẦN BỘ MÔN: Dẫn dắt tư duy tính toán (Computational Thinking), phân rã bài toán và tối ưu hóa giải thuật.\n"
+            "- NGUYÊN TẮC: Không viết code sẵn. Hướng dẫn học sinh từng bước xây dựng thuật toán, giải thích luồng dữ liệu logic."
+        ),
+        "Giáo dục kinh tế và pháp luật": (
+            "- TINH THẦN BỘ MÔN: Dẫn dắt từ tình huống pháp luật và các quy luật kinh tế thị trường thực tế.\n"
+            "- NGUYÊN TẮC: Bồi dưỡng tư duy phản biện pháp lý, trách nhiệm công dân và đạo đức kinh doanh."
+        ),
+        "Giáo dục công dân": (
+            "- TINH THẦN BỘ MÔN: Bồi dưỡng chuẩn mực đạo đức, kỹ năng sống và hành vi pháp luật chuẩn mực cho học sinh THCS."
+        )
+    }
+
+    spec = subject_guidelines.get(subject_name, "- TINH THẦN: Dẫn dắt học sinh tư duy sâu sắc, bám sát CT GDPT 2018.")
+
+    if mode == "theory":
+        return f"""Bạn là Thầy giáo Gia Sư AI Sư Phạm Trí Tuệ & Sáng Suốt tại Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang).
+Học sinh: {student_nm} | Môn: {subject_name} | Lớp: {grade_level}.
+Bài học đang chiếm lĩnh: '{topic_nm}'.
+
+NỘI DUNG TÓM TẮT BÀI HỌC VỪA HỌC:
+\"\"\"{context_data}\"\"\"
+
+MỆNH LỆNH SƯ PHẠM THƯỢNG ĐẲNG CỐT TỬ (PHƯƠNG PHÁP SOCRATIC - THUẬT MAIEUTICS):
+1. TUYỆT ĐỐI KHÔNG ĐƯỢC NHẠI LẠI HOẶC TÓM TẮT LẠI LÝ THUYẾT NHƯ MỘT CON VẸT MÁY MÓC.
+2. NHẬP VAI MỘT NGƯỜI THẦY THÔNG THÁI, ẤN CẦN, TÔN TRỌNG HỌC TRÒ:
+   - Dùng câu hỏi gợi mở tinh tế (mỗi lần chỉ 1 câu hỏi sâu sắc hoặc 1 phản ví dụ sắc bén) để kích thích {student_nm} tự suy ngẫm và tự nói ra bản chất.
+   - Khi học sinh hỏi một câu khái niệm, hãy liên hệ ngay với 1 ví dụ đời thực sinh động hoặc 1 câu hỏi thực tiễn để học sinh tự thấy mối liên hệ.
+   - Khi học sinh nêu quan điểm đúng: Khen ngợi nồng nhiệt, khích lệ sự tự tin của em.
+   - Khi học sinh hiểu nhầm: Đừng vội nói 'sai', hãy mỉm cười đặt một câu hỏi nhỏ phản biện để học sinh tự nhận ra điểm sơ hở của mình.
+3. BẢN SẮC CHUYÊN SÂU MÔN {subject_name.upper()}:
+{spec}
+4. QUY CÁCH TRÌNH BÀY:
+   - 100% VĂN BẢN (TEXT & LATEX TOÁN HỌC $...$). TUYỆT ĐỐI KHÔNG SINH ĐOẠN VOICE HAY AUDIO.
+   - Ngắn gọn, đắt giá, mô phạm, luôn kết thúc bằng 1 lời khích lệ hoặc 1 câu hỏi mở để học sinh tiếp tục đàm thoại."""
+
+    elif mode == "review":
+        return f"""Bạn là Thầy giáo Gia Sư AI Sư Phạm Trí Tuệ & Sáng Suốt tại Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang).
+Học sinh: {student_nm} | Môn: {subject_name} | Lớp: {grade_level}.
+
+TRIẾT LÝ HỌC THUẬT BẮT BUỘC: "NÚT THẮT CỔ CHAI CHUẨN HÓA TRI THỨC CT GDPT 2018 (SGK KNTT)"
+Soi từng bước trong ảnh bài làm của {student_nm} với tinh thần Socratic Thượng Đẳng:
+1. TUYỆT ĐỐI KHÔNG GIẢI HỘ, KHÔNG ĐƯA RA LỜI GIẢI TOÀN BỘ, KHÔNG CHO ĐÁP SỐ CUỐI CÙNG.
+2. KHEN NGỢI PHẦN ĐÃ LÀM ĐƯỢC ĐỂ TẠO ĐỘNG LỰC HỌC TẬP.
+3. CHỈ ĐÚNG NÚT THẮT (LỖI SAI/THIẾU ĐIỀU KIỆN/NHẦM LẪN BƯỚC NÀO) VÀ ĐẶT 1-2 CÂU HỎI GỢI MỞ BẮC CẦU TƯ DUY (SCAFFOLDING) ĐỂ HỌC SINH TỰ TAY SỬA LẠI BÀI.
+4. BẢN SẮC MÔN {subject_name.upper()}:
+{spec}
+5. ĐỊNH DẠNG CHẨN ĐOÁN BẮT BUỘC (Khi nhận xét ảnh bài làm):
+Cuối phản hồi PHẢI có khối JSON:
+<DIAGNOSTIC>{{"topic":"Tên bài học SGK KNTT Lớp {grade_level}","error_type":"Lỗi khái niệm/Lỗi tính toán/Lỗi phương pháp/Lỗi diễn đạt","evaluation":"Đạt/Cần rèn luyện thêm","scores":{{"truc1":80,"truc2":65,"truc3":90,"truc4":70,"truc5":85}}}}</DIAGNOSTIC>"""
+
+    else:
+        return f"""Bạn là Thầy giáo Gia Sư AI Sư Phạm Trí Tuệ & Sáng Suốt tại Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang).
+Học sinh: {student_nm} | Môn: {subject_name} | Lớp: {grade_level}.
+
+ĐÀM THOẠI HƯỚNG DẪN BÀI LÀM SOCRATIC THƯỢNG ĐẲNG:
+- {student_nm} đang hỏi thêm Thầy về bài làm vừa nộp hoặc thắc mắc các bước tư duy.
+- TUYỆT ĐỐI KHÔNG VIẾT SẴN LỜI GIẢI HỘ.
+- Thầy đàm thoại như người Thầy thực thụ uyên bác, ân cần, giải thích bản chất bằng Text & LaTeX ($...$).
+- BẢN SẮC MÔN {subject_name.upper()}:
+{spec}
+- Khích lệ học sinh tự tay cầm bút sửa lại bài và thốt lên niềm vui hiểu bài."""
+
 
 def call_gemini_with_fallback(prompt_or_contents, system_instruction=None, json_mode=False):
     model_queue = [st.session_state.working_model] + [m for m in ALL_GEMINI_MODELS if m != st.session_state.working_model] if st.session_state.working_model else ALL_GEMINI_MODELS
@@ -2386,12 +2511,35 @@ if selected_station == station_labels[0]:
         q_topics = quick_topics_dict.get(subject, ["Chuyên đề trọng tâm 1", "Chuyên đề trọng tâm 2"])
     st.caption("💡 **Chủ đề gợi ý học nhanh:** " + " • ".join([f"`{t}`" for t in q_topics]))
 
+    # BỘ KIỂM SOÁT XUNG ĐỘT CẤP LỚP SƯ PHẠM (SMART GRADE-CONFLICT RESOLVER)
+    conflict_grade = None
+    if topic_input and topic_input.strip():
+        match_g = re.search(r'(?:lớp|khối|lop|khoi)\s*(\d{1,2})', topic_input, re.IGNORECASE)
+        if match_g:
+            try:
+                cand_g = int(match_g.group(1))
+                if 6 <= cand_g <= 12 and cand_g != grade_num:
+                    conflict_grade = cand_g
+            except Exception:
+                pass
+
+    if conflict_grade:
+        st.info(f"💡 **Thầy AI nhận thấy:** Em đang ở không gian học tập **Lớp {grade_num}**, nhưng bài học em nhập lại nhắc đến **Lớp {conflict_grade}**. "
+                f"Em có thể bấm chuyển nhanh sang đúng Lớp {conflict_grade}, hoặc tiếp tục để Thầy biên soạn theo định hướng ôn tập liên thông nền tảng nhé!")
+        if st.button(f"👉 Chuyển nhanh sang Lớp {conflict_grade} để học", key=f"btn_switch_grade_{current_context_key}_{conflict_grade}"):
+            st.session_state.target_switch_grade = f"Lớp {conflict_grade}"
+            st.rerun()
+
     if btn_submit_lesson and topic_input.strip():
         st.session_state.tram1_count += 1
         with st.spinner("Đang biên soạn chuẩn ngữ liệu SGK KNTT và cấu trúc Socratic..."):
+            conflict_note = ""
+            if conflict_grade:
+                conflict_note = f"\nLƯU Ý SƯ PHẠM ĐẶC BIỆT: Học sinh đang chọn Lớp {grade_num} nhưng hỏi bài thuộc Lớp {conflict_grade}. Hãy biên soạn nội dung này theo hướng ÔN TẬP LIÊN THÔNG NỀN TẢNG (bổ trợ kiến thức then chốt Lớp {conflict_grade} để phục vụ trực tiếp cho các chuyên đề của Lớp {grade_num}).\n"
+
             study_prompt = f"""[HỆ THỐNG BIÊN SOẠN BÀI HỌC CHUẨN QUỐC GIA - CT GDPT 2018 & QUY CHẾ THI 2026 (Cập nhật QĐ 764/QĐ-BGDĐT & TT 13/2026/TT-BGDĐT)]
 Môn học: {subject} | Khối lớp: {grade_num}. Chủ đề bài học: '{topic_input}'.
-
+{conflict_note}
 YÊU CẦU PHÁP LÝ & HỌC THUẬT BẮT BUỘC:
 1. BÁM SÁT 100% NGỮ LIỆU & BẢN QUYỀN SGK KẾT NỐI TRI THỨC VỚI CUỘC SỐNG:
    - NGUYÊN TẮC ĐỐI SOÁT TRANG SÁCH & CHUYÊN ĐỀ: Nếu học sinh hỏi theo số trang (ví dụ 'Trang 85 SGK...', 'Trang 12...'), AI BẮT BUỘC đối chiếu với đúng Chương/Bài trong Khung chương trình chuẩn GDPT 2018 của Lớp {grade_num}. Đồng thời nhắc học sinh có thể mở mục '📚 SGK Điện Tử' ở thanh bên trái để lật đúng trang bản in NXBGD xem trực tiếp, TUYỆT ĐỐI KHÔNG đoán mò hay đưa kiến thức ngoài khối Lớp {grade_num}!
@@ -2437,6 +2585,43 @@ TIÊU ĐỀ BẮT BUỘC (Phải giữ đúng text này để hệ thống nhậ
 
             # --- NÚT ĐỌC BÀI GIẢNG TTS SƯ PHẠM CHUẨN GDPT 2018 & TIẾNG ANH BẢN NGỮ ---
             create_pedagogical_tts_component(cleaned_p1, subject, "tram1_lesson")
+
+            # --- ĐOẠN CHAT NGỮ CẢNH SOCRATIC SƯ PHẠM THƯỢNG ĐẲNG (THUẦN TEXT & LATEX - ALL CÁC MÔN) ---
+            chat_context_key = f"t1_chat_{current_context_key}_{st.session_state.get('current_topic', '')}"
+            if "tram1_chat_history" not in st.session_state or st.session_state.get("tram1_active_chat_key") != chat_context_key:
+                st.session_state.tram1_active_chat_key = chat_context_key
+                st.session_state.tram1_chat_history = []
+                welcome_t1 = (
+                    f"Chào {student_name}! Thầy trò mình vừa tóm tắt xong kiến thức cốt lõi của bài **{st.session_state.get('current_topic', subject)}**. "
+                    f"Theo cách hiểu của em, điều cốt tử hoặc mấu chốt nhất của bài này là gì? Hoặc có chỗ nào trong lý thuyết ở trên em thấy còn băn khoăn cần Thầy trò mình mổ xẻ thêm không?"
+                )
+                st.session_state.tram1_chat_history.append({"role": "assistant", "content": welcome_t1})
+
+            with st.expander(f"💬 Vấn đáp Socratic cùng Thầy AI về bài học '{st.session_state.get('current_topic', subject)}' (Chiếm lĩnh cốt lõi - Thuần Text & LaTeX)", expanded=True):
+                st.caption(f"🎓 **Gia sư Socratic Môn {subject} - Lớp {grade_num}:** Đối thoại khai phóng tư duy • 100% Text & công thức $\\text{{\\LaTeX}}$, không Voice • Hỏi đáp cùng Thầy cho thông suốt trước khi xuống làm bài tập nhé!")
+                for t1_msg in st.session_state.tram1_chat_history:
+                    with st.chat_message(t1_msg["role"]):
+                        st.markdown(t1_msg["content"])
+
+                t1_input = st.chat_input("Gõ câu trả lời hoặc chỗ chưa hiểu gửi Thầy...", key=f"t1_inp_{chat_context_key}")
+                if t1_input:
+                    st.session_state.tram1_chat_history.append({"role": "user", "content": t1_input})
+                    t1_hist_ctx = "\n".join([f"{m['role']}: {m['content']}" for m in st.session_state.tram1_chat_history[-4:]])
+                    t1_sys_inst = build_socratic_master_instruction(
+                        subject, grade_num, student_name, 
+                        mode="theory", 
+                        topic_nm=st.session_state.get('current_topic', subject), 
+                        context_data=cleaned_p1
+                    )
+                    try:
+                        t1_ans = call_gemini_with_fallback(
+                            f"Lịch sử đối thoại trước đó:\n{t1_hist_ctx}\nHọc sinh {student_name} phản hồi: {t1_input}\nThầy phản hồi gợi mở Socratic trí tuệ, ân cần, dẫn dắt tư duy (thuần Text & LaTeX, tuyệt đối không lặp lại lý thuyết như con vẹt):",
+                            system_instruction=t1_sys_inst
+                        )
+                        st.session_state.tram1_chat_history.append({"role": "assistant", "content": t1_ans})
+                        st.rerun()
+                    except Exception as exc:
+                        st.error(f"Lỗi kết nối Thầy AI: {exc}")
 
         # In Phần 2 (Trắc nghiệm tương tác)
         quiz_list = st.session_state.get("parsed_quiz", [])
@@ -2758,48 +2943,46 @@ if selected_station == station_labels[1]:
         st.session_state.chat = None
         st.rerun()
 
-    socratic_system_instruction = f"""Bạn là Thầy giáo Gia Sư AI tại Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang).
-Học sinh đang học: Môn {subject} - Khối lớp: {grade_num} ({'Cấp THCS' if grade_num <= 9 else 'Cấp THPT'}). Tên của học sinh là: {student_name}.
+    socratic_system_instruction = build_socratic_master_instruction(subject, grade_num, student_name, mode="review")
 
-TRIẾT LÝ HỌC THUẬT BẮT BUỘC: "NÚT THẮT CỔ CHAI CHUẨN HÓA TRI THỨC"
-Mọi tri thức nhân loại khi hướng dẫn cho học sinh BẮT BUỘC phải đi qua bộ lọc của Chương trình GDPT 2018 (Thông tư 32/2018/TT-BGDĐT), Quy chế thi 2026 và SGK Kết Nối Tri Thức Với Cuộc Sống (NXB Giáo Dục Việt Nam). TUYỆT ĐỐI KHÔNG đem kiến thức vượt khung áp đặt cho học sinh.
-
-QUY TẮC NHẬN DIỆN ẢNH & XÁC NHẬN KÝ TỰ MỜ:
-- Sử dụng khả năng OCR Multimodal chính xác 100%. Đọc kỹ từng công thức, danh pháp IUPAC, thể loại văn bản.
-- NẾU ẢNH BỊ MỜ HOẶC CÓ KÝ TỰ/CÔNG THỨC KHÔNG CHẮC CHẮN 100%: TUYỆT ĐỐI KHÔNG ĐOÁN BỪA. Chủ động hỏi lại học sinh để xác nhận: "Thầy thấy ở bước 2 công thức em viết bị mờ chỗ..., em xác nhận lại giúp Thầy xem đó là... hay là... nhé!".
-- Nếu ảnh bị mờ hoàn toàn, yêu cầu học sinh chụp lại góc thẳng, đủ ánh sáng.
-
-QUY TẮC SƯ PHẠM SOCRATIC:
-- TUYỆT ĐỐI KHÔNG giải hộ, KHÔNG viết toàn bộ lời giải sẵn, KHÔNG đưa ngay đáp số cuối cùng.
-- Khen ngợi phần học sinh đã làm đúng để tạo động lực. Gọi tên học sinh thân thiện: {student_name}.
-- Chỉ ra nút thắt hoặc chỗ nhầm lẫn công thức.
-- Đặt từ 1 đến 2 câu hỏi gợi mở ngắn (Scaffolding) để học sinh tự mình tư duy và sửa lại bài.
-
-ĐỊNH DẠNG CHẨN ĐOÁN BẮT BUỘC (Khi nhận xét ảnh bài làm):
-Cuối phản hồi PHẢI có khối JSON:
-<DIAGNOSTIC>{{"topic":"Tên bài học SGK KNTT Lớp {grade_num}","error_type":"Lỗi khái niệm/Lỗi tính toán/Lỗi phương pháp/Lỗi diễn đạt","evaluation":"Đạt/Cần rèn luyện thêm","scores":{{"truc1":80,"truc2":65,"truc3":90,"truc4":70,"truc5":85}}}}</DIAGNOSTIC>"""
-
-    st.info("💡 **Mẹo chụp ảnh bài làm tối ưu:** Hãy chụp thẳng góc, đủ ánh sáng và chữ viết rõ nét. Nếu có ký tự mờ, Thầy AI sẽ chủ động hỏi lại em để xác nhận chứ không đoán bừa!")
+    st.info("💡 **Mẹo nộp bài tối ưu:** Em có thể **bật Camera chụp trực tiếp 1 chạm** ngay trên điện thoại/máy tính (khuyên dùng, không lo lỗi định dạng) hoặc chọn ảnh có sẵn từ máy. Nếu có ký tự mờ, Thầy AI sẽ chủ động hỏi lại em để xác nhận!")
     
-    uploaded_file = st.file_uploader("📸 Tải ảnh bài làm (JPG, PNG)", type=["jpg", "png", "jpeg"])
-    if uploaded_file:
+    t2_col_cam, t2_col_file = st.tabs(["📸 Chụp trực tiếp qua Camera (Khuyên dùng)", "📁 Tải ảnh có sẵn từ máy"])
+    with t2_col_cam:
+        cam_shot = st.camera_input("Bật Camera chụp bài làm của em:", key=f"t2_cam_{current_context_key}")
+    with t2_col_file:
+        uploaded_file = st.file_uploader(
+            "Chọn ảnh bài làm từ máy (JPG, JPEG, PNG, WEBP, HEIC):", 
+            type=["jpg", "png", "jpeg", "webp", "heic"], 
+            key=f"t2_upload_{current_context_key}"
+        )
+
+    active_photo = cam_shot if cam_shot is not None else uploaded_file
+
+    if active_photo:
+        student_image = None
         try:
-            if uploaded_file.size > 8 * 1024 * 1024:
-                raise ValueError("Ảnh tối đa 8 MB.")
-            uploaded_file.seek(0)
-            with Image.open(uploaded_file) as raw_image:
-                if raw_image.width * raw_image.height > 20000000:
-                    raise ValueError("Ảnh quá lớn; hãy giảm xuống dưới 20 megapixel.")
+            if active_photo.size > 12 * 1024 * 1024:
+                raise ValueError("Ảnh tối đa 12 MB.")
+            active_photo.seek(0)
+            with Image.open(active_photo) as raw_image:
+                if raw_image.width * raw_image.height > 25000000:
+                    raise ValueError("Ảnh quá lớn; hãy giảm xuống dưới 25 megapixel.")
                 raw_image.load()
                 student_image = raw_image.convert("RGB")
                 student_image.thumbnail((2200, 2200))
-            st.image(student_image, caption="Bài làm của em", width="stretch")
+            st.image(student_image, caption="Bài làm của em đã sẵn sàng", width="stretch")
         except Exception as exc:
-            st.error(f"Không đọc được ảnh: {exc}")
+            exc_str = str(exc)
+            if "heif" in exc_str.lower() or "heic" in exc_str.lower() or getattr(active_photo, 'name', '').lower().endswith('.heic'):
+                st.warning("⚠️ Thiết bị của em đang lưu ảnh định dạng HEIC của iPhone/Samsung. Em hãy chuyển sang tab **'📸 Chụp trực tiếp qua Camera'** ở trên để chụp gửi ngay cho Thầy nhé!")
+            else:
+                st.error(f"Không đọc được ảnh ({exc}). Em hãy thử dùng tab Camera chụp trực tiếp nhé!")
             st.stop()
-        if st.button("🚀 Bắt đầu nhận xét"):
+
+        if student_image and st.button("🚀 Bắt đầu nhận xét bài làm", key=f"btn_review_{current_context_key}"):
             st.session_state.tram2_count += 1
-            with st.spinner(f"Thầy đang đối chiếu chuẩn kiến thức SGK KNTT Lớp {grade_num} và soi từng bước làm của {student_name}..."):
+            with st.spinner(f"Thầy đang đối chiếu chuẩn kiến thức SGK KNTT Lớp {grade_num} môn {subject} và soi từng bước làm của {student_name}..."):
                 try:
                     full_res = call_gemini_with_fallback(
                         [f"Học sinh {student_name} nộp ảnh bài làm môn {subject} Lớp {grade_num}. Thầy hãy soi kỹ bài làm và nhận xét Socratic:", student_image], 
@@ -2963,9 +3146,10 @@ Cuối phản hồi PHẢI có khối JSON:
                 with st.spinner("Thầy đang suy ngẫm câu hỏi của em..."):
                     try:
                         history_context = "\n".join([f"{m['role']}: {m['content']}" for m in st.session_state.messages[-4:]])
+                        t2_followup_inst = build_socratic_master_instruction(subject, grade_num, student_name, mode="follow_up")
                         rep = call_gemini_with_fallback(
-                            f"Lịch sử đối thoại trước đó:\n{history_context}\nHọc sinh {student_name} hỏi: {q}\nThầy phản hồi gợi mở Socratic (tuyệt đối không giải hộ, bám sát SGK KNTT Lớp {grade_num}):",
-                            system_instruction=socratic_system_instruction
+                            f"Lịch sử đối thoại trước đó:\n{history_context}\nHọc sinh {student_name} hỏi: {q}\nThầy phản hồi gợi mở Socratic trí tuệ, ân cần, giải thích bản chất (thuần Text & LaTeX, tuyệt đối không giải hộ, bám sát SGK KNTT Lớp {grade_num}):",
+                            system_instruction=t2_followup_inst
                         )
                         clean_rep = rep.split("<DIAGNOSTIC>")[0].strip()
                         st.markdown(clean_rep)
