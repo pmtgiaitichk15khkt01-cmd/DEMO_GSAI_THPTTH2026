@@ -1,0 +1,7 @@
+GEMINI_API_KEY = "AQ_AOBNmgJ6cJW0isSjSkWm2jVmK2N6SkMHlU8jWqdbfJbsqHBe,AQ_AOBNmgZgKP17Dnfj_Kq__WLlm8IsdNsqvZ7tkYgmBgi1a"
+
+GOOGLE_SHEET_URL = "https://script.google.com/u/0/home/projects/1uou0Lhjx8kkKIkSfz6Mb7sakRWgTX4SYY3Xp1GD8K4tIzpPTDCrvykYj/edit"
+
+GOOGLE_SHEET_VIEW_URL = "https://docs.google.com/spreadsheets/d/1InG9qxmTQ5saIc8Sb5Z9nepZbZG8asNVgSk05p7Pu9M/edit?gid=0#gid=0"
+
+ADMIN_PASS = "GiaoVienKHKT@2026"

@@ -1,0 +1,8 @@
+streamlit>=1.50
+google-genai
+pillow
+pandas
+numpy
+requests
+plotly
+scipy
