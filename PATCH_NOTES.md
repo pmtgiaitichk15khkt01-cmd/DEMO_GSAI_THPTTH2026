@@ -1,5 +1,15 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 9 (CHÍNH THỨC): NGÀY 06/10/2026 - 23:00:00 (GMT+7)
+### 🖋️ 1. Bút Tích Chấm Bài Trực Tiếp "Face to Face" Trên Ảnh (Trạm 2)
+- **Vẽ trực tiếp Bút tích Giáo viên lên Ảnh bài làm (`annotate_student_work`):**
+  - **Dòng Tick xanh OK chuẩn chỉ:** Vẽ khung viền xanh lá `#10b981` kèm huy hiệu `✅ [OK CHUẨN CHỈ]` cho các dòng/bước biến đổi đúng, lập luận chặt chẽ.
+  - **Dòng Mực đỏ Check VAR khét lẹt:** Khoanh vùng bằng viền đỏ rực `#ef4444` kèm huy hiệu `🔴 [CHECK VAR KHÉT LẸT: Chỗ khuất tất]` cho các dòng có lỗi sai, thiếu điều kiện xác định hoặc ngộ nhận.
+- **Trực quan hóa hình ảnh chấm cụ thể:** Hiển thị trực tiếp ảnh bài làm đã được chấm "Face to Face" trên giao diện để học sinh nhìn thấy rõ nét từng bước nhận xét của Thầy.
+- **Cấu trúc nhận xét Socratic từng dòng minh bạch:** Tách bạch rõ 3 phần: (1) Check các bước làm đúng OK, (2) Đánh dấu chỗ khuất tất cần lưu ý, (3) Câu hỏi gợi mở Socratic dẫn dắt học sinh tự tay sửa lại bài.
+
+---
+
 ## 📌 LẦN CẬP NHẬT THỨ 8 (CHÍNH THỨC): NGÀY 06/10/2026 - 22:35:00 (GMT+7)
 ### 📖 1. Chống Ảo Giác Số Trang SGK (Trạm 1 - Anti-Hallucination Guardrail)
 - **Cơ chế nhận diện thông minh (Regex Guardrail):** Tự động phát hiện khi học sinh nhập truy vấn có chứa `Trang [số]` hoặc `Page [số]`.
