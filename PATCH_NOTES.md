@@ -1,5 +1,23 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 8 (CHÍNH THỨC): NGÀY 06/10/2026 - 22:35:00 (GMT+7)
+### 📖 1. Chống Ảo Giác Số Trang SGK (Trạm 1 - Anti-Hallucination Guardrail)
+- **Cơ chế nhận diện thông minh (Regex Guardrail):** Tự động phát hiện khi học sinh nhập truy vấn có chứa `Trang [số]` hoặc `Page [số]`.
+- **Chỉ dẫn sư phạm trực quan:** Hiển thị cảnh báo giải thích rõ độ lệch số trang giữa các đợt in/tái bản của NXB Giáo Dục Việt Nam (2024, 2025, 2026); khuyến nghị nhập kèm tên chuyên đề, hoặc mở mục *📚 SGK Điện Tử* ở thanh bên, hoặc chụp ảnh trang sách nộp vào Trạm 2.
+- **Kỷ luật AI trong Prompt:** Nghiêm cấm mô hình khẳng định bừa số trang vật lý nếu không có ngữ liệu chắc chắn 100%, bảo đảm bám sát Khung phân phối chương trình môn học chuẩn CT GDPT 2018.
+
+### 📤 2. Tối Ưu Nộp Bài 1 Chạm & Hỗ Trợ Nộp Nhiều Trang Bài Làm (Trạm 2)
+- **1 Nút Gửi Bài duy nhất (`st.popover`):** Giao diện tinh gọn, không phân mảnh tab. Nhấn nút mở ra khung chứa cả 2 phương thức để học sinh lựa chọn:
+  - *📸 Cách 1:* Chụp trực tiếp bằng Camera (1 chạm kích hoạt).
+  - *📁 Cách 2:* Tải file ảnh có sẵn từ thiết bị (hỗ trợ JPG, PNG, WEBP, HEIC của iPhone/Samsung).
+- **Hỗ trợ nộp nhiều trang bài làm (Multi-page Submission):**
+  - *Camera:* Cho phép chụp từng trang và bấm `➕ Thêm trang này vào bài làm` để tích lũy liên tiếp Trang 1, Trang 2, Trang 3... Có bộ đếm số trang và nút xóa làm lại.
+  - *Tải file:* Kích hoạt `accept_multiple_files=True`, cho phép chọn cùng lúc nhiều bức ảnh từ máy.
+  - *Lưới xem trước đa trang (Multi-page Grid Preview):* Tự động hiển thị các trang bài làm theo thứ tự rõ ràng trước khi gửi.
+  - *Phân tích Multimodal toàn diện:* Toàn bộ danh sách ảnh bài làm được gửi đồng thời sang Gemini để Thầy Socratic đọc bài xuyên suốt từ trang đầu đến trang cuối.
+
+---
+
 ## 📌 LẦN CẬP NHẬT THỨ 7 (CHÍNH THỨC): NGÀY 06/10/2026 - 21:00:00 (GMT+7)
 ### 📐 1. Nâng Cấp Toàn Diện Phòng Thí Nghiệm Ảo (Virtual Lab) - Mô Phỏng Không Gian 3D (Toán 11 & 12)
 - **Khắc phục lỗi nhận diện nhầm Sơ đồ tư duy (Mermaid):**
