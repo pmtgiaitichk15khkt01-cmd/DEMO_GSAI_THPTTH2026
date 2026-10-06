@@ -3307,6 +3307,27 @@ if selected_station == station_labels[2]:
                 help="Ứng dụng kiểm tra cấu trúc và số câu; giáo viên cần duyệt nội dung và độ khó."
             )
 
+            # HỆ THỐNG GỢI Ý & PHẢN HỒI SƯ PHẠM THÔNG MINH CHO NGƯỜI NHẬP LIỆU (SMART PEDAGOGICAL VALIDATOR)
+            conflict_notices = []
+            if custom_matrix_prompt.strip():
+                low_p = custom_matrix_prompt.lower()
+                if subject == "Ngữ văn":
+                    if any(w in low_p for w in ["trắc nghiệm", "khoanh tròn", "chọn đáp án a", "p1", "phần i trắc nghiệm"]):
+                        conflict_notices.append("⚠️ **Lưu ý Pháp chế Ngữ văn:** Môn Ngữ văn theo Quyết định 764/QĐ-BGDĐT thi **100% Tự luận** (không có trắc nghiệm). Hệ thống sẽ tự động chuyển yêu cầu của bạn sang dạng Đọc hiểu phân hóa năng lực và Viết đoạn/bài văn nhé!")
+                    classic_texts = ["tây tiến", "vợ chồng a phủ", "vợ nhặt", "chiếc thuyền ngoài xa", "sóng", "đất nước", "người lái đò sông đà", "ai đã đặt tên cho dòng sông", "hồn trương ba", "chí phèo", "lão hạc", "lặng lẽ sa pa", "đồng chí", "bếp lửa"]
+                    found_classics = [t for t in classic_texts if t in low_p]
+                    if found_classics:
+                        conflict_notices.append(f"💡 **Gợi ý Chống học tủ của Bộ:** Bạn vừa nhắc đến tác phẩm trong SGK cũ (`{', '.join(found_classics)}`). Theo quy chế mới của Bộ GD&ĐT, đề thi không sử dụng lại tác phẩm trong SGK. Hệ thống sẽ chủ động chọn văn bản **ngoài SGK** có cùng phong cách/thể loại tương đương để đánh giá đúng năng lực thực chất của học sinh!")
+                elif subject == "Toán học":
+                    if any(w in low_p for w in ["trùng phương", "bậc 4 trùng phương", "bậc bốn trùng phương"]):
+                        conflict_notices.append("⚠️ **Lưu ý CT GDPT 2018:** Hàm số bậc 4 trùng phương đã bị **loại bỏ hoàn toàn** khỏi chương trình Toán 12 mới. Hệ thống sẽ tự động điều chỉnh sang hàm bậc ba hoặc hàm phân thức có tiệm cận xiên chuẩn SGK Kết Nối Tri Thức.")
+                elif subject in ["Lịch sử", "Địa lý", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Giáo dục công dân", "Tin học"]:
+                    if any(w in low_p for w in ["trả lời ngắn", "điền số", "phần iii", "phần 3"]):
+                        conflict_notices.append(f"💡 **Quy chế Khảo thí {subject}:** Theo QĐ 764/QĐ-BGDĐT, môn {subject} chỉ gồm Phần I (24 câu TN) và Phần II (4 câu Đúng/Sai), **không có Phần III Trả lời ngắn**. Hệ thống sẽ tối ưu theo chuẩn cấu trúc chính thức của Bộ.")
+
+            for notice in conflict_notices:
+                st.info(notice)
+
         with col_ex2:
             st.markdown("#### 📊 Cấu trúc Điểm số & Thời Gian Thi:")
             
@@ -3376,7 +3397,15 @@ if selected_station == station_labels[2]:
                 
                 with st.spinner("Gia sư AI đang tạo đề; thời gian phụ thuộc model và độ dài yêu cầu..."):
                     selected_topics_str = "; ".join(chosen_topics)
-                    custom_user_instructions = f"YÊU CẦU ĐẶC BIỆT TỪ GV/HS: {custom_matrix_prompt}" if custom_matrix_prompt.strip() else ""
+                    custom_user_instructions = ""
+                    if custom_matrix_prompt.strip():
+                        custom_user_instructions = f"""
+[CẤP ĐỘ ƯU TIÊN 2: NGUYỆN VỌNG ĐẶC BIỆT TỪ GIÁO VIÊN / HỌC SINH]:
+"{custom_matrix_prompt}"
+NGUYÊN TẮC HÒA GIẢI XUNG ĐỘT SƯ PHẠM:
+- AI hãy dung nạp tối đa nguyện vọng của GV/HS về mặt kiến thức, chủ đề trọng tâm, độ khó vận dụng cao và bối cảnh thực tế.
+- NẾU nguyện vọng của người dùng mâu thuẫn với CẤP ĐỘ ƯU TIÊN 1 (Quy chế Bộ GD&ĐT, Văn 100% ngoài SGK, Toán không trùng phương, KHXH không trả lời ngắn), AI BẮT BUỘC giữ vững CẤP ĐỘ 1, đồng thời nắn chỉnh linh hoạt nguyện vọng người dùng sang dạng hợp quy chuẩn tương đương để học sinh vừa ôn đúng trọng tâm vừa chuẩn tuyệt đối pháp chế!
+"""
                     
                     if subject == "Ngữ văn":
                         exam_prompt = f"""[HỆ THỐNG RA ĐỀ THI NGỮ VĂN CHUẨN KNTT 2026 - QĐ 764/QĐ-BGDĐT]
