@@ -1351,7 +1351,7 @@ def render_smart_lab(data, current_subject=""):
     
     # BẢO VỆ PHÁP CHẾ & SƯ PHẠM: MÔN XÃ HỘI TUYỆT ĐỐI KHÔNG HIỂN THỊ ĐỒ THỊ TOÁN HỌC
     social_subjects = ["Ngữ văn", "Lịch sử", "Địa lý", "Giáo dục công dân", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Tiếng Anh"]
-    if current_subject in social_subjects and dtype in ["func_3", "parabola", "func_1_1", "func_2_1", "func_2", "area", "revolve_ox", "oxyz"]:
+    if current_subject in social_subjects and dtype in ["func_3", "parabola", "func_1_1", "func_2_1", "func_2", "area", "revolve_ox", "oxyz", "geometry_3d", "func_exp", "func_log"]:
         st.info(f"💡 Không gian học tập môn **{current_subject}**: Phòng Lab tự động chuyển sang chế độ Sơ đồ tư duy D3/Mermaid chuyên biệt cho môn học thay vì hiển thị đồ thị giải tích Toán học.")
         data = {
             "type": "mermaid",
@@ -1370,6 +1370,228 @@ def render_smart_lab(data, current_subject=""):
     if dtype == "mermaid":
         st.markdown("### 🗺️ Trực quan hóa Sơ Đồ Tư Duy / Chu Trình Mô Phỏng")
         render_mermaid(data.get("code", ""))
+        return
+
+    if dtype == "geometry_3d":
+        shape = data.get("shape", "pyramid_quad")
+        title_geo = data.get("title", "Mô hình Hình học không gian 3D (SGK KNTT)")
+        c1, c2 = st.columns([1.2, 2.8])
+        with c1:
+            st.caption("⚙️ **Thông số điều chỉnh Hình không gian:**")
+            h_val = st.slider("Chiều cao h:", 1.5, 6.0, float(data.get("h", 4.0)), 0.5, key="lab_geo3d_h")
+            show_faces = st.checkbox("Tô mờ các mặt phẳng (3D Surfaces)", value=True, key="lab_geo3d_faces")
+            
+            if shape in ["pyramid_quad", "chóp tứ giác"]:
+                st.info("📐 **Hình chóp tứ giác $S.ABCD$**\n\n- Đáy $ABCD$ là hình bình hành/chữ nhật\n- $S$ là đỉnh hình chóp\n- Cạnh khuất: $AD, CD, SD$ (nét đứt)")
+            elif shape in ["pyramid_tri", "tetrahedron", "tứ diện", "chóp tam giác"]:
+                st.info("📐 **Hình chóp tam giác / Tứ diện $S.ABC$**\n\n- Đáy $ABC$ là tam giác\n- Đỉnh $S$, cạnh khuất nét đứt sư phạm")
+            elif shape in ["prism_tri", "lăng trụ"]:
+                st.info("📐 **Hình lăng trụ tam giác $ABC.A'B'C'$**\n\n- Hai đáy $ABC$ và $A'B'C'$ song song\n- Các cạnh bên song song và bằng nhau")
+            elif shape in ["box", "cube", "hình hộp", "lập phương"]:
+                st.info("📐 **Hình hộp chữ nhật $ABCD.A'B'C'D'$**\n\n- 6 mặt là hình chữ nhật\n- Các cạnh khuất phía sau vẽ nét đứt")
+            elif shape in ["parallel_lines", "song song"]:
+                st.info("📐 **Hai đường thẳng song song $d_1 \\parallel d_2$ trong không gian**\n\n- Cùng nằm trên mặt phẳng $(\\alpha)$\n- Không có điểm chung")
+
+        with c2:
+            fig_geo = go.Figure()
+            def add_geo_edge(p1, p2, is_dashed=False, color='#38bdf8', width=3.5):
+                fig_geo.add_trace(go.Scatter3d(
+                    x=[p1[0], p2[0]], y=[p1[1], p2[1]], z=[p1[2], p2[2]],
+                    mode='lines',
+                    line=dict(color='#94a3b8' if is_dashed else color, width=2.5 if is_dashed else width, dash='dash' if is_dashed else 'solid'),
+                    hoverinfo='skip', showlegend=False
+                ))
+
+            def add_geo_pts(pts_dict, color='#f43f5e', size=6):
+                px = [v[0] for v in pts_dict.values()]
+                py = [v[1] for v in pts_dict.values()]
+                pz = [v[2] for v in pts_dict.values()]
+                txt = list(pts_dict.keys())
+                fig_geo.add_trace(go.Scatter3d(
+                    x=px, y=py, z=pz, mode='markers+text',
+                    marker=dict(size=size, color=color),
+                    text=txt, textposition="top center",
+                    textfont=dict(color='#ffffff', size=13),
+                    showlegend=False
+                ))
+
+            if shape in ["pyramid_quad", "chóp tứ giác"]:
+                A = [-2.5, -2.0, 0.0]
+                B = [2.0, -2.0, 0.0]
+                C = [3.0, 1.8, 0.0]
+                D = [-1.5, 1.8, 0.0]
+                S = [0.2, 0.0, h_val]
+                pts = {"A": A, "B": B, "C": C, "D": D, "S": S}
+                add_geo_pts(pts)
+                add_geo_edge(A, B)
+                add_geo_edge(B, C)
+                add_geo_edge(S, A, color='#38bdf8')
+                add_geo_edge(S, B, color='#38bdf8')
+                add_geo_edge(S, C, color='#38bdf8')
+                add_geo_edge(A, D, is_dashed=True)
+                add_geo_edge(D, C, is_dashed=True)
+                add_geo_edge(S, D, is_dashed=True)
+                if show_faces:
+                    all_p = [A, B, C, D, S]
+                    fig_geo.add_trace(go.Mesh3d(
+                        x=[p[0] for p in all_p], y=[p[1] for p in all_p], z=[p[2] for p in all_p],
+                        i=[4, 4, 0, 0], j=[0, 1, 1, 2], k=[1, 2, 2, 3],
+                        opacity=0.22, color='#0284c7', hoverinfo='skip', showlegend=False
+                    ))
+
+            elif shape in ["pyramid_tri", "tetrahedron", "tứ diện", "chóp tam giác"]:
+                A = [-2.2, -1.8, 0.0]
+                B = [2.2, -1.8, 0.0]
+                C = [0.0, 2.0, 0.0]
+                S = [0.0, 0.0, h_val]
+                pts = {"A": A, "B": B, "C": C, "S": S}
+                add_geo_pts(pts)
+                add_geo_edge(A, B)
+                add_geo_edge(B, C)
+                add_geo_edge(S, A)
+                add_geo_edge(S, B)
+                add_geo_edge(S, C)
+                add_geo_edge(A, C, is_dashed=True)
+                if show_faces:
+                    all_p = [A, B, C, S]
+                    fig_geo.add_trace(go.Mesh3d(
+                        x=[p[0] for p in all_p], y=[p[1] for p in all_p], z=[p[2] for p in all_p],
+                        i=[3, 3, 0], j=[0, 1, 1], k=[1, 2, 2],
+                        opacity=0.22, color='#0284c7', hoverinfo='skip', showlegend=False
+                    ))
+
+            elif shape in ["box", "cube", "hình hộp", "lập phương"]:
+                A = [-2.0, -2.0, 0.0]; B = [2.0, -2.0, 0.0]; C = [2.5, 1.8, 0.0]; D = [-1.5, 1.8, 0.0]
+                A1 = [-2.0, -2.0, h_val]; B1 = [2.0, -2.0, h_val]; C1 = [2.5, 1.8, h_val]; D1 = [-1.5, 1.8, h_val]
+                pts = {"A": A, "B": B, "C": C, "D": D, "A'": A1, "B'": B1, "C'": C1, "D'": D1}
+                add_geo_pts(pts)
+                add_geo_edge(A, B); add_geo_edge(B, C)
+                add_geo_edge(A1, B1); add_geo_edge(B1, C1); add_geo_edge(C1, D1); add_geo_edge(D1, A1)
+                add_geo_edge(A, A1); add_geo_edge(B, B1); add_geo_edge(C, C1)
+                add_geo_edge(A, D, is_dashed=True); add_geo_edge(D, C, is_dashed=True); add_geo_edge(D, D1, is_dashed=True)
+
+            elif shape in ["prism_tri", "lăng trụ"]:
+                A = [-2.0, -1.8, 0.0]; B = [2.0, -1.8, 0.0]; C = [0.0, 1.8, 0.0]
+                A1 = [-2.0, -1.8, h_val]; B1 = [2.0, -1.8, h_val]; C1 = [0.0, 1.8, h_val]
+                pts = {"A": A, "B": B, "C": C, "A'": A1, "B'": B1, "C'": C1}
+                add_geo_pts(pts)
+                add_geo_edge(A, B); add_geo_edge(B, C); add_geo_edge(A1, B1); add_geo_edge(B1, C1); add_geo_edge(C1, A1)
+                add_geo_edge(A, A1); add_geo_edge(B, B1); add_geo_edge(C, C1)
+                add_geo_edge(A, C, is_dashed=True)
+
+            else: # parallel_lines or default
+                P1 = [-4, -3, 0]; P2 = [4, -3, 0]; P3 = [5, 3, 0]; P4 = [-3, 3, 0]
+                add_geo_edge(P1, P2, color='#64748b', width=1.5)
+                add_geo_edge(P2, P3, color='#64748b', width=1.5)
+                add_geo_edge(P3, P4, color='#64748b', width=1.5)
+                add_geo_edge(P4, P1, color='#64748b', width=1.5)
+                d1_A = [-3, -1, 0]; d1_B = [3, -1, 0]
+                d2_A = [-2.5, 1.5, 0]; d2_B = [3.5, 1.5, 0]
+                add_geo_edge(d1_A, d1_B, color='#f43f5e', width=4.5)
+                add_geo_edge(d2_A, d2_B, color='#38bdf8', width=4.5)
+                pts = {"d1": d1_B, "d2": d2_B, "(P)": P2}
+                add_geo_pts(pts, color='#fbbf24', size=5)
+                if show_faces:
+                    fig_geo.add_trace(go.Mesh3d(
+                        x=[P1[0], P2[0], P3[0], P4[0]],
+                        y=[P1[1], P2[1], P3[1], P4[1]],
+                        z=[P1[2], P2[2], P3[2], P4[2]],
+                        i=[0, 0], j=[1, 2], k=[2, 3],
+                        opacity=0.15, color='#475569', hoverinfo='skip', showlegend=False
+                    ))
+
+            fig_geo.update_layout(
+                title=title_geo,
+                template="plotly_dark",
+                scene=dict(
+                    xaxis=dict(range=[-5, 5], visible=False),
+                    yaxis=dict(range=[-5, 5], visible=False),
+                    zaxis=dict(range=[-1, 7], visible=False),
+                    aspectmode='cube'
+                ),
+                height=520,
+                margin=dict(l=10, r=10, t=35, b=10)
+            )
+            st.plotly_chart(fig_geo, width="stretch")
+        return
+
+    if dtype == "func_exp":
+        c1, c2 = st.columns([1.2, 2.8])
+        with c1:
+            st.caption("⚙️ **Thông số Hàm số Mũ ($y = k \\cdot a^x + c$):**")
+            use_e = st.checkbox("Dùng cơ số tự nhiên Euler $e \\approx 2.718$", value=bool(data.get("is_e", False)), key="lab_exp_is_e")
+            if use_e:
+                fa = float(np.e)
+                st.info("📌 **Đang chọn:** Cơ số $a = e \\approx 2.718$ (Hàm số mũ tự nhiên $y = e^x$)")
+            else:
+                fa = st.slider("Cơ số a (a > 0, a ≠ 1):", 0.1, 4.5, float(data.get("base", 2.0)), 0.1, key="lab_exp_a")
+                if abs(fa - 1.0) < 0.05: fa = 1.05
+            
+            fk = st.slider("Hệ số k:", -3.0, 3.0, float(data.get("k", 1.0)), 0.5, key="lab_exp_k")
+            if fk == 0: fk = 1.0
+            fc = st.slider("Hệ số tịnh tiến c:", -4.0, 4.0, float(data.get("c", 0.0)), 0.5, key="lab_exp_c")
+            
+            base_label = "e" if use_e else f"{fa:.1f}"
+            st.success(f"📈 **Công thức:** $y = {fk if fk != 1 else ''}{base_label}^x {('+' + str(fc)) if fc > 0 else (str(fc) if fc < 0 else '')}$")
+            
+            if fk > 0:
+                nature = "🟢 **Đồng biến trên toàn trục số $\\mathbb{R}$**" if fa > 1 else "🟠 **Nghịch biến trên toàn trục số $\\mathbb{R}$**"
+            else:
+                nature = "🟠 **Nghịch biến trên toàn trục số $\\mathbb{R}$**" if fa > 1 else "🟢 **Đồng biến trên toàn trục số $\\mathbb{R}$**"
+            st.caption(f"📌 **Tính đơn điệu:** {nature}<br>📌 **Tiệm cận ngang:** $y = {fc:.1f}$ (khi $x \\to -\\infty$ nếu $a>1$)<br>📌 **Điểm luôn đi qua:** $(0; {fk + fc:.1f})$", unsafe_allow_html=True)
+        with c2:
+            fig_exp = go.Figure()
+            x_vals = np.linspace(-5, 4.5, 600)
+            y_vals = fk * (fa ** x_vals) + fc
+            y_vals[np.abs(y_vals) > 25] = np.nan
+            
+            fig_exp.add_trace(go.Scatter(x=x_vals, y=y_vals, mode='lines', line=dict(color='#38bdf8', width=3.5), name=f'y = {base_label}^x'))
+            fig_exp.add_trace(go.Scatter(x=[-5, 5], y=[fc, fc], mode='lines', line=dict(color='#f59e0b', width=2, dash='dash'), name=f'TC Ngang y={fc}'))
+            fig_exp.add_trace(go.Scatter(x=[0], y=[fk + fc], mode='markers+text', marker=dict(size=8, color='#f43f5e'), text=[f'(0; {fk+fc:.1f})'], textposition="top left", name='Điểm (0; y0)'))
+            
+            setup_pedagogical_oxy(fig_exp, [-5, 5], [min(-3, fc - 2), max(6, fc + 8)])
+            fig_exp.update_layout(title=f"Đồ thị Hàm số Mũ: $y = {base_label}^x$ (CT GDPT 2018 Lớp 11-12)", height=500)
+            st.plotly_chart(fig_exp, width="stretch")
+        return
+
+    if dtype == "func_log":
+        c1, c2 = st.columns([1.2, 2.8])
+        with c1:
+            st.caption("⚙️ **Thông số Hàm số Lôgarit ($y = k \\cdot \\log_a(x) + c$):**")
+            use_ln = st.checkbox("Dùng Lôgarit tự nhiên (ln(x), cơ số e)", value=bool(data.get("is_ln", False)), key="lab_log_is_ln")
+            if use_ln:
+                fa = float(np.e)
+                st.info("📌 **Đang chọn:** Cơ số $e$ (Hàm số Lôgarit tự nhiên $y = \\ln(x)$)")
+            else:
+                fa = st.slider("Cơ số a (a > 0, a ≠ 1):", 0.1, 4.5, float(data.get("base", 2.0)), 0.1, key="lab_log_a")
+                if abs(fa - 1.0) < 0.05: fa = 1.05
+            
+            fk = st.slider("Hệ số k:", -3.0, 3.0, float(data.get("k", 1.0)), 0.5, key="lab_log_k")
+            if fk == 0: fk = 1.0
+            fc = st.slider("Hệ số tịnh tiến c:", -4.0, 4.0, float(data.get("c", 0.0)), 0.5, key="lab_log_c")
+            
+            log_label = "\\ln(x)" if use_ln else f"\\log_{{{fa:.1f}}}(x)"
+            st.success(f"📈 **Công thức:** $y = {fk if fk != 1 else ''}{log_label} {('+' + str(fc)) if fc > 0 else (str(fc) if fc < 0 else '')}$")
+            
+            if fk > 0:
+                nature = "🟢 **Đồng biến trên khoảng $(0; +\\infty)$**" if fa > 1 else "🟠 **Nghịch biến trên khoảng $(0; +\\infty)$**"
+            else:
+                nature = "🟠 **Nghịch biến trên khoảng $(0; +\\infty)$**" if fa > 1 else "🟢 **Đồng biến trên khoảng $(0; +\\infty)$**"
+            st.caption(f"📌 **Tập xác định:** $D = (0; +\\infty)$<br>📌 **Tính đơn điệu:** {nature}<br>📌 **Tiệm cận đứng:** $x = 0$ (Trục Oy)<br>📌 **Điểm luôn đi qua:** $(1; {fc:.1f})$", unsafe_allow_html=True)
+        with c2:
+            fig_log = go.Figure()
+            x_vals = np.linspace(0.02, 8.0, 600)
+            y_vals = fk * (np.log(x_vals) / np.log(fa)) + fc
+            y_vals[np.abs(y_vals) > 20] = np.nan
+            
+            fig_log.add_trace(go.Scatter(x=x_vals, y=y_vals, mode='lines', line=dict(color='#38bdf8', width=3.5), name=f'y = {log_label}'))
+            fig_log.add_trace(go.Scatter(x=[0, 0], y=[-10, 10], mode='lines', line=dict(color='#f59e0b', width=2, dash='dash'), name='TC Đứng x=0'))
+            fig_log.add_trace(go.Scatter(x=[1], y=[fc], mode='markers+text', marker=dict(size=8, color='#f43f5e'), text=[f'(1; {fc:.1f})'], textposition="top left", name='Điểm (1; c)'))
+            fig_log.add_vrect(x0=-4, x1=0, fillcolor="rgba(239, 68, 68, 0.12)", line_width=0, annotation_text="Vùng x ≤ 0 (KXD)", annotation_position="top left")
+            
+            setup_pedagogical_oxy(fig_log, [-2, 8], [-6, 6])
+            fig_log.update_layout(title=f"Đồ thị Hàm số Lôgarit: $y = {log_label}$ (CT GDPT 2018 Lớp 11-12)", height=500)
+            st.plotly_chart(fig_log, width="stretch")
         return
 
     if dtype == "area":
@@ -1493,8 +1715,9 @@ def render_smart_lab(data, current_subject=""):
                 v = np.linspace(0, np.radians(angle_deg), 60)
                 U, V = np.meshgrid(u, v)
 
-                R = safe_eval_func(clean_f, U)
-                if isinstance(R, (int, float)): R = np.full_like(U, float(R))
+                R_raw = safe_eval_func(clean_f, U)
+                if isinstance(R_raw, (int, float)): R_raw = np.full_like(U, float(R_raw))
+                R = np.abs(R_raw)
 
                 X_3d = U
                 Y_3d = R * np.cos(V)
@@ -1522,18 +1745,23 @@ def render_smart_lab(data, current_subject=""):
                 ox_min, ox_max = min(sa - 1.5, -2), max(sb + 1.5, 2)
                 fig_3d.add_trace(go.Scatter3d(x=[ox_min, ox_max], y=[0, 0], z=[0, 0], mode='lines+text', line=dict(color='#ffffff', width=4), text=["", "Trục Ox"], textposition="top right", name="Trục Ox"))
 
-                y_gen = safe_eval_func(clean_f, u)
-                if isinstance(y_gen, (int, float)): y_gen = np.full_like(u, float(y_gen))
+                y_gen_raw = safe_eval_func(clean_f, u)
+                if isinstance(y_gen_raw, (int, float)): y_gen_raw = np.full_like(u, float(y_gen_raw))
+                y_gen = np.abs(y_gen_raw)
                 fig_3d.add_trace(go.Scatter3d(x=u, y=y_gen, z=np.zeros_like(u), mode='lines', line=dict(color='#f43f5e', width=5), name='Đường sinh y=f(x)'))
+
+                r_max = float(np.nanmax(R)) if len(R) > 0 else 2.0
+                if r_max <= 0.05 or not math.isfinite(r_max): r_max = 2.0
+                ox_pad = max(abs(sb - sa) * 0.1, 0.5)
 
                 fig_3d.update_layout(
                     title=f"Mô hình 3D Khối tròn xoay: $y = {math_str}$ quay quanh Ox",
                     template="plotly_dark",
                     scene=dict(
-                        xaxis=dict(title="Trục Ox", backgroundcolor="#0f172a", gridcolor="#1e293b"),
-                        yaxis=dict(title="Trục Oy", backgroundcolor="#0f172a", gridcolor="#1e293b"),
-                        zaxis=dict(title="Trục Oz", backgroundcolor="#0f172a", gridcolor="#1e293b"),
-                        aspectmode='data'
+                        xaxis=dict(title="Trục Ox", range=[sa - ox_pad, sb + ox_pad], backgroundcolor="#0f172a", gridcolor="#1e293b"),
+                        yaxis=dict(title="Trục Oy", range=[-r_max*1.2, r_max*1.2], backgroundcolor="#0f172a", gridcolor="#1e293b"),
+                        zaxis=dict(title="Trục Oz", range=[-r_max*1.2, r_max*1.2], backgroundcolor="#0f172a", gridcolor="#1e293b"),
+                        aspectmode='cube'
                     ),
                     height=520,
                     margin=dict(l=10, r=10, t=35, b=10)
@@ -2804,12 +3032,19 @@ TIÊU ĐỀ BẮT BUỘC (Phải giữ đúng text này để hệ thống nhậ
                 }
             }
     else:
-        lab_ph = "Ví dụ Toán/KHTN: Vẽ đồ thị bậc ba, parabol, phân thức, diện tích tích phân, khối tròn xoay 3D, Oxyz..."
+        lab_ph = "Ví dụ Toán/KHTN: Vẽ hình chóp S.ABCD, lăng trụ, hàm mũ 2^x, ln(x), hàm bậc ba, parabol, phân thức, diện tích tích phân, khối tròn xoay 3D, Oxyz..."
         available_labs = {
             "Hàm bậc ba (KNTT 12)": {"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2},
             "Parabol bậc hai": {"type": "parabola", "a": 1, "b": -2, "c": 1},
             "Hàm phân thức bậc 1/1": {"type": "func_1_1", "a": 1, "b": 1, "c": 1, "d": -1},
             "Hàm phân thức bậc 2/1 (TC Xiên)": {"type": "func_2_1", "a": 1, "b": -2, "c": 2, "d": 1, "e": -1},
+            "Hàm số Mũ y = a^x (KNTT 11-12)": {"type": "func_exp", "base": 2.0, "k": 1.0, "c": 0.0},
+            "Hàm số Lôgarit y = log_a(x) (KNTT 11-12)": {"type": "func_log", "base": 2.0, "k": 1.0, "c": 0.0},
+            "Hình chóp tứ giác S.ABCD (Hình học 3D)": {"type": "geometry_3d", "shape": "pyramid_quad", "title": "Hình chóp tứ giác S.ABCD"},
+            "Hình chóp tam giác S.ABC (Hình học 3D)": {"type": "geometry_3d", "shape": "pyramid_tri", "title": "Hình chóp tam giác S.ABC"},
+            "Hình hộp chữ nhật ABCD.A'B'C'D' (3D)": {"type": "geometry_3d", "shape": "box", "title": "Hình hộp ABCD.A'B'C'D'"},
+            "Hình lăng trụ tam giác ABC.A'B'C' (3D)": {"type": "geometry_3d", "shape": "prism_tri", "title": "Lăng trụ ABC.A'B'C'"},
+            "Hai đường thẳng song song trong không gian": {"type": "geometry_3d", "shape": "parallel_lines", "title": "Quan hệ song song d1 // d2"},
             "Diện tích hình phẳng (Tích phân)": {"type": "area", "func": "x**2 - 3*x + 2", "a": 0.0, "b": 3.0},
             "Khối tròn xoay 3D (Tích phân Ox)": {"type": "revolve_ox", "func": "2*x + 1", "a": 2.0, "b": 5.0},
             "Không gian Oxyz (Vectơ & Tọa độ)": {"type": "oxyz", "x": 2, "y": 3, "z": 4},
@@ -2847,7 +3082,7 @@ Hệ thống AI BẮT BUỘC dựa vào toàn bộ kiến thức chuẩn SGK K�
             if is_social_subject:
                 social_constraint = f"""
 QUY TẮC BẮT BUỘC ĐẶC THÙ CHO MÔN KHOA HỌC XÃ HỘI / NGOẠI NGỮ ({subject}):
-- TUYỆT ĐỐI NGHIÊM CẤM xuất các mô hình toán học giải tích (func_3, parabola, func_1_1, func_2_1, area, revolve_ox, oxyz).
+- TUYỆT ĐỐI NGHIÊM CẤM xuất các mô hình toán học giải tích/hình học (func_3, parabola, func_1_1, func_2_1, area, revolve_ox, oxyz, geometry_3d, func_exp, func_log).
 - 100% BẮT BUỘC xuất JSON type 'mermaid' biểu diễn Sơ đồ tư duy D3/Mermaid hoặc lưu đồ tiến trình đa cấp độ!"""
 
             lab_prompt = f"""[HỆ TRI THỨC SƯ PHẠM QUỐC GIA - CHUẨN CT GDPT 2018 & QUY CHẾ THI 2026 (Cập nhật QĐ 764/QĐ-BGDĐT & TT 13/2026/TT-BGDĐT)]
@@ -2879,9 +3114,22 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
    {{"type": "func_2_1", "a": 1, "b": -2, "c": 2, "d": 1, "e": -1}}
 6. PARABOL BẬC 2 (ax^2+bx+c):
    {{"type": "parabola", "a": 1, "b": -2, "c": 1}}
-7. KHÔNG GIAN OXYZ:
+7. HÀM SỐ MŨ (y = a^x hoặc y = e^x, Toán 11-12):
+   {{"type": "func_exp", "base": 2.0, "k": 1.0, "c": 0.0}}
+8. HÀM SỐ LÔGARIT (y = log_a(x) hoặc y = ln(x), Toán 11-12):
+   {{"type": "func_log", "base": 2.0, "k": 1.0, "c": 0.0}}
+9. HÌNH HỌC KHÔNG GIAN 3D (Hình chóp, hình lăng trụ, hình hộp chữ nhật, lập phương, quan hệ song song/vuông góc Lớp 11-12):
+   - NẾU câu hỏi hoặc bài học nhắc đến: hình chóp (S.ABCD, S.ABC, tứ diện...), hình lăng trụ, hình hộp chữ nhật, hình lập phương, hai đường thẳng song song, đường thẳng song song mặt phẳng, quan hệ song song trong không gian:
+   -> BẮT BUỘC CHỌN type "geometry_3d", TUYỆT ĐỐI KHÔNG CHỌN "mermaid"!
+   Mẫu chuẩn:
+   + Hình chóp tứ giác: {{"type": "geometry_3d", "shape": "pyramid_quad", "title": "Mô hình hình chóp S.ABCD"}}
+   + Hình chóp tam giác / tứ diện: {{"type": "geometry_3d", "shape": "pyramid_tri", "title": "Mô hình hình chóp S.ABC"}}
+   + Hình hộp chữ nhật / lập phương: {{"type": "geometry_3d", "shape": "box", "title": "Mô hình hình hộp ABCD.A'B'C'D'"}}
+   + Hình lăng trụ tam giác: {{"type": "geometry_3d", "shape": "prism_tri", "title": "Mô hình lăng trụ tam giác ABC.A'B'C'"}}
+   + Hai đường thẳng song song trong không gian: {{"type": "geometry_3d", "shape": "parallel_lines", "title": "Mô hình hai đường thẳng song song d1 // d2"}}
+10. KHÔNG GIAN OXYZ:
    {{"type": "oxyz", "x": 2, "y": 3, "z": 4}}
-8. SƠ ĐỒ TƯ DUY TƯƠNG TÁC THUYẾT TRÌNH (CHO TẤT CẢ CÁC MÔN VÀ CÁC KHỐI LỚP 6-12 CHUẨN KNTT):
+11. SƠ ĐỒ TƯ DUY TƯƠNG TÁC THUYẾT TRÌNH (CHO TẤT CẢ CÁC MÔN VÀ CÁC KHỐI LỚP 6-12 CHUẨN KNTT):
    QUY CHUẨN SƠ ĐỒ BẮT BUỘC:
    - ĐỘ SÂU & TOÀN DIỆN: Phải tóm tắt ĐẦY ĐỦ VÀ SÂU SẮC toàn bộ kiến thức cốt lõi, công thức, định lý ở bài học phía trên. Tối thiểu 3-5 nhánh chính cấp 1, mỗi nhánh chính bắt buộc có 2-4 nhánh con chi tiết. Tuyệt đối không vẽ sơ sài 1-2 nhánh!
    - HỖ TRỢ ĐA NGÔN NGỮ (VIỆT - ANH): Khi môn học là Tiếng Anh, sơ đồ tư duy phải được trình bày chuẩn phong cách Tiếng Anh học thuật CEFR/IELTS, các nhánh từ vựng kèm loại từ (n, v, adj) và câu ví dụ ngữ cảnh rõ ràng.
