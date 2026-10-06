@@ -2741,6 +2741,7 @@ if selected_station == station_labels[0]:
 
     # BỘ KIỂM SOÁT XUNG ĐỘT CẤP LỚP SƯ PHẠM (SMART GRADE-CONFLICT RESOLVER)
     conflict_grade = None
+    page_match = None
     if topic_input and topic_input.strip():
         match_g = re.search(r'(?:lớp|khối|lop|khoi)\s*(\d{1,2})', topic_input, re.IGNORECASE)
         if match_g:
@@ -2750,6 +2751,7 @@ if selected_station == station_labels[0]:
                     conflict_grade = cand_g
             except Exception:
                 pass
+        page_match = re.search(r'(?:trang|page)\s*(\d+)', topic_input, re.IGNORECASE)
 
     if conflict_grade:
         st.info(f"💡 **Thầy AI nhận thấy:** Em đang ở không gian học tập **Lớp {grade_num}**, nhưng bài học em nhập lại nhắc đến **Lớp {conflict_grade}**. "
@@ -2757,6 +2759,13 @@ if selected_station == station_labels[0]:
         if st.button(f"👉 Chuyển nhanh sang Lớp {conflict_grade} để học", key=f"btn_switch_grade_{current_context_key}_{conflict_grade}"):
             st.session_state.target_switch_grade = f"Lớp {conflict_grade}"
             st.rerun()
+
+    if page_match:
+        p_num = page_match.group(1)
+        st.warning(f"📖 **Lưu ý sư phạm đối chiếu SGK (Trang {p_num}):**\n"
+                   f"Do các đợt in và tái bản SGK của NXBGD (2024, 2025, 2026) có thể chênh lệch số trang giữa các năm, "
+                   f"để chiếm lĩnh kiến thức chính xác 100%, em nên nhập kèm **Tên bài học** (Ví dụ: *Khảo sát hàm số, Ứng dụng đạo hàm...*) "
+                   f"hoặc mở mục **'📚 SGK Điện Tử'** ở menu bên trái, hoặc chụp trực tiếp trang sách nộp vào **Trạm 2** để Thầy AI hướng dẫn từng dòng nhé!")
 
     if btn_submit_lesson and topic_input.strip():
         st.session_state.tram1_count += 1
@@ -2770,6 +2779,9 @@ Môn học: {subject} | Khối lớp: {grade_num}. Chủ đề bài học: '{top
 {conflict_note}
 YÊU CẦU PHÁP LÝ & HỌC THUẬT BẮT BUỘC:
 1. BÁM SÁT 100% NGỮ LIỆU & BẢN QUYỀN SGK KẾT NỐI TRI THỨC VỚI CUỘC SỐNG:
+   - NGUYÊN TẮC XỬ LÝ SỐ TRANG SGK (CHỐNG ẢO GIÁC TRANG SÁCH): Các đợt in/tái bản SGK NXBGD có thể lệch số trang giữa các năm. TUYỆT ĐỐI CẤM khẳng định bừa số trang nếu không chắc chắn 100%. Nếu học sinh chỉ nhập số trang mà không rõ tên bài:
+     + BẮT BUỘC ghi rõ ở đầu Phần 1: '⚠️ Lưu ý: Các đợt tái bản SGK có thể chênh lệch số trang. Thầy hướng dẫn trọng tâm chuyên đề tương ứng của Lớp {grade_num} theo chuẩn GDPT 2018 (Em có thể mở '📚 SGK Điện Tử' ở menu trái hoặc chụp ảnh trang sách nộp ở Trạm 2 để Thầy soi trực tiếp nhé!).'
+     + Dẫn dắt đúng trọng tâm bài học theo Khung phân phối chương trình môn {subject} Lớp {grade_num}.
    - NGUYÊN TẮC ĐỐI SOÁT TRANG SÁCH & CHUYÊN ĐỀ: Nếu học sinh hỏi theo số trang (ví dụ 'Trang 85 SGK...', 'Trang 12...'), AI BẮT BUỘC đối chiếu với đúng Chương/Bài trong Khung chương trình chuẩn GDPT 2018 của Lớp {grade_num}. Đồng thời nhắc học sinh có thể mở mục '📚 SGK Điện Tử' ở thanh bên trái để lật đúng trang bản in NXBGD xem trực tiếp, TUYỆT ĐỐI KHÔNG đoán mò hay đưa kiến thức ngoài khối Lớp {grade_num}!
    - TOÁN HỌC: TUYỆT ĐỐI CẤM đưa các kiến thức chương trình cũ (2006) vào bài học như: Tích phân từng phần, Tích phân đổi biến số, Đồ thị hàm bậc 4 trùng phương. Chỉ sử dụng tích phân cơ bản và ứng dụng thực tế. VỚI HÀM SỐ, TUYỆT ĐỐI TUÂN THỦ 3 BƯỚC KHẢO SÁT CHUẨN KNTT LỚP 12.
    - HÓA HỌC & KHTN: DÙNG 100% DANH PHÁP QUỐC TẾ IUPAC.
@@ -3218,57 +3230,153 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
 # ------------------------------------------------------------------------------
 if selected_station == station_labels[1]:
     st.markdown("<br>", unsafe_allow_html=True)
-    st.subheader(f"✍️ Gia Sư Socratic Môn: {subject} - Lớp {grade_num}")
-    st.caption("Khung Tri Thức Chuẩn Hóa CT GDPT 2018 & SGK Kết Nối Tri Thức (NXBGDVN) • Vấn đáp Socratic • Chẩn đoán lỗ hổng kiến thức • Dẫn dắt tư duy, không giải hộ.")
+    col_head1, col_head2 = st.columns([3.8, 1.2])
+    with col_head1:
+        st.subheader(f"✍️ Gia Sư Socratic Môn: {subject} - Lớp {grade_num}")
+    with col_head2:
+        st.markdown("<div style='height: 6px;'></div>", unsafe_allow_html=True)
+        if st.button("🔄 Làm mới buổi học", key=f"btn_reset_chat_{current_context_key}", use_container_width=True): 
+            st.session_state.messages = []
+            st.session_state.chat = None
+            st.rerun()
 
-    if st.button("🔄 Xóa đối thoại cũ"): 
-        st.session_state.messages = []
-        st.session_state.chat = None
-        st.rerun()
+    st.caption("Khung Tri Thức Chuẩn Hóa CT GDPT 2018 & SGK Kết Nối Tri Thức (NXBGDVN) • Vấn đáp Socratic • Chẩn đoán lỗ hổng kiến thức • Dẫn dắt tư duy, không giải hộ.")
 
     socratic_system_instruction = build_socratic_master_instruction(subject, grade_num, student_name, mode="review")
 
-    st.info("💡 **Mẹo nộp bài tối ưu:** Em có thể **bật Camera chụp trực tiếp 1 chạm** ngay trên điện thoại/máy tính (khuyên dùng, không lo lỗi định dạng) hoặc chọn ảnh có sẵn từ máy. Nếu có ký tự mờ, Thầy AI sẽ chủ động hỏi lại em để xác nhận!")
-    
-    t2_col_cam, t2_col_file = st.tabs(["📸 Chụp trực tiếp qua Camera (Khuyên dùng)", "📁 Tải ảnh có sẵn từ máy"])
-    with t2_col_cam:
-        cam_shot = st.camera_input("Bật Camera chụp bài làm của em:", key=f"t2_cam_{current_context_key}")
-    with t2_col_file:
-        uploaded_file = st.file_uploader(
-            "Chọn ảnh bài làm từ máy (JPG, JPEG, PNG, WEBP, HEIC):", 
-            type=["jpg", "png", "jpeg", "webp", "heic"], 
-            key=f"t2_upload_{current_context_key}"
-        )
+    st.markdown("""
+<div style="background: linear-gradient(135deg, rgba(23, 105, 170, 0.08), rgba(0, 150, 136, 0.08)); border-left: 4px solid #1769aa; border-radius: 8px; padding: 12px 16px; margin: 10px 0 16px 0;">
+    <div style="font-weight: 600; color: #1769aa; margin-bottom: 2px;">💡 Quy trình gửi bài Socratic 1 chạm:</div>
+    <div style="font-size: 0.92rem; color: #333; line-height: 1.5;">
+        Bấm nút <b>'📤 GỬI BÀI LÀM CỦA EM'</b> bên dưới ➔ Chọn <b>Camera chụp trực tiếp</b> hoặc <b>Tải ảnh từ máy</b> ➔ Bấm <b>🚀 Bắt đầu nhận xét bài làm</b> để Thầy AI đồng hành cùng em!
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-    active_photo = cam_shot if cam_shot is not None else uploaded_file
+    cam_pages_key = f"t2_cam_pages_{current_context_key}"
+    if cam_pages_key not in st.session_state:
+        st.session_state[cam_pages_key] = []
 
-    if active_photo:
-        student_image = None
+    cam_shot = None
+    uploaded_files = []
+
+    # CHỈ CÓ 1 NÚT GỬI BÀI DUY NHẤT: BẤM VÀO SẼ CÓ CẢ CAMERA VÀ TẢI ẢNH ĐỂ HỌC SINH CHỌN 1 TRONG 2
+    with st.popover("📤 GỬI BÀI LÀM CỦA EM (Chụp Camera nhiều trang hoặc Tải nhiều ảnh)", use_container_width=True):
+        st.markdown("#### 📤 Chọn 1 trong 2 cách để nộp bài làm:")
+        c_cam, c_file = st.columns([1, 1], gap="medium")
+        with c_cam:
+            st.markdown("##### 📸 Cách 1: Chụp bằng Camera (Nhiều trang)")
+            st.caption("Chụp từng trang vở rồi bấm '➕ Thêm trang' để chụp tiếp trang kế:")
+            cam_shot = st.camera_input("Bật Camera chụp trang bài làm:", key=f"t2_cam_{current_context_key}")
+            if cam_shot:
+                col_c1, col_c2 = st.columns([1.5, 1])
+                with col_c1:
+                    if st.button("➕ Thêm trang này vào bài làm", key=f"btn_add_page_{current_context_key}", use_container_width=True):
+                        try:
+                            cam_shot.seek(0)
+                            with Image.open(cam_shot) as raw_im:
+                                im_rgb = raw_im.convert("RGB")
+                                im_rgb.thumbnail((2200, 2200))
+                                st.session_state[cam_pages_key].append(im_rgb)
+                                st.toast(f"✅ Đã thêm Trang {len(st.session_state[cam_pages_key])}!")
+                        except Exception as e:
+                            st.error(f"Lỗi thêm trang: {e}")
+                        st.rerun()
+                with col_c2:
+                    if st.session_state[cam_pages_key]:
+                        if st.button("🗑️ Xóa các trang", key=f"btn_clr_cam_{current_context_key}", use_container_width=True):
+                            st.session_state[cam_pages_key] = []
+                            st.rerun()
+
+            if st.session_state[cam_pages_key]:
+                st.info(f"📷 Đã lưu **{len(st.session_state[cam_pages_key])}** trang bài làm từ Camera.")
+
+        with c_file:
+            st.markdown("##### 📁 Cách 2: Tải ảnh từ thiết bị (Nhiều ảnh)")
+            st.caption("Hỗ trợ chọn cùng lúc nhiều ảnh JPG, PNG, JPEG, WEBP, HEIC:")
+            uploaded_files = st.file_uploader(
+                "Chọn 1 hoặc nhiều ảnh bài làm:", 
+                type=["jpg", "png", "jpeg", "webp", "heic"], 
+                accept_multiple_files=True,
+                key=f"t2_upload_{current_context_key}"
+            )
+
+    # TỔNG HỢP DANH SÁCH TOÀN BỘ ẢNH BÀI LÀM (MULTI-PAGE IMAGES)
+    student_images = []
+
+    # 1. Thu thập từ file uploader
+    if uploaded_files:
+        for up_f in uploaded_files:
+            try:
+                if up_f.size > 12 * 1024 * 1024:
+                    continue
+                up_f.seek(0)
+                with Image.open(up_f) as raw_image:
+                    if raw_image.width * raw_image.height > 25000000:
+                        continue
+                    raw_image.load()
+                    im_rgb = raw_image.convert("RGB")
+                    im_rgb.thumbnail((2200, 2200))
+                    student_images.append(im_rgb)
+            except Exception as exc:
+                exc_str = str(exc)
+                if "heif" in exc_str.lower() or "heic" in exc_str.lower() or getattr(up_f, 'name', '').lower().endswith('.heic'):
+                    st.warning(f"⚠️ Ảnh '{getattr(up_f, 'name', 'HEIC')}' lưu định dạng HEIC. Em hãy dùng Camera chụp trực tiếp gửi Thầy nhé!")
+
+    # 2. Thu thập từ camera (các trang đã thêm hoặc trang vừa chụp)
+    if st.session_state[cam_pages_key]:
+        student_images.extend(st.session_state[cam_pages_key])
+    elif cam_shot and not student_images:
         try:
-            if active_photo.size > 12 * 1024 * 1024:
-                raise ValueError("Ảnh tối đa 12 MB.")
-            active_photo.seek(0)
-            with Image.open(active_photo) as raw_image:
-                if raw_image.width * raw_image.height > 25000000:
-                    raise ValueError("Ảnh quá lớn; hãy giảm xuống dưới 25 megapixel.")
+            cam_shot.seek(0)
+            with Image.open(cam_shot) as raw_image:
                 raw_image.load()
-                student_image = raw_image.convert("RGB")
-                student_image.thumbnail((2200, 2200))
-            st.image(student_image, caption="Bài làm của em đã sẵn sàng", width="stretch")
-        except Exception as exc:
-            exc_str = str(exc)
-            if "heif" in exc_str.lower() or "heic" in exc_str.lower() or getattr(active_photo, 'name', '').lower().endswith('.heic'):
-                st.warning("⚠️ Thiết bị của em đang lưu ảnh định dạng HEIC của iPhone/Samsung. Em hãy chuyển sang tab **'📸 Chụp trực tiếp qua Camera'** ở trên để chụp gửi ngay cho Thầy nhé!")
-            else:
-                st.error(f"Không đọc được ảnh ({exc}). Em hãy thử dùng tab Camera chụp trực tiếp nhé!")
-            st.stop()
+                im_rgb = raw_image.convert("RGB")
+                im_rgb.thumbnail((2200, 2200))
+                student_images.append(im_rgb)
+        except Exception:
+            pass
 
-        if student_image and st.button("🚀 Bắt đầu nhận xét bài làm", key=f"btn_review_{current_context_key}"):
+    if student_images:
+        total_pages = len(student_images)
+        st.success(f"✨ **Đã tiếp nhận thành công {total_pages} trang bài làm!** Em xem trước bên dưới và bấm bắt đầu nhận xét nhé:")
+        
+        # Hiển thị ảnh xem trước các trang bài làm
+        if total_pages == 1:
+            st.image(student_images[0], caption="Ảnh bài làm (Trang 1/1)", width="stretch")
+        else:
+            col_preview = st.columns(min(total_pages, 3))
+            for p_idx, p_img in enumerate(student_images):
+                with col_preview[p_idx % min(total_pages, 3)]:
+                    st.image(p_img, caption=f"Trang {p_idx + 1}/{total_pages}", width="stretch")
+
+        col_act1, col_act2 = st.columns([2.5, 1.2])
+        with col_act1:
+            btn_start_review = st.button(
+                f"🚀 Bắt đầu nhận xét bài làm ({total_pages} trang)" if total_pages > 1 else "🚀 Bắt đầu nhận xét bài làm", 
+                type="primary", 
+                use_container_width=True, 
+                key=f"btn_review_{current_context_key}"
+            )
+        with col_act2:
+            if st.button("🔄 Xóa hết / Đổi ảnh khác", use_container_width=True, key=f"btn_change_photo_{current_context_key}"):
+                st.session_state[cam_pages_key] = []
+                if f"t2_cam_{current_context_key}" in st.session_state:
+                    del st.session_state[f"t2_cam_{current_context_key}"]
+                if f"t2_upload_{current_context_key}" in st.session_state:
+                    del st.session_state[f"t2_upload_{current_context_key}"]
+                st.rerun()
+
+        if student_images and btn_start_review:
             st.session_state.tram2_count += 1
-            with st.spinner(f"Thầy đang đối chiếu chuẩn kiến thức SGK KNTT Lớp {grade_num} môn {subject} và soi từng bước làm của {student_name}..."):
+            with st.spinner(f"Thầy đang đối chiếu chuẩn kiến thức SGK KNTT Lớp {grade_num} môn {subject} và soi từng bước làm của {student_name} qua {total_pages} trang bài làm..."):
                 try:
+                    review_payload = [
+                        f"Học sinh {student_name} nộp {total_pages} trang ảnh bài làm môn {subject} Lớp {grade_num}. Thầy hãy soi kỹ toàn bộ các trang bài làm (theo thứ tự từ trang 1 đến trang {total_pages}) và nhận xét Socratic:",
+                        *student_images
+                    ]
                     full_res = call_gemini_with_fallback(
-                        [f"Học sinh {student_name} nộp ảnh bài làm môn {subject} Lớp {grade_num}. Thầy hãy soi kỹ bài làm và nhận xét Socratic:", student_image], 
+                        review_payload, 
                         system_instruction=socratic_system_instruction
                     )
                     student_fb = full_res.split("<DIAGNOSTIC>")[0].strip() if "<DIAGNOSTIC>" in full_res else full_res
@@ -3293,7 +3401,7 @@ if selected_station == station_labels[1]:
                                 sync_event(entry)
                         except Exception: 
                             pass
-                    st.session_state.messages = [{"role": "user", "content": "*(Em đã nộp ảnh bài làm)*"}, {"role": "assistant", "content": student_fb}]
+                    st.session_state.messages = [{"role": "user", "content": f"*(Em đã nộp {total_pages} trang ảnh bài làm)*"}, {"role": "assistant", "content": student_fb}]
                     st.rerun()
                 except Exception as e: 
                     st.error(f"Lỗi phân tích bài làm: {e}")
