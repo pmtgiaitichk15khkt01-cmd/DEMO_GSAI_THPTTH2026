@@ -1,5 +1,31 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 7 (CHÍNH THỨC): NGÀY 06/10/2026 - 21:00:00 (GMT+7)
+### 📐 1. Nâng Cấp Toàn Diện Phòng Thí Nghiệm Ảo (Virtual Lab) - Mô Phỏng Không Gian 3D (Toán 11 & 12)
+- **Khắc phục lỗi nhận diện nhầm Sơ đồ tư duy (Mermaid):**
+  - Trước đây: Các câu hỏi tóm tắt lý thuyết, trắc nghiệm, tự luận về Hình học không gian (hình chóp, lăng trụ, quan hệ song song) bị xếp nhầm vào Mermaid do thiếu định nghĩa phân loại.
+  - Sau bản vá: Bổ sung định dạng mô hình chuyên biệt `geometry_3d` trực tiếp trong `lab_prompt` và `available_labs`. Khi đề cập đến hình chóp $S.ABCD$, $S.ABC$, lăng trụ tam giác, hình hộp, hoặc quan hệ song song $d_1 \parallel d_2$, AI tự động xuất mô hình Plotly 3D tương tác.
+- **Hỗ trợ đầy đủ các khối hình học không gian chuẩn SGK:**
+  - Hình chóp tứ giác $S.ABCD$ (đáy bình hành, đỉnh $S$, trục đối xứng).
+  - Hình chóp tam giác / tứ diện $S.ABC$.
+  - Hình hộp chữ nhật / hình lập phương $ABCD.A'B'C'D'$.
+  - Hình lăng trụ tam giác $ABC.A'B'C'$.
+  - Hai đường thẳng song song trong không gian $d_1 \parallel d_2$.
+  - Phân biệt nét đứt (dashed edges) cho các cạnh khuất và nét liền cho các cạnh nhìn thấy, kèm nhãn đỉnh rõ ràng.
+
+### 🔄 2. Khắc Phục Triệt Để Hiện Tượng Khối Tròn Xoay 3D Bị Bẹp Dí (`revolve_ox`)
+- **Nguyên nhân cốt lõi:** Trước đây Plotly cấu hình `aspectmode='data'`, khiến các trục tọa độ bị co giãn không đồng đều theo độ lệch số liệu giữa miền trục $Ox$ và biên độ hàm số $Oy, Oz$.
+- **Giải pháp tối ưu chuẩn toán học:**
+  - Chuyển sang `aspectmode='cube'` để đảm bảo tỉ lệ đồng dạng 1:1:1 giữa cả ba trục.
+  - Sử dụng bán kính thực $r(x) = |f(x)|$ cho lưới tham số tròn xoay quanh trục $Ox$.
+  - Khóa khoảng đối xứng đối với trục $Oy$ và $Oz$ theo bán kính cực đại $R_{\max}$, triệt tiêu 100% hiện tượng biến dạng méo mó hoặc bẹp dí.
+
+### 📈 3. Bổ Sung Đồ Thị Tương Tác Hàm Số Mũ & Hàm Số Lôgarit Kèm Thanh Trượt (Toán 11 & 12)
+- **Hàm số Mũ (`func_exp`):** Dạng tổng quát $y = k \cdot a^x + c$. Hỗ trợ cơ số Euler $e \approx 2.71828$ và cơ số tùy chọn qua thanh trượt. Trực quan hóa đường tiệm cận ngang $y = c$, tọa độ giao điểm và bảng tính biến thiên.
+- **Hàm số Lôgarit (`func_log`):** Dạng tổng quát $y = k \cdot \log_a(x) + c$. Hỗ trợ lôgarit tự nhiên $\ln(x)$ và cơ số $a$ tùy chọn. Trực quan hóa miền xác định $x > 0$, đường tiệm cận đứng $x = 0$, điểm đặc biệt $(1, c)$ và đồ thị sắc nét.
+
+---
+
 ## 📌 LẦN CẬP NHẬT THỨ 6 (CHÍNH THỨC): NGÀY 06/10/2026 - 20:30:00 (GMT+7)
 ### 🏛️ 1. Thổi Hồn "System Instruction Sư Phạm Thượng Đẳng" Cho Toàn Bộ 11 Môn Học (Lớp 6 - 12)
 - **Chuẩn hóa triết lý Socratic Maieutics (Thuật đỡ đẻ tri thức):** Người Thầy AI trí tuệ, sáng suốt, ân cần, tuyệt đối không lặp lại lý thuyết như con vẹt máy móc, không giải hộ hay đưa sẵn đáp số.
