@@ -1,17 +1,22 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
-## 📌 LẦN CẬP NHẬT THỨ 4 (CHÍNH THỨC): NGÀY 06/10/2026 - 16:20:00 (GMT+7)
-### 🧠 1. Hệ Thống Kiểm Soát Xung Đột Sư Phạm Thông Minh (Smart Pedagogical Conflict Validator)
-- **Cơ chế phản hồi chủ động (Proactive Guidance):** Khi Giáo viên hoặc Học sinh nhập các yêu cầu đặc thù vào khung tùy biến ma trận (`custom_matrix_prompt`), hệ thống tự động phân tích ngữ nghĩa và đưa ra gợi ý sư phạm kịp thời:
-  - **Môn Ngữ văn:** Nếu yêu cầu trắc nghiệm $\rightarrow$ Hướng dẫn chuẩn 100% Tự luận (Đọc hiểu 4đ + Viết 6đ) theo QĐ 764. Nếu nhập tên tác phẩm trong SGK cũ (*Tây Tiến, Vợ chồng A Phủ, Chiếc thuyền ngoài xa...*) $\rightarrow$ Gợi ý quy chế chống học tủ của Bộ, tự động chọn văn bản mới ngoài SGK của cùng phong cách/thể loại tương đương.
-  - **Môn Toán học:** Nếu yêu cầu hàm bậc 4 trùng phương $\rightarrow$ Nhắc nhở quy chuẩn CT GDPT 2018 (đã loại bỏ) và tự động tối ưu sang hàm bậc ba hoặc hàm phân thức có tiệm cận xiên.
-  - **Môn KHXH & Tin học:** Nếu yêu cầu trả lời ngắn $\rightarrow$ Nhắc nhở quy chuẩn QĐ 764 chỉ có Phần I (24 câu) và Phần II (4 câu Đ/S).
+## 📌 LẦN CẬP NHẬT THỨ 5 (CHÍNH THỨC): NGÀY 06/10/2026 - 16:55:00 (GMT+7)
+### 🐛 1. Khắc Phục Triệt Để Lỗi Khai Báo Biến `NameError: BIGDATA_CURRICULUM`
+- **Nguyên nhân đã xử lý:** Từ điển `BIGDATA_CURRICULUM` trước đây được định nghĩa ở phần sau của file (trước Trạm 3), trong khi Trạm 1 được thực thi trước và gọi đến biến này ở dòng 2120 $\rightarrow$ Gây lỗi `NameError` trên môi trường Streamlit.
+- **Giải pháp chuẩn hóa:** Di chuyển toàn bộ khối dữ liệu `BIGDATA_CURRICULUM` lên vị trí khai báo hằng số cơ sở dữ liệu ngay trước khối các Trạm học tập (trước dòng `station_labels`).
+- **Cam kết bảo tồn dữ liệu:** Toàn bộ 100% cấu trúc ma trận chuyên đề của tất cả các môn (Toán, Lý, Hóa, Sinh, Văn, Sử, Địa, Tin học, GDKT-PL, KHTN, GDCD) từ Lớp 6 đến Lớp 12 được giữ nguyên vẹn không mất bất kỳ ký tự nào.
+- **Kết quả:** Trạm 1 và Trạm 3 truy cập dữ liệu mượt mà, triệt tiêu 100% lỗi `NameError`.
 
+---
+
+## 📌 LẦN CẬP NHẬT THỨ 4: NGÀY 06/10/2026 - 16:20:00 (GMT+7)
+### 🧠 1. Hệ Thống Kiểm Soát Xung Đột Sư Phạm Thông Minh (Smart Pedagogical Conflict Validator)
+- Tự động phát hiện và hiển thị gợi ý sư phạm ân cần khi người dùng nhập yêu cầu xung đột quy chuẩn Bộ GD&ĐT:
+  - Môn Ngữ văn: Hướng dẫn chuẩn 100% Tự luận (Đọc hiểu 4đ + Viết 6đ) theo QĐ 764. Nếu nhập tên tác phẩm trong SGK cũ $\rightarrow$ Gợi ý văn bản mới ngoài SGK chống học tủ.
+  - Môn Toán học: Nhắc nhở quy chuẩn CT GDPT 2018 (đã loại bỏ hàm bậc 4 trùng phương) và chuyển sang hàm bậc ba/phân thức.
+  - Môn KHXH & Tin học: Nhắc nhở quy chuẩn QĐ 764 chỉ có Phần I (24 câu) và Phần II (4 câu Đ/S).
 ### 🏛️ 2. Mô Hình Phân Tầng Mệnh Lệnh (Hierarchical Constraint Framework)
-- Thiết lập 3 tầng thứ bậc trong Prompt gửi tới toàn bộ các dòng Model AI (`gemini-2.5-flash`, `2.0-flash`, `1.5-flash`, `3.x`):
-  - **Cấp độ Ưu tiên 1 (Tối thượng - Invariant Constraints):** Pháp chế Bộ GD&ĐT (Khung điểm, thời gian, barem bậc thang, ngữ liệu ngoài SGK, danh pháp IUPAC).
-  - **Cấp độ Ưu tiên 2 (Linh hoạt thích ứng - Adaptive User Directives):** Dung nạp tối đa nguyện vọng ôn tập của GV/HS về mặt nội dung, mức độ vận dụng cao và bối cảnh thực tế.
-  - **Cấp độ Ưu tiên 3 (Kỹ thuật dữ liệu - Resilient JSON Output):** Bảo đảm đầu ra JSON Schema bất biến, chống gãy định dạng trên mọi dòng AI.
+- Thiết lập 3 tầng thứ bậc: Cấp 1 (Pháp chế Bộ GD&ĐT bất biến), Cấp 2 (Nguyện vọng thích ứng của GV & HS), Cấp 3 (Đầu ra JSON Schema bền bỉ trên mọi dòng AI Gemini).
 
 ---
 
