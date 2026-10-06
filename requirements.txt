@@ -6,3 +6,4 @@ numpy
 requests
 plotly
 scipy
+pillow-heif
