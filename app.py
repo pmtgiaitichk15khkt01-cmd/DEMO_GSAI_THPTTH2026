@@ -1221,9 +1221,27 @@ _SAFE_BUILTINS = {k: __builtins__[k] if isinstance(__builtins__, dict) else geta
 def render_dynamic_python_lab(python_code: str):
     st.warning("Mô phỏng Python tự do chưa được hỗ trợ. Hãy chọn hàm số, diện tích, khối tròn xoay, Oxyz hoặc sơ đồ tư duy; ứng dụng không chạy mã do AI sinh.")
 
-def render_smart_lab(data):
+def render_smart_lab(data, current_subject=""):
     dtype = data.get("type")
     
+    # BẢO VỆ PHÁP CHẾ & SƯ PHẠM: MÔN XÃ HỘI TUYỆT ĐỐI KHÔNG HIỂN THỊ ĐỒ THỊ TOÁN HỌC
+    social_subjects = ["Ngữ văn", "Lịch sử", "Địa lý", "Giáo dục công dân", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Tiếng Anh"]
+    if current_subject in social_subjects and dtype in ["func_3", "parabola", "func_1_1", "func_2_1", "func_2", "area", "revolve_ox", "oxyz"]:
+        st.info(f"💡 Không gian học tập môn **{current_subject}**: Phòng Lab tự động chuyển sang chế độ Sơ đồ tư duy D3/Mermaid chuyên biệt cho môn học thay vì hiển thị đồ thị giải tích Toán học.")
+        data = {
+            "type": "mermaid",
+            "code": f"""graph LR
+    Root["🎯 CHỦ ĐỀ MÔN {current_subject.upper()}"] --> A["1. Khái niệm & Cơ sở lý luận"]
+    Root --> B["2. Nội dung Trọng tâm"]
+    Root --> C["3. Phương pháp Tiếp cận"]
+    Root --> D["4. Vận dụng Thực tiễn"]
+    A --> A1["Chuẩn kiến thức GDPT 2018"]
+    B --> B1["Hệ thống luận điểm cốt lõi"]
+    C --> C1["Kỹ năng tư duy phản biện"]
+    D --> D1["Liên hệ đời sống & bài thi 2026"]"""
+        }
+        dtype = "mermaid"
+
     if dtype == "mermaid":
         st.markdown("### 🗺️ Trực quan hóa Sơ Đồ Tư Duy / Chu Trình Mô Phỏng")
         render_mermaid(data.get("code", ""))
@@ -1358,7 +1376,23 @@ def render_smart_lab(data):
                 Z_3d = R * np.sin(V)
 
                 fig_3d = go.Figure()
-                fig_3d.add_trace(go.Surface(x=X_3d, y=Y_3d, z=Z_3d, colorscale='Viridis', opacity=0.82, showscale=False, name='Khối tròn xoay'))
+                fig_3d.add_trace(go.Surface(x=X_3d, y=Y_3d, z=Z_3d, colorscale='Viridis', opacity=0.82, showscale=False, name='Mặt xung quanh'))
+
+                # NẮP ĐÁY KHÉP KÍN TẠI CẬN SA VÀ SB (CHUẨN HÌNH HỌC KHÔNG GIAN TÍCH PHÂN 3D)
+                try:
+                    ra_val = safe_eval_func(clean_f, sa)
+                    ra = float(abs(ra_val)) if isinstance(ra_val, (int, float, np.number)) else 0.0
+                    if ra > 0.01:
+                        rc_a, vc_a = np.meshgrid(np.linspace(0, ra, 12), np.linspace(0, np.radians(angle_deg), 36))
+                        fig_3d.add_trace(go.Surface(x=np.full_like(rc_a, sa), y=rc_a*np.cos(vc_a), z=rc_a*np.sin(vc_a), colorscale='Viridis', opacity=0.88, showscale=False, hoverinfo='skip', name='Đáy x=a'))
+                    
+                    rb_val = safe_eval_func(clean_f, sb)
+                    rb = float(abs(rb_val)) if isinstance(rb_val, (int, float, np.number)) else 0.0
+                    if rb > 0.01:
+                        rc_b, vc_b = np.meshgrid(np.linspace(0, rb, 12), np.linspace(0, np.radians(angle_deg), 36))
+                        fig_3d.add_trace(go.Surface(x=np.full_like(rc_b, sb), y=rc_b*np.cos(vc_b), z=rc_b*np.sin(vc_b), colorscale='Viridis', opacity=0.88, showscale=False, hoverinfo='skip', name='Đáy x=b'))
+                except Exception:
+                    pass
 
                 ox_min, ox_max = min(sa - 1.5, -2), max(sb + 1.5, 2)
                 fig_3d.add_trace(go.Scatter3d(x=[ox_min, ox_max], y=[0, 0], z=[0, 0], mode='lines+text', line=dict(color='#ffffff', width=4), text=["", "Trục Ox"], textposition="top right", name="Trục Ox"))
@@ -1507,28 +1541,45 @@ def render_smart_lab(data):
             st.plotly_chart(fig, width="stretch")
 
     elif dtype == "oxyz":
-        c1, c2 = st.columns([1, 3])
+        c1, c2 = st.columns([1.2, 2.8])
         with c1:
-            st.caption("⚙️ **Thay đổi tọa độ điểm M(x; y; z):**")
-            mx = st.slider("x:", -4.0, 5.0, float(data.get("x", 2.0)), 0.5, key="lab_3d_x")
-            my = st.slider("y:", -4.0, 5.0, float(data.get("y", 3.0)), 0.5, key="lab_3d_y")
-            mz = st.slider("z:", -4.0, 5.0, float(data.get("z", 4.0)), 0.5, key="lab_3d_z")
-            st.info(f"**Điểm $M({mx}; {my}; {mz})$**")
+            st.caption("⚙️ **Tọa độ Điểm & Vectơ Vị Trí $\\vec{OM}$ trong Oxyz:**")
+            mx = st.slider("Tọa độ x (Hoành độ):", -5.0, 5.0, float(data.get("x", 2.0)), 0.5, key="lab_3d_x")
+            my = st.slider("Tọa độ y (Tung độ):", -5.0, 5.0, float(data.get("y", 3.0)), 0.5, key="lab_3d_y")
+            mz = st.slider("Tọa độ z (Cao độ):", -5.0, 5.0, float(data.get("z", 4.0)), 0.5, key="lab_3d_z")
+            om_length = math.sqrt(mx**2 + my**2 + mz**2)
+            st.info(f"📍 **Tọa độ:** $M({mx}; {my}; {mz})$\n\n🎯 **Vectơ vị trí:** $\\vec{{OM}} = {mx}\\vec{{i}} + {my}\\vec{{j}} + {mz}\\vec{{k}}$")
+            st.success(f"📏 **Độ dài vectơ:**\n\n$$|\\vec{{OM}}| = \\sqrt{{{mx}^2 + {my}^2 + {mz}^2}} \\approx {om_length:.2f}$$")
         with c2:
-            fig.add_trace(go.Scatter3d(x=[mx], y=[my], z=[mz], mode='markers+text', marker=dict(size=9, color='#38bdf8'), text=[f'M({mx}; {my}; {mz})'], textposition="top center"))
-            fig.add_trace(go.Scatter3d(x=[0, mx, mx], y=[0, 0, my], z=[0, 0, 0], mode='lines', line=dict(color='#94a3b8', width=3, dash='dash'), hoverinfo='skip'))
-            fig.add_trace(go.Scatter3d(x=[mx, mx], y=[my, my], z=[0, mz], mode='lines', line=dict(color='#f59e0b', width=3, dash='dash'), hoverinfo='skip'))
+            # Gốc tọa độ O(0,0,0)
+            fig.add_trace(go.Scatter3d(x=[0], y=[0], z=[0], mode='markers+text', marker=dict(size=7, color='#ffffff'), text=['O(0;0;0)'], textposition="bottom left", name='Gốc O'))
+            # Điểm M(mx, my, mz)
+            fig.add_trace(go.Scatter3d(x=[mx], y=[my], z=[mz], mode='markers+text', marker=dict(size=9, color='#38bdf8'), text=[f'M({mx};{my};{mz})'], textposition="top center", name='Điểm M'))
+            # Vectơ OM nối từ O đến M
+            fig.add_trace(go.Scatter3d(x=[0, mx], y=[0, my], z=[0, mz], mode='lines', line=dict(color='#f43f5e', width=6), name='Vectơ OM'))
+            
+            # Đường gióng hình chiếu lên các mặt phẳng tọa độ (hộp tọa độ)
+            fig.add_trace(go.Scatter3d(x=[0, mx, mx, 0, 0], y=[0, 0, my, my, 0], z=[0, 0, 0, 0, 0], mode='lines', line=dict(color='#64748b', width=2, dash='dash'), name='Hình chiếu Oxy'))
+            fig.add_trace(go.Scatter3d(x=[mx, mx], y=[my, my], z=[0, mz], mode='lines', line=dict(color='#f59e0b', width=3, dash='dash'), name='Đường dóng cao độ z'))
+            fig.add_trace(go.Scatter3d(x=[0, mx], y=[0, 0], z=[mz, mz], mode='lines', line=dict(color='#94a3b8', width=1.5, dash='dot'), hoverinfo='skip'))
+            fig.add_trace(go.Scatter3d(x=[0, 0], y=[0, my], z=[mz, mz], mode='lines', line=dict(color='#94a3b8', width=1.5, dash='dot'), hoverinfo='skip'))
+            fig.add_trace(go.Scatter3d(x=[0, mx], y=[my, my], z=[mz, mz], mode='lines', line=dict(color='#94a3b8', width=1.5, dash='dot'), hoverinfo='skip'))
+            fig.add_trace(go.Scatter3d(x=[mx, mx], y=[0, my], z=[mz, mz], mode='lines', line=dict(color='#94a3b8', width=1.5, dash='dot'), hoverinfo='skip'))
+
+            # Điểm hình chiếu M' trên mặt phẳng Oxy
+            fig.add_trace(go.Scatter3d(x=[mx], y=[my], z=[0], mode='markers+text', marker=dict(size=6, color='#a855f7'), text=[f"M'({mx};{my};0)"], textposition="bottom center", name="Hình chiếu Oxy"))
+
             fig.update_layout(
-                title="Không gian Oxyz: Biểu diễn toạ độ điểm",
+                title=f"Không gian Oxyz: Điểm M({mx}; {my}; {mz}) & Vectơ OM (Độ dài: {om_length:.2f})",
                 template="plotly_dark",
                 scene=dict(
-                    xaxis=dict(range=[-5, 5], backgroundcolor="#0f172a"),
-                    yaxis=dict(range=[-5, 5], backgroundcolor="#0f172a"),
-                    zaxis=dict(range=[-5, 5], backgroundcolor="#0f172a"),
+                    xaxis=dict(range=[-6, 6], title="Trục Ox", backgroundcolor="#0f172a", gridcolor="#1e293b"),
+                    yaxis=dict(range=[-6, 6], title="Trục Oy", backgroundcolor="#0f172a", gridcolor="#1e293b"),
+                    zaxis=dict(range=[-6, 6], title="Trục Oz", backgroundcolor="#0f172a", gridcolor="#1e293b"),
                     aspectmode='cube'
                 ),
-                height=500,
-                margin=dict(l=10, r=10, t=30, b=10)
+                height=520,
+                margin=dict(l=10, r=10, t=35, b=10)
             )
             st.plotly_chart(fig, width="stretch")
 
@@ -2159,17 +2210,159 @@ TIÊU ĐỀ BẮT BUỘC (Phải giữ đúng text này để hệ thống nhậ
     st.markdown('<h4 style="color: #38bdf8; margin-top: 0; margin-bottom: 5px; font-weight: 800;">🔬 PHÒNG THÍ NGHIỆM ẢO THEO YÊU CẦU (VIRTUAL LAB)</h4>', unsafe_allow_html=True)
     st.markdown(f'<div style="color: #cbd5e1; font-size: 15px; margin-bottom: 12px;">Hệ thống AI đang liên kết trực tiếp với <b>Môn {subject} - Lớp {grade_num}</b>. Nhập yêu cầu mô phỏng đồ thị, tích phân, miền nghiệm, không gian 3D, hoặc sơ đồ tư duy:</div>', unsafe_allow_html=True)
     
-    lab_ph = f"Ví dụ Tiếng Anh: Vẽ sơ đồ tư duy thì động từ, sơ đồ từ vựng Topic Education..." if subject == "Tiếng Anh" else (f"Ví dụ Toán: Vẽ đồ thị, diện tích tích phân, sơ đồ tư duy..." if subject == "Toán học" else "Ví dụ: Mô phỏng quy trình, sơ đồ tư duy bài học...")
-    available_labs = {
-        "Hàm bậc ba": {"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2},
-        "Parabol": {"type": "parabola", "a": 1, "b": -2, "c": 1},
-        "Hàm phân thức 1/1": {"type": "func_1_1", "a": 1, "b": 1, "c": 1, "d": -1},
-        "Hàm phân thức 2/1": {"type": "func_2_1", "a": 1, "b": -2, "c": 2, "d": 1, "e": -1},
-        "Diện tích": {"type": "area", "func": "x**2 - 3*x + 2", "a": 0.0, "b": 3.0},
-        "Khối tròn xoay": {"type": "revolve_ox", "func": "2*x + 1", "a": 2.0, "b": 5.0},
-        "Không gian Oxyz": {"type": "oxyz", "x": 2, "y": 3, "z": 4},
-    }
-    manual_lab = st.selectbox("Mô phỏng có sẵn (không cần API)", list(available_labs))
+    is_social_subject = subject in ["Ngữ văn", "Lịch sử", "Địa lý", "Giáo dục công dân", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Tiếng Anh"]
+
+    if is_social_subject:
+        if subject == "Ngữ văn":
+            lab_ph = "Ví dụ: Vẽ sơ đồ tư duy thể loại tác phẩm, quy trình viết đoạn văn NLXH, sơ đồ luận điểm..."
+            available_labs = {
+                "Sơ đồ Thể loại & Thi pháp Văn học": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["📖 THI PHÁP & THỂ LOẠI (KNTT)"] --> A["1. Thơ hiện đại"]
+    Root --> B["2. Truyện ngắn & Ký"]
+    Root --> C["3. Văn bản Nghị luận"]
+    Root --> D["4. Kịch bản Văn học"]
+    A --> A1["Hình tượng thi pháp & Cảm xúc"]
+    A --> A2["Ngữ điệu, nhịp điệu & Biểu tượng"]
+    B --> B1["Tình huống truyện & Cốt truyện"]
+    B --> B2["Diễn biến tâm lý nhân vật"]
+    C --> C1["Luận điểm & Thao tác lập luận"]
+    C --> C2["Dẫn chứng xác thực đời sống"]
+    D --> D1["Xung đột kịch & Hành động"]
+    D --> D2["Ngôn ngữ đối thoại - độc thoại"]"""
+                },
+                "Quy trình Viết Đoạn văn NLXH 200 chữ": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["✍️ CẤU TRÚC ĐOẠN VĂN NLXH (2.0Đ)"] --> A["1. Mở đoạn"]
+    Root --> B["2. Giải thích & Bàn luận"]
+    Root --> C["3. Dẫn chứng tiêu biểu"]
+    Root --> D["4. Phản đề & Bài học"]
+    A --> A1["Dẫn dắt trực tiếp vấn đề nghị luận"]
+    B --> B1["Cắt nghĩa khái niệm/thông điệp cốt lõi"]
+    B --> B2["Lập luận tại sao & ý nghĩa thực tiễn"]
+    C --> C1["1 dẫn chứng thuyết phục từ thực tiễn"]
+    D --> D1["Lật ngược vấn đề & Phê phán sai lệch"]
+    D --> D2["Bài học nhận thức và hành động"]"""
+                },
+                "Bản đồ Năng lực Đọc hiểu 2026": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["🔍 NĂNG LỰC ĐỌC HIỂU NGỮ VĂN (4.0Đ)"] --> A["1. Nhận biết (1.0đ)"]
+    Root --> B["2. Thông hiểu (1.5đ)"]
+    Root --> C["3. Vận dụng (1.5đ)"]
+    A --> A1["Xác định thể loại, phương thức biểu đạt"]
+    A --> A2["Chi tiết, hình ảnh trong ngữ liệu ngoài SGK"]
+    B --> B1["Tác dụng của biện pháp tu từ"]
+    B --> B2["Ý nghĩa của chi tiết, hình tượng nghệ thuật"]
+    C --> C1["Rút ra thông điệp cuộc sống sâu sắc nhất"]
+    C --> C2["Bày tỏ quan điểm đồng tình / không đồng tình"]"""
+                }
+            }
+        elif subject == "Tiếng Anh":
+            lab_ph = "Ví dụ: Draw a mindmap about Verb Tenses, Vocabulary Collocations, IELTS Speaking..."
+            available_labs = {
+                "Mindmap Tenses & Verb Structures": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["🇬🇧 ENGLISH TENSES & GRAMMAR"] --> A["1. Present Tenses"]
+    Root --> B["2. Past Tenses"]
+    Root --> C["3. Perfect Tenses"]
+    Root --> D["4. Conditionals & Inversion"]
+    A --> A1["Present Simple: Habits & Facts"]
+    A --> A2["Present Continuous: Actions in progress"]
+    B --> B1["Past Simple: Completed actions"]
+    B --> B2["Past Continuous: Interrupted actions"]
+    C --> C1["Present Perfect: Results & Experiences"]
+    C --> C2["Past Perfect: Earlier past events"]
+    D --> D1["Conditionals Type 1, 2, 3 & Mixed"]
+    D --> D2["Inversion with Negative Adverbs"]"""
+                },
+                "Academic Topic Vocabulary Networks": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["📚 TOPIC VOCABULARY NETWORKS"] --> A["Environmental Protection"]
+    Root --> B["Education & Lifelong Learning"]
+    Root --> C["Technology & Artificial Intelligence"]
+    A --> A1["Carbon footprint & Sustainability"]
+    A --> A2["Biodiversity loss & Deforestation"]
+    B --> B1["Academic performance & Critical thinking"]
+    B --> B2["Autonomous learning & Vocational training"]
+    C --> C1["Cutting-edge technology & Automation"]
+    C --> C2["Digital literacy & Ethical considerations"]"""
+                }
+            }
+        elif subject in ["Lịch sử", "Lịch sử & Địa lý"]:
+            lab_ph = "Ví dụ: Vẽ tiến trình kháng chiến chống Pháp, mốc son 1945, công cuộc Đổi mới..."
+            available_labs = {
+                "Tiến trình Lịch sử & Mốc son Thời đại": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["🇻🇳 TIẾN TRÌNH LỊCH SỬ HIỆN ĐẠI"] --> A["1. Cách mạng tháng Tám (1945)"]
+    Root --> B["2. Kháng chiến chống Pháp (1945-1954)"]
+    Root --> C["3. Kháng chiến chống Mỹ (1954-1975)"]
+    Root --> D["4. Đổi mới & Hội nhập (1986-nay)"]
+    A --> A1["Tổng khởi nghĩa giành chính quyền"]
+    A --> A2["Tuyên ngôn Độc lập 2/9/1945"]
+    B --> B1["Chiến dịch Việt Bắc 1947 & Biên giới 1950"]
+    B --> B2["Chiến thắng Điện Biên Phủ 1954"]
+    C --> C1["Đánh bại các chiến lược chiến tranh của Mỹ"]
+    C --> C2["Đại thắng Mùa Xuân 1975 thống nhất non sông"]
+    D --> D1["Đại hội VI (1986) khởi xướng Đổi mới"]
+    D --> D2["Hội nhập quốc tế & Giữ vững chủ quyền"]"""
+                }
+            }
+        elif subject == "Địa lý":
+            lab_ph = "Ví dụ: Vẽ sơ đồ chuyển dịch cơ cấu kinh tế, vùng Đông Nam Bộ, kinh tế biển đảo..."
+            available_labs = {
+                "Sơ đồ Chuyển dịch Cơ cấu & Vùng Kinh tế": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["🌏 ĐỊA LÝ KINH TẾ VIỆT NAM"] --> A["1. Địa lý Tự nhiên"]
+    Root --> B["2. Địa lý Dân cư & Lao động"]
+    Root --> C["3. Cơ cấu Kinh tế"]
+    Root --> D["4. Vùng Kinh tế Trọng điểm"]
+    A --> A1["Địa hình đồi núi & Đồng bằng châu thổ"]
+    A --> A2["Khí hậu nhiệt đới ẩm gió mùa"]
+    B --> B1["Quy mô dân số & Cơ cấu dân số vàng"]
+    B --> B2["Đô thị hóa gắn liền phát triển kinh tế"]
+    C --> C1["Chuyển dịch cơ cấu ngành kinh tế"]
+    C --> C2["Chuyển dịch cơ cấu thành phần & lãnh thổ"]
+    D --> D1["Vùng Đông Nam Bộ & ĐBSCL"]
+    D --> D2["Kinh tế biển đảo & Vùng thềm lục địa"]"""
+                }
+            }
+        else:
+            lab_ph = "Ví dụ: Vẽ sơ đồ quy luật cung cầu, thị trường lao động, quyền tự do kinh doanh..."
+            available_labs = {
+                "Cơ chế Thị trường & Quy luật Cung - Cầu": {
+                    "type": "mermaid",
+                    "code": """graph LR
+    Root["⚖️ QUY LUẬT KINH TẾ THỊ TRƯỜNG"] --> A["1. Quy luật Giá trị"]
+    Root --> B["2. Quy luật Cung - Cầu"]
+    Root --> C["3. Quy luật Cạnh tranh"]
+    Root --> D["4. Vai trò Quản lý của Nhà nước"]
+    A --> A1["Sản xuất và lưu thông theo hao phí LĐXH"]
+    B --> B1["Cung > Cầu -> Giá cả giảm"]
+    B --> B2["Cung < Cầu -> Giá cả tăng"]
+    C --> C1["Thúc đẩy tăng năng suất & Đổi mới sáng tạo"]
+    D --> D1["Khắc phục khuyết tật thị trường & An sinh XH"]"""
+                }
+            }
+    else:
+        lab_ph = "Ví dụ Toán/KHTN: Vẽ đồ thị bậc ba, parabol, phân thức, diện tích tích phân, khối tròn xoay 3D, Oxyz..."
+        available_labs = {
+            "Hàm bậc ba (KNTT 12)": {"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2},
+            "Parabol bậc hai": {"type": "parabola", "a": 1, "b": -2, "c": 1},
+            "Hàm phân thức bậc 1/1": {"type": "func_1_1", "a": 1, "b": 1, "c": 1, "d": -1},
+            "Hàm phân thức bậc 2/1 (TC Xiên)": {"type": "func_2_1", "a": 1, "b": -2, "c": 2, "d": 1, "e": -1},
+            "Diện tích hình phẳng (Tích phân)": {"type": "area", "func": "x**2 - 3*x + 2", "a": 0.0, "b": 3.0},
+            "Khối tròn xoay 3D (Tích phân Ox)": {"type": "revolve_ox", "func": "2*x + 1", "a": 2.0, "b": 5.0},
+            "Không gian Oxyz (Vectơ & Tọa độ)": {"type": "oxyz", "x": 2, "y": 3, "z": 4},
+        }
+
+    manual_lab = st.selectbox("Mô phỏng có sẵn (không cần API):", list(available_labs))
     if st.button("Mở mô phỏng có sẵn"):
         st.session_state.lab_data = dict(available_labs[manual_lab])
     lab_command = st.text_input("Lệnh mô phỏng:", placeholder=lab_ph, key=f"lab_cmd_{current_context_key}", label_visibility="collapsed")
@@ -2197,17 +2390,23 @@ Hệ thống AI BẮT BUỘC dựa vào toàn bộ kiến thức chuẩn SGK K�
 
             context_text = "\n\n".join(full_context_blocks)
             
+            social_constraint = ""
+            if is_social_subject:
+                social_constraint = f"""
+QUY TẮC BẮT BUỘC ĐẶC THÙ CHO MÔN KHOA HỌC XÃ HỘI / NGOẠI NGỮ ({subject}):
+- TUYỆT ĐỐI NGHIÊM CẤM xuất các mô hình toán học giải tích (func_3, parabola, func_1_1, func_2_1, area, revolve_ox, oxyz).
+- 100% BẮT BUỘC xuất JSON type 'mermaid' biểu diễn Sơ đồ tư duy D3/Mermaid hoặc lưu đồ tiến trình đa cấp độ!"""
+
             lab_prompt = f"""[HỆ TRI THỨC SƯ PHẠM QUỐC GIA - CHUẨN CT GDPT 2018 & QUY CHẾ THI 2026 (Cập nhật QĐ 764/QĐ-BGDĐT & TT 13/2026/TT-BGDĐT)]
 Môn học: {subject} | Khối lớp: {grade_num}. 
 NGỮ CẢNH BÀI HỌC, TRẮC NGHIỆM VÀ TỰ LUẬN HIỆN TẠI (BẮT BUỘC THAM CHIẾU KHI HỌC SINH NÓI 'CÂU 1', 'CÂU 2', 'BÀI TỰ LUẬN TRÊN', 'HÌNH Ở TRÊN'...):
 {context_text}
+{social_constraint}
 
 QUY TẮC BẮT BUỘC VỀ SỰ KHỚP NỐI NGỮ CẢNH (CỰC KỲ QUAN TRỌNG):
-- NẾU học sinh yêu cầu mô phỏng hoặc vẽ hình từ một câu trong bài học/tự luận phía trên (Ví dụ: "vẽ khối tròn xoay trong câu 2 tự luận", "vẽ đồ thị câu 1 trắc nghiệm", "mô phỏng hình ở trên"...):
-  AI BẮT BUỘC trích xuất CHÍNH XÁC hàm số f(x), các cận tích phân a, b hoặc phương trình có trong đúng câu đó ở ngữ cảnh bài học!
-  TUYỆT ĐỐI KHÔNG TỰ Ý BỊA RA HÀM MỚI khi bài học đã có sẵn hàm số cụ thể!
-- Ví dụ: Nếu câu 2 tự luận có hàm y = sqrt(x) xoay quanh Ox từ 1 đến 4:
-  -> PHẢI xuất chính xác {{"type": "revolve_ox", "func": "sqrt(x)", "a": 1.0, "b": 4.0}}
+- NẾU học sinh yêu cầu mô phỏng hoặc vẽ hình từ một câu trong bài học/tự luận phía trên:
+  AI BẮT BUỘC trích xuất CHÍNH XÁC dữ kiện có trong đúng câu đó ở ngữ cảnh bài học!
+  TUYỆT ĐỐI KHÔNG TỰ Ý BỊA RA HÀM MỚI khi bài học đã có sẵn hàm số/ngữ liệu cụ thể!
 
 ---
 Yêu cầu của học sinh: "{lab_command}"
@@ -2229,19 +2428,11 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
    {{"type": "parabola", "a": 1, "b": -2, "c": 1}}
 7. KHÔNG GIAN OXYZ:
    {{"type": "oxyz", "x": 2, "y": 3, "z": 4}}
-8. KHÔNG SINH MÃ PYTHON. Với mô phỏng chưa được hỗ trợ, dùng JSON type=mermaid với sơ đồ tư duy mô tả khái niệm.
-9. SƠ ĐỒ TƯ DUY TƯƠNG TÁC THUYẾT TRÌNH (CHO TẤT CẢ CÁC MÔN VÀ CÁC KHỐI LỚP 6-12 CHUẨN KNTT):
+8. SƠ ĐỒ TƯ DUY TƯƠNG TÁC THUYẾT TRÌNH (CHO TẤT CẢ CÁC MÔN VÀ CÁC KHỐI LỚP 6-12 CHUẨN KNTT):
    QUY CHUẨN SƠ ĐỒ BẮT BUỘC:
    - ĐỘ SÂU & TOÀN DIỆN: Phải tóm tắt ĐẦY ĐỦ VÀ SÂU SẮC toàn bộ kiến thức cốt lõi, công thức, định lý ở bài học phía trên. Tối thiểu 3-5 nhánh chính cấp 1, mỗi nhánh chính bắt buộc có 2-4 nhánh con chi tiết. Tuyệt đối không vẽ sơ sài 1-2 nhánh!
-   - HỖ TRỢ ĐA NGÔN NGỮ (VIỆT - ANH): Học sinh có thể ra lệnh bằng Tiếng Việt hoặc Tiếng Anh (Ví dụ: 'summarize', 'mindmap', 'key vocabulary', 'grammar', 'draw a mindmap about...'). Khi môn học là Tiếng Anh, sơ đồ tư duy phải được trình bày chuẩn phong cách Tiếng Anh học thuật CEFR/IELTS, các nhánh từ vựng kèm loại từ (n, v, adj) và câu ví dụ ngữ cảnh rõ ràng.
-   - NGUYÊN TẮC GỌN GÀNG - MỖI NHÁNH CON 1 CÔNG THỨC: Tuyệt đối KHÔNG gộp nhiều công thức dài vào chung 1 ô làm dài dòng. Tách rõ ràng từng nhánh con riêng biệt, ví dụ:
-     + Nhánh 1: A1[\"Cận trùng nhau: $\\int_a^a f(x)dx = 0$\"]
-     + Nhánh 2: A2[\"Đổi cận đảo dấu: $\\int_a^b f(x)dx = -\\int_b^a f(x)dx$\"]
-     + Nhánh 3: A3[\"Tính cộng đoạn: $\\int_a^b f(x)dx + \\int_b^c f(x)dx = \\int_a^c f(x)dx$\"]
-   - TOÀN VẸN CÔNG THỨC TOÁN HỌC: Mọi công thức PHẢI có ĐẦY ĐỦ hàm số f(x)dx, dấu phép tính (đặc biệt là dấu trừ - trong công thức đổi cận) và các cận a, b. TUYỆT ĐỐI NGHIÊM CẤM VIẾT TẮT DẤU BA CHẤM '...' TRONG CÔNG THỨC TOÁN!
-   - CÔNG THỨC TOÁN / KHTN: Mọi công thức toán (tích phân, nguyên hàm, đạo hàm, diện tích, thể tích, phân số, cận [a, b]...) PHẢI BỌC TRONG DẤU $...$ chuẩn LaTeX (ví dụ: $\\int_a^b f(x)dx = F(b)-F(a)$, $S = \\int_a^b |f(x)|dx$, $V = \\pi \\int_a^b [f(x)]^2 dx$).
-   - LIÊN KẾT BÀI TẬP: Nếu học sinh yêu cầu sơ đồ kèm ví dụ/câu hỏi ở trên, trích xuất nhánh con nối trực tiếp với ví dụ/câu hỏi đó!
-   Mẫu chuẩn: {{\"type\": \"mermaid\", \"code\": \"graph LR\\n   Root[\\\"🎯 TIÊU ĐỀ CHỦ ĐỀ CHÍNH\\\"] --> A[\\\"1. Khái niệm trọng tâm\\\"]\\n   Root --> B[\\\"2. Các tính chất cơ bản\\\"]\\n   Root --> C[\\\"3. Ứng dụng thực tiễn\\\"]\\n   A --> A1[\\\"Định nghĩa: $\\\\int_a^b f(x)dx = F(b)-F(a)$\\\"]\\n   B --> B1[\\\"Cận trùng nhau: $\\\\int_a^a f(x)dx = 0$\\\"]\\n   B --> B2[\\\"Đổi cận đảo dấu: $\\\\int_a^b f(x)dx = -\\\\int_b^a f(x)dx$\\\"]\\n   B --> B3[\\\"Tính cộng đoạn: $\\\\int_a^b f(x)dx + \\\\int_b^c f(x)dx = \\\\int_a^c f(x)dx$\\\"]\\n   C --> C1[\\\"Diện tích hình phẳng: $S = \\\\int_a^b |f(x)|dx$\\\"]\\n   C --> C2[\\\"Thể tích tròn xoay: $V = \\\\pi \\\\int_a^b [f(x)]^2 dx$\\\"]\"}}
+   - HỖ TRỢ ĐA NGÔN NGỮ (VIỆT - ANH): Khi môn học là Tiếng Anh, sơ đồ tư duy phải được trình bày chuẩn phong cách Tiếng Anh học thuật CEFR/IELTS, các nhánh từ vựng kèm loại từ (n, v, adj) và câu ví dụ ngữ cảnh rõ ràng.
+   Mẫu chuẩn: {{\"type\": \"mermaid\", \"code\": \"graph LR\\n   Root[\\\"🎯 TIÊU ĐỀ CHỦ ĐỀ CHÍNH\\\"] --> A[\\\"1. Khái niệm trọng tâm\\\"]\\n   Root --> B[\\\"2. Các nội dung cơ bản\\\"]\\n   Root --> C[\\\"3. Ứng dụng thực tiễn\\\"]\"}}
 """
 
             try:
@@ -2250,7 +2441,6 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
                 if raw_json.startswith("```json"): raw_json = raw_json[7:-3].strip()
                 elif raw_json.startswith("```"): raw_json = raw_json[3:-3].strip()
 
-                # BỘ LỌC THÔNG MINH BẮT TRỰC TIẾP MERMAID KHI AI TRẢ VỀ RAW HOẶC JSON LỖI NHÁY KÉP
                 if "graph " in raw_json or "flowchart " in raw_json or "-->" in raw_json:
                     if not raw_json.startswith("{"):
                         st.session_state.lab_data = {"type": "mermaid", "code": raw_json}
@@ -2268,44 +2458,16 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
                             else:
                                 st.session_state.lab_data = {"type": "mermaid", "code": raw_json}
                 else:
-                    st.session_state.lab_data = json.loads(raw_json)
-            except Exception as e:
-                # KIỂM TRA NẾU HỌC SINH YÊU CẦU VẼ SƠ ĐỒ TƯ DUY -> FALLBACK SƠ ĐỒ CỨU HỘ CHUẨN KNTT THAY VÌ ĐỒ THỊ BẬC 3!
-                is_mindmap_req = any(kw in lab_command.lower() for kw in [
-                    "sơ đồ", "tư duy", "mindmap", "tóm tắt", "cây thư mục", "hệ thống hóa",
-                    "mind map", "diagram", "summarize", "summary", "tree", "vocabulary", "grammar"
-                ])
-                if is_mindmap_req:
-                    topic_title = st.session_state.get("current_topic", "") or f"CHỦ ĐỀ {subject.upper()} LỚP {grade_num}"
-                    if subject == "Tiếng Anh":
-                        fallback_mermaid = f"""graph LR
-    Root["🎯 {topic_title.upper()}"] --> A["📖 1. Key Vocabulary (Từ vựng cốt lõi)"]
-    Root --> B["⚡ 2. Core Grammar (Ngữ pháp trọng tâm)"]
-    Root --> C["🔍 3. Reading & Language Skills"]
-    Root --> D["🌐 4. IELTS / TOEFL Speaking & Usage"]
-    A --> A1["Topic Vocabulary & Phonetics"]
-    A --> A2["Collocations & Phrasal Verbs"]
-    B --> B1["Sentence Structures & Rules"]
-    B --> B2["Common Errors to Avoid"]
-    C --> C1["Main Ideas & Key Details"]
-    C --> C2["Contextual Comprehension"]
-    D --> D1["Natural Intonation & Fluency"]
-    D --> D2["Practical Daily Communication"]"""
+                    parsed_d = json.loads(raw_json)
+                    # Chặn nếu AI vô tình trả về đồ thị toán cho môn xã hội
+                    if is_social_subject and parsed_d.get("type") in ["func_3", "parabola", "func_1_1", "func_2_1", "area", "revolve_ox", "oxyz"]:
+                        st.session_state.lab_data = list(available_labs.values())[0]
                     else:
-                        fallback_mermaid = f"""graph LR
-    Root["🎯 {topic_title.upper()}"] --> A["📖 1. Định nghĩa & Khái niệm cốt lõi"]
-    Root --> B["⚡ 2. Công thức & Quy tắc trọng tâm"]
-    Root --> C["🔍 3. Phương pháp giải & Dạng bài tập"]
-    Root --> D["🌐 4. Ứng dụng thực tiễn & Liên môn"]
-    A --> A1["Khái niệm cơ bản chuẩn SGK Kết Nối Tri Thức"]
-    A --> A2["Điều kiện áp dụng & Phạm vi xác định"]
-    B --> B1["Công thức nền tảng"]
-    B --> B2["Các tính chất biến đổi quan trọng"]
-    C --> C1["Dạng 1: Nhận biết & Thông hiểu"]
-    C --> C2["Dạng 2: Vận dụng & Liên hệ các câu hỏi trên"]
-    D --> D1["Mô hình hóa thực tiễn đời sống"]
-    D --> D2["Ý nghĩa liên môn Toán - KHTN - Công nghệ"]"""
-                    st.session_state.lab_data = {"type": "mermaid", "code": fallback_mermaid}
+                        st.session_state.lab_data = parsed_d
+            except Exception as e:
+                # NẾU LÀ MÔN XÃ HỘI -> FALLBACK 100% LÀ MERMAID CỦA MÔN ĐÓ, CẤM FALLBACK VÀO HÀM BẬC 3
+                if is_social_subject:
+                    st.session_state.lab_data = list(available_labs.values())[0]
                 else:
                     st.warning("⚠️ AI trả về định dạng chưa chuẩn nên hệ thống hiển thị mô hình mẫu. Em thử diễn đạt lại yêu cầu rõ hơn nhé!")
                     st.session_state.lab_data = {"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2}
@@ -2313,7 +2475,7 @@ QUY TẮC PHÂN LOẠI MÔ HÌNH:
     if st.session_state.get("lab_data"):
         data = st.session_state.lab_data
         st.success("✨ Đã khởi tạo mô phỏng Phòng Lab liên môn thành công!")
-        render_smart_lab(data)
+        render_smart_lab(data, subject)
 
 # ------------------------------------------------------------------------------
 # TRẠM 2: GIA SƯ SOCRATIC & NỘP BÀI (CHUẨN CHẨN ĐOÁN VÁ LỖ HỔNG ĐA MÔN LỚP 6-12)
@@ -3142,31 +3304,53 @@ if selected_station == station_labels[2]:
         with col_ex2:
             st.markdown("#### 📊 Cấu trúc Điểm số & Thời Gian Thi:")
             
-            # Thiết lập mặc định theo đặc thù môn học
-            if subject == "Tiếng Anh":
-                def_p1, def_p2, def_p3, def_time = 40, 0, 0, 50
-            elif subject == "Toán học":
-                def_p1, def_p2, def_p3, def_time = 12, 4, 6, 90
-            elif subject in ["Vật lý", "Hóa học", "Sinh học", "Khoa học tự nhiên"]:
-                def_p1, def_p2, def_p3, def_time = 18, 4, 6, 50
-            elif subject in ["Lịch sử", "Địa lý"]:
-                def_p1, def_p2, def_p3, def_time = 24, 4, 0, 50
+            if subject == "Ngữ văn":
+                def_time = 120
+                num_p1, num_p2, num_p3 = 0, 0, 0
+                st.markdown("""
+                <div style="background: rgba(30, 41, 59, 0.7); border: 1.5px solid #0284c7; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;">
+                    <div style="color: #38bdf8; font-weight: 700; font-size: 15px; margin-bottom: 6px;">
+                        📖 Cấu Trúc Đề Khảo Thí Môn Ngữ Văn (Chuẩn 100% Tự Luận - BGD&ĐT)
+                    </div>
+                    <div style="color: #cbd5e1; font-size: 13px; line-height: 1.65;">
+                        • <b>Hình thức thi:</b> 100% Tự luận (Không có trắc nghiệm).<br>
+                        • <b>Phần I: Đọc hiểu (4.0 điểm)</b>: Ngữ liệu ngoài SGK + 3 câu hỏi phân hóa.<br>
+                        • <b>Phần II: Viết (6.0 điểm)</b>: Đoạn văn NLXH 2.0đ (~200 chữ) + Bài văn NLVH 4.0đ.<br>
+                        • <b>Thời gian làm bài quy chuẩn:</b> 120 phút.
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                exam_time_mins = st.selectbox(
+                    "⏱️ Thời lượng bài thi Ngữ văn (Phút):", 
+                    [45, 60, 90, 120], 
+                    index=3
+                )
             else:
-                def_p1, def_p2, def_p3, def_time = 10, 4, 4, 45
+                # Thiết lập mặc định theo đặc thù môn học chuẩn QĐ 764/QĐ-BGDĐT
+                if subject == "Tiếng Anh":
+                    def_p1, def_p2, def_p3, def_time = 40, 0, 0, 50
+                elif subject == "Toán học":
+                    def_p1, def_p2, def_p3, def_time = 12, 4, 6, 90
+                elif subject in ["Vật lý", "Hóa học", "Sinh học", "Khoa học tự nhiên"]:
+                    def_p1, def_p2, def_p3, def_time = 18, 4, 6, 50
+                elif subject in ["Lịch sử", "Địa lý", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Giáo dục công dân", "Tin học"]:
+                    def_p1, def_p2, def_p3, def_time = 24, 4, 0, 50
+                else:
+                    def_p1, def_p2, def_p3, def_time = 12, 4, 6, 90
 
-            c_cnt1, c_cnt2, c_cnt3 = st.columns(3)
-            with c_cnt1:
-                num_p1 = st.number_input("Số câu TN P.I:", min_value=1, max_value=30, value=def_p1)
-            with c_cnt2:
-                num_p2 = st.number_input("Số câu Đ/S P.II:", min_value=0, max_value=10, value=def_p2)
-            with c_cnt3:
-                num_p3 = st.number_input("Số câu TLN P.III:", min_value=0, max_value=10, value=def_p3)
-                
-            exam_time_mins = st.selectbox(
-                "⏱️ Thời lượng bài thi (Phút):", 
-                [15, 30, 45, 50, 60, 90, 120], 
-                index=[15, 30, 45, 50, 60, 90, 120].index(def_time) if def_time in [15, 30, 45, 50, 60, 90, 120] else 2
-            )
+                c_cnt1, c_cnt2, c_cnt3 = st.columns(3)
+                with c_cnt1:
+                    num_p1 = st.number_input("Số câu TN P.I:", min_value=1, max_value=50, value=def_p1)
+                with c_cnt2:
+                    num_p2 = st.number_input("Số câu Đ/S P.II:", min_value=0, max_value=10, value=def_p2)
+                with c_cnt3:
+                    num_p3 = st.number_input("Số câu TLN P.III:", min_value=0, max_value=10, value=def_p3)
+                    
+                exam_time_mins = st.selectbox(
+                    "⏱️ Thời lượng bài thi (Phút):", 
+                    [15, 30, 45, 50, 60, 90, 120], 
+                    index=[15, 30, 45, 50, 60, 90, 120].index(def_time) if def_time in [15, 30, 45, 50, 60, 90, 120] else 3
+                )
             st.session_state.exam_time_mins = exam_time_mins
             measure_phase = "practice"
             measure_student_id = ""
@@ -3234,7 +3418,7 @@ NGUYÊN TẮC SƯ PHẠM BẮT BUỘC THEO CHƯƠNG TRÌNH GDPT 2018 (SGK KẾT 
 5. HIỂN THỊ ĐỒ THỊ / BẢNG BIẾN THIÊN / BẢNG SỐ LIỆU GHÉP NHÓM:
    - CHỈ KHI NÀO CÂU HỎI BẮT BUỘC HỌC SINH QUAN SÁT/ĐỌC HÌNH VẼ, BẢNG BIẾN THIÊN HOẶC BẢNG SỐ LIỆU (ví dụ: 'Cho đồ thị hàm số y = f(x) như hình vẽ...', 'Cho bảng biến thiên như hình...', 'Cho mẫu số liệu ghép nhóm...'), AI MỚI SINH THUỘC TÍNH "f", "bbt" HOẶC "mslgn_data" TƯƠNG ỨNG ĐÚNG CHÍNH XÁC HÀM SỐ TRONG CÂU HỎI:
      + "f": Object mô tả đúng đồ thị (ví dụ: {{"type": "func_1_1", "a": 2, "b": -1, "c": 1, "d": 1}} cho hàm y=(2x-1)/(x+1); {{"type": "func_3", "a": 1, "b": -3, "c": 0, "d": 2}} cho hàm y=x^3-3x^2+2; {{"type": "func_2_1", "a": 1, "b": 0, "c": 1, "d": 1, "e": -1}} cho hàm y=(x^2+1)/(x-1); {{"type": "parabola", "a": 1, "b": -2, "c": -3}} cho Parabol).
-     + "bbt": Chuỗi mô tả BBT chuẩn đúng theo câu hỏi (dạng "x | -inf | -1 | 2 | +inf \n y' | - | 0 | + | 0 | - \n y | +inf | ↘ | -2 | ↗ | 4 | ↘ | -inf").
+     + "bbt": Chuỗi mô tả BBT chuẩn đúng theo câu hỏi (dạng "x | -inf | -1 | 2 | +inf \\n y' | - | 0 | + | 0 | - \\n y | +inf | ↘ | -2 | ↗ | 4 | ↘ | -inf").
      + "mslgn_data": Object bảng ghép nhóm (ví dụ: {{"title": "Bảng số liệu...", "groups": ["[0; 20)", "[20; 40)"], "freq": [5, 12]}}).
    - NẾU CÂU HỎI LÀ DẠNG TÍNH TOÁN / CÔNG THỨC THUẦN TÚY (ví dụ: 'Đồ thị hàm số y = (2x-1)/(x+1) có tiệm cận đứng là...', 'Tìm số giao điểm...', 'Tính đạo hàm...', 'Phương trình có bao nhiêu nghiệm...'), TUYỆT ĐỐI KHÔNG SINH "f", "bbt" HAY "mslgn_data"!
 
@@ -3242,6 +3426,9 @@ YÊU CẦU MA TRẬN:
 - Phần I (Trắc nghiệm 4 lựa chọn): sinh ĐÚNG {num_p1} câu.
 - Phần II (Trắc nghiệm Đúng/Sai): sinh ĐÚNG {num_p2} câu (mỗi câu gồm 4 ý a, b, c, d).
 - Phần III (Trả lời ngắn): sinh ĐÚNG {num_p3} câu điền số.
+  QUY CHUẨN ĐÁP ÁN PHẦN III BẮT BUỘC THEO BỘ GD&ĐT:
+  + Đáp án 'ans' PHẢI là số thực hoặc số nguyên có độ dài TỐI ĐA 4 KÝ TỰ (bao gồm cả dấu trừ '-' và dấu chấm/phẩy thập phân, ví dụ: "2.5", "-3", "12", "0.75", "-1.5").
+  + TUYỆT ĐỐI KHÔNG sinh câu hỏi có đáp số là phân số hoặc dài hơn 4 ký tự vì phiếu thi Bộ GD&ĐT chỉ có 4 cột tô đáp án.
 {custom_user_instructions}
 
 Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
@@ -3283,21 +3470,37 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                         st.error(f"Lỗi khởi tạo đề thi: {e}")
 
             # CARD QUY CHUẨN KHẢO THÍ SƯ PHẠM LẤP ĐẦY KHÔNG GIAN BÊN PHẢI (ZERO KHOẢNG TRỐNG THỪA)
-            st.markdown("""
-            <div style="background: rgba(15, 23, 42, 0.75); border: 1.2px solid #334155; border-radius: 10px; padding: 14px 16px; margin-top: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-                <div style="color: #38bdf8; font-weight: 700; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-                    📋 Quy Chế Khảo Thí & Bareme Điểm Bộ GD&ĐT 2026:
+            if subject == "Ngữ văn":
+                st.markdown("""
+                <div style="background: rgba(15, 23, 42, 0.75); border: 1.2px solid #334155; border-radius: 10px; padding: 14px 16px; margin-top: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div style="color: #38bdf8; font-weight: 700; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                        📋 Quy Chế Khảo Thí & Bareme Điểm Môn Ngữ Văn Bộ GD&ĐT 2026:
+                    </div>
+                    <div style="color: #cbd5e1; font-size: 13px; line-height: 1.65;">
+                        • <b>Phần I (Đọc hiểu - 4.0 điểm):</b> 3-4 câu hỏi đánh giá theo chuẩn năng lực (Nhận biết: 1.0đ, Thông hiểu: 1.5đ, Vận dụng: 1.5đ).<br>
+                        • <b>Phần II (Viết - 6.0 điểm):</b><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;▫ Câu 1: Viết đoạn văn Nghị luận xã hội khoảng 200 chữ (<b>2.0 điểm</b>).<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;▫ Câu 2: Viết bài văn Nghị luận văn học phân tích ngữ liệu (<b>4.0 điểm</b>).<br>
+                        • <b>Chấm điểm:</b> Đánh giá theo rubric tiêu chí chuẩn Bộ, hỗ trợ trợ lý AI chấm tham khảo và giáo viên kiểm duyệt.
+                    </div>
                 </div>
-                <div style="color: #cbd5e1; font-size: 13px; line-height: 1.65;">
-                    • <b>Phần I (Trắc nghiệm 4 lựa chọn):</b> Chưa chọn đáp án được tính là chưa trả lời.<br>
-                    • <b>Phần II (Trắc nghiệm Đúng/Sai 4 ý a, b, c, d):</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;▫ Đúng 1 ý: <b>0.1đ</b> &nbsp;|&nbsp; Đúng 2 ý: <b>0.25đ</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;▫ Đúng 3 ý: <b>0.5đ</b> &nbsp;|&nbsp; Đúng 4 ý: <b>1.0đ trọn vẹn</b><br>
-                    • <b>Phần III (Trả lời ngắn):</b> Điền số chính xác, đánh giá Vận dụng cao.<br>
-                    • <b>Giám Sát Check Var Anti-Cheat:</b> Thời gian thi được kiểm soát bằng mốc hết hạn trên máy chủ. Không tự động trừ điểm khi chuyển tab.
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown("""
+                <div style="background: rgba(15, 23, 42, 0.75); border: 1.2px solid #334155; border-radius: 10px; padding: 14px 16px; margin-top: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <div style="color: #38bdf8; font-weight: 700; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                        📋 Quy Chế Khảo Thí & Bareme Điểm Bộ GD&ĐT 2026 (QĐ 764/QĐ-BGDĐT):
+                    </div>
+                    <div style="color: #cbd5e1; font-size: 13px; line-height: 1.65;">
+                        • <b>Phần I (Trắc nghiệm 4 lựa chọn):</b> 0.25 điểm/câu. Chưa chọn đáp án tính 0 điểm.<br>
+                        • <b>Phần II (Trắc nghiệm Đúng/Sai 4 ý a, b, c, d):</b><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;▫ Đúng 1 ý: <b>0.1đ</b> &nbsp;|&nbsp; Đúng 2 ý: <b>0.25đ</b><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;▫ Đúng 3 ý: <b>0.5đ</b> &nbsp;|&nbsp; Đúng 4 ý: <b>1.0đ trọn vẹn</b><br>
+                        • <b>Phần III (Trả lời ngắn):</b> Điền số chính xác, <b>tối đa 4 ký tự</b> (kể cả dấu âm '-' và dấu ','). Đánh giá năng lực Vận dụng cao.<br>
+                        • <b>Giám Sát Check Var:</b> Thời gian thi được kiểm soát bằng mốc máy chủ.
+                    </div>
                 </div>
-            </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
     elif st.session_state.exam_state == "testing":
         exam = st.session_state.exam_data
         st.markdown(f"### 📋 ĐỀ KHẢO THÍ MÔN {subject.upper()} - KHỐI LỚP {grade_num}")
@@ -3341,11 +3544,17 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                     st.markdown("---")
 
             if exam.get("p3"):
-                st.markdown("### PHẦN III. Trả lời ngắn")
+                st.markdown("### PHẦN III. Trả lời ngắn (Tối đa 4 ký tự theo quy chế phiếu thi Bộ GD&ĐT)")
                 for idx, q in enumerate(exam["p3"]):
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
                     render_fast_visual(q, f"test_p3_{idx}")
-                    short_ans = st.text_input(f"Nhập đáp số câu {idx+1}:", key=f"t3_p3_{idx}", placeholder="Ví dụ: 2.5 hoặc -3")
+                    short_ans = st.text_input(
+                        f"Nhập đáp số câu {idx+1}:", 
+                        key=f"t3_p3_{idx}", 
+                        max_chars=4,
+                        placeholder="Tối đa 4 ký tự (ví dụ: 2.5, -3, 12, 0.75...)",
+                        help="Quy chế thi tốt nghiệp THPT của Bộ GD&ĐT: Phiếu trả lời trắc nghiệm Phần III gồm 4 ô/cột, thí sinh chỉ được điền tối đa 4 ký tự bao gồm chữ số, dấu âm '-' và dấu phẩy ',' hoặc chấm '.'."
+                    )
                     st.session_state.exam_answers[f"p3_{idx}"] = short_ans
                     st.markdown("---")
 
@@ -3390,7 +3599,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                         st.rerun()
                     except Exception as exc:
                         st.error(f"Chưa chấm được bài; không gán điểm thay thế. {exc}")
-                st.stop()
+                    st.stop()
             total_score = round(sum(float(item["score"]) for item in st.session_state.literature_grade), 2)
             st.warning(f"Điểm Ngữ văn tham khảo: {total_score}/10. Giáo viên cần duyệt trước khi dùng làm dữ liệu nghiên cứu.")
             for item in st.session_state.literature_grade:
@@ -3398,7 +3607,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
         else:
             # 1. Chấm Phần I (Trắc nghiệm 4 lựa chọn)
             p1_items = exam.get("p1", [])
-            base_p1 = 10.0 if subject == "Tiếng Anh" else (3.0 if subject == "Toán học" else (4.5 if subject in ["Vật lý", "Hóa học", "Sinh học", "Khoa học tự nhiên"] else (6.0 if subject in ["Lịch sử", "Địa lý"] else 4.0)))
+            base_p1 = 10.0 if subject == "Tiếng Anh" else (3.0 if subject == "Toán học" else (4.5 if subject in ["Vật lý", "Hóa học", "Sinh học", "Khoa học tự nhiên"] else (6.0 if subject in ["Lịch sử", "Địa lý", "Giáo dục kinh tế và pháp luật", "Lịch sử & Địa lý", "Giáo dục công dân", "Tin học"] else 4.0)))
             base_p2 = 0.0 if subject == "Tiếng Anh" else 4.0
             base_p3 = max(0.0, 10.0-base_p1-base_p2)
             active_max = sum(weight for part, weight in zip(("p1", "p2", "p3"), (base_p1, base_p2, base_p3)) if exam.get(part))
