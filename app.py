@@ -53,6 +53,7 @@ for key in ["messages", "analytics_logs", "feedback_logs", "parsed_quiz", "va_lo
     if key not in st.session_state: st.session_state[key] = []
 if "tram1_count" not in st.session_state: st.session_state.tram1_count = 0
 if "tram2_count" not in st.session_state: st.session_state.tram2_count = 0
+if "tram3_count" not in st.session_state: st.session_state.tram3_count = 0
 if "chat" not in st.session_state: st.session_state.chat = None
 if "current_lesson" not in st.session_state: st.session_state.current_lesson = ""
 if "current_topic" not in st.session_state: st.session_state.current_topic = ""
@@ -3731,7 +3732,10 @@ def clean_question_bbt_text(q_text):
 if selected_station == station_labels[2]:
     st.markdown("<br>", unsafe_allow_html=True)
     st.subheader(f"📝 Trạm 3: Khảo Thí Độc Lập - Môn {subject} (Lớp {grade_num})")
-    st.caption("Cấu trúc Khảo thí 2026 (Theo QĐ 764/QĐ-BGDĐT) • Mã đề 4 chữ số chuẩn Bộ • Tệp in ấn LaTeX căn giữa inline with text • Chấm điểm tức thì.")
+    if subject == "Ngữ văn":
+        st.caption("Cấu trúc Khảo thí Ngữ văn 2026 (Theo QĐ 764/QĐ-BGDĐT) • 100% Tự luận (Đọc hiểu 4.0đ & Viết 6.0đ) • Ngữ liệu mới ngoài SGK • Chấm theo tiêu chí.")
+    else:
+        st.caption("Cấu trúc Khảo thí 2026 (Theo QĐ 764/QĐ-BGDĐT) • Mã đề 4 chữ số chuẩn Bộ • Tệp in ấn LaTeX căn giữa inline with text • Chấm điểm tức thì.")
 
     if "exam_state" not in st.session_state: st.session_state.exam_state = "config"
     if "exam_data" not in st.session_state: st.session_state.exam_data = None
@@ -3942,7 +3946,10 @@ if selected_station == station_labels[2]:
         
         with col_ex1:
             st.markdown("#### ⚙️ Cấu hình Ngữ liệu & Ma trận Chuyên đề:")
-            st.info(f"🏷️ **Mã đề thi tự động:** `MÃ ĐỀ {st.session_state.exam_code}` (Chuẩn 4 chữ số Bộ GD&ĐT)")
+            if subject == "Ngữ văn":
+                st.info("📜 **Đề thi Tự luận Ngữ văn:** Chuẩn 100% Tự luận (Đề chung toàn quốc, không phân mã đề trắc nghiệm)")
+            else:
+                st.info(f"🏷️ **Mã đề thi tự động:** `MÃ ĐỀ {st.session_state.exam_code}` (Chuẩn 4 chữ số Bộ GD&ĐT)")
             
             # GIAO DIỆN CHỌN CHUYÊN ĐỀ THEO TABS & CHECKBOXES NHỎ GỌN, THANH LỊCH (KHÔNG DÙNG THẺ ĐỎ CHÓI MẮT)
             subj_curr = BIGDATA_CURRICULUM.get(subject, {})
@@ -4253,8 +4260,10 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 """, unsafe_allow_html=True)
     elif st.session_state.exam_state == "testing":
         exam = st.session_state.exam_data
-        st.markdown(f"### 📋 ĐỀ KHẢO THÍ MÔN {subject.upper()} - KHỐI LỚP {grade_num}")
-        st.markdown(f"##### 🏷️ MÃ ĐỀ THI CHUẨN BỘ: `{exam.get('code', st.session_state.exam_code)}` | Thời gian: {st.session_state.get('exam_time_mins', 45)} phút")
+        if subject == "Ngữ văn":
+            st.markdown(f"##### 📜 ĐỀ THI TỰ LUẬN CHUẨN BỘ GD&ĐT | Thời gian: {st.session_state.get('exam_time_mins', 120)} phút")
+        else:
+            st.markdown(f"##### 🏷️ MÃ ĐỀ THI CHUẨN BỘ: `{exam.get('code', st.session_state.exam_code)}` | Thời gian: {st.session_state.get('exam_time_mins', 45)} phút")
         
         if "exam_deadline" not in st.session_state:
             st.session_state.exam_deadline = time.time() + st.session_state.get("exam_time_mins", 45) * 60
@@ -4316,7 +4325,10 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
     elif st.session_state.exam_state == "graded":
         exam = st.session_state.exam_data
         st.markdown(f"### 🎉 KẾT QUẢ KHẢO THÍ CHUẨN BỘ MÔN {subject.upper()} (LỚP {grade_num})!")
-        st.markdown(f"##### 🏷️ MÃ ĐỀ THI: `{exam.get('code', st.session_state.exam_code)}` | Học sinh: **{student_name}**")
+        if subject == "Ngữ văn":
+            st.markdown(f"##### 📜 BÀI THI TỰ LUẬN NGỮ VĂN | Học sinh: **{student_name}**")
+        else:
+            st.markdown(f"##### 🏷️ MÃ ĐỀ THI: `{exam.get('code', st.session_state.exam_code)}` | Học sinh: **{student_name}**")
 
         # THUẬT TOÁN CHẤM ĐIỂM CHUẨN QUYẾT ĐỊNH 764/QĐ-BGDĐT
         total_score = 0.0
