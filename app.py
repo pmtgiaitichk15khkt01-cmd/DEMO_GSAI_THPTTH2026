@@ -390,19 +390,20 @@ st.sidebar.info("💡 **Triết lý:** Dưỡng thiện tâm - Ươm nhân tài 
 # 5. ĐIỀU PHỐI AI BỀN BỈ (GIA PHẢ 3.X TỐI THƯỢNG THEO LỆNH GOOGLE)
 # ==============================================================================
 ALL_GEMINI_MODELS = [
-    "gemini-3.6-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
-    "gemini-flash-lite-latest",
-    "gemini-3.7-flash",
-    "gemini-3.5-flash",
-    "gemini-3.8-flash",
-    "gemini-flash-latest",
-    "gemini-3-flash-preview",
-    "gemini-3.1-pro-preview"
+    "gemini-3.6-flash",          # Siêu tốc, tải khỏe, chính xác cao
+    "gemini-3.5-flash-lite",     # Cực nhẹ, không bao giờ nghẽn
+    "gemini-3.1-flash-lite",     # Ổn định tuyệt đối
+    "gemini-3-flash-preview",    # Ưu tiên cao theo yêu cầu thực nghiệm
+    "gemini-3.5-flash",          # Trí tuệ sư phạm sâu sắc
+    "gemini-flash-lite-latest",  # Dự phòng chuẩn Google
+    "gemini-3.7-flash",          # Dự phòng chất lượng cao
+    "gemini-3.8-flash",          # Dự phòng chất lượng cao
+    "gemini-flash-latest",       # Dự phòng chung
+    "gemini-3.1-pro-preview"     # Dự phòng suy luận sâu
 ]
 
 if "working_model" not in st.session_state: st.session_state.working_model = None
+if "working_key" not in st.session_state: st.session_state.working_key = None
 
 DEFAULT_PEDAGOGICAL_SYSTEM_INSTRUCTION = """Bạn là Gia Sư AI Sư Phạm hàng đầu Việt Nam, hỗ trợ học sinh học tập theo đúng chuẩn Chương Trình Giáo Dục Phổ Thông 2018 (SGK Kết Nối Tri Thức với Cuộc Sống - NXB Giáo Dục Việt Nam & Cục Quản Lý Chất Lượng - Bộ GD&ĐT).
 NGUYÊN TẮC SƯ PHẠM BẮT BUỘC THEO CT GDPT 2018:
@@ -550,6 +551,14 @@ def call_gemini_with_fallback(prompt_or_contents, system_instruction=None, json_
     model_queue = [st.session_state.working_model] + [m for m in ALL_GEMINI_MODELS if m != st.session_state.working_model] if st.session_state.working_model else ALL_GEMINI_MODELS
     if not active_keys_pool:
         raise RuntimeError("Chưa cấu hình GEMINI_API_KEY. Thêm Key vào sidebar hoặc Streamlit Secrets.")
+    
+    # Ưu tiên key đang chạy tốt nhất trong phiên để đạt tốc độ 1 chạm tức thì
+    cached_key = st.session_state.get("working_key")
+    if cached_key and cached_key in active_keys_pool:
+        key_queue = [cached_key] + [k for k in active_keys_pool if k != cached_key]
+    else:
+        key_queue = list(active_keys_pool)
+
     errors = []
     invalid_keys = set()
     deadline = time.monotonic() + 240
@@ -560,7 +569,7 @@ def call_gemini_with_fallback(prompt_or_contents, system_instruction=None, json_
                 break
             status_box.update(label=f"Đang thử kết nối AI qua kênh {current_model}...", state="running")
             model_unavailable = False
-            for current_key in active_keys_pool:
+            for current_key in key_queue:
                 if current_key in invalid_keys or time.monotonic() >= deadline:
                     continue
                 # 503/500 là lỗi tạm thời của model: thử lại cùng model một lần,
@@ -587,6 +596,7 @@ def call_gemini_with_fallback(prompt_or_contents, system_instruction=None, json_
                             reason = str(getattr(candidates[0], "finish_reason", "không có nội dung")) if candidates else "không có nội dung"
                             raise ValueError(f"AI trả phản hồi rỗng ({reason}).")
                         st.session_state.working_model = current_model
+                        st.session_state.working_key = current_key
                         status_box.update(label="Đã nhận phản hồi từ AI.", state="complete")
                         return text
                     except Exception as e:
@@ -606,9 +616,13 @@ def call_gemini_with_fallback(prompt_or_contents, system_instruction=None, json_
                             model_unavailable = True
                         elif code in {"401", "403"} or any(tag in err_str for tag in ["UNAUTHENTICATED", "PERMISSION_DENIED", "API_KEY_INVALID", "API key not valid"]):
                             invalid_keys.add(current_key)
-                            status_box.write("API Key không hợp lệ hoặc không có quyền. Kiểm tra Key; thử Key dự phòng nếu có.")
+                            if st.session_state.get("working_key") == current_key:
+                                st.session_state.working_key = None
+                            status_box.write("API Key không hợp lệ hoặc không có quyền. Chuyển ngay Key dự phòng trong nhóm...")
                         elif code == "429" or "RESOURCE_EXHAUSTED" in err_str or "429" in err_str:
-                            status_box.write("API đã hết hạn ngạch hoặc vượt giới hạn yêu cầu. Thử kết nối dự phòng nếu có.")
+                            if st.session_state.get("working_key") == current_key:
+                                st.session_state.working_key = None
+                            status_box.write("API đã hết hạn ngạch. Tự động xoay vòng sang Key dự phòng kế tiếp...")
                         else:
                             # 404 và lỗi cấu hình không được giải quyết bằng đổi key.
                             model_unavailable = True
