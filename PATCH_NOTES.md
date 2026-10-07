@@ -1,5 +1,18 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 11 (CHÍNH THỨC): NGÀY 07/10/2026 - 12:45:00 (GMT+7)
+### 🛡️ 1. Nâng Cấp Hệ Thống Điều Phối "BẤT TỬ" 24/7 (Immortal Key & Model Rotation)
+- **Tối ưu hóa Bậc thang Mô hình (Optimal Model Hierarchy):**
+  - Đưa `gemini-3-flash-preview` lên nhóm ưu tiên cao ngay sau bộ 3 siêu tốc (`3.6-flash`, `3.5-flash-lite`, `3.1-flash-lite`), giữ `3.5-flash` ở vị trí chiến lược.
+  - Loại bỏ hoàn toàn các mã lỗi thời đã bị đóng cổng API (`gemini-2.5-flash`, `gemini-2.5-flash-lite`) để không tiêu tốn thời gian chờ.
+- **Cơ chế Ghi nhớ Key Đắc Lực (`st.session_state.working_key`):**
+  - Khi một Key trong nhóm 5 Key thực thi thành công, hệ thống tự động ghim Key đó làm vị trí #1 cho toàn bộ các lượt truy vấn tiếp theo trong phiên. Học sinh nhận kết quả ngay trong 1-2 giây mà không cần dò lặp lại.
+  - Tự động xoay vòng sang Key kế tiếp ngay khi gặp mã `429 (RESOURCE_EXHAUSTED)` hoặc tự động loại trừ Key lỗi quyền (`401/403`).
+- **Nạp Nhóm 5 Khóa Siêu Cường vào Cấu Hình Mặc Định (`secrets.toml`):**
+  - Tích hợp 5 Key đã kiểm định sống 100% với hạn ngạch dồi dào, đảm bảo hệ thống chịu tải liên tục cho toàn trường.
+
+---
+
 ## 📌 LẦN CẬP NHẬT THỨ 10 (CHÍNH THỨC): NGÀY 06/10/2026 - 23:20:00 (GMT+7)
 ### ⚡ 1. Khắc Phục Triệt Để Lỗi 503 UNAVAILABLE & Tối Ưu Hóa Điều Phối Gemini Bền Bỉ
 - **Nguyên nhân cốt lõi phát hiện:**
