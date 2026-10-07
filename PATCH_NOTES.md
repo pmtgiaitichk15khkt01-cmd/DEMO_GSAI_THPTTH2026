@@ -1,7 +1,17 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
-## 📌 LẦN CẬP NHẬT THỨ 11 (CHÍNH THỨC): NGÀY 07/10/2026 - 12:45:00 (GMT+7)
-### 🛡️ 1. Nâng Cấp Hệ Thống Điều Phối "BẤT TỬ" 24/7 (Immortal Key & Model Rotation)
+## 📌 LẦN CẬP NHẬT THỨ 11 (CHÍNH THỨC): NGÀY 07/10/2026 - 12:55:00 (GMT+7)
+### 🛡️ 1. Khắc Phục Triệt Để Lỗi `KeyError: tram3_count` & Bộ Đếm Thực Nghiệm KHKT
+- **Khởi tạo trọn vẹn `tram3_count`:** Bổ sung `if "tram3_count" not in st.session_state: st.session_state.tram3_count = 0` ngay tại đầu ứng dụng, triệt tiêu 100% lỗi `KeyError: 'st_session_state has no key tram3_count'` khi nộp bài khảo thí.
+
+### 📜 2. Chuẩn Hóa Tuyệt Đối Đặc Thù Môn Ngữ Văn (Không Gán Mã Đề Trắc Nghiệm)
+- **Quy chuẩn Pháp chế Bộ GD&ĐT (QĐ 764/QĐ-BGDĐT):** Môn Ngữ văn là bài thi 100% Tự luận chung toàn quốc, không phải bài trắc nghiệm hoán vị câu hỏi nên **tuyệt đối không dùng "Mã đề thi"**.
+- **Tùy biến hiển thị tinh chuẩn:**
+  - Tiêu đề & Thông báo cấu hình: Hiển thị `📜 Đề thi Tự luận Ngữ văn (Chuẩn 100% Tự luận, Đề chung toàn quốc)` thay vì nhãn mã đề.
+  - Khi làm bài & xem kết quả: Hiển thị đúng định dạng `📜 BÀI THI TỰ LUẬN NGỮ VĂN | Học sinh: [Tên]`.
+  - Các môn trắc nghiệm (Toán, Lý, Hóa, Sinh, Anh, Sử, Địa...): Tiếp tục giữ nguyên chuẩn mã đề 4 chữ số.
+
+### ⚡ 3. Nâng Cấp Hệ Thống Điều Phối "BẤT TỬ" 24/7 (Immortal Key & Model Rotation)
 - **Tối ưu hóa Bậc thang Mô hình (Optimal Model Hierarchy):**
   - Đưa `gemini-3-flash-preview` lên nhóm ưu tiên cao ngay sau bộ 3 siêu tốc (`3.6-flash`, `3.5-flash-lite`, `3.1-flash-lite`), giữ `3.5-flash` ở vị trí chiến lược.
   - Loại bỏ hoàn toàn các mã lỗi thời đã bị đóng cổng API (`gemini-2.5-flash`, `gemini-2.5-flash-lite`) để không tiêu tốn thời gian chờ.
