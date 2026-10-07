@@ -1,8 +1,14 @@
 # 🛠️ NHẬT KÝ BẢN VÁ HỆ THỐNG GSAI - THPT 2026
 
+## 📌 LẦN CẬP NHẬT THỨ 12 (CHÍNH THỨC): NGÀY 07/10/2026 - 13:00:00 (GMT+7)
+### 🖋️ 1. Mực Đỏ / Tích Xanh Face-to-Face Chuyên Sâu Môn Ngữ Văn
+- **Trải nghiệm chấm bài "Face-to-Face":** Nâng cấp hệ thống AI tại Trạm 3 để trả về `annotated_text` đối với bài tự luận Ngữ Văn. AI sẽ trực tiếp chèn các nhận xét như giáo viên phê mực đỏ trên nguyên văn bài làm của học sinh.
+- **Tick xanh & Mực đỏ:** Tự động vẽ `[✅ Chuẩn/Tốt]` (màu xanh lá) cho các ý lập luận hay, sắc bén, và `[❌ Lỗi/Thiếu: ...]` (màu đỏ) kèm giải thích chi tiết cho những chỗ khuất tất, sai logic, thiếu dẫn chứng.
+- **Giữ vẹn nguyên Socratic:** Đảm bảo 100% tính năng Socratic thượng đẳng, không gián đoạn mạch tư duy đa môn, đa lớp.
+
 ## 📌 LẦN CẬP NHẬT THỨ 11 (CHÍNH THỨC): NGÀY 07/10/2026 - 12:55:00 (GMT+7)
 ### 🛡️ 1. Khắc Phục Triệt Để Lỗi `KeyError: tram3_count` & Bộ Đếm Thực Nghiệm KHKT
-- **Khởi tạo trọn vẹn `tram3_count`:** Bổ sung `if "tram3_count" not in st.session_state: st.session_state.tram3_count = 0` ngay tại đầu ứng dụng, triệt tiêu 100% lỗi `KeyError: 'st_session_state has no key tram3_count'` khi nộp bài khảo thí.
+- **Khởi tạo trọn vẹn `tram3_count`:** Bổ sung `if "tram3_count" not in st.session_state: st.session_state.tram3_count = 0` ngay tại đầu ứng dụng, triệt tiêu 100% lỗi `KeyError: 'st_session_state has no key tram3_count'` khi nộp bài khảo thí. (Lưu ý: Học sinh cần tải lại trang/Refresh ứng dụng để phiên bản mới nhất trên Streamlit Cloud được cập nhật vào Session).
 
 ### 📜 2. Chuẩn Hóa Tuyệt Đối Đặc Thù Môn Ngữ Văn (Không Gán Mã Đề Trắc Nghiệm)
 - **Quy chuẩn Pháp chế Bộ GD&ĐT (QĐ 764/QĐ-BGDĐT):** Môn Ngữ văn là bài thi 100% Tự luận chung toàn quốc, không phải bài trắc nghiệm hoán vị câu hỏi nên **tuyệt đối không dùng "Mã đề thi"**.
