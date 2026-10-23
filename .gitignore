@@ -1,0 +1,35 @@
+# VIP 74.1 Gitignore Configuration - HỆ THỐNG GIA SƯ AI THPT 2026
+# Streamlit & Local Secrets
+.streamlit/secrets.toml
+*secrets*.toml
+TOLM.txt
+*.key
+*.pem
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Backup files
+*.bak
+*.backup
+app_backup*.py
+temp_*
+scratch/
+
+# Auto-added safety rules
+.backup_gsai_heal/
+*.pyc
+auto_heal_gsai_project.py
+deploy_to_github.py
+turbo_enterprise_optimizer.py

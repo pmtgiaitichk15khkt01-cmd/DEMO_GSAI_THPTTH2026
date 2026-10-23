@@ -1,0 +1,38 @@
+# VIP 74.1 CI/CD Configuration - HỆ THỐNG GIA SƯ AI THPT 2026
+name: GSAI THPT 2026 - Automated CI/CD Quality Assurance
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+
+    - name: Install core dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Step 1 - Syntax & Compilation Integrity Check
+      run: |
+        python -m py_compile app.py precision_visual_engine.py real_exam_engine.py database.py lesson_infographic_engine.py
+
+    - name: Step 2 - Run Automated System Integrity Tests
+      run: |
+        python -m unittest discover -s tests -p "test_*.py"

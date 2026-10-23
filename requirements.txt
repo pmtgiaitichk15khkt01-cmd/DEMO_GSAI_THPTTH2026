@@ -1,0 +1,27 @@
+# VIP 74.1 Core Dependencies - GSAI THPT 2026
+# ==============================================================================
+# HỆ THỐNG KHẢO THÍ THI THỰC CHIẾN QUỐC GIA 2025 - 2026 (SOTA CORE DEPENDENCIES - VIP 66.2)
+# Cập nhật: Ngày 18/10/2026 (Bản nâng cấp VIP 66.2)
+# Lưu ý: Các module 'lzma', 'gzip', 'json' là Python Standard Libraries (Built-in)
+# đã tích hợp sẵn từ Python 3.3+, không cần cài qua pip để tránh xung đột thư viện.
+# ==============================================================================
+streamlit>=1.50
+google-genai>=2.6.0
+pillow
+pandas
+numpy
+requests
+plotly
+scipy
+pillow-heif
+qrcode
+matplotlib
+pypdf
+python-docx
+
+lxml
+pdfplumber
+pymupdf
+sympy
+orjson
+zstandard

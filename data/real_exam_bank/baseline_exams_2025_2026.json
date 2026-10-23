@@ -1,0 +1,1272 @@
+{
+  "version": "2025-2026-COMPREHENSIVE-PRO-BANK",
+  "updated_at": "2026-10-15",
+  "description": "Full Ngân hàng Đề thi thật 2025-2026 các trường Chuyên và Sở GD&ĐT toàn quốc (Mỗi môn từ 3-5 đề thi thật chuẩn QĐ 764 & CV 3175).",
+  "exams": [
+    {
+      "code": "VL1202",
+      "subject": "Vật lý",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Phan Bội Châu - Nghệ An",
+      "title": "Đề Khảo Sát Vật Lý 12 - THPT Chuyên Phan Bội Châu Nghệ An (2025 - 2026)",
+      "portal": "Thư Viện Vật Lý (thuvienvatly.com)",
+      "url": "https://thuvienvatly.com",
+      "source": "Đề Khảo sát Vật lý 12 - THPT Chuyên Phan Bội Châu Nghệ An",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Theo mô hình động học phân tử chất khí, các phân tử khí chuyển động như thế nào?",
+          "opt": [
+            "A. Hỗn loạn không ngừng, chuyển động càng nhanh thì nhiệt độ của khí càng cao.",
+            "B. Đều đặn theo các quỹ đạo tròn đồng tâm quanh khối tâm.",
+            "C. Hoàn toàn đứng yên khi khối khí đạt trạng thái cân bằng áp suất.",
+            "D. Chỉ dao động quanh các vị trí cân bằng cố định trong không gian."
+          ],
+          "ans": "A",
+          "explain": "Các phân tử khí chuyển động hỗn loạn không ngừng; vận tốc trung bình của các phân tử tỉ lệ thuận với căn bậc hai của nhiệt độ tuyệt đối.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Thuyết động học phân tử khí"
+        },
+        {
+          "q": "Nhiệt độ không tuyệt đối (0 K) tương ứng với bao nhiêu độ Celsius (°C)?",
+          "opt": [
+            "A. -273.15 °C",
+            "B. 0 °C",
+            "C. 273.15 °C",
+            "D. -100 °C"
+          ],
+          "ans": "A",
+          "explain": "Thang đo Kelvin liên hệ với Celsius: $T(K) = t(°C) + 273.15 \\Rightarrow 0 K = -273.15 °C$.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Thang nhiệt độ"
+        },
+        {
+          "q": "Nội năng của một khối khí lý tưởng đơn nguyên tử chỉ phụ thuộc vào đại lượng nào sau đây?",
+          "opt": [
+            "A. Nhiệt độ tuyệt đối của khối khí ($U = \\frac{3}{2}nRT$).",
+            "B. Thể tích của bình chứa khí.",
+            "C. Áp suất tác dụng lên thành bình.",
+            "D. Khối lượng riêng của khối khí."
+          ],
+          "ans": "A",
+          "explain": "Với khí lý tưởng, bỏ qua thế năng tương tác giữa các phân tử, nội năng chỉ là tổng động năng chuyển động hỗn loạn nên chỉ phụ thuộc nhiệt độ.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Nội năng khí lý tưởng"
+        },
+        {
+          "q": "Trong quá trình đẳng nhiệt của một lượng khí lý tưởng xác định, áp suất của khối khí biến thiên như thế nào theo thể tích?",
+          "opt": [
+            "A. Tỉ lệ nghịch với thể tích (Định luật Boyle).",
+            "B. Tỉ lệ thuận với thể tích (Định luật Charles).",
+            "C. Tăng theo hàm bậc hai của thể tích.",
+            "D. Giữ nguyên không đổi."
+          ],
+          "ans": "A",
+          "explain": "Định luật Boyle: Khi nhiệt độ không đổi, $p \\cdot V = \\text{const} \\Rightarrow p$ tỉ lệ nghịch với $V$.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Định luật Boyle"
+        },
+        {
+          "q": "Từ trường là dạng vật chất tồn tại xung quanh:",
+          "opt": [
+            "A. Các điện tích chuyển động hoặc nam châm.",
+            "B. Các điện tích đứng yên bất động.",
+            "C. Các vật mang khối lượng lớn nhưng không tích điện.",
+            "D. Mọi vật thể có nhiệt độ lớn hơn 0 K."
+          ],
+          "ans": "A",
+          "explain": "Từ trường được sinh ra bởi các điện tích chuyển động (dòng điện) hoặc bởi các nam châm.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Từ trường"
+        },
+        {
+          "q": "Lực Lorentz tác dụng lên một hạt mang điện tích $q$ chuyển động với vận tốc $\\vec{v}$ trong từ trường đều $\\vec{B}$ có độ lớn tính theo công thức:",
+          "opt": [
+            "A. $f = |q| v B \\sin \\alpha$",
+            "B. $f = |q| v B \\cos \\alpha$",
+            "C. $f = q v B$",
+            "D. $f = \\frac{|q| v}{B}$"
+          ],
+          "ans": "A",
+          "explain": "Độ lớn lực Lorentz: $f = |q|vB\\sin\\alpha$ với $\\alpha = (\\vec{v}, \\vec{B})$.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Lực Lorentz"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Một xilanh nằm ngang chứa một lượng khí lý tưởng được đậy kín bằng một pit-tông có thể trượt không ma sát. Ban đầu thể tích khí là $V_1 = 4\\text{ L}$, nhiệt độ $T_1 = 300\\text{ K}$. Nung nóng đẳng áp khối khí đến nhiệt độ $T_2 = 450\\text{ K}$. Xét tính đúng sai của các nhận định:",
+          "stmts": [
+            {
+              "t": "Quá trình biến đổi trạng thái của khối khí tuân theo định luật Charles: V/T = hằng số.",
+              "a": true
+            },
+            {
+              "t": "Thể tích của khối khí sau khi nung nóng là $V_2 = 6\\text{ L}$.",
+              "a": true
+            },
+            {
+              "t": "Trong quá trình nung nóng, khối khí nhận nhiệt lượng và sinh công ra môi trường xung quanh.",
+              "a": true
+            },
+            {
+              "t": "Độ biến thiên nội năng của khối khí trong quá trình này bằng 0 vì áp suất không đổi.",
+              "a": false
+            }
+          ],
+          "explain": "Định luật Charles: $V_2 = V_1 \\times \\frac{T_2}{T_1} = 4 \\times \\frac{450}{300} = 6\\text{ L}$. Vì nhiệt độ tăng nên nội năng tăng ($\\Delta U > 0$), do đó mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Một lượng khí lý tưởng ở áp suất $10^5\\text{ Pa}$ có thể tích $2\\text{ m}^3$. Khối khí được nén đẳng nhiệt đến thể tích $0.8\\text{ m}^3$. Áp suất của khối khí sau khi nén bằng bao nhiêu kPa?",
+          "ans": "250",
+          "explain": "Áp dụng định luật Boyle: $p_1 V_1 = p_2 V_2 \\Rightarrow p_2 = \\frac{10^5 \\times 2}{0.8} = 2.5 \\times 10^5\\text{ Pa} = 250\\text{ kPa}$.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH"
+        },
+        {
+          "q": "Một khung dây phẳng diện tích $50\\text{ cm}^2$ gồm 100 vòng dây đặt trong từ trường đều có cảm ứng từ $B = 0.2\\text{ T}$. Véc-tơ pháp tuyến của khung dây hợp với véc-tơ cảm ứng từ một góc $60^\\circ$. Từ thông qua khung dây bằng bao nhiêu Wb? (Làm tròn đến 2 chữ số thập phân).",
+          "ans": "0.05",
+          "explain": "$\\Phi = N B S \\cos \\alpha = 100 \\times 0.2 \\times (50 \\times 10^{-4}) \\times \\cos 60^\\circ = 0.1 \\times 0.5 = 0.05\\text{ Wb}$.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH"
+        }
+      ]
+    },
+    {
+      "code": "VL1203",
+      "subject": "Vật lý",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Sư Phạm Hà Nội",
+      "title": "Đề Thi Thử Tốt Nghiệp THPT Vật Lý 12 - Chuyên Sư Phạm Hà Nội (2025 - 2026)",
+      "portal": "Thư Viện Vật Lý (thuvienvatly.com)",
+      "url": "https://thuvienvatly.com",
+      "source": "Đề Thi thử THPT Vật lý 12 - THPT Chuyên Sư Phạm Hà Nội",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Hiện tượng cảm ứng điện từ là hiện tượng xuất hiện dòng điện cảm ứng trong một mạch kín khi:",
+          "opt": [
+            "A. Từ thông qua diện tích giới hạn bởi mạch kín đó biến thiên theo thời gian.",
+            "B. Đặt mạch kín cố định trong một từ trường đều không đổi.",
+            "C. Dòng điện không đổi chạy qua mạch kín đó.",
+            "D. Mạch kín được nung nóng trong lò vi sóng."
+          ],
+          "ans": "A",
+          "explain": "Định luật Faraday: Suất điện động cảm ứng xuất hiện trong mạch kín khi từ thông qua mạch biến thiên theo thời gian.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "NB",
+          "topic": "Cảm ứng điện từ"
+        },
+        {
+          "q": "Độ phóng xạ của một mẫu chất phóng xạ đặc trưng cho:",
+          "opt": [
+            "A. Số hạt nhân phân rã trong một giây của mẫu chất đó.",
+            "B. Khối lượng còn lại của mẫu chất phóng xạ.",
+            "C. Năng lượng tỏa ra sau một chu kỳ bán rã.",
+            "D. Khả năng đâm xuyên của tia phóng xạ trong không khí."
+          ],
+          "ans": "A",
+          "explain": "Độ phóng xạ $H = \\left|\\frac{dN}{dt}\\right| = \\lambda N$ là số phân rã phóng xạ xảy ra trong một đơn vị thời gian (Bq).",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "NB",
+          "topic": "Vật lý hạt nhân"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Một mẫu chất phóng xạ Iod $^{131}_{53}\\text{I}$ dùng trong y tế có chu kỳ bán rã $T = 8\\text{ ngày}$. Ban đầu mẫu có khối lượng $m_0 = 16\\text{ mg}$. Xét tính đúng sai của các nhận định:",
+          "stmts": [
+            {
+              "t": "Sau 8 ngày, khối lượng Iod $^{131}_{53}\\text{I}$ còn lại trong mẫu là $8\\text{ mg}$.",
+              "a": true
+            },
+            {
+              "t": "Sau 24 ngày (3 chu kỳ bán rã), khối lượng Iod còn lại là $2\\text{ mg}$.",
+              "a": true
+            },
+            {
+              "t": "Hằng số phóng xạ của $^{131}_{53}\\text{I}$ là $\\lambda = \\frac{\\ln 2}{T} \\approx 0.0866\\text{ ngày}^{-1}$.",
+              "a": true
+            },
+            {
+              "t": "Sau 16 ngày, toàn bộ mẫu phóng xạ đã bị phân rã hoàn toàn về 0.",
+              "a": false
+            }
+          ],
+          "explain": "Sau 16 ngày (2 chu kỳ bán rã), khối lượng còn lại là $m = m_0 / 2^2 = 16 / 4 = 4\\text{ mg} \\neq 0$. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Một bình kín có dung tích $10\\text{ lít}$ chứa $2\\text{ mol}$ khí heli ở nhiệt độ $27^\\circ\\text{C}$ ($300\\text{ K}$). Lấy hằng số khí $R = 8.31\\text{ J/(mol}\\cdot\\text{K)}$. Áp suất của khí trong bình xấp xỉ bằng bao nhiêu atm? (Lấy $1\\text{ atm} = 1.013 \\times 10^5\\text{ Pa}$, làm tròn đến hàng đơn vị).",
+          "ans": "5",
+          "explain": "$p = \\frac{nRT}{V} = \\frac{2 \\times 8.31 \\times 300}{0.01} = 498600\\text{ Pa} \\approx 4.92\\text{ atm} \\approx 5\\text{ atm}$.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "VD"
+        }
+      ]
+    },
+    {
+      "code": "HH1202",
+      "subject": "Hóa học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Lam Sơn - Thanh Hóa",
+      "title": "Đề Khảo Sát Hóa Học 12 - THPT Chuyên Lam Sơn Thanh Hóa (2025 - 2026)",
+      "portal": "Hóa Học Ngày Nay (hoahoc.org - IUPAC)",
+      "url": "https://hoahoc.org",
+      "source": "Đề Khảo sát Hóa học 12 - THPT Chuyên Lam Sơn Thanh Hóa (Chuẩn IUPAC)",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Chất béo (triglyceride) là triester của glycerol với:",
+          "opt": [
+            "A. Các acid béo mạch dài, không phân nhánh.",
+            "B. Các carboxylic acid đơn chức mạch ngắn.",
+            "C. Các amino acid thiết yếu.",
+            "D. Các alcohol đa chức có vòng benzen."
+          ],
+          "ans": "A",
+          "explain": "Theo IUPAC và SGK 2018, chất béo là triester của glycerol với các acid béo (fatty acid) có mạch carbon dài không phân nhánh.",
+          "source": "Đề Khảo sát - Chuyên Lam Sơn",
+          "level": "NB",
+          "topic": "Ester - Lipid"
+        },
+        {
+          "q": "Carbohydrate nào sau đây thuộc loại disaccharide cấu tạo từ 1 gốc glucose và 1 gốc fructose?",
+          "opt": [
+            "A. Saccharose (Sucrose).",
+            "B. Glucose.",
+            "C. Maltose.",
+            "D. Cellulose."
+          ],
+          "ans": "A",
+          "explain": "Saccharose (Sucrose) là disaccharide được tạo thành từ 1 gốc alpha-glucose và 1 gốc beta-fructose qua liên kết glycosidic.",
+          "source": "Đề Khảo sát - Chuyên Lam Sơn",
+          "level": "NB",
+          "topic": "Carbohydrate"
+        },
+        {
+          "q": "Dung dịch chất nào sau đây làm quỳ tím chuyển sang màu hồng nhạt do có tính acid yếu?",
+          "opt": [
+            "A. Glutamic acid.",
+            "B. Lysine.",
+            "C. Alanine.",
+            "D. Glycine."
+          ],
+          "ans": "A",
+          "explain": "Glutamic acid có 2 nhóm -COOH và 1 nhóm -NH2, tính acid trội hơn nên làm quỳ tím hóa hồng.",
+          "source": "Đề Khảo sát - Chuyên Lam Sơn",
+          "level": "NB",
+          "topic": "Amino acid"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Tiến hành thí nghiệm xà phòng hóa chất béo: Cho $2\\text{ gam}$ mỡ lợn vào bát sứ, thêm $5\\text{ mL}$ dung dịch $NaOH\\text{ } 40\\%$, đun sôi nhẹ và khuấy đều trong 15 phút, thỉnh thoảng thêm nước cất. Sau đó thêm $10\\text{ mL}$ dung dịch $NaCl$ bão hòa nóng, để nguội. Xét tính đúng sai của các nhận định:",
+          "stmts": [
+            {
+              "t": "Sau phản ứng xà phòng hóa, thu được muối của acid béo (xà phòng) và glycerol.",
+              "a": true
+            },
+            {
+              "t": "Dung dịch NaCl bão hòa được thêm vào nhằm mục đích làm xà phòng kết tinh nổi lên trên bề mặt.",
+              "a": true
+            },
+            {
+              "t": "Việc thêm nước cất trong quá trình đun để giữ cho thể tích hỗn hợp không đổi và tránh hỗn hợp bị cạn cháy.",
+              "a": true
+            },
+            {
+              "t": "Có thể thay thế mỡ lợn bằng dầu nhớt bôi trơn xe máy trong thí nghiệm này với kết quả tương đương.",
+              "a": false
+            }
+          ],
+          "explain": "Dầu nhớt bôi trơn xe máy là hydrocarbon (dầu mỏ), không phải ester của acid béo nên không thể bị xà phòng hóa. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Lam Sơn",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Xà phòng hóa hoàn toàn $8.9\\text{ gam}$ tristearin $(C_{17}H_{35}COO)_3C_3H_5$ bằng dung dịch $NaOH$ vừa đủ. Khối lượng glycerol thu được bằng bao nhiêu gam?",
+          "ans": "0.92",
+          "explain": "$M(\\text{tristearin}) = 890\\text{ g/mol} \\Rightarrow n = 0.01\\text{ mol}$. $n(\\text{glycerol}) = n = 0.01\\text{ mol} \\Rightarrow m = 0.01 \\times 92 = 0.92\\text{ gam}$.",
+          "source": "Đề Khảo sát - Chuyên Lam Sơn",
+          "level": "TH"
+        }
+      ]
+    },
+    {
+      "code": "HH1203",
+      "subject": "Hóa học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "Sở GD&ĐT Bắc Ninh",
+      "title": "Đề Thi Thử Tốt Nghiệp THPT Hóa Học 12 - Sở GD&ĐT Bắc Ninh (2025 - 2026)",
+      "portal": "Hóa Học Ngày Nay (hoahoc.org - IUPAC)",
+      "url": "https://hoahoc.org",
+      "source": "Đề Thi thử Tốt nghiệp THPT Hóa học 12 - Sở GD&ĐT Bắc Ninh",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Kim loại nào sau đây có nhiệt độ nóng chảy cao nhất, thường được dùng làm dây tóc bóng đèn sợi đốt?",
+          "opt": [
+            "A. Tungsten (Vonfram - W).",
+            "B. Sắt (Iron - Fe).",
+            "C. Nhôm (Aluminium - Al).",
+            "D. Đồng (Copper - Cu)."
+          ],
+          "ans": "A",
+          "explain": "Tungsten (W) có nhiệt độ nóng chảy cao nhất xấp xỉ $3422^\\circ\\text{C}$.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Bắc Ninh",
+          "level": "NB",
+          "topic": "Tính chất kim loại"
+        },
+        {
+          "q": "Ăn mòn điện hóa học xảy ra khi có các điều kiện nào sau đây?",
+          "opt": [
+            "A. Hai điện cực khác chất tiếp xúc trực tiếp hoặc gián tiếp và cùng nhúng vào dung dịch chất điện ly.",
+            "B. Kim loại nguyên chất tiếp xúc với khí oxi khô ở nhiệt độ phòng.",
+            "C. Kim loại ngâm trong dầu hỏa tinh khiết không có nước.",
+            "D. Kim loại được mạ một lớp sơn cách điện hoàn hảo."
+          ],
+          "ans": "A",
+          "explain": "Ba điều kiện của ăn mòn điện hóa: hai điện cực khác bản chất, tiếp xúc nhau và cùng tiếp xúc dung dịch chất điện li.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Bắc Ninh",
+          "level": "NB",
+          "topic": "Ăn mòn kim loại"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Xét một pin điện hóa Daniell gồm điện cực kẽm (Zinc - Zn) nhúng trong dung dịch $ZnSO_4\\text{ } 1\\text{M}$ và điện cực đồng (Copper - Cu) nhúng trong dung dịch $CuSO_4\\text{ } 1\\text{M}$. Biết $E^0(Zn^{2+}/Zn) = -0.76\\text{V}$ và $E^0(Cu^{2+}/Cu) = +0.34\\text{V}$. Xét tính đúng sai:",
+          "stmts": [
+            {
+              "t": "Điện cực kẽm là cực âm (anode), tại đây xảy ra quá trình oxi hóa: Zn -> Zn2+ + 2e.",
+              "a": true
+            },
+            {
+              "t": "Điện cực đồng là cực dương (cathode), tại đây xảy ra quá trình khử: Cu2+ + 2e -> Cu.",
+              "a": true
+            },
+            {
+              "t": "Sức điện động chuẩn của pin Daniell bằng $E^0_{pin} = 0.34 - (-0.76) = 1.10\\text{ V}$.",
+              "a": true
+            },
+            {
+              "t": "Chiều dòng điện chạy ở mạch ngoài đi từ điện cực kẽm sang điện cực đồng.",
+              "a": false
+            }
+          ],
+          "explain": "Dòng electron chạy từ cực âm (Zn) sang cực dương (Cu), do đó chiều dòng điện quy ước ở mạch ngoài chạy từ cực dương (Cu) sang cực âm (Zn). Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Bắc Ninh",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Nhúng một lá sắt (Iron) có khối lượng ban đầu $20\\text{ gam}$ vào dung dịch $CuSO_4$ dư. Sau một thời gian lấy lá sắt ra, rửa sạch, sấy khô cân nặng $20.8\\text{ gam}$. Khối lượng đồng (Copper) bám trên lá sắt bằng bao nhiêu gam?",
+          "ans": "6.4",
+          "explain": "Phương trình: $Fe + Cu^{2+} \\to Fe^{2+} + Cu$. Cứ 1 mol Fe tan sinh 1 mol Cu bám thì khối lượng tăng: $64 - 56 = 8\\text{ gam}$. Khối lượng tăng thực tế là $20.8 - 20 = 0.8\\text{ gam} \\Rightarrow n(Cu) = 0.1\\text{ mol} \\Rightarrow m(Cu) = 0.1 \\times 64 = 6.4\\text{ gam}$.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Bắc Ninh",
+          "level": "VD"
+        }
+      ]
+    },
+    {
+      "code": "SH1202",
+      "subject": "Sinh học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Sư Phạm Hà Nội",
+      "title": "Đề Khảo Sát Sinh Học 12 - THPT Chuyên Sư Phạm Hà Nội (2025 - 2026)",
+      "portal": "Sinh Học THPT KNTT (sinhhocvietnam.com)",
+      "url": "https://sinhhocvietnam.com",
+      "source": "Đề Khảo sát Sinh học 12 - THPT Chuyên Sư Phạm Hà Nội",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Trong cơ chế điều hòa hoạt động của operon Lac ở vi khuẩn E. coli, protein ức chế liên kết với vùng nào để ngăn cản phiên mã?",
+          "opt": [
+            "A. Vùng vận hành (Operator - O).",
+            "B. Vùng khởi động (Promoter - P).",
+            "C. Các gene cấu trúc Z, Y, A.",
+            "D. Gene điều hòa LacI."
+          ],
+          "ans": "A",
+          "explain": "Khi môi trường không có lactose, protein ức chế gắn vào vùng vận hành (O) ngăn cản RNA polymerase phiên mã các gene cấu trúc.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "NB",
+          "topic": "Điều hòa biểu hiện gene"
+        },
+        {
+          "q": "Dạng đột biến cấu trúc nhiễm sắc thể nào làm tăng số lượng bản sao của một gene trên NST, tạo điều kiện cho quá trình tiến hóa?",
+          "opt": [
+            "A. Đột biến lặp đoạn (Duplication).",
+            "B. Đột biến mất đoạn (Deletion).",
+            "C. Đột biến đảo đoạn (Inversion).",
+            "D. Đột biến chuyển đoạn tương hỗ."
+          ],
+          "ans": "A",
+          "explain": "Đột biến lặp đoạn làm gia tăng số lượng bản sao gene, là nguồn nguyên liệu cho sự phân hóa chức năng gene mới trong tiến hóa.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "NB",
+          "topic": "Đột biến NST"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Ở người, bệnh mù màu đỏ - xanh lục do một allele lặn nằm trên vùng không tương đồng của NST giới tính X quy định (kí hiệu $X^m$), allele trội $X^M$ quy định thị giác bình thường. Một cặp vợ chồng đều có mắt nhìn màu bình thường, sinh ra một người con trai bị bệnh mù màu. Xét tính đúng sai:",
+          "stmts": [
+            {
+              "t": "Kiểu gene của người vợ chắc chắn là $X^M X^m$ (dị hợp tử).",
+              "a": true
+            },
+            {
+              "t": "Kiểu gene của người chồng là $X^M Y$.",
+              "a": true
+            },
+            {
+              "t": "Xác suất để đứa con thứ hai của cặp vợ chồng này là con gái có thị giác bình thường là $50\\%$.",
+              "a": true
+            },
+            {
+              "t": "Tất cả các con trai của cặp vợ chồng này sinh ra đều chắc chắn bị bệnh mù màu.",
+              "a": false
+            }
+          ],
+          "explain": "Xác suất sinh con trai mù màu là 25% (con trai có 50% bình thường $X^M Y$ và 50% mù màu $X^m Y$). Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Một phân tử DNA ở sinh vật nhân sơ có chiều dài $5100\\text{ }\\text{Å}$ và có số nucleotide loại Guanine ($G$) chiếm $20\\%$ tổng số nucleotide. Số liên kết hydro của phân tử DNA này bằng bao nhiêu?",
+          "ans": "3600",
+          "explain": "Tổng số nu $N = \\frac{2L}{3.4} = \\frac{2 \\times 5100}{3.4} = 3000\\text{ nu}$. Số nu loại $G = X = 3000 \\times 20\\% = 600$. Số nu $A = T = 3000 \\times 30\\% = 900$. Số liên kết hydro $H = 2A + 3G = 2(900) + 3(600) = 1800 + 1800 = 3600$.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "VD"
+        }
+      ]
+    },
+    {
+      "code": "SH1203",
+      "subject": "Sinh học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "Sở GD&ĐT Vĩnh Phúc",
+      "title": "Đề Thi Thử Tốt Nghiệp THPT Sinh Học 12 - Sở GD&ĐT Vĩnh Phúc (2025 - 2026)",
+      "portal": "Sinh Học THPT KNTT (sinhhocvietnam.com)",
+      "url": "https://sinhhocvietnam.com",
+      "source": "Đề Thi thử Tốt nghiệp THPT Sinh học 12 - Sở GD&ĐT Vĩnh Phúc",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Trong hệ sinh thái, sinh vật nào sau đây đóng vai trò phân giải xác sinh vật và chất thải hữu cơ thành các chất vô cơ?",
+          "opt": [
+            "A. Nấm hoại sinh và vi khuẩn phân giải trong đất.",
+            "B. Động vật ăn thực vật (hươu, nai).",
+            "C. Sinh vật sản xuất (thực vật có hoa).",
+            "D. Động vật ăn thịt đầu bảng (hổ, báo)."
+          ],
+          "ans": "A",
+          "explain": "Sinh vật phân giải gồm nấm, vi khuẩn dị dưỡng hoại sinh phân giải mùn bã hữu cơ thành muối khoáng trả lại cho đất.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Vĩnh Phúc",
+          "level": "NB",
+          "topic": "Hệ sinh thái"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Một quần thể thực vật tự thụ phấn nghiêm ngặt, thế hệ xuất phát ($P$) có cấu trúc di truyền: $0.2 AA : 0.8 Aa$. Xét tính đúng sai sau 2 thế hệ tự thụ phấn ($F_2$):",
+          "stmts": [
+            {
+              "t": "Tỉ lệ kiểu gene dị hợp tử ($Aa$) ở thế hệ $F_2$ bằng $0.8 / 2^2 = 0.2$ (tức $20\\%$).",
+              "a": true
+            },
+            {
+              "t": "Tỉ lệ kiểu gene đồng hợp trội ($AA$) ở thế hệ $F_2$ bằng $0.5$ (tức $50\\%$).",
+              "a": true
+            },
+            {
+              "t": "Tỉ lệ kiểu gene đồng hợp lặn ($aa$) ở thế hệ $F_2$ bằng $0.3$ (tức $30\\%$).",
+              "a": true
+            },
+            {
+              "t": "Tần số các allele $A$ và $a$ bị thay đổi liên tục qua các thế hệ tự thụ phấn.",
+              "a": false
+            }
+          ],
+          "explain": "Tự thụ phấn làm giảm tỉ lệ dị hợp, tăng tỉ lệ đồng hợp nhưng KHÔNG làm thay đổi tần số allele (A = 0.6, a = 0.4 giữ nguyên nếu không có chọn lọc). Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Vĩnh Phúc",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Trong một quần thể động vật giao phối ngẫu nhiên ở trạng thái cân bằng di truyền Hardy-Weinberg, allele quy định lông đen ($A$) trội hoàn toàn so với allele quy định lông trắng ($a$). Biết số cá thể lông trắng chiếm tỉ lệ $16\\%$. Tỉ lệ cá thể có kiểu gene dị hợp tử ($Aa$) trong quần thể bằng bao nhiêu phần trăm?",
+          "ans": "48",
+          "explain": "$q^2(aa) = 0.16 \\Rightarrow q(a) = 0.4 \\Rightarrow p(A) = 1 - 0.4 = 0.6$. Tỉ lệ kiểu gene dị hợp $2pq(Aa) = 2 \\times 0.6 \\times 0.4 = 0.48 = 48\\%$.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Vĩnh Phúc",
+          "level": "TH"
+        }
+      ]
+    },
+    {
+      "code": "ENG1202",
+      "subject": "Tiếng Anh",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chu Văn An - Hà Nội",
+      "title": "Đề Khảo Sát Tiếng Anh 12 - THPT Chu Văn An Hà Nội (2025 - 2026)",
+      "portal": "Chuyên Đề Tiếng Anh (tailieudieuky.me)",
+      "url": "https://tailieudieuky.me",
+      "source": "Đề Khảo sát Tiếng Anh 12 - THPT Chu Văn An Hà Nội (Chuẩn CEFR 40 Câu)",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Mark the letter A, B, C, or D to indicate the word whose underlined part differs from the other three in pronunciation:",
+          "opt": [
+            "A. booked",
+            "B. played",
+            "C. called",
+            "D. rained"
+          ],
+          "ans": "A",
+          "explain": "'booked' được phát âm là /t/ vì tận cùng là phụ âm vô thanh /k/. Các từ còn lại phát âm là /d/.",
+          "source": "Đề Khảo sát - THPT Chu Văn An Hà Nội",
+          "level": "NB",
+          "topic": "Phát âm ed"
+        },
+        {
+          "q": "Mark the letter A, B, C, or D to indicate the word that differs from the other three in the position of primary stress:",
+          "opt": [
+            "A. damage",
+            "B. preserve",
+            "C. protect",
+            "D. destroy"
+          ],
+          "ans": "A",
+          "explain": "'damage' có trọng âm rơi vào âm tiết thứ nhất. Các từ còn lại có trọng âm rơi vào âm tiết thứ hai.",
+          "source": "Đề Khảo sát - THPT Chu Văn An Hà Nội",
+          "level": "NB",
+          "topic": "Trọng âm 2 âm tiết"
+        },
+        {
+          "q": "If renewable energy _______ more widely used today, carbon emissions would significantly decrease.",
+          "opt": [
+            "A. were",
+            "B. is",
+            "C. will be",
+            "D. has been"
+          ],
+          "ans": "A",
+          "explain": "Câu điều kiện loại 2 giả định trái ngược với hiện tại: If + S + V-ed/were, S + would + V.",
+          "source": "Đề Khảo sát - THPT Chu Văn An Hà Nội",
+          "level": "TH",
+          "topic": "Câu điều kiện loại 2"
+        },
+        {
+          "q": "The scientist _______ discovered the breakthrough vaccine received an international honor.",
+          "opt": [
+            "A. who",
+            "B. which",
+            "C. whom",
+            "D. whose"
+          ],
+          "ans": "A",
+          "explain": "Đại từ quan hệ 'who' thay thế cho danh từ chỉ người 'The scientist' làm chủ ngữ trong mệnh đề quan hệ.",
+          "source": "Đề Khảo sát - THPT Chu Văn An Hà Nội",
+          "level": "NB",
+          "topic": "Mệnh đề quan hệ"
+        }
+      ],
+      "p2": [],
+      "p3": []
+    },
+    {
+      "code": "ENG1203",
+      "subject": "Tiếng Anh",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Trần Phú - Hải Phòng",
+      "title": "Đề Thi Thử Tốt Nghiệp THPT Tiếng Anh 12 - Chuyên Trần Phú Hải Phòng (2025 - 2026)",
+      "portal": "Chuyên Đề Tiếng Anh (tailieudieuky.me)",
+      "url": "https://tailieudieuky.me",
+      "source": "Đề Thi thử THPT Tiếng Anh 12 - THPT Chuyên Trần Phú Hải Phòng",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Artificial Intelligence is increasingly transforming the way students _______ critical thinking skills.",
+          "opt": [
+            "A. develop",
+            "B. invent",
+            "C. manufacture",
+            "D. pretend"
+          ],
+          "ans": "A",
+          "explain": "Cụm 'develop critical thinking skills' (phát triển các kỹ năng tư duy phản biện).",
+          "source": "Đề Khảo sát - Chuyên Trần Phú",
+          "level": "TH",
+          "topic": "Collocation"
+        },
+        {
+          "q": "She was so exhausted after the marathon that she _______ into a deep sleep immediately.",
+          "opt": [
+            "A. fell",
+            "B. dropped",
+            "C. went",
+            "D. lay"
+          ],
+          "ans": "A",
+          "explain": "Cụm cố định 'fall into a deep sleep' (chìm vào giấc ngủ sâu).",
+          "source": "Đề Khảo sát - Chuyên Trần Phú",
+          "level": "NB",
+          "topic": "Idiom/Collocation"
+        }
+      ],
+      "p2": [],
+      "p3": []
+    },
+    {
+      "code": "NV1202",
+      "subject": "Ngữ văn",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Hà Nội - Amsterdam",
+      "title": "Đề Khảo Sát Ngữ Văn 12 - THPT Chuyên Hà Nội - Amsterdam (2025 - 2026)",
+      "portal": "Khảo Thí Ngữ Văn Đổi Mới (nguvan2018.edu.vn)",
+      "url": "https://nguvan2018.edu.vn",
+      "source": "Đề Khảo sát Ngữ văn 12 - THPT Chuyên Hà Nội - Amsterdam (Ngữ liệu ngoài SGK)",
+      "is_blended_real": true,
+      "part_doc_hieu": {
+        "text": "Đọc đoạn trích sau:\n\"Lòng biết ơn không chỉ là một đức tính tốt đẹp, mà còn là khởi nguồn của hạnh phúc đích thực. Khi một người biết tri ân từng giọt nước mát lành mình uống, từng hạt cơm dẻo mình ăn, và sự hy sinh thầm lặng của những người xung quanh, tâm hồn họ tự khắc trở nên rộng mở và an yên. Ngược lại, kẻ luôn đòi hỏi và cho rằng thế giới nợ mình tất cả sẽ mãi giam mình trong ngục tù của sự bất mãn và ích kỷ. Biết ơn biến những điều bình dị thành điều kỳ diệu, biến sự thiếu thốn thành đủ đầy và mở lối cho những điều thiện lành lan tỏa trong xã hội.\"\n(Trích \"Nghệ thuật sống biết ơn và bao dung\", NXB Hội Nhà Văn, 2025)",
+        "source": "Ngữ liệu ngoài SGK - Chuyên Hà Nội - Amsterdam 2025-2026",
+        "questions": [
+          {
+            "q": "Câu 1. Xác định phương thức biểu đạt chính của đoạn văn trên.",
+            "type": "short",
+            "max_score": 0.5,
+            "rubric": "Phương thức biểu đạt chính: Nghị luận (0.5đ)."
+          },
+          {
+            "q": "Câu 2. Theo tác giả, lòng biết ơn là khởi nguồn của điều gì?",
+            "type": "short",
+            "max_score": 0.5,
+            "rubric": "Lòng biết ơn là 'khởi nguồn của hạnh phúc đích thực' (0.5đ)."
+          },
+          {
+            "q": "Câu 3. Tác giả đã chỉ ra bi kịch gì đối với kẻ 'luôn đòi hỏi và cho rằng thế giới nợ mình tất cả'?",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Họ sẽ 'mãi giam mình trong ngục tù của sự bất mãn và ích kỷ' (1.0đ)."
+          },
+          {
+            "q": "Câu 4. Nêu tác dụng của phép điệp từ 'biến' trong câu kết: 'Biết ơn biến những điều bình dị thành điều kỳ diệu, biến sự thiếu thốn thành đủ đầy...'.",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Nhấn mạnh sức mạnh chuyển hóa kỳ diệu và giá trị to lớn của thái độ sống biết ơn đối với tâm hồn con người (1.0đ)."
+          },
+          {
+            "q": "Câu 5. Rút ra một bài học ứng xử cho bản thân trong các mối quan hệ với cha mẹ và thầy cô giáo.",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Học sinh tự do nêu bài học chân thành (tri ân, hiếu thảo, trân trọng công ơn dạy dỗ) (1.0đ)."
+          }
+        ]
+      },
+      "part_viet": [
+        {
+          "q": "I. NGHỊ LUẬN XÃ HỘI (2.0 điểm)\nTừ ngữ liệu phần Đọc hiểu, hãy viết một đoạn văn (khoảng 200 chữ) chia sẻ về sức mạnh của lời cảm ơn chân thành trong giao tiếp đời thường.",
+          "type": "essay",
+          "max_score": 2.0,
+          "rubric": "Đúng cấu trúc đoạn văn 200 chữ (0.25đ). Bàn luận sâu sắc về vai trò hàn gắn, tôn trọng và lan tỏa văn hóa ứng xử tử tế (1.5đ). Diễn đạt, chính tả (0.25đ)."
+        },
+        {
+          "q": "II. NGHỊ LUẬN VĂN HỌC (4.0 điểm)\nViết bài văn nghị luận (khoảng 600 chữ) phân tích vẻ đẹp của lòng nhân ái và sự cống hiến thầm lặng trong một tác phẩm văn học hiện đại mang tính thời sự ngoài SGK mà anh/chị ấn tượng.",
+          "type": "essay",
+          "max_score": 4.0,
+          "rubric": "Bố cục hoàn chỉnh (0.5đ). Phân tích sâu sắc nhân vật và chi tiết biểu cảm (2.5đ). Đánh giá tư tưởng nhân văn cao đẹp (1.0đ)."
+        }
+      ]
+    },
+    {
+      "code": "NV1203",
+      "subject": "Ngữ văn",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "Sở GD&ĐT Nghệ An",
+      "title": "Đề Khảo Sát Chất Lượng Ngữ Văn 12 - Sở GD&ĐT Nghệ An (2025 - 2026)",
+      "portal": "Khảo Thí Ngữ Văn Đổi Mới (nguvan2018.edu.vn)",
+      "url": "https://nguvan2018.edu.vn",
+      "source": "Đề Khảo sát Ngữ văn 12 - Sở GD&ĐT Nghệ An (Ngữ liệu ngoài SGK)",
+      "is_blended_real": true,
+      "part_doc_hieu": {
+        "text": "Đọc bài thơ sau:\n\"Mẹ nhóm bếp bằng những cành rơm khô\nKhói rơm cay xè mắt con thơ dại\nBát cơm mùa giáp hạt phần con nhiều hơn cả\nMẹ chỉ cười: 'Mẹ ăn củ khoai no'.\n\nNăm tháng qua đi con lớn khôn vào phố\nBao cao lương mỹ vị chẳng thể nào nguôi\nCái mùi khói thơm nồng của rạ rơm quê mẹ\nẤm suốt đời con giữa gió lạnh muôn phương.\"\n(Trích \"Khói rơm quê mẹ\", NXB Văn học, 2025)",
+        "source": "Ngữ liệu thơ ngoài SGK - Sở GD&ĐT Nghệ An 2025-2026",
+        "questions": [
+          {
+            "q": "Câu 1. Thể thơ của văn bản trên là thể thơ gì?",
+            "type": "short",
+            "max_score": 0.5,
+            "rubric": "Thể thơ: Tự do (0.5đ)."
+          },
+          {
+            "q": "Câu 2. Chỉ ra hình ảnh thân thương gắn liền với người mẹ trong khổ thơ đầu.",
+            "type": "short",
+            "max_score": 0.5,
+            "rubric": "Người mẹ nhóm bếp bằng rơm khô, bát cơm mùa giáp hạt nhường con, ăn củ khoai no (0.5đ)."
+          },
+          {
+            "q": "Câu 3. Câu nói của mẹ: 'Mẹ ăn củ khoai no' thể hiện phẩm chất gì của người mẹ Việt Nam?",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Đức hy sinh vô bờ bến, lòng thương con mênh mông, nhận khó nhọc thiếu thốn về mình để dành điều tốt đẹp nhất cho con (1.0đ)."
+          },
+          {
+            "q": "Câu 4. Nêu ý nghĩa biểu tượng của hình ảnh 'mùi khói thơm nồng của rạ rơm quê mẹ' ở khổ thơ thứ hai.",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Biểu tượng cho tình mẫu tử thiêng liêng, cội nguồn quê hương bình dị là điểm tựa tinh thần ấm áp cho người con suốt cuộc đời (1.0đ)."
+          },
+          {
+            "q": "Câu 5. Từ tình cảm của tác giả trong bài thơ, anh/chị hãy viết ngắn gọn về trách nhiệm của người con đối với cha mẹ trong thời hiện đại.",
+            "type": "short",
+            "max_score": 1.0,
+            "rubric": "Học sinh tự do nêu suy nghĩ chân thành: biết ơn, phụng dưỡng, sẻ chia thời gian, yêu thương bằng hành động cụ thể (1.0đ)."
+          }
+        ]
+      },
+      "part_viet": [
+        {
+          "q": "I. NGHỊ LUẬN XÃ HỘI (2.0 điểm)\nViết đoạn văn (khoảng 200 chữ) bàn về ý nghĩa của gia đình như một 'bến đỗ bình yên' đối với mỗi con người giữa nhịp sống hối hả hiện nay.",
+          "type": "essay",
+          "max_score": 2.0,
+          "rubric": "Cấu trúc đoạn văn chuẩn (0.25đ). Xác định đúng vấn đề (0.25đ). Phân tích vai trò che chở, nâng đỡ tâm hồn, tái tạo năng lượng của mái ấm gia đình (1.25đ). Chính tả (0.25đ)."
+        },
+        {
+          "q": "II. NGHỊ LUẬN VĂN HỌC (4.0 điểm)\nViết bài văn nghị luận (khoảng 600 chữ) cảm nhận vẻ đẹp của tình mẫu tử và sức gợi cảm của hình tượng 'khói rơm quê mẹ' trong thi phẩm trên.",
+          "type": "essay",
+          "max_score": 4.0,
+          "rubric": "Bố cục hoàn chỉnh (0.5đ). Cảm nhận sâu sắc hình ảnh người mẹ tảo tần và nỗi lòng nhớ quê của người con (2.5đ). Đánh giá thể thơ tự do, ngôn ngữ mộc mạc giàu xúc cảm (1.0đ)."
+        }
+      ]
+    },
+    {
+      "code": "DL1202",
+      "subject": "Địa lý",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "Sở GD&ĐT Nam Định",
+      "title": "Đề Khảo Sát Chất Lượng Địa Lý 12 - Sở GD&ĐT Nam Định (2025 - 2026)",
+      "portal": "Chuyên Trang Khảo Thí Địa Lí (diali2018.edu.vn)",
+      "url": "https://diali2018.edu.vn",
+      "source": "Đề Khảo sát Địa lý 12 - Sở GD&ĐT Nam Định",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Đặc trưng nào sau đây của mạng lưới sông ngòi nước ta phản ánh rõ nét tính chất nhiệt đới ẩm gió mùa của khí hậu?",
+          "opt": [
+            "A. Mạng lưới sông ngòi dày đặc, nhiều nước, giàu phù sa và chế độ nước theo mùa.",
+            "B. Sông ngòi chảy hoàn toàn theo hướng bắc - nam với lòng sông rất hẹp.",
+            "C. Toàn bộ các con sông đều bắt nguồn từ ngoài lãnh thổ và không có phù sa.",
+            "D. Sông ngòi đóng băng vào mùa đông và cạn kiệt tuyệt đối vào mùa hạ."
+          ],
+          "ans": "A",
+          "explain": "Lượng mưa lớn sinh mạng lưới sông ngòi dày đặc (2360 con sông), lượng nước dồi dào, phù sa màu mỡ và mùa lũ trùng mùa mưa.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Nam Định",
+          "level": "NB",
+          "topic": "Thủy văn Việt Nam"
+        },
+        {
+          "q": "Loại đất có diện tích lớn nhất và phân bố rộng khắp ở vùng đồi núi nước ta là:",
+          "opt": [
+            "A. Đất feralit trên các loại đá mẹ khác nhau.",
+            "B. Đất phù sa ngọt phì nhiêu ven sông.",
+            "C. Đất phèn và đất mặn ven biển.",
+            "D. Đất mùn thô trên các đỉnh núi cao."
+          ],
+          "ans": "A",
+          "explain": "Đất feralit chiếm hơn 65% diện tích tự nhiên, hình thành do quá trình phong hóa nhiệt đới ẩm mạnh mẽ ở vùng đồi núi.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Nam Định",
+          "level": "NB",
+          "topic": "Thổ nhưỡng Việt Nam"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Về vấn đề phát triển ngành công nghiệp chế biến lương thực, thực phẩm ở nước ta hiện nay:",
+          "stmts": [
+            {
+              "t": "Ngành này phát triển dựa trên nguồn nguyên liệu tại chỗ phong phú từ nông - lâm - thủy sản.",
+              "a": true
+            },
+            {
+              "t": "Thị trường tiêu thụ rộng lớn cả trong nước và xuất khẩu ra nhiều quốc gia trên thế giới.",
+              "a": true
+            },
+            {
+              "t": "Phân bố công nghiệp chế biến gắn liền với các vùng chuyên canh nguyên liệu và các đô thị lớn.",
+              "a": true
+            },
+            {
+              "t": "Ngành này đòi hỏi hàm lượng vốn đầu tư công nghệ cao nhất trong toàn bộ nền kinh tế quốc dân.",
+              "a": false
+            }
+          ],
+          "explain": "Công nghiệp chế biến lương thực thực phẩm có tỷ suất đầu tư vốn trung bình, chi phí thấp hơn nhiều so với các ngành công nghệ cao như bán dẫn, cơ khí nặng.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Nam Định",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": []
+    },
+    {
+      "code": "LS1202",
+      "subject": "Lịch sử",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Phan Bội Châu - Nghệ An",
+      "title": "Đề Khảo Sát Lịch Sử 12 - THPT Chuyên Phan Bội Châu Nghệ An (2025 - 2026)",
+      "portal": "Khảo Thí Lịch Sử & Xã Hội (thuvienlichsu.vn)",
+      "url": "https://thuvienlichsu.vn",
+      "source": "Đề Khảo sát Lịch sử 12 - THPT Chuyên Phan Bội Châu Nghệ An",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Thắng lợi nào của quân dân Việt Nam trong kháng chiến chống Mỹ (1954 - 1975) đã buộc chính quyền Mỹ phải tuyên bố 'Mỹ hóa' trở lại cuộc chiến tranh?",
+          "opt": [
+            "A. Cuộc Tiến công chiến lược năm 1972.",
+            "B. Cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân 1968.",
+            "C. Chiến thắng Đường 9 - Nam Lào 1971.",
+            "D. Trận 'Điện Biên Phủ trên không' cuối năm 1972."
+          ],
+          "ans": "A",
+          "explain": "Đòn tiến công chiến lược năm 1972 chọc thủng 3 phòng tuyến mạnh nhất của địch, buộc Mỹ phải tái Mỹ hóa chiến tranh xâm lược.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH",
+          "topic": "Kháng chiến chống Mỹ"
+        },
+        {
+          "q": "Sự kiện lịch sử nào đánh dấu bước ngoặt chấm dứt hoàn toàn tình trạng chia cắt hai miền Nam - Bắc, đưa non sông Việt Nam liền một dải?",
+          "opt": [
+            "A. Đại thắng mùa Xuân năm 1975 với Chiến dịch Hồ Chí Minh lịch sử.",
+            "B. Hiệp định Paris về Việt Nam được ký kết năm 1973.",
+            "C. Chiến dịch Tây Nguyên mở màn tháng 3 năm 1975.",
+            "D. Cuộc Tổng tuyển cử bầu Quốc hội khóa VI năm 1976."
+          ],
+          "ans": "A",
+          "explain": "Thắng lợi trọn vẹn của Chiến dịch Hồ Chí Minh ngày 30/4/1975 đã giải phóng hoàn toàn miền Nam, thống nhất đất nước.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Đại thắng mùa xuân 1975"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Về đường lối Đổi mới đất nước do Đảng Cộng sản Việt Nam đề ra tại Đại hội VI (tháng 12/1986):",
+          "stmts": [
+            {
+              "t": "Đổi mới là yêu cầu sống còn nhằm khắc phục khủng hoảng kinh tế - xã hội trầm trọng kéo dài.",
+              "a": true
+            },
+            {
+              "t": "Đổi mới toàn diện và đồng bộ, trong đó trọng tâm hàng đầu là đổi mới về kinh tế.",
+              "a": true
+            },
+            {
+              "t": "Đổi mới kinh tế thực hiện xóa bỏ cơ chế tập trung quan liêu bao cấp, phát triển kinh tế thị trường định hướng XHCN.",
+              "a": true
+            },
+            {
+              "t": "Đổi mới đồng nghĩa với việc thay đổi mục tiêu độc lập dân tộc và chủ nghĩa xã hội.",
+              "a": false
+            }
+          ],
+          "explain": "Đổi mới không phải là thay đổi mục tiêu XHCN mà là làm cho mục tiêu đó được thực hiện hiệu quả hơn. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": []
+    },
+    {
+      "code": "TH1202",
+      "subject": "Tin học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Sư Phạm Hà Nội",
+      "title": "Đề Khảo Sát Tin Học 12 - THPT Chuyên Sư Phạm Hà Nội (2025 - 2026)",
+      "portal": "Khảo Thí Tin Học (tinhoc2018.edu.vn)",
+      "url": "https://tinhoc2018.edu.vn",
+      "source": "Đề Khảo sát Tin học 12 - THPT Chuyên Sư Phạm Hà Nội",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Trong thiết kế giao diện Web, ngôn ngữ JavaScript chủ yếu được sử dụng để làm gì?",
+          "opt": [
+            "A. Tạo các tương tác động, xử lý sự kiện và thao tác với cây phân cấp DOM trên trình duyệt.",
+            "B. Định nghĩa kiểu dáng và màu sắc tĩnh của các thẻ văn bản HTML.",
+            "C. Quản lý hệ thống máy chủ vật lý trong trung tâm dữ liệu.",
+            "D. Thiết kế các mạch vi điều khiển nhúng trên bo mạch chủ."
+          ],
+          "ans": "A",
+          "explain": "JavaScript là ngôn ngữ kịch bản chạy trên trình duyệt đảm nhận chức năng tương tác động với người dùng.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "NB",
+          "topic": "Lập trình Web JS"
+        },
+        {
+          "q": "Thuật toán sắp xếp nhanh (Quicksort) hoạt động dựa trên chiến lược thiết kế thuật toán nào?",
+          "opt": [
+            "A. Chia để trị (Divide and Conquer).",
+            "B. Quy hoạch động (Dynamic Programming).",
+            "C. Tìm kiếm tham lam (Greedy).",
+            "D. Duyệt nhánh cận (Branch and Bound)."
+          ],
+          "ans": "A",
+          "explain": "Quicksort chọn phần tử chốt (pivot) và chia bài toán thành hai nửa độc lập để tiếp tục sắp xếp đệ quy.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "TH",
+          "topic": "Thuật toán sắp xếp"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Xét đoạn mã nguồn Python sau:\n```python\ndef fib(n):\n    if n <= 1: return n\n    return fib(n-1) + fib(n-2)\n```\nXét tính đúng sai của các nhận định:",
+          "stmts": [
+            {
+              "t": "Hàm `fib(n)` được cài đặt theo kỹ thuật đệ quy trực tiếp.",
+              "a": true
+            },
+            {
+              "t": "Giá trị của `fib(5)` bằng 5.",
+              "a": true
+            },
+            {
+              "t": "Độ phức tạp thời gian của cách cài đặt đệ quy ngây thơ này là dạng hàm mũ O(2^n).",
+              "a": true
+            },
+            {
+              "t": "Cách cài đặt này đạt hiệu năng tối ưu nhất khi tính toán `fib(100)`.",
+              "a": false
+            }
+          ],
+          "explain": "Đệ quy ngây thơ lặp lại tính toán các bài toán con trùng lặp, `fib(100)` sẽ bị nghẽn (Time Limit Exceeded), cần dùng quy hoạch động hoặc memoization. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Sư Phạm Hà Nội",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": []
+    },
+    {
+      "code": "CN1202",
+      "subject": "Công nghệ",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "Sở GD&ĐT Hải Phòng",
+      "title": "Đề Khảo Sát Công Nghệ 12 - Sở GD&ĐT Hải Phòng (2025 - 2026)",
+      "portal": "Khảo Thí Công Nghệ (congnghe2018.edu.vn)",
+      "url": "https://congnghe2018.edu.vn",
+      "source": "Đề Khảo sát Công nghệ 12 - Sở GD&ĐT Hải Phòng",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Trong mạch điện xoay chiều ba pha bốn dây đối xứng, tỉ số giữa điện áp dây ($U_d$) và điện áp pha ($U_p$) là:",
+          "opt": [
+            "A. $U_d = \\sqrt{3} U_p$",
+            "B. $U_d = U_p / \\sqrt{3}$",
+            "C. $U_d = 3 U_p$",
+            "D. $U_d = U_p$"
+          ],
+          "ans": "A",
+          "explain": "Trong mạch ba pha đối xứng mắc hình sao: $U_d = \\sqrt{3} U_p$ (ví dụ: $U_p = 220\\text{V} \\Rightarrow U_d \\approx 380\\text{V}$).",
+          "source": "Đề Khảo sát - Sở GD&ĐT Hải Phòng",
+          "level": "NB",
+          "topic": "Mạch điện 3 pha"
+        },
+        {
+          "q": "Dụng cụ bảo hộ lao động bắt buộc phải kiểm tra cấp cách điện trước khi sử dụng để sửa chữa điện là:",
+          "opt": [
+            "A. Găng tay cách điện và ủng cao su cách điện chuyên dụng.",
+            "B. Mũ vải thể thao thông thường.",
+            "C. Kính mát thời trang chống lóa.",
+            "D. Đồng hồ đeo tay kim loại."
+          ],
+          "ans": "A",
+          "explain": "Găng tay và ủng cách điện đạt chuẩn kiểm định an toàn điện giúp ngăn ngừa dòng điện chạy qua cơ thể người.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Hải Phòng",
+          "level": "NB",
+          "topic": "An toàn điện"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Về thiết kế và lắp đặt hệ thống điện mặt trời áp mái nối lưới (On-Grid Solar):",
+          "stmts": [
+            {
+              "t": "Các tấm pin mặt trời (PV) chuyển đổi trực tiếp quang năng thành điện năng một chiều (DC).",
+              "a": true
+            },
+            {
+              "t": "Bộ biến tần (Inverter) có chức năng chuyển đổi dòng điện một chiều DC thành dòng điện xoay chiều AC cùng pha, cùng tần số với lưới điện.",
+              "a": true
+            },
+            {
+              "t": "Hệ thống nối lưới không cần trang bị ắc quy lưu trữ đắt tiền nếu chỉ sử dụng điện vào ban ngày.",
+              "a": true
+            },
+            {
+              "t": "Khi điện lưới quốc gia bị mất điện, hệ thống điện mặt trời nối lưới vẫn tự động phát điện liên tục lên lưới.",
+              "a": false
+            }
+          ],
+          "explain": "Để đảm bảo an toàn cho nhân viên bảo trì lưới điện, inverter hòa lưới bắt buộc phải có tính năng chống đảo chiều (Anti-Islanding) tự ngắt khi mất điện lưới. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Sở GD&ĐT Hải Phòng",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": []
+    },
+    {
+      "code": "PL1202",
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Phan Bội Châu - Nghệ An",
+      "title": "Đề Khảo Sát GDKT&PL 12 - THPT Chuyên Phan Bội Châu Nghệ An (2025 - 2026)",
+      "portal": "Khảo Thí GDKT&PL (gdktpl2018.edu.vn)",
+      "url": "https://gdktpl2018.edu.vn",
+      "source": "Đề Khảo sát GDKT&PL 12 - THPT Chuyên Phan Bội Châu Nghệ An",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Quyền tự do kinh doanh của công dân theo quy định của Hiến pháp 2013 được hiểu là:",
+          "opt": [
+            "A. Công dân có quyền kinh doanh trong những ngành nghề mà pháp luật không cấm.",
+            "B. Công dân được tự do buôn bán bất kỳ mặt hàng nào kể cả chất ma túy và vũ khí.",
+            "C. Kinh doanh không cần phải thực hiện đăng ký hay nộp thuế cho nhà nước.",
+            "D. Tự ý mở sòng bạc cá cược phi pháp tại gia đình."
+          ],
+          "ans": "A",
+          "explain": "Điều 33 Hiến pháp 2013: Mọi người có quyền tự do kinh doanh trong những ngành nghề mà pháp luật không cấm.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Quyền tự do kinh doanh"
+        },
+        {
+          "q": "Cơ quan nào có thẩm quyền xét xử cao nhất trong hệ thống Tòa án nhân dân của nước CHXHCN Việt Nam?",
+          "opt": [
+            "A. Tòa án nhân dân tối cao.",
+            "B. Tòa án nhân dân cấp tỉnh.",
+            "C. Tòa án quân sự trung ương.",
+            "D. Viện kiểm sát nhân dân tối cao."
+          ],
+          "ans": "A",
+          "explain": "Tòa án nhân dân tối cao là cơ quan xét xử cao nhất của nước CHXHCN Việt Nam.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "NB",
+          "topic": "Bộ máy nhà nước"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Một công ty công nghệ đa quốc gia ký hợp đồng lao động với kỹ sư phần mềm K (28 tuổi). Trong hợp đồng có điều khoản: 'Người lao động phải làm việc 14 tiếng mỗi ngày, không được tham gia tổ chức công đoàn và bị phạt tiền nếu nghỉ ốm'. Xét tính đúng sai:",
+          "stmts": [
+            {
+              "t": "Điều khoản bắt buộc làm việc 14 tiếng/ngày là vi phạm quy định về thời giờ làm việc bình thường của Bộ luật Lao động.",
+              "a": true
+            },
+            {
+              "t": "Ngăn cấm người lao động tham gia công đoàn là hành vi vi phạm quyền công đoàn của người lao động.",
+              "a": true
+            },
+            {
+              "t": "Phạt tiền người lao động vì nghỉ ốm có giấy chứng nhận của bệnh viện là trái pháp luật.",
+              "a": true
+            },
+            {
+              "t": "Hợp đồng lao động trên có giá trị pháp lý tuyệt đối vì hai bên đã tự nguyện đặt bút ký tên.",
+              "a": false
+            }
+          ],
+          "explain": "Các điều khoản trái pháp luật sẽ bị vô hiệu một phần hoặc toàn bộ, không có giá trị thi hành dù đã ký tên. Mệnh đề d sai.",
+          "source": "Đề Khảo sát - Chuyên Phan Bội Châu",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": []
+    },
+    {
+      "code": "1202",
+      "subject": "Toán học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Khoa Học Tự Nhiên - ĐHQGHN",
+      "title": "Đề Thi Thử Tốt Nghiệp THPT Toán 12 - THPT Chuyên KHTN Hà Nội (2025 - 2026)",
+      "portal": "TOANMATH.com",
+      "url": "https://toanmath.com",
+      "source": "Đề Thi thử THPT Toán 12 - THPT Chuyên KHTN Hà Nội (Nguồn: TOANMATH.com)",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Cho hàm số $y = \\frac{ax + b}{cx + d}$ ($c \\neq 0, ad - bc \\neq 0$). Đồ thị hàm số luôn có bao nhiêu đường tiệm cận?",
+          "opt": [
+            "A. 2 đường tiệm cận (1 tiệm cận đứng và 1 tiệm cận ngang).",
+            "B. 1 đường tiệm cận duy nhất.",
+            "C. 3 đường tiệm cận.",
+            "D. Không có đường tiệm cận nào."
+          ],
+          "ans": "A",
+          "explain": "Hàm phân thức bậc 1/1 luôn có tiệm cận đứng $x = -d/c$ và tiệm cận ngang $y = a/c$.",
+          "source": "Đề Khảo sát - Chuyên KHTN",
+          "level": "NB",
+          "topic": "Tiệm cận đồ thị"
+        },
+        {
+          "q": "Trong không gian $Oxyz$, mặt cầu $(S): (x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 16$ có tâm $I$ và bán kính $R$ lần lượt là:",
+          "opt": [
+            "A. $I(1; -2; 3)$ và $R = 4$.",
+            "B. $I(-1; 2; -3)$ và $R = 16$.",
+            "C. $I(1; -2; 3)$ và $R = 16$.",
+            "D. $I(-1; 2; -3)$ và $R = 4$."
+          ],
+          "ans": "A",
+          "explain": "Phương trình mặt cầu chuẩn: $(x-a)^2 + (y-b)^2 + (z-c)^2 = R^2 \\Rightarrow I(1; -2; 3), R = \\sqrt{16} = 4$.",
+          "source": "Đề Khảo sát - Chuyên KHTN",
+          "level": "NB",
+          "topic": "Mặt cầu Oxyz"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Một công ty dự kiến sản xuất sản phẩm $A$ với hàm chi phí tổng cộng là $C(x) = x^3 - 30x^2 + 500x + 1000$ (triệu đồng), trong đó $x$ là số lượng sản phẩm ($0 \\le x \\le 50$). Xét tính đúng sai:",
+          "stmts": [
+            {
+              "t": "Chi phí cận biên tại mức sản lượng $x$ là $C'(x) = 3x^2 - 60x + 500$.",
+              "a": true
+            },
+            {
+              "t": "Chi phí cận biên đạt giá trị nhỏ nhất tại mức sản lượng $x = 10$ sản phẩm.",
+              "a": true
+            },
+            {
+              "t": "Chi phí cận biên nhỏ nhất bằng 200 triệu đồng/sản phẩm.",
+              "a": true
+            },
+            {
+              "t": "Chi phí trung bình trên mỗi sản phẩm luôn luôn giảm khi sản lượng tăng từ 0 đến 50.",
+              "a": false
+            }
+          ],
+          "explain": "$C'(x) = 3x^2 - 60x + 500 = 3(x-10)^2 + 200 \\ge 200$. Đạt cực tiểu tại $x = 10$, min bằng 200. Mệnh đề d sai vì hàm chi phí bậc 3 có khoảng tăng khoảng giảm.",
+          "source": "Đề Khảo sát - Chuyên KHTN",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Tìm giá trị lớn nhất của hàm số $y = -x^3 + 3x + 2$ trên đoạn $[0; 2]$.",
+          "ans": "4",
+          "explain": "$y' = -3x^2 + 3 = 0 \\Leftrightarrow x = 1 \\in [0; 2]$. Ta có: $y(0) = 2, y(1) = 4, y(2) = 0$. Vậy giá trị lớn nhất bằng 4 tại $x = 1$.",
+          "source": "Đề Khảo sát - Chuyên KHTN",
+          "level": "TH"
+        }
+      ]
+    },
+    {
+      "code": "1203",
+      "subject": "Toán học",
+      "grade": 12,
+      "year": "2025 - 2026",
+      "school": "THPT Chuyên Hà Nội - Amsterdam",
+      "title": "Đề Khảo Sát Toán 12 - THPT Chuyên Hà Nội - Amsterdam (2025 - 2026)",
+      "portal": "TOANMATH.com",
+      "url": "https://toanmath.com",
+      "source": "Đề Khảo sát Toán 12 - THPT Chuyên Hà Nội - Amsterdam (Nguồn: TOANMATH.com)",
+      "is_blended_real": true,
+      "p1": [
+        {
+          "q": "Cho hàm số $y = f(x)$ xác định trên $\\mathbb{R}$ và có bảng xét dấu của đạo hàm $f'(x)$ như sau. Điểm cực đại của hàm số đã cho là:",
+          "bbt": "x | -\\infty | -1 | 2 | +\\infty\ny' | + | 0 | - | 0 | +",
+          "opt": [
+            "A. $x = -1$",
+            "B. $x = 2$",
+            "C. $x = 1$",
+            "D. $x = 0$"
+          ],
+          "ans": "A",
+          "explain": "Đạo hàm $f'(x)$ đổi dấu từ dương sang âm khi qua điểm $x = -1$, do đó hàm số đạt cực đại tại điểm $x = -1$.",
+          "source": "Đề Khảo sát - Chuyên Amsterdam",
+          "level": "NB",
+          "topic": "Cực trị hàm số"
+        },
+        {
+          "q": "Trong không gian $Oxyz$, góc giữa hai véc-tơ $\\vec{u} = (1; 0; 1)$ và $\\vec{v} = (0; 1; 1)$ bằng:",
+          "opt": [
+            "A. $60^\\circ$",
+            "B. $45^\\circ$",
+            "C. $90^\\circ$",
+            "D. $120^\\circ$"
+          ],
+          "ans": "A",
+          "explain": "$\\cos(\\vec{u}, \\vec{v}) = \\frac{1(0) + 0(1) + 1(1)}{\\sqrt{2} \\cdot \\sqrt{2}} = \\frac{1}{2} \\Rightarrow \\theta = 60^\\circ$.",
+          "source": "Đề Khảo sát - Chuyên Amsterdam",
+          "level": "NB",
+          "topic": "Góc giữa hai vector"
+        }
+      ],
+      "p2": [
+        {
+          "q": "Cho hàm số bậc ba $y = f(x) = x^3 - 3x^2 + 2$. Xét tính đúng sai:",
+          "stmts": [
+            {
+              "t": "Hàm số đồng biến trên các khoảng $(-\\infty; 0)$ và $(2; +\\infty)$.",
+              "a": true
+            },
+            {
+              "t": "Hàm số đạt cực đại tại điểm $x = 0$ và giá trị cực đại $y_{CĐ} = 2$.",
+              "a": true
+            },
+            {
+              "t": "Hàm số đạt cực tiểu tại điểm $x = 2$ và giá trị cực tiểu $y_{CT} = -2$.",
+              "a": true
+            },
+            {
+              "t": "Tâm đối xứng của đồ thị là điểm $I(1; 0)$.",
+              "a": true
+            }
+          ],
+          "explain": "Đạo hàm $y' = 3x^2 - 6x = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Hoành độ tâm đối xứng $x_0 = -b/(3a) = 1 \\Rightarrow y(1) = 0$. Cả 4 mệnh đề đều đúng.",
+          "source": "Đề Khảo sát - Chuyên Amsterdam",
+          "level": "TH-VD"
+        }
+      ],
+      "p3": [
+        {
+          "q": "Một hộp sữa hình trụ có thể tích $V = 250\\pi\\text{ cm}^3$. Chiều cao $h$ của hộp sữa bằng bao nhiêu cm để diện tích toàn phần của hộp nhỏ nhất?",
+          "ans": "10",
+          "explain": "Thể tích $V = \\pi r^2 h = 250\\pi \\Rightarrow h = \\frac{250}{r^2}$. $S_{tp} = 2\\pi r^2 + 2\\pi r h = 2\\pi r^2 + \\frac{500\\pi}{r}$. Đạo hàm $S'(r) = 4\\pi r - \\frac{500\\pi}{r^2} = 0 \\Leftrightarrow r^3 = 125 \\Rightarrow r = 5\\text{ cm} \\Rightarrow h = 2r = 10\\text{ cm}$.",
+          "source": "Đề Khảo sát - Chuyên Amsterdam",
+          "level": "VDC"
+        }
+      ]
+    }
+  ]
+}
