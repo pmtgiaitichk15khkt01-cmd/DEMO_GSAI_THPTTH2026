@@ -45,5 +45,9 @@ class TestServices(unittest.TestCase):
         toan_html = render_subject_exam_matrix_spec("Toán học", 12)
         self.assertIn("Toán", toan_html)
 
+    def test_mermaid_renderer_callable(self):
+        from services.mermaid_renderer import render_mermaid
+        self.assertTrue(callable(render_mermaid))
+
 if __name__ == '__main__':
     unittest.main()
