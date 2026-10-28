@@ -52,6 +52,14 @@ import base64
 
 import streamlit.components.v1 as components
 
+def render_html_iframe(html_code: str, height: int = 500, scrolling: bool = False):
+    """Embed HTML tương thích đa phiên bản Streamlit (ưu tiên st.iframe, fallback components.html)."""
+    if hasattr(st, "iframe"):
+        st.iframe(html_code, height=height)
+    else:
+        components.html(html_code, height=height, scrolling=scrolling)
+
+
 from google import genai
 
 from google.genai import types
@@ -3064,7 +3072,7 @@ def render_exam_clock():
 
     """
 
-    components.html(clock_html, height=65)
+    render_html_iframe(clock_html, height=65)
 
 
 
@@ -6546,7 +6554,7 @@ for idx_st, (col_st, label_st) in enumerate(zip([nav_t1, nav_t2, nav_t3, nav_t4]
         is_cur_active = (st.session_state.selected_station == label_st)
         btn_type = "primary" if is_cur_active else "secondary"
         btn_title = f"⭐ {label_st}" if is_cur_active else label_st
-        if st.button(btn_title, key=f"top_nav_station_{idx_st}", type=btn_type, use_container_width=True):
+        if st.button(btn_title, key=f"top_nav_station_{idx_st}", type=btn_type, width="stretch"):
             if st.session_state.selected_station != label_st:
                 st.session_state.selected_station = label_st
                 st.session_state.sb_station_radio_selector = label_st
@@ -7096,7 +7104,7 @@ def create_pedagogical_tts_component(raw_text: str, subject_name: str, comp_key:
     </script>
     """
     comp_height = 135 if audio_data else 85
-    components.html(tts_ui_html, height=comp_height)
+    render_html_iframe(tts_ui_html, height=comp_height)
 
 
 
@@ -8160,7 +8168,7 @@ def render_parent_progress_report(current_student_nm, current_subj, current_gr, 
 
         """
 
-        components.html(report_html, height=720, scrolling=True)
+        render_html_iframe(report_html, height=720, scrolling=True)
 
 
 
@@ -8168,7 +8176,7 @@ def render_parent_progress_report(current_student_nm, current_subj, current_gr, 
 
         with col_p1:
 
-            components.html("""
+            render_html_iframe("""
 
             <div style="text-align: center; margin-top: 10px;">
 
@@ -9560,7 +9568,7 @@ Khối 4 (Cạm bẫy thực tế & Mẹo thi):
                                 data=svg_color.encode('utf-8'),
                                 file_name=f"Infographic_{t1_indexing_data['index_code']}_Color.svg",
                                 mime="image/svg+xml",
-                                use_container_width=True,
+                                width="stretch",
                                 key=f"btn_dl_svg_col_{t1_indexing_data['index_code']}"
                             )
                         with col_dl2:
@@ -9569,7 +9577,7 @@ Khối 4 (Cạm bẫy thực tế & Mẹo thi):
                                 data=svg_mono.encode('utf-8'),
                                 file_name=f"Infographic_{t1_indexing_data['index_code']}_Monochrome.svg",
                                 mime="image/svg+xml",
-                                use_container_width=True,
+                                width="stretch",
                                 key=f"btn_dl_svg_mono_{t1_indexing_data['index_code']}"
                             )
                 except Exception as _e_infog:
@@ -11218,7 +11226,7 @@ if selected_station == station_labels[1]:
         }})();
         </script>
         """
-        components.html(t2_mic_html, height=42)
+        render_html_iframe(t2_mic_html, height=42)
 
         if q := st.chat_input("Em chưa hiểu chỗ nào, hãy hỏi Thầy nhé..."):
             st.session_state.tram2_count += 1
@@ -12414,7 +12422,7 @@ if selected_station == station_labels[2]:
                     col_h1, col_h2, col_h3 = st.columns([1, 2.2, 1])
                     with col_h2:
                         st.caption("✨ **Biểu đồ tần số ghép nhóm Hologram trực quan:**")
-                        st.plotly_chart(fig_holo, use_container_width=True, key=f"mslgn_holo_{q_id}" if q_id else None)
+                        st.plotly_chart(fig_holo, width="stretch", key=f"mslgn_holo_{q_id}" if q_id else None)
                 except Exception:
                     pass
 
@@ -13166,7 +13174,7 @@ if selected_station == station_labels[2]:
 
                         st.caption("🔄 **Hình học 3D tương tác:** Bấm giữ chuột để **XOAY 360°**, lăn chuột phóng to/thu nhỏ!")
 
-                        st.plotly_chart(fig_mini, use_container_width=False, key=f"mini_chart_{q_id}" if q_id else None)
+                        st.plotly_chart(fig_mini, width="content", key=f"mini_chart_{q_id}" if q_id else None)
 
                 else:
 
@@ -13476,7 +13484,7 @@ if selected_station == station_labels[2]:
 
                 st.markdown(f"##### 📄 Khung Xem Trước Trực Quan Bản In Giấy A4 ({'🏛️ Mẫu 1: Chuẩn Khảo Thí Truyền Thống' if template_style == 'form1' else '📘 Mẫu 2: Chuẩn Sư Phạm Hiện Đại'}):")
 
-                components.html(print_html, height=720, scrolling=True)
+                render_html_iframe(print_html, height=720, scrolling=True)
 
 
 
@@ -15849,7 +15857,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
 
         """
 
-        components.html(draft_script, height=0)
+        render_html_iframe(draft_script, height=0)
 
 
 
@@ -16062,7 +16070,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
 
         ex_code = str(exam.get('code', st.session_state.get('exam_code', '1011')))
 
-        components.html(f"""<script>
+        render_html_iframe(f"""<script>
         try {{ localStorage.removeItem('gsai_draft_{ex_code}'); }} catch(e){{}}
         try {{
             if (window.parent) {{
@@ -16496,7 +16504,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
             with col_c1:
                 q3_input = st.text_input("Hỏi Thầy về câu em làm sai hoặc chưa rõ trong bài thi...", placeholder="Nhập câu hỏi tại đây để Thầy giải thích gợi mở tư duy (Nhấn Enter để gửi)...", label_visibility="collapsed")
             with col_c2:
-                btn_send_socratic = st.form_submit_button("💬 Gửi hỏi Thầy", type="primary", use_container_width=True)
+                btn_send_socratic = st.form_submit_button("💬 Gửi hỏi Thầy", type="primary", width="stretch")
 
         if btn_send_socratic and q3_input.strip():
             q3 = q3_input.strip()
@@ -16615,7 +16623,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
         st.markdown("---")
         col_new1, col_new2, col_new3 = st.columns([1, 2, 1])
         with col_new2:
-            if st.button("🔄 Làm đề khảo thí mới", type="primary", use_container_width=True, key="btn_do_new_exam_bottom"):
+            if st.button("🔄 Làm đề khảo thí mới", type="primary", width="stretch", key="btn_do_new_exam_bottom"):
                 st.session_state.exam_state = "config"
                 st.session_state.exam_data = None
                 st.session_state.exam_answers = {}
@@ -16658,7 +16666,7 @@ if selected_station == station_labels[3]:
 
                 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
 
-                btn_unlock = st.form_submit_button("🔓 Mở khóa", type="primary", use_container_width=True)
+                btn_unlock = st.form_submit_button("🔓 Mở khóa", type="primary", width="stretch")
 
             if btn_unlock:
 
@@ -17072,7 +17080,7 @@ if selected_station == station_labels[3]:
                         "Khuyến nghị khảo thí": it["recommendation"]
                     } for it in item_details])
 
-                    st.dataframe(df_items, use_container_width=True, height=260)
+                    st.dataframe(df_items, width="stretch", height=260)
                     st.download_button(
                         "📥 Tải Báo Cáo Đo Lường Khảo Thí (CSV Item Analysis)",
                         df_items.to_csv(index=False).encode("utf-8-sig"),
