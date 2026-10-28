@@ -15,6 +15,7 @@ Chuyển đổi 1-chạm toàn bộ đề thi sang định dạng chuẩn nhận
 
 import re
 import io
+from qa_runtime import normalize_bool
 from typing import Dict, Any, List, Optional
 
 
@@ -58,7 +59,7 @@ def export_exam_to_azota_text(exam: Dict[str, Any]) -> str:
         return "Không có dữ liệu đề thi."
 
     title = exam.get("title") or f"ĐỀ THI {exam.get('subject', 'TOÁN HỌC').upper()} - CHUẨN BỘ GD&ĐT"
-    school = exam.get("school", "TRƯỜNG THPT TÂN HIỆP & TRUNG TÂM THIỆN NHÂN")
+    school = exam.get("school", "TRƯỜNG THPT TÂN HIỆP (AN GIANG) • THẦY PHAN MINH TRÍ")
     year = exam.get("year", "2025 - 2026")
     subject = exam.get("subject", "Toán học")
 
@@ -66,7 +67,7 @@ def export_exam_to_azota_text(exam: Dict[str, Any]) -> str:
     lines.append(f"{'='*60}")
     lines.append(f"{school.upper()}")
     lines.append(f"{title.upper()} ({year})")
-    lines.append(f"Môn thi: {subject} | Thời gian làm bài: 90 phút (Không kể thời gian phát đề)")
+    lines.append(f"Môn thi: {subject} | Thời gian làm bài: {exam.get('duration', exam.get('duration_minutes', 90))} phút (Không kể thời gian phát đề)")
     lines.append(f"{'='*60}\n")
 
     p1 = exam.get("p1", [])
@@ -134,8 +135,8 @@ def export_exam_to_azota_text(exam: Dict[str, Any]) -> str:
                     t_text = f"{prefix}) {t_text}"
                 lines.append(t_text)
 
-                expected_bool = stmt.get("a") if "a" in stmt else stmt.get("ans", True)
-                ans_char = "Đ" if expected_bool else "S"
+                expected_bool = normalize_bool(stmt.get("a") if "a" in stmt else stmt.get("ans"))
+                ans_char = "Đ" if expected_bool is True else "S" if expected_bool is False else "CHƯA DUYỆT"
                 stmt_ans_list.append(f"{prefix}) {ans_char}")
 
             lines.append("")
@@ -183,7 +184,7 @@ def export_exam_to_azota_docx(exam: Dict[str, Any]) -> io.BytesIO:
     """
     try:
         from docx import Document
-        from docx.shared import Pt, Inches, RGBColor
+        from docx.shared import Pt, Inches, RGBColor, Mm
         from docx.enum.text import WD_ALIGN_PARAGRAPH
     except ImportError:
         # Fallback nếu thiếu thư viện docx
@@ -197,6 +198,8 @@ def export_exam_to_azota_docx(exam: Dict[str, Any]) -> io.BytesIO:
 
     # Thiết lập lề A4
     for section in doc.sections:
+        section.page_width = Mm(210)
+        section.page_height = Mm(297)
         section.top_margin = Inches(0.7)
         section.bottom_margin = Inches(0.7)
         section.left_margin = Inches(0.8)
@@ -204,7 +207,7 @@ def export_exam_to_azota_docx(exam: Dict[str, Any]) -> io.BytesIO:
 
     # Tiêu đề
     title = exam.get("title") or f"ĐỀ THI {exam.get('subject', 'TOÁN HỌC').upper()} - CHUẨN BỘ GD&ĐT"
-    school = exam.get("school", "TRƯỜNG THPT TÂN HIỆP & TRUNG TÂM THIỆN NHÂN")
+    school = exam.get("school", "TRƯỜNG THPT TÂN HIỆP (AN GIANG) • THẦY PHAN MINH TRÍ")
     
     p_head = doc.add_paragraph()
     p_head.alignment = WD_ALIGN_PARAGRAPH.CENTER

@@ -59,7 +59,7 @@ def compute_cronbach_alpha(item_matrix: np.ndarray) -> Dict[str, Any]:
         }
 
     alpha = (k_items / (k_items - 1)) * (1.0 - (sum_item_variances / total_variance))
-    alpha = float(np.clip(alpha, 0.0, 1.0))
+    alpha = float(alpha)
 
     # Đánh giá theo thang đo George & Mallery (2003) & ETS
     if alpha >= 0.90:
@@ -204,7 +204,7 @@ def extract_item_matrix_from_attempts(attempts_list: List[Dict[str, Any]]) -> Tu
             ans_dict = ans_raw
         else:
             ans_dict = {}
-        
+
         # Lọc các key trắc nghiệm (p1, p2, p3)
         valid_keys = {k: v for k, v in ans_dict.items() if any(k.startswith(p) for p in ["p1_", "p2_", "p3_"])}
         all_q_keys.update(valid_keys.keys())
@@ -244,10 +244,10 @@ def generate_benchmark_psychometric_sample(n_students: int = 35, k_items: int = 
     dựa trên mô hình Logistic 2 tham số (2PL IRT) để Hội đồng KHKT thẩm định trực tiếp ngay cả khi chưa thi.
     """
     rng = np.random.RandomState(seed)
-    
+
     # Năng lực học sinh θ_j phân phối chuẩn N(0, 1)
     thetas = rng.normal(0.0, 1.0, n_students)
-    
+
     # Tham số câu hỏi: Độ khó b_i (-2 đến +2), Độ phân biệt a_i (0.8 đến 2.2)
     b_params = np.linspace(-1.8, 1.8, k_items)
     a_params = rng.uniform(0.9, 2.1, k_items)
