@@ -92,8 +92,20 @@ class DatabaseManager:
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
 
+                CREATE TABLE IF NOT EXISTS outbox_events (
+                    id TEXT PRIMARY KEY,
+                    table_name VARCHAR(50) NOT NULL,
+                    payload_json TEXT NOT NULL,
+                    status VARCHAR(20) DEFAULT 'pending',
+                    retry_count INT DEFAULT 0,
+                    last_error TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                );
+
                 CREATE INDEX IF NOT EXISTS idx_exam_study ON exam_attempts (subject, grade_level, phase, student_id);
                 CREATE INDEX IF NOT EXISTS idx_diagnostic_search ON diagnostic_logs (subject, grade_level, topic);
+                CREATE INDEX IF NOT EXISTS idx_outbox_queue ON outbox_events (status, retry_count, created_at);
                 """)
                 conn.commit()
         except Exception as e:
@@ -130,6 +142,105 @@ class DatabaseManager:
         if not ok:
             logging.warning("Chưa đồng bộ được sự kiện; bản ghi cục bộ vẫn được giữ.")
         return ok
+
+    def _enqueue_outbox(self, table_name: str, payload: dict) -> str:
+        """Lưu sự kiện vào bảng Outbox cục bộ để đảm bảo an toàn tuyệt đối, không thất thoát dữ liệu."""
+        event_id = str(payload.get("id") or uuid.uuid4())
+        try:
+            with self._get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                INSERT OR IGNORE INTO outbox_events (id, table_name, payload_json, status, retry_count)
+                VALUES (?, ?, ?, 'pending', 0)
+                """, (event_id, table_name, json.dumps(payload, ensure_ascii=False)))
+                conn.commit()
+            return event_id
+        except Exception as e:
+            logging.error("Lỗi enqueue outbox: %s", e)
+            return event_id
+
+    def _mark_outbox_status(self, event_id: str, status: str, error: str = ""):
+        """Cập nhật trạng thái xử lý sự kiện trong Outbox."""
+        try:
+            with self._get_connection() as conn:
+                cursor = conn.cursor()
+                if status == "completed":
+                    cursor.execute("""
+                    UPDATE outbox_events
+                    SET status = 'completed', updated_at = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                    """, (event_id,))
+                else:
+                    cursor.execute("""
+                    UPDATE outbox_events
+                    SET status = ?, retry_count = retry_count + 1, last_error = ?, updated_at = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                    """, (status, str(error or ""), event_id))
+                conn.commit()
+        except Exception as e:
+            logging.error("Lỗi cập nhật outbox: %s", e)
+
+    def flush_outbox(self, supabase_url: str, supabase_key: str, max_batch: int = 50) -> int:
+        """
+        Quét và đồng bộ các sự kiện Outbox đang chờ (status='pending') lên Supabase kèm retry.
+        Trả về số lượng bản ghi đồng bộ thành công.
+        """
+        if not supabase_url or not supabase_key:
+            return 0
+        synced_count = 0
+        try:
+            with self._get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                SELECT id, table_name, payload_json, retry_count
+                FROM outbox_events
+                WHERE status = 'pending' AND retry_count < 5
+                ORDER BY created_at ASC
+                LIMIT ?
+                """, (max_batch,))
+                rows = [dict(r) for r in cursor.fetchall()]
+
+            for r in rows:
+                event_id = r["id"]
+                table_name = r["table_name"]
+                try:
+                    payload = json.loads(r["payload_json"])
+                except Exception as ex:
+                    self._mark_outbox_status(event_id, "failed", f"JSON error: {ex}")
+                    continue
+
+                success = self._sync_parent_and_event(table_name, payload, supabase_url, supabase_key)
+                if success:
+                    self._mark_outbox_status(event_id, "completed")
+                    synced_count += 1
+                else:
+                    new_retry = r["retry_count"] + 1
+                    status = "failed" if new_retry >= 5 else "pending"
+                    self._mark_outbox_status(event_id, status, "Supabase HTTP sync failure")
+        except Exception as e:
+            logging.error("Lỗi flush outbox: %s", e)
+        return synced_count
+
+    def get_outbox_stats(self) -> dict:
+        """Thống kê sự kiện trong Outbox phục vụ Audit & telemetry."""
+        try:
+            with self._get_connection() as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                SELECT status, COUNT(*) AS count
+                FROM outbox_events
+                GROUP BY status
+                """)
+                stats = {"pending": 0, "completed": 0, "failed": 0, "total": 0}
+                for r in cursor.fetchall():
+                    s = r["status"]
+                    if s in stats:
+                        stats[s] = r["count"]
+                    stats["total"] += r["count"]
+                return stats
+        except Exception as e:
+            logging.error("Lỗi lấy thống kê outbox: %s", e)
+            return {"pending": 0, "completed": 0, "failed": 0, "total": 0}
 
     def save_student_if_not_exists(self, student_id: str, student_name: str, grade_level: int):
         try:
@@ -186,25 +297,28 @@ class DatabaseManager:
                 if cursor.rowcount == 0:
                     return True
 
-            # Đồng bộ đám mây bất đồng bộ nếu có cấu hình (Payload khớp 100% schema.sql)
+            supa_payload = {
+                "id": attempt_id,
+                "student_id": student_id,
+                "student_name": entry.get("name", "Ẩn danh"),
+                "grade_level": grade_num,
+                "subject": entry.get("subject", "Toán học"),
+                "exam_code": str(entry.get("code", "")),
+                "score": float(entry.get("score", 0.0)),
+                "phase": str(entry.get("phase", "practice")),
+                "duration_seconds": int(entry.get("duration_seconds", 0)),
+                "grading_status": str(entry.get("grading_status", "auto_graded")),
+                "answers_json": answers_str,
+                "submitted_at": submitted_time
+            }
+            # Lưu sự kiện vào Outbox bền vững (Offline-first resilient outbox)
+            self._enqueue_outbox("exam_attempts", supa_payload)
+
+            # Đồng bộ đám mây bất đồng bộ kèm cơ chế Retry
             if supabase_url and supabase_key:
-                supa_payload = {
-                    "id": attempt_id,
-                    "student_id": student_id,
-                    "student_name": entry.get("name", "Ẩn danh"),
-                    "grade_level": grade_num,
-                    "subject": entry.get("subject", "Toán học"),
-                    "exam_code": str(entry.get("code", "")),
-                    "score": float(entry.get("score", 0.0)),
-                    "phase": str(entry.get("phase", "practice")),
-                    "duration_seconds": int(entry.get("duration_seconds", 0)),
-                    "grading_status": str(entry.get("grading_status", "auto_graded")),
-                    "answers_json": answers_str,
-                    "submitted_at": submitted_time
-                }
                 threading.Thread(
-                    target=self._sync_parent_and_event,
-                    args=("exam_attempts", supa_payload, supabase_url, supabase_key),
+                    target=self.flush_outbox,
+                    args=(supabase_url, supabase_key),
                     daemon=True
                 ).start()
 
@@ -249,22 +363,24 @@ class DatabaseManager:
                 ))
                 conn.commit()
 
+            supa_diag_payload = {
+                "id": diag_id,
+                "student_id": student_id,
+                "student_name": entry.get("name", "Ẩn danh"),
+                "grade_level": grade_num,
+                "subject": entry.get("subject", "Toán học"),
+                "topic": entry.get("topic", ""),
+                "error_type": entry.get("error_type", ""),
+                "evaluation": entry.get("evaluation", ""),
+                "radar_scores_json": scores_str,
+                "created_at": diag_time
+            }
+            self._enqueue_outbox("diagnostic_logs", supa_diag_payload)
+
             if supabase_url and supabase_key:
-                supa_diag_payload = {
-                    "id": diag_id,
-                    "student_id": student_id,
-                    "student_name": entry.get("name", "Ẩn danh"),
-                    "grade_level": grade_num,
-                    "subject": entry.get("subject", "Toán học"),
-                    "topic": entry.get("topic", ""),
-                    "error_type": entry.get("error_type", ""),
-                    "evaluation": entry.get("evaluation", ""),
-                    "radar_scores_json": scores_str,
-                    "created_at": diag_time
-                }
                 threading.Thread(
-                    target=self._sync_parent_and_event,
-                    args=("diagnostic_logs", supa_diag_payload, supabase_url, supabase_key),
+                    target=self.flush_outbox,
+                    args=(supabase_url, supabase_key),
                     daemon=True
                 ).start()
 
@@ -296,21 +412,23 @@ class DatabaseManager:
                     entry.get("time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
                 ))
                 conn.commit()
+            feedback_time = entry.get("time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            supa_fb_payload = {
+                "id": str(entry.get("event_id")),
+                "student_name": entry.get("name", "Ẩn danh"),
+                "grade_level": grade_num,
+                "subject": entry.get("subject", ""),
+                "category": entry.get("category", ""),
+                "rating": int(entry.get("rating", 5)),
+                "detail": entry.get("detail", ""),
+                "created_at": feedback_time
+            }
+            self._enqueue_outbox("user_feedbacks", supa_fb_payload)
+
             if supabase_url and supabase_key:
-                feedback_time = entry.get("time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-                supa_fb_payload = {
-                    "id": str(entry.get("event_id")),
-                    "student_name": entry.get("name", "Ẩn danh"),
-                    "grade_level": grade_num,
-                    "subject": entry.get("subject", ""),
-                    "category": entry.get("category", ""),
-                    "rating": int(entry.get("rating", 5)),
-                    "detail": entry.get("detail", ""),
-                    "created_at": feedback_time
-                }
                 threading.Thread(
-                    target=self._sync_parent_and_event,
-                    args=("user_feedbacks", supa_fb_payload, supabase_url, supabase_key),
+                    target=self.flush_outbox,
+                    args=(supabase_url, supabase_key),
                     daemon=True
                 ).start()
 

@@ -175,6 +175,30 @@ class TestDatabaseEvents(unittest.TestCase):
             self.db.save_exam_attempt({"event_id": event_id, "student_id": "qa", "grade": 12, "score": 5, "phase": phase, "subject": "Toán học"})
         self.assertEqual(self.db.get_paired_exam_data("Toán học", 12), [])
 
+    def test_outbox_offline_enqueued_and_stats(self):
+        self.db.save_exam_attempt({"event_id": "ob-1", "student_id": "std-ob", "grade": 12, "score": 8.0, "subject": "Toán học"})
+        self.db.save_diagnostic({"event_id": "ob-2", "student_id": "std-ob", "grade": 12, "subject": "Toán học", "topic": "Khảo sát hàm số"})
+        self.db.save_feedback({"event_id": "ob-3", "grade": 12, "subject": "Toán học", "category": "Góp ý giao diện", "detail": "Rất mượt"})
+        stats = self.db.get_outbox_stats()
+        self.assertEqual(stats["pending"], 3)
+        self.assertEqual(stats["total"], 3)
+        self.assertEqual(stats["completed"], 0)
+
+    def test_outbox_flush_retry_and_completion(self):
+        self.db.save_exam_attempt({"event_id": "ob-retry", "student_id": "std-retry", "grade": 12, "score": 7.5, "subject": "Vật lý"})
+        with patch.object(self.db, "_sync_to_supabase", return_value=False):
+            synced = self.db.flush_outbox("https://supabase.co", "key-123")
+            self.assertEqual(synced, 0)
+            stats = self.db.get_outbox_stats()
+            self.assertEqual(stats["pending"], 1)
+
+        with patch.object(self.db, "_sync_to_supabase", return_value=True):
+            synced = self.db.flush_outbox("https://supabase.co", "key-123")
+            self.assertEqual(synced, 1)
+            stats = self.db.get_outbox_stats()
+            self.assertEqual(stats["completed"], 1)
+            self.assertEqual(stats["pending"], 0)
+
 
 class TestImportExport(unittest.TestCase):
     def test_word_export_is_a4_and_preserves_answers(self):
