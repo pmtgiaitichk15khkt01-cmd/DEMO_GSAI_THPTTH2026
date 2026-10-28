@@ -31,7 +31,7 @@ jobs:
 
     - name: Step 1 - Syntax & Compilation Integrity Check
       run: |
-        python -m py_compile app.py precision_visual_engine.py real_exam_engine.py database.py lesson_infographic_engine.py services/curriculum_matrix.py services/mermaid_renderer.py
+        python -m py_compile app.py precision_visual_engine.py real_exam_engine.py database.py lesson_infographic_engine.py services/curriculum_matrix.py services/mermaid_renderer.py services/math_graph_engine.py
 
     - name: Step 2 - Run Automated System Integrity Tests
       run: |

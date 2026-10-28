@@ -49,5 +49,10 @@ class TestServices(unittest.TestCase):
         from services.mermaid_renderer import render_mermaid
         self.assertTrue(callable(render_mermaid))
 
+    def test_math_graph_engine_callable(self):
+        from services.math_graph_engine import render_bbt_to_webp_base64, render_math_graph_to_webp_base64
+        self.assertTrue(callable(render_bbt_to_webp_base64))
+        self.assertTrue(callable(render_math_graph_to_webp_base64))
+
 if __name__ == '__main__':
     unittest.main()
