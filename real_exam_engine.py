@@ -2176,15 +2176,94 @@ def get_raw_baseline_data():
     return {}
 
 _SHARD_CACHE = {}
+_SHARD_CACHE_ORDER = []
+MAX_SHARD_CACHE_SIZE = 4
+_SHARD_HEADER_CACHE = {}
+
+def clear_shard_cache(subject: str = None):
+    """Xóa bộ đệm Shard để giải phóng bộ nhớ RAM chủ động."""
+    global _SHARD_CACHE, _SHARD_CACHE_ORDER, _SHARD_HEADER_CACHE
+    if subject:
+        norm = normalize_subject_name(subject).lower()
+        _SHARD_CACHE.pop(norm, None)
+        if norm in _SHARD_CACHE_ORDER:
+            _SHARD_CACHE_ORDER.remove(norm)
+        _SHARD_HEADER_CACHE.pop(norm, None)
+    else:
+        _SHARD_CACHE.clear()
+        _SHARD_CACHE_ORDER.clear()
+        _SHARD_HEADER_CACHE.clear()
+
+def _put_shard_cache(norm_subj: str, loaded_exams: list):
+    """Lưu shard vào bộ đệm có giới hạn (LRU Cache Bounded) chống tràn RAM máy chủ."""
+    global _SHARD_CACHE, _SHARD_CACHE_ORDER
+    if norm_subj in _SHARD_CACHE:
+        if norm_subj in _SHARD_CACHE_ORDER:
+            _SHARD_CACHE_ORDER.remove(norm_subj)
+    elif len(_SHARD_CACHE_ORDER) >= MAX_SHARD_CACHE_SIZE:
+        oldest = _SHARD_CACHE_ORDER.pop(0)
+        _SHARD_CACHE.pop(oldest, None)
+    _SHARD_CACHE[norm_subj] = loaded_exams
+    _SHARD_CACHE_ORDER.append(norm_subj)
+
+def get_shard_exam_headers(subject: str, grade=None) -> list:
+    """Nạp danh mục tiêu đề & metadata của đề thi siêu nhẹ (không tốn RAM lưu câu hỏi).
+    Chỉ lưu metadata (code, title, school, year, grade, question_counts) với kích thước < 5KB.
+    """
+    global _SHARD_HEADER_CACHE
+    norm_subj = normalize_subject_name(subject).lower()
+    if norm_subj not in _SHARD_HEADER_CACHE:
+        exams = get_shard_exams(subject)
+        headers = []
+        for ex in exams:
+            headers.append({
+                "code": ex.get("code"),
+                "title": ex.get("title", f"Đề thi {subject}"),
+                "subject": ex.get("subject", subject),
+                "grade": ex.get("grade", 12),
+                "school": ex.get("school", "THPT Điểm Toàn Quốc"),
+                "portal": ex.get("portal", "TOANMATH.com"),
+                "year": ex.get("year", "2025 - 2026"),
+                "is_real_exam": ex.get("is_real_exam", True),
+                "num_p1": len(ex.get("p1", [])),
+                "num_p2": len(ex.get("p2", [])),
+                "num_p3": len(ex.get("p3", [])),
+                "total_questions": len(ex.get("p1", [])) + len(ex.get("p2", [])) + len(ex.get("p3", [])),
+            })
+        _SHARD_HEADER_CACHE[norm_subj] = headers
+
+    cached = _SHARD_HEADER_CACHE.get(norm_subj, [])
+    if grade is not None:
+        g_str = str(grade)
+        return [h for h in cached if str(h.get("grade")) == g_str]
+    return cached
+
+def get_exam_by_code(code: str, subject: str = None) -> dict:
+    """Truy xuất chính xác 1 đề thi theo mã đề từ kho Shard với cơ chế Lazy Loading."""
+    if not code:
+        return None
+    code_str = str(code).strip()
+    if subject:
+        for ex in get_shard_exams(subject):
+            if str(ex.get("code", "")).strip() == code_str:
+                return ex
+    for s_name, ex_list in list(_SHARD_CACHE.items()):
+        for ex in ex_list:
+            if str(ex.get("code", "")).strip() == code_str:
+                return ex
+    return None
 
 def get_shard_exams(subject: str) -> list:
-    """Nạp dữ liệu đề thi theo từng môn học (Sharded Lazy Loader).
+    """Nạp dữ liệu đề thi theo từng môn học (Sharded Lazy Loader Bounded LRU).
     Giảm tiêu thụ RAM từ 1.2 GB xuống còn ~30 MB (tiết kiệm 97% RAM),
     triệt tiêu 100% hiện tượng Out Of Memory (OOM) trên Streamlit Cloud!
     """
     global _SHARD_CACHE
-    norm_subj = normalize_subject_name(subject)
+    norm_subj = normalize_subject_name(subject).lower()
     if norm_subj in _SHARD_CACHE:
+        if norm_subj in _SHARD_CACHE_ORDER:
+            _SHARD_CACHE_ORDER.remove(norm_subj)
+            _SHARD_CACHE_ORDER.append(norm_subj)
         return _SHARD_CACHE[norm_subj]
         
     SUBJECT_SHARD_MAP = {
@@ -2271,7 +2350,7 @@ def get_shard_exams(subject: str) -> list:
         master_data = get_raw_baseline_data()
         loaded_exams = [e for e in master_data.get("exams", []) if normalize_subject_name(e.get("subject", "")).lower() == norm_subj.lower()]
         
-    _SHARD_CACHE[norm_subj] = loaded_exams
+    _put_shard_cache(norm_subj, loaded_exams)
     return loaded_exams
 
 def enrich_exam_visuals_jit(exam, subject="Toán học", grade=12):

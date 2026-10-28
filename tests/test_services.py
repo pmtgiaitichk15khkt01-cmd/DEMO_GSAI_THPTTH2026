@@ -54,5 +54,23 @@ class TestServices(unittest.TestCase):
         self.assertTrue(callable(render_bbt_to_webp_base64))
         self.assertTrue(callable(render_math_graph_to_webp_base64))
 
+    def test_exam_engine_lazy_headers_and_cache(self):
+        from real_exam_engine import get_shard_exam_headers, get_exam_by_code, clear_shard_cache, _SHARD_CACHE, MAX_SHARD_CACHE_SIZE
+        clear_shard_cache()
+        headers = get_shard_exam_headers("Toán học")
+        self.assertIsInstance(headers, list)
+        if headers:
+            h = headers[0]
+            self.assertIn("code", h)
+            self.assertIn("title", h)
+            self.assertIn("total_questions", h)
+            self.assertNotIn("p1", h)
+            ex = get_exam_by_code(h["code"], "Toán học")
+            self.assertIsNotNone(ex)
+            self.assertEqual(ex.get("code"), h["code"])
+        self.assertLessEqual(len(_SHARD_CACHE), MAX_SHARD_CACHE_SIZE)
+        clear_shard_cache()
+        self.assertEqual(len(_SHARD_CACHE), 0)
+
 if __name__ == '__main__':
     unittest.main()
