@@ -74,33 +74,7 @@ def analyze_student_fsrs_review_schedule(
 
     # Dữ liệu dự phòng nếu chưa có nhật ký thực tế
     if not error_logs:
-        error_logs = [
-            {
-                "topic": "Tiệm cận xiên của đồ thị hàm phân thức 2/1",
-                "subject": "Toán học",
-                "grade": 12,
-                "level": "TH-VD",
-                "logged_days_ago": 3.2,
-                "mistake_desc": "Nhầm dấu hệ số tự do khi chia đa thức tìm tiệm cận xiên y = ax + b"
-            },
-            {
-                "topic": "Xác suất có điều kiện và Công thức Bayes",
-                "subject": "Toán học",
-                "grade": 12,
-                "level": "VD",
-                "logged_days_ago": 1.8,
-                "mistake_desc": "Nhầm lẫn giữa P(A|B) và P(B|A)"
-            },
-            {
-                "topic": "Danh pháp quốc tế IUPAC Ester mạch hở",
-                "subject": "Hóa học",
-                "grade": 12,
-                "level": "TH",
-                "logged_days_ago": 4.5,
-                "mistake_desc": "Đọc sai tên gốc acid formate thay vì carboxylate"
-            }
-        ]
-
+        return []
     schedule = []
     for item in error_logs:
         topic = item.get("topic", "Chuyên đề ôn tập")
@@ -110,7 +84,7 @@ def analyze_student_fsrs_review_schedule(
         mistake = item.get("mistake_desc", "Cần củng cố phương pháp giải")
 
         # Xác định độ bền ban đầu
-        init_stability = DIFFICULTY_STABILITY_MAP.get(level[:2], 2.5)
+        init_stability = DIFFICULTY_STABILITY_MAP.get(level, 2.5)
         current_r = calculate_retrievability(days_ago, init_stability)
 
         # Đánh giá trạng thái theo FSRS

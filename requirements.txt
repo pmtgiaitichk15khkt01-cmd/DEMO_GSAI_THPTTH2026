@@ -25,3 +25,10 @@ pymupdf
 sympy
 orjson
 zstandard
+
+# Research station Excel import engines
+openpyxl>=3.1
+xlrd>=2.0.1
+
+# Incremental bank parsing limits peak RAM during XZ decompression
+ijson>=3.3,<4

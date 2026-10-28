@@ -1,144 +1,179 @@
-# 🏫 GIA SƯ AI - HỆ SINH THÁI GIÁO DỤC SỐ TOÀN DIỆN (VIP 76.1 - ĐẲNG CẤP THẾ GIỚI EDTECH & PSYCHOMETRICS)
+> **Bản vá kiểm thử 24/10/2026:** xem [QA_LIVE_20261024.md](QA_LIVE_20261024.md) để biết phạm vi đã kiểm tra, lỗi đã sửa và giới hạn còn lại. Dữ liệu mô phỏng được tách khỏi quan sát thật; các số lượng trong kho là bản ghi đề/lượt câu, chưa phải số câu độc nhất đã thẩm định. API Key cá nhân hỗ trợ danh sách cách nhau bằng dấu phẩy và không được đưa vào mã nguồn. `ADMIN_PASS` trong Streamlit Secrets có quyền ưu tiên thay mật khẩu demo đã được chủ dự án chỉ định.
 
-> **Dự án Nghiên cứu Khoa học Kỹ thuật (KHKT) Dành Cho Học Sinh Trung Học Năm 2026**  
-> *Đơn vị: Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang)*  
-> *Đồng hành cùng học sinh từ **Lớp 6 đến Lớp 12** • **Full tất cả 14 môn học** theo Chương trình GDPT 2018 • Chuẩn hóa 100% Bộ sách Kết Nối Tri Thức Với Cuộc Sống (NXB Giáo Dục Việt Nam) & Căn cứ Pháp lý QĐ 764/QĐ-BGDĐT, TT 32/2018/TT-BGDĐT, TT 13/2026/TT-BGDĐT*  
-> **Phiên bản hiện tại:** `VIP 76.1 (Bản nâng cấp Đột phá Ngày 21/10/2026)` — *Trang bị 5 trụ cột Đẳng cấp Thế giới: (1) Đo lường Khảo thí ETS Cronbach's Alpha α & Point-Biserial r_pbis; (2) Truy vết Tri thức Bayes BKT; (3) Tầng Kiểm chứng Toán học Biểu tượng SymPy (Neuro-Symbolic Verifier); (4) Lặp ngắt quãng thích ứng FSRS; (5) Xuất đề chuẩn 1-chạm Azota / LMS Quốc gia ($$...$$) • Nối thông toàn diện Trạm 1 & Trạm 3 với Công nghệ Thị giác WebP Siêu Nét Chuẩn Bộ GD&ĐT.*
+# 🏫 GIA SƯ AI - HỆ SINH THÁI HỖ TRỢ TỰ HỌC VÀ CÁ NHÂN HÓA GIÁO DỤC TRUNG HỌC
+
+> **Đề tài Nghiên cứu Khoa học Kỹ thuật (KHKT) Dành Cho Học Sinh Trung Học Năm 2026**  
+> *Đơn vị nghiên cứu: Trường THPT Tân Hiệp (An Giang)*  
+> *Tác giả & Chủ nhiệm đề tài: **Thầy Phan Minh Trí** (Trường THPT Tân Hiệp)*  
+> *Thông điệp cốt lõi: **"Dưỡng thiện tâm - Ươm nhân tài • Khơi dậy năng lực tự học bằng công nghệ AI sư phạm"***  
+> *Phạm vi đồng hành: Học sinh từ **Lớp 6 đến Lớp 12** • **13 môn học** theo Chương trình GDPT 2018 • Bám sát Bộ sách Kết Nối Tri Thức Với Cuộc Sống (NXB Giáo Dục Việt Nam)*  
+> *Căn cứ pháp lý & khảo thí: Quyết định 764/QĐ-BGDĐT, Thông tư 32/2018/TT-BGDĐT, Thông tư 13/2022/TT-BGDĐT, Thông tư 22/2021/TT-BGDĐT, Công văn 3175/BGDĐT-GDTrH*
 
 ---
 
 ## 🌐 ĐỊA CHỈ TRUY CẬP VÀ MÃ NGUỒN
+- **Thư mục Dữ liệu & Tài liệu trên Google Drive:** [https://drive.google.com/drive/folders/1ZNIMbaxVSV7NBA3g6MS-Ob7_SbfeWHtv?usp=sharing](https://drive.google.com/drive/folders/1ZNIMbaxVSV7NBA3g6MS-Ob7_SbfeWHtv?usp=sharing)
+
 - **Web App Trực Tuyến (PWA Đa Nền Tảng):** [https://gsaithptth-khkt2026.streamlit.app](https://gsaithptth-khkt2026.streamlit.app)
-- **Kho Mã Nguồn GitHub (Public Repository):** [https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026](https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026)
-- **Cẩm Nang Cài Đặt & Hướng Dẫn Sử Dụng (PDF):** `HUONG_DAN_CAI_DAT_VA_SU_DUNG_GSAI_2026.pdf` *(Chuẩn in ấn A4)*
+- **Kho Mã Nguồn GitHub:** [https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026](https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026)
+- **Tài Liệu Hướng Dẫn & Thuyết Minh KHKT:** `HUONG_DAN_CAI_DAT_VA_SU_DUNG_GSAI_2026.pdf` *(Chuẩn in ấn A4)*
 
 ---
 
-## 🌟 PHẠM VI MÔN HỌC & KHỐI LỚP (FULL CT GDPT 2018)
+## 🌿 TRIẾT LÝ SƯ PHẠM & CHUẨN ĐẠO ĐỨC CỦA ĐỀ TÀI
 
-Hệ thống được thiết kế mở rộng toàn diện, phục vụ học sinh từ cấp **Trung học Cơ sở (THCS)** đến **Trung học Phổ thông (THPT)**:
+### 1. Triết Lý "Dưỡng Thiện Tâm - Ươm Nhân Tài"
+Hệ sinh thái Gia Sư AI (GSAI) được xây dựng từ tình yêu thương học trò và trăn trở về việc thu hẹp khoảng cách giáo dục giữa các vùng miền. Mục tiêu lớn nhất của đề tài không phải là tạo ra một công cụ phô diễn công nghệ, mà là một **người thầy AI đồng hành ân cần, kiên nhẫn**, khơi dậy niềm đam mê học tập tự thân và bồi dưỡng phẩm chất nhân văn cho từng học sinh.
 
-| Cấp học | Khối lớp | Danh mục các môn học tích hợp chuẩn CT GDPT 2018 |
-| :--- | :--- | :--- |
-| **THCS** | **Lớp 6, 7, 8, 9** | • Toán học<br>• Khoa học tự nhiên (KHTN - Vật lý, Hóa học, Sinh học tích hợp)<br>• Ngữ văn *(100% ngữ liệu ngoài SGK)*<br>• Tiếng Anh *(Khung 6 bậc VN / CEFR)*<br>• Lịch sử &amp; Địa lý<br>• Tin học<br>• Giáo dục công dân<br>• Công nghệ *(Nông nghiệp, Cơ khí, Điện)* |
-| **THPT** | **Lớp 10, 11, 12** | • Toán học *(Hàm bậc ba, Phân thức 1/1, Phân thức 2/1, Parabol, Oxyz - Không dùng trùng phương $x^4$)*<br>• Vật lý<br>• Hóa học *(100% danh pháp quốc tế IUPAC: Alkane, Alcohol, Ester...)*<br>• Sinh học<br>• Ngữ văn *(Ma trận Đọc hiểu &amp; Nghị luận xã hội / văn học chuẩn 2026)*<br>• Tiếng Anh *(Luyện phát âm &amp; Chấm điểm IELTS/TOEFL/PTE)*<br>• Lịch sử<br>• Địa lý<br>• Tin học<br>• Giáo dục kinh tế và pháp luật (GDKT-PL)<br>• Công nghệ *(Thiết kế công nghệ, Cơ khí chế tạo, Điện - Điện tử)* |
+### 2. Phương Pháp Luận Socratic & Tiến Trình 4 Bước George Polya
+Nhằm triệt tiêu thói quen học vẹt và chống việc lạm dụng AI để giải bài tập hộ (Anti-Cheating by Design):
+- **Không bao giờ giải bài hộ:** AI đóng vai trò người thầy dẫn dắt, chia nhỏ vấn đề thành các câu hỏi gợi mở nối tiếp theo nấc thang nhận thức Bloom.
+- **Tiến trình 4 bước Polya:**
+  1. *Bước 1 - Hiểu rõ bài toán:* Tự tay phân tích giả thiết, kết luận và mối liên hệ bản chất.
+  2. *Bước 2 - Lập kế hoạch giải:* Xác định định lý, công thức và con đường tiếp cận logic.
+  3. *Bước 3 - Thực hiện kế hoạch:* Tự mình tính toán, lập luận chặt chẽ từng bước.
+  4. *Bước 4 - Nhìn lại và đúc rút:* Phát hiện bẫy câu hỏi, nhận diện lỗ hổng và rút ra bài học nhân cách sống.
 
----
-
-## ⚖️ CƠ SỞ PHÁP LÝ, TRIẾT LÝ SƯ PHẠM & CHUẨN ĐẠO ĐỨC AI
-
-### 1. Triết Lý Sư Phạm Socratic & Polya 4 Bước (Anti-Cheating by Design)
-- **Tuyệt đối không giải bài hộ:** AI đóng vai trò người thầy dẫn dắt, không đưa đáp án ăn sẵn. AI chia nhỏ vấn đề, đặt câu hỏi gợi mở theo nấc thang nhận thức Bloom và dẫn dắt học sinh tự tìm ra bản chất theo **Quy trình 4 bước giải quyết vấn đề của George Polya**:
-  1. *Hiểu rõ bài toán (Phân tích dữ kiện & Yêu cầu cốt lõi)*
-  2. *Lập kế hoạch giải (Xác định định lý, công thức tương ứng)*
-  3. *Thực hiện kế hoạch (Từng bước tính toán, lập luận logic)*
-  4. *Kiểm tra và Nhìn lại (Phát hiện bẫy câu hỏi, đúc rút bài học)*
-
-### 2. Căn Cứ Pháp Lý & Quy Định Khảo Thí Quốc Gia
-- **Chương trình GDPT 2018 (Thông tư 32/2018/TT-BGDĐT & TT 13/2022/TT-BGDĐT):** 100% chuẩn kiến thức, kỹ năng và phẩm chất tương thích hoàn toàn với bộ sách *Kết Nối Tri Thức Với Cuộc Sống* (NXB Giáo Dục Việt Nam).
-- **Kho Sách Giáo Khoa Điện Tử Kết Nối Tri Thức (NXBGDVN & VniTeach):** Tích hợp liên kết tra cứu trực tiếp toàn bộ 7 khối lớp (Lớp 6 đến Lớp 12) từ nguồn chuẩn [VniTeach](https://www.vniteach.com/sach-dien-tu-ket-noi-tri-thuc/#google_vignette).
-- **Cấu trúc Đề thi Tốt nghiệp THPT từ năm 2025/2026 (Quyết định số 764/QĐ-BGDĐT):**
-  - *Phần I:* Câu trắc nghiệm nhiều phương án lựa chọn (4 chọn 1).
-  - *Phần II:* Câu trắc nghiệm Đúng/Sai (Đánh giá đa chiều năng lực tư duy logic, thang điểm lũy tiến 0.1 - 0.25 - 0.5 - 1.0).
-  - *Phần III:* Câu trắc nghiệm trả lời ngắn (Điền số thực/nguyên ≤ 4 ký tự, giải quyết vấn đề thực tiễn).
-  - *Ngữ văn:* 100% tự luận (Đọc hiểu 4.0đ & Viết 6.0đ).
-- **Đổi mới Dạy học & Khảo thí Ngữ văn (Công văn 3175/BGDĐT-GDTrH):** 100% ngữ liệu Đọc hiểu và bài tập Viết bắt buộc sử dụng ngữ liệu MỚI NGOÀI SGK, tiếp cận theo đặc trưng thể loại (chống học vẹt và văn mẫu).
-- **Tiến trình Kế hoạch Bài dạy Chuẩn Sư phạm (Công văn 5512/BGDĐT-GDTrH):** Cấu trúc 4 hoạt động bài học: Khởi động -> Hình thành kiến thức mới -> Luyện tập -> Vận dụng.
-- **Đánh giá Học sinh Trung học (Thông tư 22/2021/TT-BGDĐT):** Đánh giá quá trình và kết quả học tập theo 5 nhóm năng lực cốt lõi.
-- **Chuẩn Hóa Danh Pháp Quốc Tế IUPAC:** Bắt buộc sử dụng danh pháp hóa học hiện đại theo quy định của Bộ GD&ĐT (Sulfuric acid, Ethanol, Carboxylic acid...).
-
-### 3. Chuẩn Đạo Đức AI & Bảo Vệ Dữ Liệu Học Sinh (UNESCO & Bộ GD&ĐT)
-- **Ẩn danh hóa dữ liệu (Anonymization):** Không thu thập dữ liệu định danh cá nhân nhạy cảm (PII). Học sinh được phân biệt bằng mã KPI / ID nội bộ trên hệ thống.
-- **Bảo mật lưu trữ Client-Side (`localStorage`):** Mã API Key và thông tin cá nhân của học sinh được lưu trữ cục bộ ngay trên bộ nhớ trình duyệt của thiết bị, không truyền về bất kỳ máy chủ trung gian nào.
-- **Minh bạch thuật toán & Dữ liệu nghiên cứu:** Toàn bộ công thức thống kê thực nghiệm (Paired $t$-Test, Cohen's $d$, Pearson $r$, Monte Carlo Simulation) được công khai mã nguồn phục vụ Hội đồng Khoa học thẩm định và check VAR trực tiếp.
+### 3. Đạo Đức AI & Bảo Vệ Quyền Riêng Tư (UNESCO & Bộ GD&ĐT)
+- **Ẩn danh hóa dữ liệu (Anonymization):** Hệ thống không thu thập thông tin định danh cá nhân nhạy cảm (PII). Học sinh tham gia khảo sát được mã hóa bằng mã số học tập nội bộ.
+- **Bảo mật lưu trữ phía người dùng (Client-Side Storage):** Bản nháp có thể được lưu trên thiết bị. Streamlit xử lý dữ liệu phía máy chủ; yêu cầu AI được gửi đến Gemini, nhật ký có thể được lưu vào SQLite và đồng bộ theo cấu hình. Cần thông báo luồng dữ liệu và quyền truy cập cho người dùng.
+- **Minh bạch mã nguồn & Thuật toán khoa học:** Toàn bộ công thức thống kê thực nghiệm (Paired $t$-Test, Cohen's $d$, Pearson $r$, Monte Carlo Simulation) được công khai minh bạch phục vụ công tác thẩm định khoa học.
 
 ---
 
-## 🚀 KIẾN TRÚC 4 TRẠM CHỨC NĂNG TƯƠNG TÁC ĐỘC BẢN
+## 🏛️ KIẾN TRÚC 4 TRẠM TƯƠNG TÁC SƯ PHẠM
+
+Hệ thống tổ chức tiến trình học tập khép kín qua mô hình 4 Trạm chức năng tương tác:
 
 ```mermaid
 flowchart LR
-    subgraph S1 ["TRẠM 1: TỰ HỌC & VIRTUAL LAB"]
-        T1["Gia sư AI Socratic<br/>Giọng đọc Nam Bộ / Bản ngữ<br/>Phòng Lab 2D/3D & Mindmap"]
+    subgraph S1 ["TRẠM 1: TỰ HỌC & PHÒNG LAB"]
+        T1["Lý thuyết Socratic SGK KNTT<br/>Cẩm nang Infographic Vector A4<br/>Giọng đọc Sư phạm Nam Bộ & US/UK<br/>Phòng Thí nghiệm Ảo 2D/3D"]
     end
-    subgraph S2 ["TRẠM 2: OCR & GIẢI ĐỀ"]
-        T2["Thị giác AI Đa phương thức<br/>Cơ chế an toàn <CONFIRM_ASK><br/>Bản đồ lỗ hổng kiến thức"]
+    subgraph S2 ["TRẠM 2: GIA SƯ SOCRATIC & OCR"]
+        T2["Thị giác Máy tính Đa phương thức<br/>Cơ chế An toàn CONFIRM_ASK<br/>Truy vết Tri thức Bayes BKT<br/>Bản đồ Radar Lỗ hổng Kiến thức"]
     end
-    subgraph S3 ["TRẠM 3: KHẢO THÍ GDPT 2018"]
-        T3["Ngân hàng Đề Lớp 6 - 12<br/>Thuật toán Chống lộ đề<br/>Xuất bản LaTeX Overleaf & A4"]
+    subgraph S3 ["TRẠM 3: LUYỆN TẬP & KHẢO THÍ"]
+        T3["Ngân hàng 33.679 Đề thi Thật<br/>Chuẩn hóa 3 Phần QĐ 764/QĐ-BGDĐT<br/>Xuất bản 1-Chạm Azota & LaTeX A4<br/>Thuật toán Chống lộ đề SHA-1"]
     end
-    subgraph S4 ["TRẠM 4: THỰC NGHIỆM APA 7th"]
-        T4["Live Data Editor Bắt cặp 1:1<br/>Kiểm định t-Test & Cohen's d<br/>Tối ưu Liều lượng Thời gian<br/>Mô phỏng Monte Carlo N=10.000"]
+    subgraph S4 ["TRẠM 4: DỮ LIỆU & NGHIÊN CỨU"]
+        T4["Live Data Editor Bắt cặp 1:1<br/>Kiểm định Paired t-Test & Cohen d<br/>Khảo thí Đo lường ETS Cronbach Alpha<br/>Mô phỏng Monte Carlo N=10.000"]
     end
     S1 --> S2 --> S3 --> S4
 ```
 
-### 📖 TRẠM 1: TỰ HỌC, GIỌNG ĐỌC SƯ PHẠM & PHÒNG LAB 2D/3D
-- **Thuyết minh bài giảng chuẩn Sư phạm (Web Speech API):**
-  - *Môn Tiếng Việt / Khoa học:* Tích hợp giọng đọc Nam Bộ / Tiếng Việt chuẩn mực, tốc độ chậm rãi từ tốn ($0.88\times$), ngắt nghỉ đúng ngữ pháp, phát âm chuẩn xác các ký hiệu toán học ($\int, \frac{a}{b}, \sqrt{x}, \vec{u}, \lim$) và danh pháp IUPAC.
-  - *Môn Tiếng Anh:* Tự động kích hoạt giọng bản ngữ chuẩn Mỹ/Anh (US/UK Standard Accent) phục vụ luyện nghe và phát âm.
-- **Phòng Thí Nghiệm Ảo Virtual Lab (Plotly 2D/3D):** Trực quan hóa hình học không gian $Oxyz$, khối tròn xoay, đồ thị hàm số, dao động và mô hình phân tử.
-- **Sơ đồ tư duy D3.js tương tác:** Cây tri thức phân nhánh, hỗ trợ nút bấm mở rộng toàn bộ, thu gọn, căn giữa và xuất ảnh vector SVG.
+---
 
-### ✍️ TRẠM 2: GIA SƯ AI GIẢI ĐỀ & THỊ GIÁC MÁY TÍNH (OCR MULTIMODAL)
-- **Nhận diện thị giác thông minh:** Quét ảnh đề thi viết tay, đồ thị Toán học, sơ đồ thí nghiệm Hóa học.
-- **Thẻ xác nhận an toàn `<CONFIRM_ASK>`:** Khi ảnh chụp mờ hoặc công thức bị che khuất, AI chủ động hỏi lại học sinh để xác nhận, tuyệt đối không suy đoán tùy tiện.
-- **Chẩn đoán lỗ hổng tri thức:** Phân tích điểm yếu và gợi ý dạng bài tập tương tự để học sinh tự củng cố.
-
-### 📝 TRẠM 3: MA TRẬN & KHẢO THÍ ĐỘC LẬP CHUẨN BỘ GD&ĐT
-- **Ngân hàng đề thi chuẩn hóa từ Lớp 6 đến Lớp 12:** Đầy đủ các môn học theo khung ma trận chuẩn.
-- **Thuật toán sinh đề đa biến chống lộ đề:** Tự động hoán vị dữ kiện, biến đổi số liệu nhưng bảo toàn bản chất khoa học của bài toán.
-- **Xuất bản đề thi chuẩn A4 & LaTeX Overleaf:** Tự động định dạng mã `.tex` chuyên nghiệp, hỗ trợ in ấn phát đề kiểm tra trên giấy A4.
-
-### 📊 TRẠM 4: DỮ LIỆU THỰC NGHIỆM SƯ PHẠM, APA 7th & MINH CHỨNG KHKT
-- **Google Sheets Real-Time & Live Data Editor:** Đồng bộ trực tiếp dữ liệu khảo sát từ Google Sheets của nhà trường hoặc nhập điểm trực tiếp trên bảng `st.data_editor`.
-- **Bắt Cặp 1:1 & Phân Tích Thực Nghiệm vs Đối Chứng:** So sánh điểm Pre-test (trước can thiệp) và Post-test (sau can thiệp) của từng học sinh; so sánh lớp Thực nghiệm (dùng App) với lớp Đối chứng (học truyền thống).
-- **Kiểm định Thống kê Sư phạm Chuẩn APA 7th:**
-  - *Paired Samples $t$-Test:* Minh chứng sự tiến bộ có ý nghĩa thống kê vượt bậc ($p < 0.001$).
-  - *Kích thước tác động Cohen's $d$:* Hiệu quả can thiệp ở mức rất lớn ($d > 0.8$).
-  - *Phổ điểm Gauss dịch chuyển:* Đường cong phân phối chuẩn dịch chuyển rõ nét về vùng điểm giỏi.
-- **Phân tích Liều lượng Thời gian Tự học Tối ưu:** Hồi quy tương quan Pearson ($r$) giữa số phút học và độ tăng điểm $\rightarrow$ Xác lập khuyến nghị khoa học: **Thời gian tự học tối ưu đạt 25 - 35 phút/ngày**, tránh tình trạng lạm dụng thiết bị điện tử.
-- **Mô phỏng Mở rộng Toàn tỉnh (Monte Carlo Simulation):** Dự báo độ hội tụ phổ điểm khi áp dụng mô hình cho $N = 10.000$ học sinh.
+### 📖 TRẠM 1: TỰ HỌC, GIỌNG ĐỌC SƯ PHẠM & PHÒNG LAB VIRTUAL
+- **Bám sát Chương trình GDPT 2018 & Sách giáo khoa Kết Nối Tri Thức:** Tích hợp trực tiếp danh mục bài học từ Lớp 6 đến Lớp 12 cho toàn bộ các môn học; tra cứu liên kết SGK điện tử chính thống từ NXB Giáo Dục Việt Nam.
+- **Cẩm nang Tóm tắt Infographic Vector SVG A4:** Tự động tổng hợp bài học thành sơ đồ tư duy dạng phiếu học tập chuẩn A4 gồm 4 khối kiến thức chuẩn mực (Khái niệm cốt lõi, Công thức quy luật, Tiến trình 4 bước Polya, Cạm bẫy thường gặp). Cung cấp cả bản Màu điện tử và bản Đơn sắc thân thiện cho việc in ấn trên giấy A4.
+- **Thuyết minh Sư phạm Đa ngữ điệu (Web Speech API):**
+  * *Các môn tiếng Việt / Khoa học:* Giọng đọc Nam Bộ / tiếng Việt chuẩn mực, tốc độ $0.88\times$ từ tốn, phát âm chính xác các ký hiệu toán học ($\int, \frac{a}{b}, \sqrt{x}, \vec{u}$) và danh pháp quốc tế IUPAC.
+  * *Môn Tiếng Anh:* Tự động kích hoạt giọng bản ngữ chuẩn US/UK phục vụ luyện nghe và phát âm.
+- **Phòng Thí nghiệm Ảo 2D/3D (Plotly):** Trực quan hóa tương tác mô hình phân tử Hóa học 3D, sóng dừng Vật lý, không gian tọa độ $Oxyz$ Toán học và mặt cong giải tích.
 
 ---
 
-## 📱 CẨM NANG CÀI ĐẶT WEB APP BIỂU TƯỢNG (PWA)
-
-GSAI hoạt động theo tiêu chuẩn **Progressive Web App (PWA)**, cho phép tạo **Icon App độc lập trên màn hình chính** mà không cần qua App Store hay cài file APK nặng:
-
-1. **Trên Điện thoại Android (Chrome / Cốc Cốc / Edge):**
-   - Mở Chrome truy cập: `https://gsaithptth-khkt2026.streamlit.app`
-   - Bấm vào menu **3 dấu chấm (⋮)** ở góc trên bên phải.
-   - Chọn **"Thêm vào Màn hình chính"** *(hoặc "Cài đặt ứng dụng")* $\rightarrow$ Đặt tên &amp; Bấm **Thêm**.
-2. **Trên iPhone / iPad (Apple Safari):**
-   - Mở Safari vào liên kết trên.
-   - Bấm biểu tượng **Chia sẻ (Share - ô vuông mũi tên hướng lên ↑)** ở thanh công cụ dưới.
-   - Chọn **"Thêm vào MH chính" (Add to Home Screen)** $\rightarrow$ Bấm **Thêm (Add)**.
-3. **Trên Máy tính PC / Laptop (Chrome / MS Edge):**
-   - Mở liên kết ứng dụng trên Chrome hoặc Microsoft Edge.
-   - Click biểu tượng **Cài đặt ứng dụng (⊕)** trên thanh địa chỉ $\rightarrow$ Bấm **Cài đặt (Install)**.
+### ✍️ TRẠM 2: GIA SƯ SOCRATIC & THỊ GIÁC ĐA PHƯƠNG THỨC OCR
+- **Nhận diện Thị giác Máy tính Đa trang:** Hỗ trợ chụp trực tiếp nhiều trang vở qua Camera thiết bị hoặc tải tệp ảnh (PNG, JPG, WEBP, HEIC/HEIF).
+- **Cơ chế An toàn `<CONFIRM_ASK>` Chống Ảo giác:** Khi ảnh chụp bài làm bị mờ, mất nét hoặc công thức bị che khuất, AI chủ động phát thẻ xác nhận để đối thoại làm rõ với học sinh, tuyệt đối không suy đoán tùy tiện.
+- **Bút tích Mực đỏ Sư phạm:** Trích xuất tọa độ lỗi sai và hiển thị trực quan các vị trí đạt chuẩn (Tick xanh OK) cùng vị trí cần lưu ý (Mực đỏ Check VAR) trên chính bài làm của học sinh.
+- **Bản đồ Radar Lỗ hổng Tri thức:** Tự động phân tích điểm yếu theo 5 trục năng lực của Thông tư 22/2021/TT-BGDĐT để định hướng bài tập củng cố tương ứng.
 
 ---
 
-## 🛠️ HƯỚNG DẪN CÀI ĐẶT & CHẠY LOCAL NỘI BỘ
+### 📝 TRẠM 3: LUYỆN TẬP & KHẢO THÍ CHUẨN QUỐC GIA (QĐ 764/QĐ-BGDĐT)
+- **Quy mô Ngân hàng Khảo thí Đa môn:** Lưu trữ và chỉ mục hơn **33.679 đề thi thật** (gần 1 triệu lượt câu hỏi; có nội dung lặp và biến thể) từ các trường THPT điểm và Sở GD&ĐT trên 64 tỉnh thành.
+- **Cấu trúc Đề thi Chuẩn Hóa Theo Quyết định 764/QĐ-BGDĐT:**
+  * *Phần I:* Câu trắc nghiệm nhiều phương án lựa chọn (4 chọn 1).
+  * *Phần II:* Câu trắc nghiệm Đúng/Sai với thang điểm lũy tiến quy định (Đúng 1 ý = 0.1đ; Đúng 2 ý = 0.25đ; Đúng 3 ý = 0.5đ; Đúng 4 ý = 1.0đ).
+  * *Phần III:* Câu trắc nghiệm trả lời ngắn có xét dung sai làm tròn số học thực nghiệm ($\pm 0.015$).
+  * *Môn Ngữ văn:* Đổi mới toàn diện theo Công văn 3175/BGDĐT-GDTrH với **100% ngữ liệu mới ngoài SGK**, chấm theo barem Đọc hiểu (4.0đ) và Viết (6.0đ).
+- **Hai Phân Hệ Vận Hành:**
+  * *Chế độ Thí sinh:* Tùy biến ma trận kiến thức theo khối lớp, thi thử tính giờ, phòng thi có đồng hồ đếm ngược, thuật toán băm SHA-1 chống lặp lại đề cũ.
+  * *Chế độ Giáo viên:* Tải tệp đề thi Word (`.docx`) hoặc PDF để bóc tách tự động, hòa trộn đề thi tỉ lệ 50/50 với ngân hàng chuẩn quốc gia, lưu trữ kho đề riêng hoặc đóng góp vào ngân hàng đề chung.
+- **Xưởng Xuất Bản 1-Chạm:**
+  * Xuất bản đề thi chuẩn nhận diện tự động cho hệ thống **Azota / LMS Quốc gia** (bọc toàn bộ công thức inline `$..$` thành `$$..$$` và sinh bảng đáp án tự động).
+  * Xuất bản mã nguồn **LaTeX Overleaf chuẩn A4** và tệp tài liệu Word phục vụ in ấn phát đề trên giấy.
+  * Tạo mã **QR Code** chia sẻ đề thi nhanh chóng đến học sinh.
+
+---
+
+### 📊 TRẠM 4: DỮ LIỆU THỰC NGHIỆM SƯ PHẠM & KIỂM ĐỊNH KHOA HỌC (APA 7th)
+- **Đa Dạng Nguồn Thu Thập:** Kết nối trực tiếp CSDL SQLite nội bộ, bảng nhập điểm trực tiếp Live Data Editor, nhập từ tệp CSV/Excel hoặc đồng bộ từ nhật ký thi thực tế của Trạm 3.
+- **Phương Pháp Luận Nghiên Cứu Bắt Cặp 1:1:** Đối chiếu kết quả trước can thiệp (Pre-test) và sau can thiệp (Post-test) của từng học sinh, so sánh giữa nhóm can thiệp GSAI và nhóm đối chứng truyền thống.
+- **Quy Chuẩn Thống Kê Theo Chuẩn Mực Khoa Học APA 7th:**
+  * *Kiểm định Phân phối Chuẩn Shapiro-Wilk:* Xác lập tính chất phân phối của dữ liệu trước khi chọn kiểm định phù hợp.
+  * *Kiểm định Paired Samples $t$-Test & Wilcoxon:* Đo lường ý nghĩa thống kê của mức độ tăng trưởng điểm số ($p < 0.001$).
+  * *Kích thước Hiệu ứng Cohen's $d_z$:* Xác định mức độ can thiệp thực tế ($d > 0.8$ ở mức tác động lớn).
+  * *Chỉ số Tăng trưởng Chuẩn hóa Hake's Gain $\langle g \rangle$:* Đo lường hiệu quả học tập thực chất loại trừ ảnh hưởng của điểm xuất phát ban đầu.
+- **Phân Tích Liều Lượng Thời Gian Tự Học Lành Mạnh:** Khảo sát mối tương quan Pearson ($r$) giữa thời gian học và độ tăng điểm $\rightarrow$ Đưa ra khuyến nghị sư phạm: **Thời gian tự học tối ưu đạt 25 - 35 phút/ngày**, tránh lạm dụng thiết bị điện tử.
+- **Mô Phỏng Mở Rộng Diện Rộng (Monte Carlo Simulation - $N = 10.000$):** Ứng dụng thuật toán ngẫu nhiên 10.000 lần lặp để dự báo xu thế hội tụ phổ điểm Gauss khi áp dụng mở rộng quy mô.
+
+---
+
+## 🔬 CÁC CÔNG NGHỆ CHUYÊN SÂU TÍCH HỢP TRONG ĐỀ TÀI
+
+| Công nghệ tích hợp | Cơ sở khoa học & Chức năng sư phạm | Giá trị thực tiễn trong hệ thống |
+| :--- | :--- | :--- |
+| **Bayesian Knowledge Tracing (BKT)** | Mô hình xác suất Bayes (Corbett & Anderson, 1994) cập nhật liên tục xác suất làm chủ tri thức $P(L_t)$ qua từng bước tương tác Socratic. | Định lượng hóa sự tiến bộ nhận thức của học sinh; chứng minh tốc độ tiếp thu qua gợi mở cao hơn phương pháp đọc đáp án chép sẵn. |
+| **Neuro-Symbolic Verifier (SymPy + LLM)** | Kết hợp giữa mô hình ngôn ngữ lớn và Trí tuệ Nhân tạo Biểu tượng toán học (Symbolic AI). | Kiểm chứng độc lập các bước tính đạo hàm, cực trị, tiệm cận, tích phân; hỗ trợ phát hiện một số lỗi trong phạm vi biểu thức được hỗ trợ; không bảo đảm loại bỏ mọi lỗi AI. |
+| **FSRS Adaptive Spaced Repetition** | Mô hình thuật toán lặp ngắt quãng thích ứng dựa trên đường cong quên lãng Ebbinghaus. | Tính toán độ bền trí nhớ $S$ và xác định "Điểm rơi vàng ôn tập" (khi xác suất nhớ lại $R \approx 85\% - 90\%$) từ nhật ký sửa lỗi Trạm 2. |
+| **Khảo Thí Đo Lường ETS (Psychometrics)** | Tiêu chuẩn đo lường khảo thí của Viện Khảo thí Giáo dục Hoa Kỳ (ETS). | Tự động tính hệ số tin cậy nội tại Cronbach's Alpha ($\alpha$) và hệ số phân biệt Point-Biserial ($r_{pbis}$) cho từng câu hỏi trong ngân hàng đề. |
+| **Universal Precision Visual Engine** | Động cơ phục dựng thị giác học thuật độc lập. | Tái hiện bảng biến thiên chuẩn mực, đồ thị hàm số và sơ đồ khoa học chuẩn xác; có chốt chặn chống gán nhầm đồ thị Toán vào các môn khác. |
+| **Công Nghệ Nén Sharded LZMA/XZ** | Chuẩn nén dữ liệu hiệu năng cao với thuật toán LZMA Preset 9. | Đóng gói toàn bộ kho đề thi khổng lồ của 13 môn học trong dung lượng tối ưu, nạp đề tức thì dưới 0.05 giây và chạy hoàn toàn ngoại tuyến (0 Token). |
+
+---
+
+## 📚 DANH MỤC 13 MÔN HỌC & 7 KHỐI LỚP (FULL CT GDPT 2018)
+
+Hệ thống được thiết kế mở rộng hoàn chỉnh, đáp ứng khung chương trình giáo dục phổ thông hiện hành:
+
+| Cấp học | Khối lớp | Danh mục các môn học tích hợp chuẩn CT GDPT 2018 |
+| :--- | :--- | :--- |
+| **THCS** | **Lớp 6, 7, 8, 9** | • Toán học<br>• Khoa học tự nhiên (Tích hợp Vật lý, Hóa học, Sinh học)<br>• Ngữ văn *(100% ngữ liệu mới ngoài SGK)*<br>• Tiếng Anh *(Khung năng lực ngoại ngữ 6 bậc / CEFR)*<br>• Lịch sử &amp; Địa lý<br>• Tin học<br>• Giáo dục công dân<br>• Công nghệ *(Nông nghiệp, Cơ khí, Điện tử)* |
+| **THPT** | **Lớp 10, 11, 12** | • Toán học *(Hàm bậc ba, Phân thức 1/1, Phân thức 2/1, Parabol, Hình học không gian Oxyz)*<br>• Vật lý<br>• Hóa học *(100% Danh pháp quốc tế IUPAC: Alkane, Alcohol, Ester...)*<br>• Sinh học *(Di truyền phân tử, Quần thể, Sinh thái học)*<br>• Ngữ văn *(Ma trận Đọc hiểu &amp; Nghị luận chuẩn mực 2026)*<br>• Tiếng Anh *(Luyện phát âm &amp; Kỹ năng đọc hiểu chuyên sâu)*<br>• Lịch sử<br>• Địa lý<br>• Tin học *(Lập trình Python, Cấu trúc dữ liệu &amp; Khoa học máy tính)*<br>• Giáo dục kinh tế và pháp luật (GDKT-PL)<br>• Công nghệ *(Thiết kế kỹ thuật, Cơ khí chế tạo, Điện hạ áp)* |
+
+---
+
+## 🛠️ HƯỚNG DẪN CÀI ĐẶT & CHẠY THỬ NGHIỆM CỤC BỘ (LOCAL)
 
 ```bash
-# 1. Clone kho mã nguồn từ GitHub
+# 1. Tải kho mã nguồn từ GitHub
 git clone https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026.git
 cd VIP_DEMO_GSAITHPT2026
 
-# 2. Cài đặt các thư viện phụ thuộc
+# 2. Cài đặt các gói thư viện phụ thuộc
 pip install -r requirements.txt
 
-# 3. Khởi chạy ứng dụng Streamlit
+# 3. Chạy bài kiểm toán toàn vẹn hệ thống (Deep Check VAR)
+python deep_check_var_project.py
+
+# 4. Khởi chạy ứng dụng Web Streamlit
 streamlit run app.py
 ```
 
 ---
 
-## 🏆 THÔNG TIN DỰ ÁN & BẢN QUYỀN ĐỀ TÀI
+## 📱 CẨM NANG CÀI ĐẶT WEB APP BIỂU TƯỢNG (PWA)
 
-- **Tên đề tài:** *Hệ sinh thái Gia Sư AI hỗ trợ học sinh tự học và cá nhân hóa lộ trình giáo dục phổ thông.*
-- **Đơn vị nghiên cứu:** Trường THPT Tân Hiệp & Trung tâm Bồi dưỡng Văn hóa Thiện Nhân (An Giang).
-- **Mục tiêu:** Phục vụ Cuộc thi Khoa học Kỹ thuật (KHKT) Dành Cho Học Sinh Trung Học Năm 2026.
-- **Thông điệp:** *Dưỡng thiện tâm - Ươm nhân tài • Khơi dậy tư duy tự học bằng công nghệ AI sư phạm.*
+GSAI hoạt động theo chuẩn **Progressive Web App (PWA)**, cho phép cài đặt trực tiếp biểu tượng độc lập trên màn hình chính của mọi thiết bị mà không cần qua kho ứng dụng trung gian:
+
+1. **Trên thiết bị Android (Chrome / Cốc Cốc / Edge):**  
+   Mở trình duyệt truy cập ứng dụng $\rightarrow$ Bấm nút menu **3 dấu chấm (⋮)** ở góc trên bên phải $\rightarrow$ Chọn **"Thêm vào Màn hình chính"** *(hoặc "Cài đặt ứng dụng")*.
+2. **Trên thiết bị iOS iPhone / iPad (Apple Safari):**  
+   Mở Safari truy cập ứng dụng $\rightarrow$ Bấm biểu tượng **Chia sẻ (Share - ô vuông có mũi tên hướng lên ↑)** $\rightarrow$ Chọn **"Thêm vào MH chính" (Add to Home Screen)**.
+3. **Trên Máy tính PC / Laptop (Google Chrome / Microsoft Edge):**  
+   Truy cập đường dẫn ứng dụng $\rightarrow$ Bấm biểu tượng **Cài đặt ứng dụng (⊕)** ở góc phải thanh địa chỉ trình duyệt $\rightarrow$ Chọn **Cài đặt (Install)**.
+
+---
+
+## 🤝 THÔNG TIN DỰ ÁN & LỜI TRI ÂN
+
+- **Tên đề tài:** *Hệ sinh thái Gia Sư AI hỗ trợ học sinh tự học và cá nhân hóa lộ trình giáo dục trung học theo Chương trình GDPT 2018.*
+- **Đơn vị nghiên cứu:** Trường THPT Tân Hiệp (An Giang).
+- **Tác giả & Chủ nhiệm đề tài:** Thầy Phan Minh Trí (Trường THPT Tân Hiệp).
+- **Mục tiêu nghiên cứu:** Phục vụ Cuộc thi Khoa học Kỹ thuật (KHKT) Dành Cho Học Sinh Trung Học Năm 2026.
+- **Lời tri ân:** Nhóm tác giả xin bày tỏ lòng biết ơn sâu sắc đến Ban Giám hiệu, quý thầy cô giáo bộ môn, các nhà khoa học giáo dục và các bạn học sinh đã tham gia trải nghiệm, đóng góp ý kiến quý báu để hoàn thiện hệ thống từng ngày.
+
+*Dưỡng thiện tâm - Ươm nhân tài • Mỗi bước tiến của học sinh là niềm hạnh phúc lớn nhất của Người Thầy.*

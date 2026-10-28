@@ -1,4 +1,5 @@
 import sys
+import unittest
 import os
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -40,9 +41,15 @@ def run_all_tests():
             all_passed = False
     return all_passed
 
+class TestMultiSubjectGradeIntegrity(unittest.TestCase):
+    def test_all_fifteen_subject_grade_cases(self):
+        self.assertTrue(run_all_tests(), "Có ca đa môn/đa lớp thất bại")
+
+
 if __name__ == "__main__":
     passed = run_all_tests()
     if passed:
         print("ALL 15 MULTI-SUBJECT MULTI-GRADE TESTS PASSED!")
     else:
         print("SOME TESTS FAILED!")
+        sys.exit(1)

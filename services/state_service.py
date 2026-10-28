@@ -4,6 +4,7 @@ SERVICE QUẢN LÝ TRẠNG THÁI TẬP TRUNG (CENTRALIZED STATE SERVICE) - GSAI 
 Ngăn chặn 100% lỗi KeyError, AttributeError khi Streamlit reload hoặc đổi phiên.
 """
 from typing import Any, Dict
+from copy import deepcopy
 
 DEFAULT_SESSION_STATE: Dict[str, Any] = {
     "selected_station": "📖 Trạm 1: Học Tập & Phòng Lab",
@@ -15,7 +16,7 @@ DEFAULT_SESSION_STATE: Dict[str, Any] = {
     "exam_score": 0.0,
     "current_subject": "Toán học",
     "current_grade": 12,
-    "student_name": "Học sinh Thiện Nhân",
+    "student_name": "Học sinh THPT Tân Hiệp",
     "student_id": "HS_2026_01",
     "tram3_chat_messages": [],
     "socratic_chat_history": []
@@ -25,7 +26,7 @@ def init_centralized_session_state(st_module: Any) -> None:
     """Khởi tạo giá trị mặc định cho toàn bộ các key trong st.session_state một cách an toàn."""
     for key, default_val in DEFAULT_SESSION_STATE.items():
         if key not in st_module.session_state:
-            st_module.session_state[key] = default_val
+            st_module.session_state[key] = deepcopy(default_val)
 
 def reset_exam_session(st_module: Any) -> None:
     """Đặt lại trạng thái thi sạch sẽ về màn hình cấu hình ban đầu."""

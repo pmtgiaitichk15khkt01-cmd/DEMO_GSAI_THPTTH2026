@@ -11,8 +11,10 @@ Khử 100% hiện tượng ảo giác (AI Hallucination) khi sinh đề thi ho�
 """
 
 import re
+import math
 from typing import Dict, Any, List, Optional, Tuple, Union
 import sympy as sp
+from qa_runtime import parse_math_expression
 
 
 x, y, z, t = sp.symbols('x y z t', real=True)
@@ -48,13 +50,7 @@ def clean_latex_math_to_sympy_expr(expr_str: str) -> Optional[sp.Expr]:
     s = re.sub(r'(\))([a-zA-Z0-9(])', r'\1*\2', s)
 
     try:
-        local_dict = {
-            'x': x, 'y': y, 'z': z, 't': t, 'sp': sp,
-            'sin': sp.sin, 'cos': sp.cos, 'tan': sp.tan,
-            'log': sp.log, 'ln': sp.log, 'exp': sp.exp, 'sqrt': sp.sqrt,
-            'pi': sp.pi, 'E': sp.E
-        }
-        parsed = sp.sympify(s, locals=local_dict)
+        parsed = parse_math_expression(s)
         return parsed
     except Exception:
         return None
@@ -80,6 +76,12 @@ def verify_calculus_function(
         }
 
     try:
+        # Bounded symbolic scope: unsupported expressions are not certified.
+        if parsed_expr.free_symbols - {x} or not parsed_expr.is_rational_function(x):
+            return {"verified": False, "error": "Chỉ kiểm chứng hàm hữu tỉ một biến trong phạm vi hỗ trợ."}
+        pn, pd = sp.fraction(sp.cancel(parsed_expr))
+        if max(sp.degree(pn, x), sp.degree(pd, x)) > 6:
+            return {"verified": False, "error": "Bậc hàm vượt giới hạn kiểm chứng."}
         # 1. Đạo hàm bậc 1
         f_prime = sp.diff(parsed_expr, x)
 
@@ -87,9 +89,13 @@ def verify_calculus_function(
         try:
             crit_solutions = sp.solve(f_prime, x)
             # Lọc nghiệm thực
-            real_crit = [float(sp.N(sol)) for sol in crit_solutions if sol.is_real]
+            stationary = [sol for sol in crit_solutions if sol.is_real and not parsed_expr.subs(x, sol).has(sp.zoo, sp.oo, -sp.oo, sp.nan)]
+            derivative_numerator = sp.fraction(sp.cancel(f_prime))[0]
+            roots_with_multiplicity = sp.roots(derivative_numerator, x)
+            # At differentiable rational points, only odd derivative multiplicities change sign.
+            real_crit = [float(sp.N(sol)) for sol in stationary if roots_with_multiplicity.get(sol, 0) % 2 == 1]
         except Exception:
-            real_crit = []
+            return {"verified": False, "error": "Không thể phân loại đầy đủ các điểm dừng."}
 
         # 3. Phân tích tiệm cận
         numer, denom = sp.fraction(sp.together(parsed_expr))
@@ -99,7 +105,7 @@ def verify_calculus_function(
         if denom != 1:
             try:
                 vert_sols = sp.solve(denom, x)
-                asymptotes["vertical"] = [float(sp.N(v)) for v in vert_sols if v.is_real]
+                asymptotes["vertical"] = [float(sp.N(v)) for v in vert_sols if v.is_real and any(sp.limit(parsed_expr, x, v, dir=side) in (sp.oo, -sp.oo) for side in ("+", "-"))]
             except Exception:
                 pass
 
@@ -135,7 +141,7 @@ def verify_calculus_function(
             x0 = -b_val / (3.0 * a_val)
             y0 = float(parsed_expr.subs(x, x0))
             symmetry_center = {"x0": round(x0, 3), "y0": round(y0, 3), "formula": "x0 = -b/(3a)"}
-        elif asymptotes["vertical"] and (asymptotes["horizontal"] or asymptotes["slant"]):
+        elif sp.degree(denom, x) == 1 and sp.degree(numer, x) in (1, 2) and asymptotes["vertical"] and (asymptotes["horizontal"] or asymptotes["slant"]):
             # Phân thức bậc nhất hoặc bậc 2/1: giao điểm 2 đường tiệm cận
             x0 = asymptotes["vertical"][0]
             if asymptotes["horizontal"]:
@@ -152,6 +158,7 @@ def verify_calculus_function(
             "expr": str(parsed_expr),
             "derivative": str(f_prime),
             "critical_points": real_crit,
+            "stationary_points": [float(sp.N(sol)) for sol in stationary],
             "asymptotes": asymptotes,
             "symmetry_center": symmetry_center
         }
@@ -177,6 +184,10 @@ def verify_definite_integral(
         return {"verified": False, "error": f"Không thể parse biểu thức: {expr_str}"}
 
     try:
+        if parsed_expr.free_symbols - {x} or not parsed_expr.is_polynomial(x) or sp.degree(parsed_expr, x) > 6:
+            return {"verified": False, "error": "Tích phân này nằm ngoài phạm vi kiểm chứng tự động."}
+        if not all(math.isfinite(float(b)) for b in (lower_bound, upper_bound)):
+            return {"verified": False, "error": "Cận tích phân không hợp lệ."}
         integral_val = sp.integrate(parsed_expr, (x, lower_bound, upper_bound))
         numeric_val = float(sp.N(integral_val))
         return {
@@ -213,7 +224,8 @@ def audit_ai_generated_question_sympy(q_dict: Dict[str, Any]) -> Dict[str, Any]:
 
     audit_report = {
         "audited": True,
-        "verified": True,
+        "verified": False,
+        "analysis_verified": True,
         "symbolic_analysis": analysis,
         "hallucination_detected": False,
         "healed_answer": None
@@ -229,11 +241,14 @@ def audit_ai_generated_question_sympy(q_dict: Dict[str, Any]) -> Dict[str, Any]:
         if opt and len(opt) >= 4:
             for idx, o in enumerate(opt):
                 letter = chr(65 + idx)
-                if letter == ans_str and str(real_crit_count) in o:
+                option = re.sub(r"^[A-D][.)]\s*", "", str(o).strip(), flags=re.I).replace("$", "").strip()
+                if letter == ans_str and re.fullmatch(rf"{real_crit_count}(?:\s+(?:điểm\s+)?cực trị)?[.]?", option):
                     is_consistent = True
                     break
         if not is_consistent:
             audit_report["hallucination_detected"] = True
             audit_report["note"] = f"AI gán đáp án {ans} nhưng SymPy giải ra chính xác {real_crit_count} điểm cực trị."
+        else:
+            audit_report["verified"] = True
 
     return audit_report

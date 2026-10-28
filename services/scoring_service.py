@@ -5,34 +5,8 @@ Tuân thủ 100% Quyết định số 764/QĐ-BGDĐT của Bộ Giáo dục và 
 """
 import math
 import re
+from qa_runtime import numeric_answer_matches, normalize_bool, mcq_answer_matches
 from typing import Dict, Any, List, Tuple
-
-def numeric_answer_matches(user_answer, expected_answer, decimals=None) -> bool:
-    """So khớp đáp án số Phần III có tính đến sai số làm tròn thực nghiệm (đồng bộ 100% với app.py)."""
-    user = str(user_answer or "").strip().replace(",", ".")
-    expected = str(expected_answer or "").strip().replace(",", ".")
-    if not user or not expected:
-        return False
-    try:
-        u, e = float(user), float(expected)
-        if not math.isfinite(u) or not math.isfinite(e):
-            return False
-        if decimals is not None:
-            digits = int(decimals)
-            if 0 <= digits <= 10:
-                return round(u, digits) == round(e, digits)
-        # Dung sai làm tròn thực nghiệm
-        if math.isclose(u, e, rel_tol=1e-4, abs_tol=0.015):
-            return True
-        exp_dec = len(expected.split(".")[1]) if "." in expected else 0
-        user_dec = len(user.split(".")[1]) if "." in user else 0
-        if exp_dec > 0 and user_dec < exp_dec:
-            return False
-        if 0 <= exp_dec <= 2:
-            return round(u, exp_dec) == round(e, exp_dec)
-        return False
-    except ValueError:
-        return user.lower() == expected.lower()
 
 def calculate_part2_statement_score(correct_statements: int) -> float:
     """
@@ -59,12 +33,7 @@ def grade_part1(questions: List[Dict[str, Any]], user_answers: Dict[str, Any], m
     correct_count = 0
     total = len(questions)
     for idx, q in enumerate(questions):
-        user_choice = str(user_answers.get(f"p1_{idx}", "")).strip()
-        expected = str(q.get("ans", "")).strip().upper()
-        user_letter = re.sub(r'[^A-D]', '', user_choice[:3]).upper()[:1] if user_choice else ""
-        if user_letter and expected and user_letter == expected:
-            correct_count += 1
-        elif user_choice and expected and (user_choice == expected or user_choice.startswith(expected)):
+        if mcq_answer_matches(q, user_answers.get(f"p1_{idx}")):
             correct_count += 1
     if max_score is not None:
         target_max = float(max_score)
@@ -92,7 +61,9 @@ def grade_part2(questions: List[Dict[str, Any]], user_answers: Dict[str, Any]) -
         for s_idx, stmt in enumerate(stmts):
             total_stmts += 1
             user_val = str(user_answers.get(f"p2_{q_idx}_{s_idx}", "Chưa chọn")).strip()
-            expected_bool = stmt.get("a") if "a" in stmt else stmt.get("ans", True)
+            expected_bool = normalize_bool(stmt.get("a") if "a" in stmt else stmt.get("ans"))
+            if expected_bool is None:
+                continue
             expected_str = "Đúng" if expected_bool else "Sai"
             if user_val == expected_str:
                 q_correct += 1

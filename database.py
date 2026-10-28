@@ -5,6 +5,9 @@ import json
 import logging
 import requests
 import threading
+import uuid
+import math
+from qa_runtime import parse_grade
 from datetime import datetime
 
 DB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
@@ -17,16 +20,18 @@ class DatabaseManager:
     - Tầng 1: CSDL SQLite cục bộ bền vững (Offline-first, 0ms, lưu trữ vĩnh viễn không mất dữ liệu).
     - Tầng 2: CSDL Đám mây Supabase PostgreSQL (nếu cấu hình trong secrets.toml).
     """
-    def __init__(self):
-        os.makedirs(DB_DIR, exist_ok=True)
+    def __init__(self, db_path=None):
+        self.db_path = str(db_path or DB_PATH)
+        os.makedirs(os.path.dirname(os.path.abspath(self.db_path)), exist_ok=True)
         self._local = threading.local()
         self._init_sqlite()
 
     def _get_connection(self):
         conn = getattr(self._local, "conn", None)
         if conn is None:
-            conn = sqlite3.connect(DB_PATH, timeout=15, check_same_thread=False)
+            conn = sqlite3.connect(self.db_path, timeout=15, check_same_thread=False)
             conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA foreign_keys=ON;")
             conn.execute("PRAGMA journal_mode=WAL;")
             conn.execute("PRAGMA synchronous=NORMAL;")
             conn.execute("PRAGMA temp_store=MEMORY;")
@@ -107,10 +112,24 @@ class DatabaseManager:
                 "Prefer": "resolution=merge-duplicates"
             }
             res = requests.post(url, json=payload, headers=headers, timeout=5)
-            return res.status_code in [200, 201]
+            return 200 <= res.status_code < 300
         except Exception as exc:
             logging.warning("Không thể đồng bộ Supabase: %s", exc)
             return False
+
+    def _sync_parent_and_event(self, table_name, payload, supabase_url, supabase_key):
+        student_id = payload.get("student_id")
+        if student_id:
+            parent = {"id": student_id, "student_code": student_id,
+                      "display_name": payload.get("student_name") or "Ẩn danh",
+                      "grade_level": payload.get("grade_level", 12)}
+            if not self._sync_to_supabase("students", parent, supabase_url, supabase_key):
+                logging.warning("Chưa đồng bộ được học sinh; giữ bản ghi cục bộ để đối chiếu.")
+                return False
+        ok = self._sync_to_supabase(table_name, payload, supabase_url, supabase_key)
+        if not ok:
+            logging.warning("Chưa đồng bộ được sự kiện; bản ghi cục bộ vẫn được giữ.")
+        return ok
 
     def save_student_if_not_exists(self, student_id: str, student_name: str, grade_level: int):
         try:
@@ -127,20 +146,25 @@ class DatabaseManager:
     def save_exam_attempt(self, entry: dict, supabase_url: str = "", supabase_key: str = "") -> bool:
         """Lưu kết quả khảo thí Trạm 3."""
         try:
-            student_id = str(entry.get("student_id") or entry.get("name") or "anonymous").strip()
+            student_id = str(entry.get("student_id") or "anon-" + str(uuid.uuid4())).strip()
+            entry["student_id"] = student_id
             grade_val = entry.get("grade", "Lớp 12")
-            grade_num = int(str(grade_val).replace("Lớp", "").strip()) if "Lớp" in str(grade_val) else 12
+            grade_num = parse_grade(grade_val)
 
             self.save_student_if_not_exists(student_id, entry.get("name", "Ẩn danh"), grade_num)
 
-            attempt_id = str(entry.get("event_id") or entry.get("attempt_id"))
+            attempt_id = str(entry.get("event_id") or entry.get("attempt_id") or uuid.uuid4())
+            entry["event_id"] = attempt_id
+            score = float(entry.get("score", 0.0))
+            if not math.isfinite(score) or not 0 <= score <= 10:
+                raise ValueError("Điểm phải nằm trong thang 0–10.")
             submitted_time = entry.get("time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             answers_str = json.dumps(entry.get("answers", {}), ensure_ascii=False)
 
             with self._get_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute("""
-                INSERT OR REPLACE INTO exam_attempts (
+                INSERT OR IGNORE INTO exam_attempts (
                     id, student_id, student_name, grade_level, subject, exam_code,
                     score, phase, duration_seconds, grading_status, answers_json, submitted_at
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -159,6 +183,8 @@ class DatabaseManager:
                     submitted_time
                 ))
                 conn.commit()
+                if cursor.rowcount == 0:
+                    return True
 
             # Đồng bộ đám mây bất đồng bộ nếu có cấu hình (Payload khớp 100% schema.sql)
             if supabase_url and supabase_key:
@@ -177,7 +203,7 @@ class DatabaseManager:
                     "submitted_at": submitted_time
                 }
                 threading.Thread(
-                    target=self._sync_to_supabase,
+                    target=self._sync_parent_and_event,
                     args=("exam_attempts", supa_payload, supabase_url, supabase_key),
                     daemon=True
                 ).start()
@@ -190,20 +216,22 @@ class DatabaseManager:
     def save_diagnostic(self, entry: dict, supabase_url: str = "", supabase_key: str = "") -> bool:
         """Lưu chẩn đoán lỗi kiến thức Trạm 2."""
         try:
-            student_id = str(entry.get("student_id") or entry.get("name") or "anonymous").strip()
+            student_id = str(entry.get("student_id") or "anon-" + str(uuid.uuid4())).strip()
+            entry["student_id"] = student_id
             grade_val = entry.get("grade", "Lớp 12")
-            grade_num = int(str(grade_val).replace("Lớp", "").strip()) if "Lớp" in str(grade_val) else 12
+            grade_num = parse_grade(grade_val)
 
             self.save_student_if_not_exists(student_id, entry.get("name", "Ẩn danh"), grade_num)
 
-            diag_id = str(entry.get("event_id"))
+            diag_id = str(entry.get("event_id") or uuid.uuid4())
+            entry["event_id"] = diag_id
             diag_time = entry.get("time", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             scores_str = json.dumps(entry.get("scores", {}), ensure_ascii=False)
 
             with self._get_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute("""
-                INSERT OR REPLACE INTO diagnostic_logs (
+                INSERT OR IGNORE INTO diagnostic_logs (
                     id, student_id, student_name, grade_level, subject,
                     topic, error_type, evaluation, radar_scores_json, created_at
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -235,7 +263,7 @@ class DatabaseManager:
                     "created_at": diag_time
                 }
                 threading.Thread(
-                    target=self._sync_to_supabase,
+                    target=self._sync_parent_and_event,
                     args=("diagnostic_logs", supa_diag_payload, supabase_url, supabase_key),
                     daemon=True
                 ).start()
@@ -249,11 +277,12 @@ class DatabaseManager:
         """Lưu phản hồi từ sidebar."""
         try:
             grade_val = entry.get("grade", "Lớp 12")
-            grade_num = int(str(grade_val).replace("Lớp", "").strip()) if "Lớp" in str(grade_val) else 12
+            grade_num = parse_grade(grade_val)
+            entry["event_id"] = str(entry.get("event_id") or uuid.uuid4())
             with self._get_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute("""
-                INSERT OR REPLACE INTO user_feedbacks (
+                INSERT OR IGNORE INTO user_feedbacks (
                     id, student_name, grade_level, subject, category, rating, detail, created_at
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
@@ -280,7 +309,7 @@ class DatabaseManager:
                     "created_at": feedback_time
                 }
                 threading.Thread(
-                    target=self._sync_to_supabase,
+                    target=self._sync_parent_and_event,
                     args=("user_feedbacks", supa_fb_payload, supabase_url, supabase_key),
                     daemon=True
                 ).start()
@@ -314,21 +343,24 @@ class DatabaseManager:
             with self._get_connection() as conn:
                 cursor = conn.cursor()
                 cursor.execute(f"""
-                SELECT 
+                SELECT
                     pre.student_id,
                     ROUND(AVG(pre.score), 2) AS pre,
                     ROUND(AVG(post.score), 2) AS post,
                     ROUND(AVG(post.duration_seconds) / 60.0, 1) AS minutes
                 FROM exam_attempts pre
-                INNER JOIN exam_attempts post 
-                    ON pre.student_id = post.student_id 
-                    AND pre.subject = post.subject 
+                INNER JOIN exam_attempts post
+                    ON pre.student_id = post.student_id
+                    AND pre.subject = post.subject
                     AND pre.grade_level = post.grade_level
                 WHERE pre.subject IN ({placeholders})
-                  AND pre.grade_level = ? 
-                  AND LOWER(pre.phase) IN ('pre', 'pre_test', 'trước') 
+                  AND pre.grade_level = ?
+                  AND LOWER(pre.phase) IN ('pre', 'pre_test', 'trước')
                   AND LOWER(post.phase) IN ('post', 'post_test', 'sau')
+                  AND pre.grading_status != 'ai_reference'
+                  AND post.grading_status != 'ai_reference'
                 GROUP BY pre.student_id
+                HAVING COUNT(DISTINCT pre.id) = 1 AND COUNT(DISTINCT post.id) = 1
                 """, (*subj_list, grade_level))
                 rows = cursor.fetchall()
                 return [dict(r) for r in rows]
