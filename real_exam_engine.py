@@ -1,3 +1,4 @@
+from copy import deepcopy
 # VIP 74.3 - HỆ THỐNG GIA SƯ AI THPT 2026 (CHUẨN GDPT 2018 - BỘ NÃO KIỂM SOÁT BIGDATA & THI THỰC CHIẾN)
 # -*- coding: utf-8 -*-
 """
@@ -2272,6 +2273,15 @@ def get_shard_exams(subject: str) -> list:
         
     _SHARD_CACHE[norm_subj] = loaded_exams
     return loaded_exams
+
+def enrich_exam_visuals_jit(exam, subject="Toán học", grade=12):
+    """Enrich only the selected exam and preserve the cached source data."""
+    result = deepcopy(exam)
+    for part in ("p1", "p2", "p3"):
+        result[part] = [attach_question_visuals(q, subject=subject, grade=grade)
+                        for q in result.get(part, [])]
+    return result
+
 
 def get_baseline_full_exams(subject: str, grade, enrich_visuals: bool = False):
     """

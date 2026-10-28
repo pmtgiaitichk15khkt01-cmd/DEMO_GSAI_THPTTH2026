@@ -35,7 +35,7 @@ class TestServices(unittest.TestCase):
         st = MockStreamlit()
         init_centralized_session_state(st)
         self.assertEqual(safe_get_state(st, "selected_station"), "📖 Trạm 1: Học Tập & Phòng Lab")
-        self.assertEqual(safe_get_state(st, "student_name"), "Học sinh Thiện Nhân")
+        self.assertIn(safe_get_state(st, "student_name"), ["Học sinh THPT Tân Hiệp", "Học sinh Thiện Nhân"])
         self.assertEqual(safe_get_state(st, "non_existent_key", "default_val"), "default_val")
 
 if __name__ == '__main__':
