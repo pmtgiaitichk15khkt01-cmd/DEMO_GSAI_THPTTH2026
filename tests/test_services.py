@@ -38,5 +38,12 @@ class TestServices(unittest.TestCase):
         self.assertIn(safe_get_state(st, "student_name"), ["Học sinh THPT Tân Hiệp", "Học sinh Thiện Nhân"])
         self.assertEqual(safe_get_state(st, "non_existent_key", "default_val"), "default_val")
 
+    def test_curriculum_matrix(self):
+        from services.curriculum_matrix import render_subject_exam_matrix_spec
+        van_html = render_subject_exam_matrix_spec("Ngữ văn", 12)
+        self.assertIn("764/QĐ-BGDĐT", van_html)
+        toan_html = render_subject_exam_matrix_spec("Toán học", 12)
+        self.assertIn("Toán", toan_html)
+
 if __name__ == '__main__':
     unittest.main()
