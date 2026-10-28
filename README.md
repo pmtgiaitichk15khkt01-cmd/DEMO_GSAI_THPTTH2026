@@ -15,7 +15,7 @@
 - **Thư mục Dữ liệu & Tài liệu trên Google Drive:** [https://drive.google.com/drive/folders/1ZNIMbaxVSV7NBA3g6MS-Ob7_SbfeWHtv?usp=sharing](https://drive.google.com/drive/folders/1ZNIMbaxVSV7NBA3g6MS-Ob7_SbfeWHtv?usp=sharing)
 
 - **Web App Trực Tuyến (PWA Đa Nền Tảng):** [https://gsaithptth-khkt2026.streamlit.app](https://gsaithptth-khkt2026.streamlit.app)
-- **Kho Mã Nguồn GitHub:** [https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026](https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026)
+- **Kho Mã Nguồn GitHub:** [https://github.com/pmtgiaitichk15khkt01-cmd/DEMO_GSAI_THPTTH2026](https://github.com/pmtgiaitichk15khkt01-cmd/DEMO_GSAI_THPTTH2026)
 - **Tài Liệu Hướng Dẫn & Thuyết Minh KHKT:** `HUONG_DAN_CAI_DAT_VA_SU_DUNG_GSAI_2026.pdf` *(Chuẩn in ấn A4)*
 
 ---
@@ -140,8 +140,8 @@ Hệ thống được thiết kế mở rộng hoàn chỉnh, đáp ứng khung 
 
 ```bash
 # 1. Tải kho mã nguồn từ GitHub
-git clone https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026.git
-cd VIP_DEMO_GSAITHPT2026
+git clone https://github.com/pmtgiaitichk15khkt01-cmd/DEMO_GSAI_THPTTH2026.git
+cd DEMO_GSAI_THPTTH2026
 
 # 2. Cài đặt các gói thư viện phụ thuộc
 pip install -r requirements.txt
