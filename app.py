@@ -53,9 +53,17 @@ import base64
 import streamlit.components.v1 as components
 
 def render_html_iframe(html_code: str, height: int = 500, scrolling: bool = False):
-    """Embed HTML tương thích đa phiên bản Streamlit (ưu tiên st.iframe, fallback components.html)."""
-    if hasattr(st, "iframe"):
-        st.iframe(html_code, height=height)
+    """Embed HTML tương thích đa phiên bản Streamlit (ưu tiên st.iframe, fallback components.html).
+    Lưu ý: st.iframe chỉ hỗ trợ height > 0 (pixel), 'stretch', hoặc 'content'.
+    Với các script JS chạy ngầm (height=0), chuyển trực tiếp qua components.html để tránh StreamlitInvalidHeightError.
+    """
+    if height is None or (isinstance(height, (int, float)) and height <= 0):
+        components.html(html_code, height=0)
+    elif hasattr(st, "iframe"):
+        try:
+            st.iframe(html_code, height=height)
+        except Exception:
+            components.html(html_code, height=height, scrolling=scrolling)
     else:
         components.html(html_code, height=height, scrolling=scrolling)
 
