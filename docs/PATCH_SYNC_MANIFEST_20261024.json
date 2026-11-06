@@ -1,0 +1,90 @@
+{
+  "source": "F:\\FINAL KHKT 2026\\live_patch_20261024\\VIP_DEMO_GSAITHPT2026-main",
+  "target": "F:\\FINAL KHKT 2026\\VIP_DEMO_GSAITHPT2026-main\\VIP_DEMO_GSAITHPT2026-main",
+  "backup": "F:\\FINAL KHKT 2026\\backups\\before_live_patch_20261024_113333",
+  "files": [
+    {
+      "file": "app.py",
+      "before_sha256": "4583c067bae5cc1f9640033f6d8c9183cdafc5b59790607f2aa7988440b0386c",
+      "after_sha256": "4c8df6b9e2562278c87fadf803567cafbf584767a25b754babbaa4e9f74d5d67"
+    },
+    {
+      "file": "database.py",
+      "before_sha256": "04f36b45d3863fc66f8fd054d2e36168b0bde1236e63607213df5619b23e0d25",
+      "after_sha256": "01745f7b5157768580b2164c11d8ee377a2725db7b5e3e2775a9ea1cd0c855e0"
+    },
+    {
+      "file": "qa_runtime.py",
+      "before_sha256": null,
+      "after_sha256": "8407f7c5a935508e52a99e575e861ce7ad0c00461aea1db760edd880163142a0"
+    },
+    {
+      "file": "services/azota_lms_exporter.py",
+      "before_sha256": "20959f80ef1f2e5c2e8c2e6164db3d3ac841eb7edfe4c6616f5c4b25f1f55916",
+      "after_sha256": "2253ca704e91b41c6ac69c311d8944a4c213e739e056eace6bd083d716098f3f"
+    },
+    {
+      "file": "services/fsrs_spaced_repetition_service.py",
+      "before_sha256": "cbbd777aa4e2a80a51abb9662f7dc24d00705f526a4f394200d706a6f2bff6aa",
+      "after_sha256": "96e36f34f16f537329a64926f5764258a9b13800c68c9dd1af94f22f25359428"
+    },
+    {
+      "file": "services/neuro_symbolic_verifier.py",
+      "before_sha256": "1291bf977bd9e4d959f802d26ffb17a629e5f57c6f9d25e988e9c1d5e095bd53",
+      "after_sha256": "fe49e2265c5a73430734a848d36bd5d0bff644a2ee4fa84536ed49c6a9f311f7"
+    },
+    {
+      "file": "services/psychometrics_service.py",
+      "before_sha256": "94d8c312649eaa46a786c90449ca99980e3f48a23307c1aa9fe368349a525888",
+      "after_sha256": "102d080f2d6875ff35f5425e3ebeb9c448d509f7bbc69e47d42e83ad784d2be6"
+    },
+    {
+      "file": "services/scoring_service.py",
+      "before_sha256": "0c66190ce5906aa15928cf426322b97da3e3ac629dbcfe14f8017712c744c62f",
+      "after_sha256": "9d5631f01552cfae66911f74abbbfee149f0297dbd69eb535ed4b807adb894b5"
+    },
+    {
+      "file": "services/state_service.py",
+      "before_sha256": "4fd1829c5453cb237a623ae220eb229cf8436f1bb9046e760dc92d1eaab10722",
+      "after_sha256": "b42ccedfe1a69899defb62ef6663e16d002fa48da671fa1726f28e901417d6f6"
+    },
+    {
+      "file": "tests/test_multi_subject_grade_integrity.py",
+      "before_sha256": "478f506e25f4626472e6cd90ec1879631aa9038bd70522e19311eb54a9de7af6",
+      "after_sha256": "184fe8a34c855d367dfb3ebaec4130a742806a6f987b1b982c4b5cf33606f13e"
+    },
+    {
+      "file": "tests/test_live_patch.py",
+      "before_sha256": null,
+      "after_sha256": "6243e67154cb463f82316a2e48371022c0f389849b225d0aba752a9bd611441c"
+    },
+    {
+      "file": "tests/test_station_ui.py",
+      "before_sha256": null,
+      "after_sha256": "e9d332ce1e453268d17483bcf2655f2ade3dfc8eeb20cee070168b64100b134b"
+    },
+    {
+      "file": "requirements.txt",
+      "before_sha256": "c40338b6024c1b52da775e8daa3a449bfb98b10b5fc72beaae2cfe10f875f280",
+      "after_sha256": "e83e5c33fec085202fa68c95ed59d56f049691011c11e25eea12102e092271c4"
+    },
+    {
+      "file": "README.md",
+      "before_sha256": "906c29307c9bd6bcc7efa5b8ebd393c3217cdc3eae225b708ee97ebffa445ae1",
+      "after_sha256": "5d6f7260ea8fc4ef2cd8a9521f12b9721f32727d87f444efacd30a415e1d7a9f"
+    },
+    {
+      "file": "QA_LIVE_20261024.md",
+      "before_sha256": null,
+      "after_sha256": "f6b54b50f75916b54901d5377f65cd143d102038ed36140256db02498c28c7f1"
+    }
+  ],
+  "data_files_overwritten": false,
+  "github": {
+    "pull_request": "https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026/pull/1",
+    "merged_commit": "32b2595ee4cfbbe4785545e78c254c971ca820b8",
+    "branch": "main",
+    "ci_python_3_10": "passed",
+    "ci_python_3_11": "passed"
+  }
+}

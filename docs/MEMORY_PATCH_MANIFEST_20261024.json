@@ -1,0 +1,61 @@
+{
+  "files": [
+    {
+      "file": "app.py",
+      "before_sha256": "4c8df6b9e2562278c87fadf803567cafbf584767a25b754babbaa4e9f74d5d67",
+      "after_sha256": "eafe9d9ef9d3e77ee9f5fa9710b6b5697bda22c92dc5be55006ff1e1f0e7413f"
+    },
+    {
+      "file": "real_exam_engine.py",
+      "before_sha256": "2f29ebed361a11e4ae392e96e0d4945a62ce7ed9e495b027a9359b4b44dc7138",
+      "after_sha256": "270145632228cf854218612d154b288b54ec03bcee5d5d6de9e6afa3959d3fe2"
+    },
+    {
+      "file": "requirements.txt",
+      "before_sha256": "e83e5c33fec085202fa68c95ed59d56f049691011c11e25eea12102e092271c4",
+      "after_sha256": "ea198ec894aab5ea3f9ddf597f9f84a0123fa333954a00e82e5a9038a50ae405"
+    },
+    {
+      "file": ".gitignore",
+      "before_sha256": "32fd3559a75d7080cc0162021369456be9fc76559d1ed0dd4be3c9cbd76fc361",
+      "after_sha256": "17c87ac06f77c5ebab96cf7c368f306fe17addc99619cc4040c0c92dca689024"
+    },
+    {
+      "file": "deep_check_var_project.py",
+      "before_sha256": "cbecb156ce97eea8f7f5f07a355545af357172326372816919584ba44bdf5c1e",
+      "after_sha256": "15a445de1bd6e763442d297f0069229d95b63a067f17d1b5c65036536e417ceb"
+    },
+    {
+      "file": "services/bank_storage.py",
+      "before_sha256": null,
+      "after_sha256": "4096d803740de0b7c021f4d5d260b31b628e138a424b84ff4169908327638b13"
+    },
+    {
+      "file": "tests/test_bank_memory.py",
+      "before_sha256": null,
+      "after_sha256": "2392bfdd1e288cb0d96c74e8070a1209c468487ee58f7ff8d4ed3385e447a37f"
+    },
+    {
+      "file": "tests/test_stream_recovery.py",
+      "before_sha256": null,
+      "after_sha256": "d290d6ff24560e018d2808f44a4a2e81e53c8e4effc497170a64eb8701fb1fe9"
+    },
+    {
+      "file": "DEEP_AUDIT_20261024.md",
+      "before_sha256": null,
+      "after_sha256": "da49a8ad036cc2658e3ee7a443742010b30cce249b59669d258d5066fa0015f4"
+    }
+  ],
+  "backup": "F:\\FINAL KHKT 2026\\backups\\before_memory_patch_20261024",
+  "runtime_data_modified": false,
+  "github_branch": "fix/memory-recovery-20261024",
+  "github_deployed": false,
+  "publication_blocker": null,
+  "tests": "64 passed after Python 3.10 compatibility fix; 13 shards / 33679 exams unchanged",
+  "github_pull_request": "https://github.com/pmtgiaitichk15khkt01-cmd/VIP_DEMO_GSAITHPT2026/pull/2",
+  "github_files_published": 9,
+  "github_status": "PR #2 merged; both Python 3.10 and 3.11 checks passed",
+  "github_merge_commit": "7aae150ef1bcb1a17695297756c9e9ba023bd5aa",
+  "github_published": true,
+  "live_verification": "In progress; not yet confirmed loaded on Streamlit"
+}
