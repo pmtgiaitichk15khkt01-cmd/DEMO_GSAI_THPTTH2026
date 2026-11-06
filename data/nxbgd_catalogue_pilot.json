@@ -1,0 +1,83 @@
+[
+  {
+    "grade": 12,
+    "subject": "Toán học",
+    "book_title": "Toán 12 tập 1",
+    "book_url": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/detail",
+    "series_label_observed": "Bộ sách Thống Nhất",
+    "publisher_created_at_observed": "26/08/2026",
+    "edition": "not_verified",
+    "source_version": "publisher-UI-snapshot-2026-10-30",
+    "checked_at": "2026-10-30",
+    "scope": "Observed catalogue/TOC only; not textbook content, outcome mapping or academic certification.",
+    "chapters": [
+      {
+        "chapter_title": "CHƯƠNG I. ỨNG DỤNG ĐẠO HÀM ĐỂ KHẢO SÁT VÀ VẼ ĐỒ THỊ HÀM SỐ",
+        "lessons": [
+          "Bài 1. Tính đơn điệu và cực trị của hàm số",
+          "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+          "Bài 3. Đường tiệm cận của đồ thị hàm số",
+          "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị của hàm số",
+          "Bài 5. Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn",
+          "Bài tập cuối chương I"
+        ]
+      },
+      {
+        "chapter_title": "CHƯƠNG II. VECTƠ VÀ HỆ TRỤC TOẠ ĐỘ TRONG KHÔNG GIAN",
+        "lessons": [
+          "Bài 6. Vectơ trong không gian",
+          "Bài 7. Hệ trục toạ độ trong không gian",
+          "Bài 8. Biểu thức toạ độ của các phép toán vectơ",
+          "Bài tập cuối chương II"
+        ]
+      },
+      {
+        "chapter_title": "CHƯƠNG III. CÁC SỐ ĐẶC TRƯNG ĐO MỨC ĐỘ PHÂN TÁN CỦA MẪU SỐ LIỆU GHÉP NHÓM",
+        "lessons": [
+          "Bài 9. Khoảng biến thiên và khoảng tứ phân vị",
+          "Bài 10. Phương sai và độ lệch chuẩn",
+          "Bài tập cuối chương III"
+        ]
+      },
+      {
+        "chapter_title": "HOẠT ĐỘNG THỰC HÀNH TRẢI NGHIỆM",
+        "lessons": [
+          "Khảo sát và vẽ đồ thị hàm số với phần mềm GeoGebra",
+          "Vẽ vectơ tổng của ba vectơ trong không gian bằng phần mềm GeoGebra",
+          "Độ dài gang tay (gang tay của bạn dài bao nhiêu?)"
+        ]
+      }
+    ],
+    "lesson_urls": {
+      "Bài 1. Tính đơn điệu và cực trị của hàm số": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#6",
+      "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#16",
+      "Bài 3. Đường tiệm cận của đồ thị hàm số": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#21",
+      "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị của hàm số": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#27",
+      "Bài 5. Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#34",
+      "Bài tập cuối chương I": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#43",
+      "Bài 6. Vectơ trong không gian": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#46",
+      "Bài 7. Hệ trục toạ độ trong không gian": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#61",
+      "Bài 8. Biểu thức toạ độ của các phép toán vectơ": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#68",
+      "Bài tập cuối chương II": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#74",
+      "Bài 9. Khoảng biến thiên và khoảng tứ phân vị": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#76",
+      "Bài 10. Phương sai và độ lệch chuẩn": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#81",
+      "Bài tập cuối chương III": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#86",
+      "Khảo sát và vẽ đồ thị hàm số với phần mềm GeoGebra": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#88",
+      "Vẽ vectơ tổng của ba vectơ trong không gian bằng phần mềm GeoGebra": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#93",
+      "Độ dài gang tay (gang tay của bạn dài bao nhiêu?)": "https://truonghocsoquocgia.nxbgd.vn/book/afc57a36-38ef-4223-bd7b-8349e251c39e/read#95"
+    },
+    "sample_content_review": {
+      "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị của hàm số",
+      "reader_anchor": 27,
+      "printed_page": 26,
+      "method": "Viewed publisher reader page image through Chrome MCP",
+      "scope": "Opening knowledge/skills box only, not the full lesson or all examples",
+      "function_families_observed": [
+        "cubic",
+        "linear-over-linear rational",
+        "quadratic-over-linear rational"
+      ],
+      "limit": "Not a global ban on every quartic expression or other lessons; no full academic approval."
+    }
+  }
+]

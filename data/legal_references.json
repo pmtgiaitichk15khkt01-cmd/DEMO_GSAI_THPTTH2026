@@ -1,0 +1,185 @@
+{
+  "checked_at": "2026-10-24",
+  "scope": "Nguồn đối chiếu cho Trạm 1 và 3, không phải danh mục toàn bộ văn bản ngành hoặc xác nhận tự động mọi nội dung AI.",
+  "documents": [
+    {
+      "code": "32/2018/TT-BGDĐT",
+      "effective_from": "2019-02-15",
+      "scope": "curriculum",
+      "status": "partially_amended",
+      "url": "https://vbpl.vn/van-ban/chi-tiet/thong-tu-so-32-2018-tt-bgddt-ban-hanh-chuong-trinh-giao-duc-pho-thong--146721",
+      "note": "Chương trình GDPT 2018; đọc cùng văn bản sửa đổi, không dùng bản gốc đơn lẻ.",
+      "checked_at": "2026-11-02",
+      "verification_scope": "document_identity_status_history; mathematics_grade12_derivative_graph_appendix_pp105_106_mapped_only; not_all_subjects_or_consolidated_legal_certificate",
+      "amendments_observed": [
+        "20/2021/TT-BGDĐT",
+        "13/2022/TT-BGDĐT",
+        "17/2025/TT-BGDĐT"
+      ],
+      "subject_mapping": {
+        "mathematics_grade12": {
+          "topics": [
+            "derivative sign and monotonicity",
+            "extrema and variation table",
+            "cubic and nondegenerate rational function graphs and symmetry"
+          ],
+          "appendix_pages": [
+            105,
+            106
+          ],
+          "copy_url": "https://boiduonghanoi.edu.vn/pluginfile.php/45/mod_folder/content/0/3-CT-Toan.pdf",
+          "checked_at": "2026-11-02"
+        }
+      }
+    },
+    {
+      "code": "20/2021/TT-BGDĐT",
+      "effective_from": "2021-08-16",
+      "scope": "curriculum",
+      "status": "amending",
+      "url": "https://vbpl.vn/FileData/TW/Lists/vbpq/Attachments/150034/VanBanGoc_20-2021-TT-BGD%C4%90T.pdf",
+      "note": "Sửa Điều 3 về lộ trình thực hiện; không phải ma trận đề thi.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "13/2022/TT-BGDĐT",
+      "effective_from": "2022-08-03",
+      "scope": "curriculum",
+      "status": "amending",
+      "url": "https://congbao.chinhphu.vn/van-ban-dang-cong-bao/trang-771.htm",
+      "note": "Sửa nội dung chương trình, bao gồm Lịch sử cấp THPT.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "17/2025/TT-BGDĐT",
+      "effective_from": "2025-09-12",
+      "scope": "curriculum",
+      "status": "active",
+      "url": "https://congbao.chinhphu.vn/van-ban/thong-tu-so-17-2025-tt-bgddt-46255.htm",
+      "note": "Phụ lục sửa Lịch sử và Địa lí, Lịch sử 10, Địa lí, GDCD; cần áp đúng phụ lục/lớp.",
+      "checked_at": "2026-11-02",
+      "verification_scope": "official_metadata_effective_date_and_Article1_five_amended_subject_scopes_read; mathematics_not_listed; not_a_current_consolidated_status_certificate"
+    },
+    {
+      "code": "22/2021/TT-BGDĐT",
+      "effective_from": "2021-09-05",
+      "scope": "assessment",
+      "status": "active",
+      "url": "https://vbpl.vn/tw/Pages/vbpq-van-ban-goc.aspx?ItemID=150073",
+      "note": "Đánh giá học sinh THCS/THPT; không ấn định cấu trúc tốt nghiệp cho mọi lớp. Thẩm quyền quản lý đọc cùng TT 10/2025 khi liên quan.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "3588/QĐ-BGDĐT",
+      "issued_on": "2025-12-26",
+      "effective_from": "2026-01-01",
+      "scope": "textbook",
+      "status": "active",
+      "url": "https://xaydungchinhsach.chinhphu.vn/quyet-dinh-so-3588-qd-bgddt-ve-bo-sach-giao-khoa-giao-duc-pho-thong-su-dung-thong-nhat-toan-quoc-119251227145448874.htm",
+      "note": "KNTT dùng thống nhất từ năm học 2026–2027; không chứng nhận học liệu AI của app.",
+      "checked_at": "2026-11-01",
+      "original_copy_url": "https://cdn.giaoduc.net.vn/files/b07cd10fdc767c2ae5cffe381ee2faf850d76e1e2ec07ceba44d489b70bfc09731bd7dfb3ea0cd1b971de53ce3c9c5f8/3588-qd-bgddtsigned.pdf",
+      "verification_scope": "Article 2 of signed Ministry decision: effective 2026-01-01; not textbook-page validation"
+    },
+    {
+      "code": "185/QĐ-BGDĐT",
+      "issued_on": "2026-01-29",
+      "effective_from": "2026-01-29",
+      "scope": "textbook",
+      "status": "active",
+      "url": "https://thuvienphapluat.vn/van-ban/giao-duc/quyet-dinh-185-qd-bgddt-2026-bo-sung-sach-giao-khoa-giao-duc-pho-thong-toan-quoc-695295.aspx",
+      "corroborating_source_url": "https://nxbgd.vn/bai-viet/nha-xuat-ban-giao-duc-viet-nam-thong-bao-ve-viec-su-dung-sach-giao-khoa-nam-hoc-2026-2027",
+      "note": "Bổ sung danh mục SGK dùng thống nhất toàn quốc từ năm học 2026–2027; phải đối chiếu đúng tên sách/lớp trong phụ lục. Không thay QĐ 3588 và không chứng nhận nội dung học liệu AI.",
+      "checked_at": "2026-11-01",
+      "verification_scope": "decision_identity_issue_and_effective_date_and_scope_checked; annex not mapped to app curriculum topics"
+    },
+    {
+      "code": "24/2024/TT-BGDĐT",
+      "effective_from": "2025-02-08",
+      "scope": "graduation",
+      "status": "partially_amended",
+      "url": "https://vqa.moet.gov.vn/vi/news/tin-tuc-su-kien/ban-hanh-quy-che-thi-tot-nghiep-thpt-tu-nam-2025-167.html",
+      "note": "Quy chế thi tốt nghiệp THPT; đọc cùng TT 13/2026.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "13/2026/TT-BGDĐT",
+      "effective_from": "2026-04-24",
+      "scope": "graduation",
+      "status": "active",
+      "url": "https://vanban.chinhphu.vn/?docid=206343&pageid=27160",
+      "note": "Sửa Quy chế thi tốt nghiệp THPT; ban hành 09/03/2026.",
+      "checked_at": "2026-11-02",
+      "original_copy_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/08/13-bgddt.signed.pdf",
+      "verification_scope": "signed_original_pages1_3_read; Article1_general_upper_secondary_plan_and_Article2_History; no_replacement_of_mathematics_subject_appendix_in_these_articles"
+    },
+    {
+      "code": "764/QĐ-BGDĐT",
+      "effective_from": "2024-03-08",
+      "scope": "graduation",
+      "status": "reference",
+      "url": "https://thptkrongana.edu.vn/wp-content/uploads/quyet-dinh-764-qd-bgddt-2024-cau-truc-de-thi-ky-thi-tot-nghiep-thpt-tu-2025.pdf",
+      "note": "Bản ký của Bộ lưu tại trường; phạm vi thi tốt nghiệp từ 2025. Địa lí 18/4/6. Tin học in 6 câu Đ/S, làm 4 theo định hướng.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "3175/BGDĐT-GDTrH",
+      "effective_from": "2022-07-21",
+      "scope": "literature_guidance",
+      "status": "guidance",
+      "url": "https://xaydungchinhsach.chinhphu.vn/huong-dan-doi-moi-phuong-phap-day-hoc-va-kiem-tra-mon-ngu-van-119220723081034079.htm",
+      "note": "Công văn hướng dẫn; tránh văn bản SGK đã học khi đánh giá cuối học kì/năm/cấp, không cấm dùng SGK trong dạy học.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "89/2026/TT-BGDĐT",
+      "issued_on": "2026-10-16",
+      "effective_from": "2026-12-01",
+      "scope": "assessment",
+      "status": "upcoming",
+      "url": "https://vanban.chinhphu.vn/?docid=220070&pageid=27160&typegroupid=6",
+      "note": "Đã ban hành, CHƯA hiệu lực tại ngày 24/10/2026. Sửa TT 27/2020 và TT 22/2021; không áp sớm. Cần rà nội dung khi đến ngày hiệu lực.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "7991/BGDĐT-GDTrH",
+      "effective_from": "2024-12-17",
+      "scope": "assessment_guidance",
+      "status": "guidance",
+      "url": "https://c3nguyencongphuong.quangngai.edu.vn/van-ban/so-7991-bgddt-gdtrh",
+      "note": "Công văn hướng dẫn kiểm tra, đánh giá; phần triển khai ma trận định kì nêu cấp THPT, tham khảo phụ lục và hướng dẫn Sở. Phụ lục có ba mức Biết/Hiểu/Vận dụng ở từng dạng câu và mẫu tỷ lệ điểm 40/30/30; không suy mức từ dạng câu, không coi VDC là cột bắt buộc riêng cho mọi bài. Không đồng nhất với định dạng tốt nghiệp. Bản lưu tại cơ sở giáo dục.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "5512/BGDĐT-GDTrH",
+      "effective_from": "2020-12-18",
+      "scope": "teaching_guidance",
+      "status": "guidance",
+      "url": "https://moet.gov.vn/content/tintuc/lists/news/Attachments/8392/3-tai-lieu-huong-dan-mon-ngu-van.pdf",
+      "note": "Hướng dẫn xây dựng kế hoạch giáo dục/kế hoạch bài dạy; tài liệu Bộ dẫn chiếu khung linh hoạt. Không phải tiêu chuẩn chứng nhận công thức hay toàn bộ học liệu AI.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "10/2025/TT-BGDĐT",
+      "effective_from": "2025-07-01",
+      "effective_until": "2027-03-01",
+      "scope": "administration",
+      "status": "active",
+      "url": "https://vbpl.vn/TW/Pages/vbpq-toanvan.aspx?ItemID=179375",
+      "note": "Phân định thẩm quyền quản lý trong mô hình chính quyền địa phương hai cấp; không thay ma trận câu hỏi. Lưu ý điều khoản hết hiệu lực khi có quy định thay thế tương ứng.",
+      "checked_at": "2026-10-24"
+    },
+    {
+      "code": "5208/BGDĐT-GDPT",
+      "issued_on": "2026-08-07",
+      "effective_from": "2026-08-07",
+      "scope": "school_year_guidance",
+      "status": "guidance",
+      "url": "https://xaydungchinhsach.chinhphu.vn/cong-van-so-5208-bgddt-gdpt-huong-dan-thuc-hien-nhiem-vu-giao-duc-pho-thong-nam-hoc-2026-2027-119260808110247193.htm",
+      "original_copy_url": "https://xdcs.cdnchinhphu.vn/446259493575335936/2026/8/8/5208-bgddt-gdpt-signed-07709-1786161283154837945767.pdf",
+      "note": "Hướng dẫn nhiệm vụ GDPT năm học 2026–2027; trang1 chú thích2 dẫn CT2018 cùng TT20/2021,13/2022,17/2025; trang2 yêu cầu phát triển tự học và đánh giá đúng yêu cầu cần đạt. Ngày dùng để lọc là ngày ban hành hướng dẫn, không phải điều khoản hiệu lực của thông tư. Không chứng nhận học liệu AI.",
+      "checked_at": "2026-11-02",
+      "verification_scope": "signed_original_pages1_2_read; year2026_2027_implementation_reference_chain; not_comprehensive_current_legal_status_certificate"
+    }
+  ]
+}

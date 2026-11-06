@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-11-02",
+  "portals": [
+    {
+      "id": "national_digital_school_textbooks",
+      "name": "Trường Học Số Quốc Gia — Thư viện sách giáo khoa",
+      "url": "https://www.thsqg.vn/sach",
+      "grade_url_template": "https://www.thsqg.vn/sach?lop={grade}",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      "owner_confirmed": true,
+      "verification": "Live catalog navigation checked through Chrome MCP; owner confirmed exact site and logo.",
+      "observed_series": ["Bộ SGK thống nhất", "Kết nối tri thức với cuộc sống"],
+      "scope": "Catalog for source discovery, not certification that every book, edition or lesson has been read.",
+      "all_contents_reviewed": false
+    },
+    {
+      "id": "publisher_digital_school",
+      "name": "NXBGD — Trường học số quốc gia",
+      "url": "https://truonghocsoquocgia.nxbgd.vn/",
+      "scope": "Publisher-branded portal; keep separate from the owner-confirmed thsqg.vn catalog."
+    },
+    {
+      "id": "publisher_teacher_training",
+      "name": "NXBGD — Tập huấn và tài liệu cập nhật",
+      "url": "https://taphuan.nxbgd.vn/tap-huan",
+      "scope": "SGK/SGV/training and update links; owner clarified this was not the remembered site."
+    }
+  ]
+}

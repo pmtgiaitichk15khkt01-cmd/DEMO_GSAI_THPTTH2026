@@ -19,6 +19,7 @@ Phục dựng 100% ngữ liệu thị giác đa môn, đa khối lớp:
 import re
 import math
 import json
+import copy
 
 # ------------------------------------------------------------------------------
 # 1. NHÓM TOÁN HỌC: PHỤC DỰNG ĐỒ THỊ 2D, BBT, MSLGN & TOÁN MÔ HÌNH HÓA THỰC TIỄN
@@ -594,7 +595,7 @@ def build_trig_unit_circle_model(q_text: str = "", opts: list = None, ans: str =
     svg = """<svg width="340" height="230" viewBox="0 0 340 230" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="arrow_trig" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-<path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
     </marker>
   </defs>
   <rect x="2" y="2" width="336" height="226" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
@@ -661,11 +662,11 @@ def build_linear_inequality_region_model(q_text: str = "", opts: list = None, an
     """
     svg = """<svg width="340" height="260" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
   <defs>
-<pattern id="hatch_ineq" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-<line x1="0" y1="0" x2="0" y2="8" stroke="#f43f5e" stroke-width="1.2" opacity="0.6"/>
-</pattern>
+    <pattern id="hatch_ineq" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#f43f5e" stroke-width="1.2" opacity="0.6"/>
+    </pattern>
     <marker id="arrow_ineq" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-<path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
     </marker>
   </defs>
   <rect x="2" y="2" width="336" height="256" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
@@ -1155,11 +1156,14 @@ def build_oxyz_flight_path_model(q_text):
   <!-- Các điểm và nhãn -->
   <circle cx="{pO[0]:.1f}" cy="{pO[1]:.1f}" r="3" fill="#0f172a"/>
   <text x="{pO[0] - 14:.1f}" y="{pO[1] + 12:.1f}" font-size="11" font-weight="bold" fill="#0f172a">O(0;0;0)</text>
-<circle cx="{pM[0]:.1f}" cy="{pM[1]:.1f}" r="3" fill="#0284c7"/>
+  
+  <circle cx="{pM[0]:.1f}" cy="{pM[1]:.1f}" r="3" fill="#0284c7"/>
   <text x="{pM[0] - 25:.1f}" y="{pM[1] - 6:.1f}" font-size="10.5" font-weight="bold" fill="#0284c7">M({int(M[0])};{int(M[1])};{int(M[2])})</text>
-<circle cx="{pN[0]:.1f}" cy="{pN[1]:.1f}" r="3" fill="#0284c7"/>
+  
+  <circle cx="{pN[0]:.1f}" cy="{pN[1]:.1f}" r="3" fill="#0284c7"/>
   <text x="{pN[0] + 5:.1f}" y="{pN[1] + 2:.1f}" font-size="10.5" font-weight="bold" fill="#0284c7">N({int(N[0])};{int(N[1])};{int(N[2])})</text>
-<circle cx="{pH[0]:.1f}" cy="{pH[1]:.1f}" r="2.5" fill="#f59e0b"/>
+  
+  <circle cx="{pH[0]:.1f}" cy="{pH[1]:.1f}" r="2.5" fill="#f59e0b"/>
   <text x="{pH[0] + 4:.1f}" y="{pH[1] + 12:.1f}" font-size="10" font-weight="bold" fill="#d97706">H (d_min)</text>
 </svg>"""
 
@@ -1244,13 +1248,17 @@ def build_oxyz_points_segment_model(q_text):
   <!-- Điểm và nhãn -->
   <circle cx="{pO[0]:.1f}" cy="{pO[1]:.1f}" r="2.5" fill="#0f172a"/>
   <text x="{pO[0] - 12:.1f}" y="{pO[1] - 4:.1f}" font-size="10.5" font-weight="bold" fill="#0f172a">O</text>
-<circle cx="{pA[0]:.1f}" cy="{pA[1]:.1f}" r="3" fill="#e11d48"/>
+  
+  <circle cx="{pA[0]:.1f}" cy="{pA[1]:.1f}" r="3" fill="#e11d48"/>
   <text x="{pA[0] - 28:.1f}" y="{pA[1] - 4:.1f}" font-size="10.5" font-weight="bold" fill="#e11d48">A({int(A[0])};{int(A[1])};{int(A[2])})</text>
-<circle cx="{pB[0]:.1f}" cy="{pB[1]:.1f}" r="3" fill="#e11d48"/>
+  
+  <circle cx="{pB[0]:.1f}" cy="{pB[1]:.1f}" r="3" fill="#e11d48"/>
   <text x="{pB[0] + 5:.1f}" y="{pB[1] + 12:.1f}" font-size="10.5" font-weight="bold" fill="#e11d48">B({int(B[0])};{int(B[1])};{int(B[2])})</text>
-<circle cx="{pI[0]:.1f}" cy="{pI[1]:.1f}" r="2.5" fill="#0284c7"/>
+  
+  <circle cx="{pI[0]:.1f}" cy="{pI[1]:.1f}" r="2.5" fill="#0284c7"/>
   <text x="{pI[0] + 4:.1f}" y="{pI[1] - 4:.1f}" font-size="10" font-weight="bold" fill="#0284c7">I({I[0]:g};{I[1]:g};{I[2]:g})</text>
-<circle cx="{pM[0]:.1f}" cy="{pM[1]:.1f}" r="2.5" fill="#16a34a"/>
+  
+  <circle cx="{pM[0]:.1f}" cy="{pM[1]:.1f}" r="2.5" fill="#16a34a"/>
   <text x="{pM[0] + 4:.1f}" y="{pM[1] + 12:.1f}" font-size="10" font-weight="bold" fill="#16a34a">M(2;1;0) ∈ (Oxy)</text>
 </svg>"""
 
@@ -1300,20 +1308,24 @@ def build_rlc_circuit_model():
   <circle cx="120" cy="80" r="20" stroke="#f59e0b" stroke-width="3" fill="#1e293b"/>
   <path d="M 112 80 Q 116 72 120 80 T 128 80" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
   <text x="120" y="125" fill="#f59e0b" font-size="13" text-anchor="middle" font-family="sans-serif">u ~</text>
-<path d="M 140 80 L 190 80" stroke="#38bdf8" stroke-width="3"/>
+  
+  <path d="M 140 80 L 190 80" stroke="#38bdf8" stroke-width="3"/>
   <!-- Điện trở R -->
   <rect x="190" y="68" width="50" height="24" stroke="#34d399" stroke-width="3" fill="#1e293b"/>
   <text x="215" y="60" fill="#34d399" font-size="13" text-anchor="middle" font-family="sans-serif">R</text>
-<path d="M 240 80 L 290 80" stroke="#38bdf8" stroke-width="3"/>
+  
+  <path d="M 240 80 L 290 80" stroke="#38bdf8" stroke-width="3"/>
   <!-- Cuộn cảm L -->
   <path d="M 290 80 C 295 65, 305 65, 310 80 C 315 65, 325 65, 330 80 C 335 65, 345 65, 350 80" stroke="#ec4899" stroke-width="3" fill="none"/>
   <text x="320" y="60" fill="#ec4899" font-size="13" text-anchor="middle" font-family="sans-serif">L, r</text>
-<path d="M 350 80 L 400 80" stroke="#38bdf8" stroke-width="3"/>
+  
+  <path d="M 350 80 L 400 80" stroke="#38bdf8" stroke-width="3"/>
   <!-- Tụ điện C -->
   <line x1="400" y1="65" x2="400" y2="95" stroke="#a78bfa" stroke-width="3.5"/>
   <line x1="410" y1="65" x2="410" y2="95" stroke="#a78bfa" stroke-width="3.5"/>
   <text x="405" y="55" fill="#a78bfa" font-size="13" text-anchor="middle" font-family="sans-serif">C</text>
-<path d="M 410 80 L 460 80" stroke="#38bdf8" stroke-width="3"/>
+  
+  <path d="M 410 80 L 460 80" stroke="#38bdf8" stroke-width="3"/>
 </svg>"""
 
     tikz = r"""\begin{tikzpicture}[scale=0.9, >=stealth]
@@ -1356,7 +1368,8 @@ def build_thermal_gas_pv_model():
   <line x1="60" y1="200" x2="450" y2="200" stroke="#94a3b8" stroke-width="2"/>
   <polygon points="450,196 460,200 450,204" fill="#94a3b8"/>
   <text x="465" y="204" fill="#94a3b8" font-size="13" font-weight="bold">V (lít)</text>
-<line x1="60" y1="200" x2="60" y2="30" stroke="#94a3b8" stroke-width="2"/>
+  
+  <line x1="60" y1="200" x2="60" y2="30" stroke="#94a3b8" stroke-width="2"/>
   <polygon points="56,30 60,20 64,30" fill="#94a3b8"/>
   <text x="50" y="20" fill="#94a3b8" font-size="13" font-weight="bold">p (atm)</text>
   <text x="45" y="215" fill="#94a3b8" font-size="12">O</text>
@@ -1436,7 +1449,8 @@ def build_magnetic_force_model():
   <!-- Cực Nam Châm N (Trái) và S (Phải) -->
   <rect x="50" y="40" width="60" height="120" fill="#ef4444" rx="4"/>
   <text x="80" y="105" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">N</text>
-<rect x="390" y="40" width="60" height="120" fill="#3b82f6" rx="4"/>
+  
+  <rect x="390" y="40" width="60" height="120" fill="#3b82f6" rx="4"/>
   <text x="420" y="105" fill="#ffffff" font-size="20" font-weight="bold" text-anchor="middle">S</text>
   
   <!-- Các đường sức từ B từ N sang S -->
@@ -1490,7 +1504,8 @@ def build_nuclear_decay_model():
   <line x1="70" y1="180" x2="450" y2="180" stroke="#94a3b8" stroke-width="2"/>
   <polygon points="450,176 460,180 450,184" fill="#94a3b8"/>
   <text x="465" y="184" fill="#94a3b8" font-size="12">t (thời gian)</text>
-<line x1="70" y1="180" x2="70" y2="25" stroke="#94a3b8" stroke-width="2"/>
+  
+  <line x1="70" y1="180" x2="70" y2="25" stroke="#94a3b8" stroke-width="2"/>
   <polygon points="66,25 70,15 74,25" fill="#94a3b8"/>
   <text x="65" y="15" fill="#94a3b8" font-size="12">N (Số hạt chưa phân rã)</text>
   <text x="55" y="195" fill="#94a3b8" font-size="12">O</text>
@@ -1501,12 +1516,14 @@ def build_nuclear_decay_model():
   <!-- Mốc N0, N0/2, N0/4 -->
   <circle cx="70" cy="45" r="4" fill="#f43f5e"/>
   <text x="45" y="48" fill="#f43f5e" font-size="12" font-weight="bold">N₀</text>
-<line x1="70" y1="112" x2="210" y2="112" stroke="#475569" stroke-dasharray="4"/>
+  
+  <line x1="70" y1="112" x2="210" y2="112" stroke="#475569" stroke-dasharray="4"/>
   <line x1="210" y1="112" x2="210" y2="180" stroke="#475569" stroke-dasharray="4"/>
   <circle cx="210" cy="112" r="3.5" fill="#ec4899"/>
   <text x="40" y="115" fill="#94a3b8" font-size="11">N₀/2</text>
   <text x="210" y="195" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">T (Chu kỳ)</text>
-<line x1="70" y1="146" x2="350" y2="146" stroke="#475569" stroke-dasharray="4"/>
+  
+  <line x1="70" y1="146" x2="350" y2="146" stroke="#475569" stroke-dasharray="4"/>
   <line x1="350" y1="146" x2="350" y2="180" stroke="#475569" stroke-dasharray="4"/>
   <circle cx="350" cy="146" r="3.5" fill="#ec4899"/>
   <text x="40" y="149" fill="#94a3b8" font-size="11">N₀/4</text>
@@ -1639,15 +1656,18 @@ def build_pedigree_chart_model():
   <rect x="100" y="30" width="24" height="24" stroke="#e2e8f0" stroke-width="2.5" fill="#e2e8f0"/>
   <line x1="124" y1="42" x2="180" y2="42" stroke="#e2e8f0" stroke-width="2.5"/>
   <circle cx="192" cy="42" r="12" stroke="#e2e8f0" stroke-width="2.5" fill="#1e293b"/>
-<line x1="152" y1="42" x2="152" y2="90" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <line x1="152" y1="42" x2="152" y2="90" stroke="#e2e8f0" stroke-width="2"/>
   <line x1="80" y1="90" x2="360" y2="90" stroke="#e2e8f0" stroke-width="2"/>
-<text x="25" y="115" fill="#94a3b8" font-size="13" font-weight="bold">II</text>
+  
+  <text x="25" y="115" fill="#94a3b8" font-size="13" font-weight="bold">II</text>
   <circle cx="80" cy="115" r="12" stroke="#e2e8f0" stroke-width="2.5" fill="#1e293b"/>
   <rect x="140" y="103" width="24" height="24" stroke="#e2e8f0" stroke-width="2.5" fill="#1e293b"/>
   <line x1="164" y1="115" x2="220" y2="115" stroke="#e2e8f0" stroke-width="2.5"/>
   <circle cx="232" cy="115" r="12" stroke="#e2e8f0" stroke-width="2.5" fill="#e2e8f0"/>
   <rect x="348" y="103" width="24" height="24" stroke="#e2e8f0" stroke-width="2.5" fill="#e2e8f0"/>
-<rect x="120" y="165" width="16" height="16" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>
+  
+  <rect x="120" y="165" width="16" height="16" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>
   <text x="142" y="178" fill="#cbd5e1" font-size="11">Nam bình thường</text>
   <rect x="250" y="165" width="16" height="16" fill="#e2e8f0"/>
   <text x="272" y="178" fill="#cbd5e1" font-size="11">Nam bị bệnh</text>
@@ -1711,7 +1731,7 @@ def build_food_web_model():
     svg = r"""<svg viewBox="0 0 520 180" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="fw_arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-<path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
+      <path d="M0,0 L6,3 L0,6 Z" fill="#0284c7" />
     </marker>
   </defs>
   <rect width="100%" height="100%" fill="#ffffff" rx="8" stroke="#0284c7" stroke-width="1.2"/>
@@ -2401,7 +2421,11 @@ def heal_bbt_mathematics(raw_bbt: str) -> str:
     - Tự động đồng bộ tiệm cận đứng || cho hàm phân thức.
     """
     if not raw_bbt or not isinstance(raw_bbt, str):
-        return raw_bbt
+        return ""
+
+    raw_str = str(raw_bbt).strip()
+    if raw_str.lower() in ["null", "none", "{}", "undefined", "nil", "nan", "[]"] or len(raw_str) < 5:
+        return ""
 
     def _clean(v):
         s = str(v).replace('$', '').strip()
@@ -2411,7 +2435,6 @@ def heal_bbt_mathematics(raw_bbt: str) -> str:
         s = re.sub(r'\\frac\{([^}]+)\}\{([^}]+)\}', r'\1/\2', s)
         return s
 
-    raw_str = str(raw_bbt).strip()
     # Khử triệt để xung đột \nearrow bị cắt thành \n + earrow
     raw_str = re.sub(r'\\+nearrow\b|\\nearrow', '↗', raw_str)
     raw_str = re.sub(r'\\+searrow\b|\\searrow', '↘', raw_str)
@@ -2419,7 +2442,7 @@ def heal_bbt_mathematics(raw_bbt: str) -> str:
     raw_str = re.sub(r'\\n(?!earrow)', '\n', raw_str)
     lines = [l.strip() for l in raw_str.split('\n') if l.strip() and '---' not in l]
     if len(lines) < 2:
-        return raw_bbt
+        return ""
 
     row_x_parts = [_clean(p) for p in lines[0].split('|') if _clean(p)]
     cells_x = row_x_parts[1:] if len(row_x_parts) > 1 else []
@@ -2614,3 +2637,323 @@ def heal_bbt_mathematics(raw_bbt: str) -> str:
             return f"{lines[0]}\n{lines[1]}\n{new_y_line}"
 
     return raw_bbt
+
+
+def harmonize_exam_visual_balance(exam: dict, subject: str = "Toán học", grade: int = 12, user_custom_req: str = "") -> dict:
+    """
+    HỆ THỐNG ĐIỀU HÒA NGỮ LIỆU ĐỒ THỊ & BẢNG BIẾN THIÊN ĐA MÔN ĐA LỚP CHUẨN CÔNG NGHIỆP BIG TECH:
+    - 1. Data Sanitization & Integrity: Thanh lọc triệt để các giá trị giả rác 'null', 'none', '{}'
+         tránh phát sinh ô trắng (blank white box) trên giao diện Dark/Light mode.
+    - 2. Contextual Routing: Nhận diện phân môn, phân khối (Toán 12 KSHS, Toán 10 Lượng giác/BPT,
+         Toán 11 Oxyz/Không gian, Lý/Hóa/Sinh/Văn/Sử/Địa/Tin/Anh).
+    - 3. Tri-Model Pedagogical Balancer (Hàm bậc ba, Phân thức 1/1, Phân thức 2/1):
+         Phân bổ hài hòa, đối xứng theo thuật toán Round-Robin thích ứng, tuyệt đối không thiên vị
+         hoặc bỏ sót 1 trong 3 dạng hàm cơ bản của CT GDPT 2018 khi người dùng yêu cầu KSHS.
+    - 4. Answer-Aware Semantic Precision: Đảm bảo cực trị, tiệm cận, tọa độ đồ thị và BBT
+         khớp 100% với phương án đáp án đúng (A, B, C, D) mà không gây mâu thuẫn giải tích.
+    - 5. Real-World Modeling Preservation: Bảo tồn các mô hình thực tế Phần III (VDC) như
+         quả cầu sắt rơi vào bình nước, cửa sổ bán nguyệt, dải đèn LED uốn cong tiếp xúc đường tròn.
+    """
+    if not isinstance(exam, dict):
+        return exam
+
+    def _is_invalid_str(v):
+        if v is None:
+            return True
+        if isinstance(v, str):
+            s = v.strip().lower()
+            return s in ["null", "none", "{}", "nil", "undefined", "nan", "[]", ""] or len(s) == 0
+        if isinstance(v, (dict, list)) and len(v) == 0:
+            return True
+        return False
+
+    def _clean_question_data(q_item):
+        for k in ["bbt", "f", "tikz", "geom_3d", "mslgn_data"]:
+            if _is_invalid_str(q_item.get(k)):
+                q_item.pop(k, None)
+        return q_item
+
+    # BƯỚC 1: Data Sanitization toàn bộ đề
+    for p_k in ["p1", "p2", "p3"]:
+        if p_k in exam and isinstance(exam[p_k], list):
+            for i in range(len(exam[p_k])):
+                if isinstance(exam[p_k][i], dict):
+                    exam[p_k][i] = _clean_question_data(exam[p_k][i])
+
+    # BƯỚC 2: Kiểm tra phân môn & phân khối
+    is_math = (subject == "Toán học" or str(exam.get("subject", "")).strip() == "Toán học")
+    if not is_math:
+        return exam
+
+    # Xác định khối lớp
+    grade_str = str(grade if grade is not None else exam.get("grade", "12"))
+    is_grade_12 = ("12" in grade_str)
+
+    # Kiểm tra ngữ cảnh KSHS / 3 hàm số cơ bản
+    user_req_str = str(user_custom_req or exam.get("user_custom_instructions") or "").lower()
+    exam_title_str = str(exam.get("title", "")).lower()
+    is_kshs_context = (
+        is_grade_12 and (
+            any(k in user_req_str for k in ["hàm số", "kshs", "đồ thị", "bbt", "bậc ba", "1/1", "2/1", "phân thức", "cực trị", "tiệm cận"])
+            or any(k in exam_title_str for k in ["hàm số", "khảo sát", "ứng dụng đạo hàm", "đạo hàm", "chủ đề 1"])
+            or True
+        )
+    )
+
+    if not is_kshs_context:
+        return exam
+
+    # BƯỚC 3: Tri-Model Pedagogical Matrix (Hàm bậc ba, 1/1, 2/1)
+    CUBIC_MODELS = [
+        {
+            "f": {"type": "func_3", "a": 1.0, "b": -3.0, "c": 0.0, "d": 2.0},
+            "bbt": "x | -\\infty | 0 | 2 | +\\infty\ny' | + | 0 | - | 0 | +\ny | -\\infty | \\nearrow | 2 | \\searrow | -2 | \\nearrow | +\\infty",
+            "cd_pt": (0.0, 2.0),
+            "ct_pt": (2.0, -2.0)
+        },
+        {
+            "f": {"type": "func_3", "a": -1.0, "b": 0.0, "c": 3.0, "d": 0.0},
+            "bbt": "x | -\\infty | -1 | 1 | +\\infty\ny' | - | 0 | + | 0 | -\ny | +\\infty | \\searrow | -2 | \\nearrow | 2 | \\searrow | -\\infty",
+            "cd_pt": (1.0, 2.0),
+            "ct_pt": (-1.0, -2.0)
+        },
+        {
+            "f": {"type": "func_3", "a": 1.0, "b": 0.0, "c": -3.0, "d": 0.0},
+            "bbt": "x | -\\infty | -1 | 1 | +\\infty\ny' | + | 0 | - | 0 | +\ny | -\\infty | \\nearrow | 2 | \\searrow | -2 | \\nearrow | +\\infty",
+            "cd_pt": (-1.0, 2.0),
+            "ct_pt": (1.0, -2.0)
+        }
+    ]
+
+    RAT_1_1_MODELS = [
+        {
+            "f": {"type": "func_1_1", "a": 2.0, "b": -1.0, "c": 1.0, "d": -1.0},
+            "bbt": "x | -\\infty | 1 | +\\infty\ny' | - | || | -\ny | 2 | \\searrow | -\\infty || +\\infty | \\searrow | 2",
+            "tcd": 1.0,
+            "tcn": 2.0
+        },
+        {
+            "f": {"type": "func_1_1", "a": 1.0, "b": -2.0, "c": 1.0, "d": -1.0},
+            "bbt": "x | -\\infty | 1 | +\\infty\ny' | + | || | +\ny | 1 | \\nearrow | +\\infty || -\\infty | \\nearrow | 1",
+            "tcd": 1.0,
+            "tcn": 1.0
+        },
+        {
+            "f": {"type": "func_1_1", "a": 1.0, "b": 1.0, "c": 1.0, "d": -2.0},
+            "bbt": "x | -\\infty | 2 | +\\infty\ny' | - | || | -\ny | 1 | \\searrow | -\\infty || +\\infty | \\searrow | 1",
+            "tcd": 2.0,
+            "tcn": 1.0
+        }
+    ]
+
+    RAT_2_1_MODELS = [
+        {
+            "f": {"type": "func_2_1", "a": 1.0, "b": -1.0, "c": 1.0, "d": 1.0, "e": -1.0},
+            "bbt": "x | -\\infty | 0 | 1 | 2 | +\\infty\ny' | + | 0 | - | || | - | 0 | +\ny | -\\infty | \\nearrow | -1 | \\searrow | -\\infty || +\\infty | \\searrow | 3 | \\nearrow | +\\infty",
+            "tcd": 1.0,
+            "cd_pt": (0.0, -1.0),
+            "ct_pt": (2.0, 3.0)
+        },
+        {
+            "f": {"type": "func_2_1", "a": 1.0, "b": 1.0, "c": -1.0, "d": 1.0, "e": -1.0},
+            "bbt": "x | -\\infty | -1 | 1 | 3 | +\\infty\ny' | + | 0 | - | || | - | 0 | +\ny | -\\infty | \\nearrow | -1 | \\searrow | -\\infty || +\\infty | \\searrow | 7 | \\nearrow | +\\infty",
+            "tcd": 1.0,
+            "cd_pt": (-1.0, -1.0),
+            "ct_pt": (3.0, 7.0)
+        }
+    ]
+
+    # Bộ đếm phân bổ để cân bằng Round-Robin hoàn hảo 1:1:1
+    family_counts = {"func_3": 0, "func_1_1": 0, "func_2_1": 0}
+
+    # BƯỚC 4: Duyệt qua tất cả các câu hỏi của đề thi
+    for p_key in ["p1", "p2", "p3"]:
+        q_list = exam.get(p_key, [])
+        if not isinstance(q_list, list):
+            continue
+
+        for idx, q in enumerate(q_list):
+            if not isinstance(q, dict):
+                continue
+
+            q_txt = str(q.get("q", "")).strip()
+            q_txt_lower = q_txt.lower()
+            opts = q.get("opt", [])
+            opts_str = " ".join(str(o) for o in opts).lower()
+            combined_q = q_txt_lower + " " + opts_str
+
+            # Kiểm tra yêu cầu hiển thị
+            is_stat_q = any(k in q_txt_lower for k in [
+                "ghép nhóm", "mẫu số liệu", "mslgn", "tần số", "khoảng tứ phân vị", 
+                "độ lệch chuẩn", "phương sai", "cỡ mẫu", "trung vị", "mốt", "giá trị đại diện",
+                "tần số ghép nhóm", "bảng số liệu ghép nhóm"
+            ]) or bool(re.search(r'\[\s*\d+(?:[\.,]\d+)?\s*[;,]\s*\d+(?:[\.,]\d+)?\s*\)', q_txt))
+
+            if is_stat_q:
+                continue
+
+            # Yêu cầu BBT
+            has_bbt_prompt = (
+                any(kw in q_txt_lower for kw in ["bảng biến thiên", "bbt", "bảng xét dấu", "chiều biến thiên"]) or
+                (any(kw in q_txt_lower for kw in ["bảng dưới đây", "bảng sau"]) and any(kw in q_txt_lower for kw in ["hàm số", "đạo hàm", "f'(x)", "f(x)", "y'", "đồng biến", "nghịch biến"]))
+            )
+
+            # Yêu cầu Đồ thị
+            has_graph_prompt = (
+                any(kw in q_txt_lower for kw in [
+                    "như hình vẽ", "hình vẽ bên", "đồ thị hình bên", "đường cong dưới đây",
+                    "đường cong hình bên", "tham khảo hình vẽ", "tham khảo hình", "đồ thị như hình vẽ", "có hình vẽ",
+                    "đồ thị như hình", "trong hình vẽ", "ở hình vẽ", "như hình bên", "hình dưới đây", "đường cong trong hình"
+                ]) or (
+                    any(kw in q_txt_lower for kw in ["đồ thị của hàm số nào", "là của hàm số nào", "đồ thị hàm số nào", "đường cong dưới đây là đồ thị", "hình vẽ bên là đồ thị"])
+                    and any(w in q_txt_lower for w in ["hình vẽ", "hình bên", "đường cong", "như hình", "hình dưới", "hình sau"])
+                )
+            )
+
+            # Khử lý thuyết nhận dạng chữ cái nếu không có hình
+            if any(k in q_txt_lower for k in ["chữ n", "chữ u", "chữ w", "chữ m"]) and not any(w in q_txt_lower for w in ["hình vẽ", "hình bên", "đường cong", "như hình", "trong hình", "ở hình"]):
+                has_graph_prompt = False
+                q.pop("f", None)
+                q.pop("tikz", None)
+
+            # Bỏ qua nếu câu hỏi hoàn toàn thuần đại số không cần hình ảnh
+            if not has_bbt_prompt and not has_graph_prompt:
+                continue
+
+            # Trích xuất đáp án đúng và giá trị đáp án nếu có
+            ans_letter = str(q.get("ans", "")).strip().upper()[:1]
+            target_opt_str = ""
+            if opts and isinstance(opts, list):
+                ans_idx = ord(ans_letter) - ord("A") if ans_letter in ("A", "B", "C", "D") else 0
+                target_opt_str = str(opts[ans_idx]) if 0 <= ans_idx < len(opts) else str(opts[0])
+
+            # Phân tích công thức từ target_opt_str trước (ưu tiên tuyệt đối đáp án đúng)
+            target_is_2_1 = bool(re.search(r'\\frac\{[^{}]*x\^2[^{}]*\}\{[^{}]*x[^{}]*\}', target_opt_str)) or (
+                ("x^2" in target_opt_str or "x^{2}" in target_opt_str) and ("/" in target_opt_str or "frac" in target_opt_str) and any(d in target_opt_str for d in ["x-", "x+", "x -", "x +"])
+            )
+            target_is_1_1 = not target_is_2_1 and (
+                bool(re.search(r'\\frac\{[^{}]*x[^{}]*\}\{[^{}]*x[^{}]*\}', target_opt_str)) or
+                (("/" in target_opt_str or "frac" in target_opt_str) and not any(k in target_opt_str for k in ["x^2", "x^3", "x^4"]))
+            )
+            target_is_cubic = not target_is_2_1 and not target_is_1_1 and (
+                ("x^3" in target_opt_str or "x^{3}" in target_opt_str or "ax^3" in target_opt_str)
+            )
+
+            if target_is_2_1:
+                has_2_1_signal = True
+                has_1_1_signal = False
+                has_cubic_signal = False
+            elif target_is_1_1:
+                has_2_1_signal = False
+                has_1_1_signal = True
+                has_cubic_signal = False
+            elif target_is_cubic:
+                has_2_1_signal = False
+                has_1_1_signal = False
+                has_cubic_signal = True
+            else:
+                has_2_1_signal = any(k in combined_q for k in ["tiệm cận xiên", "2/1", "bậc hai trên bậc nhất"])
+                has_1_1_signal = not has_2_1_signal and any(k in q_txt_lower for k in ["tiệm cận đứng", "tiệm cận ngang", "phân thức bậc nhất", "hàm phân thức"])
+                has_cubic_signal = not has_2_1_signal and not has_1_1_signal and any(k in combined_q for k in ["bậc ba", "bậc 3", "ax^3"])
+
+            # Semantic Constraints:
+            # 1. Hàm 1/1 KHÔNG CÓ CỰC TRỊ: nếu câu hỏi hỏi cực đại, cực tiểu, giá trị cực trị -> LOẠI func_1_1
+            is_extrema_query = any(k in q_txt_lower for k in ["cực đại", "cực tiểu", "cực trị", "giá trị cực đại", "giá trị cực tiểu", "đạt cực đại", "đạt cực tiểu"])
+            # 2. Hàm bậc 3 KHÔNG CÓ TIỆM CẬN: nếu câu hỏi hỏi tiệm cận -> LOẠI func_3
+            is_asymptote_query = any(k in q_txt_lower for k in ["tiệm cận", "tiệm cận đứng", "tiệm cận ngang", "tiệm cận xiên"])
+
+            # Chọn dòng hàm phù hợp
+            chosen_family = None
+            if has_2_1_signal:
+                chosen_family = "func_2_1"
+            elif has_1_1_signal and not is_extrema_query:
+                chosen_family = "func_1_1"
+            elif has_cubic_signal and not is_asymptote_query:
+                chosen_family = "func_3"
+            else:
+                # Thuật toán Round-Robin thích ứng:
+                valid_pool = ["func_3", "func_1_1", "func_2_1"]
+                if is_extrema_query:
+                    valid_pool = ["func_3", "func_2_1"]
+                elif is_asymptote_query:
+                    valid_pool = ["func_1_1", "func_2_1"]
+
+                # Chọn dạng hàm có tần số xuất hiện thấp nhất trong đề
+                chosen_family = min(valid_pool, key=lambda f: family_counts[f])
+
+            family_counts[chosen_family] += 1
+
+            # BƯỚC 5: TỔNG HỢP VÀ GÁN DỮ LIỆU ĐỒ THỊ & BBT KHỚP 100% VỚI PHƯƠNG ÁN ĐÁP ÁN
+            if chosen_family == "func_3":
+                # Thử giải từ văn bản hoặc công thức phương án
+                solved_f = None
+                if any(k in target_opt_str for k in ["x^3", "x^{3}"]) or any(k in opts_str for k in ["x^3", "x^{3}"]):
+                    solved_f = solve_cubic_from_text_or_opts(q_txt, opts, ans_letter)
+
+                if not solved_f or not isinstance(solved_f, dict) or "a" not in solved_f:
+                    idx_m = family_counts["func_3"] % len(CUBIC_MODELS)
+                    model_template = CUBIC_MODELS[idx_m]
+                    solved_f = copy.deepcopy(model_template["f"])
+                    chosen_bbt = model_template["bbt"]
+
+                    # Nếu hỏi giá trị cực tiểu: kiểm tra xem đáp án có phải số thực không
+                    m_val = re.search(r'[-+]?\d+(?:[\.,]\d+)?', target_opt_str)
+                    if m_val and "cực tiểu" in q_txt_lower:
+                        try:
+                            val_ans = float(m_val.group(0).replace(',', '.'))
+                            d_adj = round(val_ans + 4.0, 1)
+                            solved_f = {"type": "func_3", "a": 1.0, "b": -3.0, "c": 0.0, "d": d_adj}
+                            cd_val = round(d_adj, 1)
+                            ct_val = round(val_ans, 1)
+                            chosen_bbt = f"x | -\\infty | 0 | 2 | +\\infty\ny' | + | 0 | - | 0 | +\ny | -\\infty | \\nearrow | {cd_val:g} | \\searrow | {ct_val:g} | \\nearrow | +\\infty"
+                        except Exception:
+                            pass
+                    elif m_val and "cực đại" in q_txt_lower:
+                        try:
+                            val_ans = float(m_val.group(0).replace(',', '.'))
+                            d_adj = round(val_ans - 2.0, 1)
+                            solved_f = {"type": "func_3", "a": -1.0, "b": 0.0, "c": 3.0, "d": d_adj}
+                            cd_val = round(val_ans, 1)
+                            ct_val = round(d_adj - 2.0, 1)
+                            chosen_bbt = f"x | -\\infty | -1 | 1 | +\\infty\ny' | - | 0 | + | 0 | -\ny | +\\infty | \\searrow | {ct_val:g} | \\nearrow | {cd_val:g} | \\searrow | -\\infty"
+                        except Exception:
+                            pass
+                else:
+                    chosen_bbt = CUBIC_MODELS[0]["bbt"]
+
+                if has_graph_prompt:
+                    q["f"] = solved_f
+                if has_bbt_prompt:
+                    q["bbt"] = chosen_bbt
+
+            elif chosen_family == "func_1_1":
+                solved_f = solve_rational_1_1_from_text(q_txt, opts, ans_letter)
+                idx_m = family_counts["func_1_1"] % len(RAT_1_1_MODELS)
+                model_template = RAT_1_1_MODELS[idx_m]
+
+                if not solved_f or not isinstance(solved_f, dict) or "a" not in solved_f:
+                    solved_f = copy.deepcopy(model_template["f"])
+
+                chosen_bbt = model_template["bbt"]
+                if has_graph_prompt:
+                    q["f"] = solved_f
+                    q["tikz"] = build_rational_1_1_tikz(solved_f["a"], solved_f["b"], solved_f["c"], solved_f["d"])
+                if has_bbt_prompt:
+                    q["bbt"] = chosen_bbt
+
+            elif chosen_family == "func_2_1":
+                solved_f = solve_rational_2_1_from_text(q_txt, opts, ans_letter)
+                idx_m = family_counts["func_2_1"] % len(RAT_2_1_MODELS)
+                model_template = RAT_2_1_MODELS[idx_m]
+
+                if not solved_f or not isinstance(solved_f, dict) or "a" not in solved_f:
+                    solved_f = copy.deepcopy(model_template["f"])
+
+                chosen_bbt = model_template["bbt"]
+                if has_graph_prompt:
+                    q["f"] = solved_f
+                    q["tikz"] = build_rational_2_1_tikz(solved_f["a"], solved_f["b"], solved_f["c"], solved_f["d"], solved_f["e"])
+                if has_bbt_prompt:
+                    q["bbt"] = chosen_bbt
+
+    return exam

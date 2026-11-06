@@ -1,0 +1,483 @@
+{
+  "checked_at": "2026-10-24",
+  "method": "Stream all exam records in every compressed subject shard; inspect metadata and narrow current-fact conflicts. No claim of checking every academic answer.",
+  "counts": {
+    "exam_records": 33679,
+    "exam_without_curriculum_outcome_evidence": 33679,
+    "exam_without_textbook_page_or_revision_evidence": 33679,
+    "question_instances": 948902,
+    "question_without_direct_source_url": 948902,
+    "exam_without_declared_http_source_url": 1600,
+    "distinct_question_texts": 3165
+  },
+  "files": [
+    {
+      "file": "exams___a_l_.json.xz",
+      "records": 1840
+    },
+    {
+      "file": "exams_C_ng_ngh_.json.xz",
+      "records": 4240
+    },
+    {
+      "file": "exams_Gi_o_d_c_kinh_t__v__ph_p_lu_t.json.xz",
+      "records": 2400
+    },
+    {
+      "file": "exams_H_a_h_c.json.xz",
+      "records": 1840
+    },
+    {
+      "file": "exams_Khoa_h_c_t__nhi_n.json.xz",
+      "records": 2401
+    },
+    {
+      "file": "exams_L_ch_s_.json.xz",
+      "records": 1840
+    },
+    {
+      "file": "exams_L_ch_s______a_l_.json.xz",
+      "records": 2400
+    },
+    {
+      "file": "exams_Ng__v_n.json.xz",
+      "records": 320
+    },
+    {
+      "file": "exams_Sinh_h_c.json.xz",
+      "records": 1840
+    },
+    {
+      "file": "exams_Ti_ng_Anh.json.xz",
+      "records": 4240
+    },
+    {
+      "file": "exams_Tin_h_c.json.xz",
+      "records": 4240
+    },
+    {
+      "file": "exams_To_n_h_c.json.xz",
+      "records": 4238
+    },
+    {
+      "file": "exams_V_t_l_.json.xz",
+      "records": 1840
+    }
+  ],
+  "contexts": [
+    {
+      "subject": "Toán học",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 6,
+      "bank_records": 40,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Tin học",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Khoa học tự nhiên",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Lịch sử & Địa lý",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Giáo dục công dân",
+      "grade": 6,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Toán học",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 7,
+      "bank_records": 40,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Tin học",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Khoa học tự nhiên",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Lịch sử & Địa lý",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Giáo dục công dân",
+      "grade": 7,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Toán học",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 8,
+      "bank_records": 40,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Tin học",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Khoa học tự nhiên",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Lịch sử & Địa lý",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Giáo dục công dân",
+      "grade": 8,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Toán học",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 9,
+      "bank_records": 40,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Tin học",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Khoa học tự nhiên",
+      "grade": 9,
+      "bank_records": 601,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Lịch sử & Địa lý",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Giáo dục công dân",
+      "grade": 9,
+      "bank_records": 600,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Toán học",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 10,
+      "bank_records": 46,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Tin học",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Vật lý",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Hóa học",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Sinh học",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Lịch sử",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Địa lý",
+      "grade": 10,
+      "bank_records": 606,
+      "editorial_topic_suggestions": 3
+    },
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 10,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Toán học",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 9
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 11,
+      "bank_records": 50,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Tin học",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Vật lý",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Hóa học",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Sinh học",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Lịch sử",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Địa lý",
+      "grade": 11,
+      "bank_records": 610,
+      "editorial_topic_suggestions": 3
+    },
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 11,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Toán học",
+      "grade": 12,
+      "bank_records": 622,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Ngữ văn",
+      "grade": 12,
+      "bank_records": 64,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Tiếng Anh",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Tin học",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Công nghệ",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Vật lý",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Hóa học",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 8
+    },
+    {
+      "subject": "Sinh học",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 7
+    },
+    {
+      "subject": "Lịch sử",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Địa lý",
+      "grade": 12,
+      "bank_records": 624,
+      "editorial_topic_suggestions": 4
+    },
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 12,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 6
+    }
+  ],
+  "missing_contexts": [
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 10,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 5
+    },
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 11,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 6
+    },
+    {
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "grade": 12,
+      "bank_records": 0,
+      "editorial_topic_suggestions": 6
+    }
+  ],
+  "book_navigation_entries": 120,
+  "book_navigation_unique_urls": 101,
+  "curriculum_topic_status": "editorial_suggestions_not_verified_textbook_table_of_contents",
+  "stale_claim_samples": []
+}

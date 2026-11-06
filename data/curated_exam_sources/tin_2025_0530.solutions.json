@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "archive_sha256": "685700c87d4fcf11e30516e1a0567c6cc56a92c9e6660258eae65f597786bc0e",
+  "scope": "Independent application explanations for 24 MCQ and 24 TF response units; not Ministry-authored solutions or cognitive certification",
+  "evidence": [
+    "T3_TIN2025_0530_SOURCE_REVIEW_CURRENT.json",
+    "T3_TIN2025_0530_Q3_Q11_REVIEW_20261103.json",
+    "T3_TIN2025_0530_Q12_Q24_REVIEW_20261103.json",
+    "T3_TIN2025_KNTT_MAPPING_CLOSURE_20261103.json",
+    "T3_TIN2025_0530_TF_COMMON_REVIEW_20261104.json",
+    "T3_TIN2025_0530_TF_SPECIAL_REVIEW_20261104.json"
+  ],
+  "records": {
+    "I.1": {
+      "answer": "B",
+      "explanation": "Thẻ <img> chèn ảnh; <a> tạo liên kết, <p> tạo đoạn văn và <ol> tạo danh sách có thứ tự. Vì vậy chọn B."
+    },
+    "I.2": {
+      "answer": "A",
+      "explanation": "Dùng type=\"I\" để đánh số La Mã in hoa và start=\"2\" để bắt đầu ở II. start nhận số nguyên, không nhận chuỗi \"II\"; style/begin không thay hai thuộc tính này. Chọn A."
+    },
+    "I.3": {
+      "answer": "A",
+      "explanation": "Sản phẩm cuối của nhóm không cho biết đầy đủ đóng góp của từng thành viên. Vì thế đánh giá đóng góp cá nhân là việc khó trong các lựa chọn đã nêu. Điều này không có nghĩa AI không thể hỗ trợ đánh giá. Chọn A."
+    },
+    "I.4": {
+      "answer": "D",
+      "explanation": "Access Point cung cấp điểm truy cập mạng LAN không dây. Định tuyến giữa các mạng và kết nối có dây thông thường là những chức năng khác. Chọn D."
+    },
+    "I.5": {
+      "answer": "D",
+      "explanation": "Khi chưa nhận được hàng, liên hệ bộ phận chăm sóc khách hàng để kiểm tra và giải quyết là cách ứng xử phù hợp tình huống. Xúc phạm, kêu gọi tẩy chay hoặc đổ lỗi cho bên không liên quan không giải quyết trực tiếp việc này. Chọn D."
+    },
+    "I.6": {
+      "answer": "A",
+      "explanation": "Xây dựng phần mềm ứng dụng kinh doanh thuộc công việc phát triển phần mềm, không phải nhiệm vụ chính của sửa chữa/bảo trì trong cách phân nhóm nghề của câu hỏi. Không suy ra người sửa chữa không bao giờ lập trình. Chọn A."
+    },
+    "I.7": {
+      "answer": "B",
+      "explanation": "Khóa chính thức là B: display:block theo cách trình bày block/inline/none được học. Cần lưu ý A dùng display:flex cũng có kiểu hiển thị ngoài dạng khối; vì vậy không dùng câu này như một khẳng định duy nhất về mọi giá trị CSS khi tách khỏi nguyên đề và phạm vi đã dạy. Giữ khóa Bộ, không sửa đáp án để che điểm cần làm rõ."
+    },
+    "I.8": {
+      "answer": "C",
+      "explanation": "Có ba thẻ tr, mỗi hàng có hai ô và không có gộp hàng/cột: bảng gồm 3 hàng, 2 cột. Hàng đầu dùng th, hai hàng sau dùng td. width/height không làm thay đổi số hàng/cột. Chọn C."
+    },
+    "I.9": {
+      "answer": "B",
+      "explanation": "Ban đầu i=7, n=11. Thân lặp thực hiện với i=7 rồi i=9; sau đó i=11 nên điều kiện i<n sai. Có 2 lần lặp, không phải tổng S=16 hay giá trị cuối i=11. Chọn B."
+    },
+    "I.10": {
+      "answer": "D",
+      "explanation": "TCP cung cấp dịch vụ truyền luồng byte tin cậy, đúng thứ tự. Nó không có chức năng diệt mã độc hay cấp địa chỉ DHCP; tính tin cậy không đồng nghĩa mọi kết nối hỏng vẫn giao được dữ liệu. Chọn D."
+    },
+    "I.11": {
+      "answer": "A",
+      "explanation": "Khẳng định chẩn đoán chính xác tuyệt đối vượt quá điều AI bảo đảm. Hỗ trợ chẩn đoán khác với bảo đảm không sai; các tác vụ ngôn ngữ, nhận dạng chữ viết và gợi ý sản phẩm là những nhóm khả năng đã biết. Chọn A."
+    },
+    "I.12": {
+      "answer": "A",
+      "explanation": "Yêu cầu viền rộng 5px và nét liền được đáp ứng bởi 5px và solid. groove, dashed, double không phải kiểu nét liền được yêu cầu. Chọn A."
+    },
+    "I.13": {
+      "answer": "B",
+      "explanation": "Phần tử html là phần tử gốc của tài liệu HTML, chứa head và body cùng các phần tử bên trong. Các phần tử khác trong lựa chọn không có vai trò gốc này. Chọn B."
+    },
+    "I.14": {
+      "answer": "A",
+      "explanation": "Với i=5,6,7, giá trị x lần lượt đổi 6→3→9→4. Trong chuỗi DOI_MOI_SANG_TAO, chỉ số 4 tính từ 0 là M. Các phép chia số nguyên dương trong hai đoạn chương trình cho cùng kết quả này. Chọn A."
+    },
+    "I.15": {
+      "answer": "D",
+      "explanation": "Tóm tắt văn bản xử lý nội dung ngôn ngữ. Nhận diện khuôn mặt, dự báo thời tiết từ vệ tinh và phát hiện cháy qua ảnh thuộc những loại tác vụ khác trong các lựa chọn. Chọn D."
+    },
+    "I.16": {
+      "answer": "D",
+      "explanation": "Đoạn văn có class=\"mau\" nhưng không có id=\"mau\". Quy tắc lớp khớp nên chữ xanh và nghiêng; quy tắc ID không khớp nên không áp dụng đỏ/đậm. Chỉ so độ ưu tiên giữa các quy tắc thực sự khớp. Chọn D."
+    },
+    "I.17": {
+      "answer": "C",
+      "explanation": "Chia sẻ thông điệp bảo vệ môi trường một cách tích cực phù hợp mục tiêu giao tiếp nhân văn. Chế giễu, phủ nhận việc nhỏ hoặc áp đặt bạn không phù hợp tình huống. Không suy ra nghĩa vụ phải đăng lại mọi thông điệp. Chọn C."
+    },
+    "I.18": {
+      "answer": "C",
+      "explanation": "Email báo trúng thưởng bất ngờ cần được kiểm tra tính xác thực trước khi quyết định. Bấm ngay liên kết, chuyển tiếp hoặc dùng máy người khác không chứng minh email hợp lệ. Chọn C."
+    },
+    "I.19": {
+      "answer": "D",
+      "explanation": "font-family quy định họ phông chữ; font-weight quy định độ đậm, font-size quy định cỡ chữ và font-style quy định kiểu chữ. Chọn D, không lấy ghi chú viết tay làm khóa."
+    },
+    "I.20": {
+      "answer": "D",
+      "explanation": "Theo cách phân nhóm nghề được học trong câu hỏi, bảo mật hệ thống thông tin thuộc nhóm quản trị. Kiểm thử, thiết kế đồ họa và sửa chữa là các vai trò khác được liệt kê; đây không phải ranh giới tuyệt đối của mọi công việc thực tế. Chọn D."
+    },
+    "I.21": {
+      "answer": "B",
+      "explanation": "Chia sẻ thư mục chứa bộ cài trình điều khiển không phải điều kiện bắt buộc: máy khách có thể cài driver từ nguồn hỗ trợ khác. Cần phân biệt việc này với cấu hình chia sẻ và quyền truy cập máy in. Chọn B."
+    },
+    "I.22": {
+      "answer": "D",
+      "explanation": "Cập nhật hệ điều hành là bảo trì phần mềm. Thay linh kiện hỏng, tư vấn nâng cấp phần cứng và lắp thiết bị mạng là các công việc phần cứng/mạng trong lựa chọn. Chọn D."
+    },
+    "I.23": {
+      "answer": "B",
+      "explanation": "Switch thông thường kết nối các thiết bị và chuyển tiếp dữ liệu trong mạng LAN. Chuyển đổi tín hiệu, cung cấp truy cập không dây và định tuyến giữa các mạng là các chức năng khác trong câu hỏi; không mở rộng kết luận để phủ nhận switch đa lớp. Chọn B."
+    },
+    "I.24": {
+      "answer": "C",
+      "explanation": "Khả năng học và giải quyết mọi vấn đề tự nhiên, xã hội là khẳng định không giới hạn, chưa được chứng minh bởi các hệ thống AI chuyên biệt được xét. Học theo tác vụ hoặc gợi ý không suy ra khả năng phổ quát này. Chọn C."
+    },
+    "II.1.a": {
+      "answer": true,
+      "explanation": "Trong mô hình gia đình được mô tả, điện thoại dùng Wi-Fi tích hợp ở modem để vào mạng thay vì dữ liệu di động. Kết luận theo mô hình đã cho, không suy rằng mọi điện thoại có Internet đều chứng minh modem có Wi-Fi."
+    },
+    "II.1.b": {
+      "answer": true,
+      "explanation": "Access Point đặt gần vùng sóng yếu có thể mở rộng truy cập Wi-Fi khi được kết nối và cấu hình đúng với modem. Chỉ đặt thiết bị gần phòng, chưa có đường kết nối hoạt động, không bảo đảm có Internet."
+    },
+    "II.1.c": {
+      "answer": true,
+      "explanation": "Với máy bàn không có Wi-Fi trong đề, nối cáp Ethernet tới modem là cách đơn giản. Đề nói đơn giản nhất, không nói là cách duy nhất; không bác bỏ chỉ vì có thể dùng bộ chuyển đổi khác."
+    },
+    "II.1.d": {
+      "answer": false,
+      "explanation": "Switch chỉ nối các máy trong LAN nhưng không có đường tới modem/Internet theo mô tả. Kết nối nội bộ không tự cung cấp đường ra Internet."
+    },
+    "II.2.a": {
+      "answer": true,
+      "explanation": "maTram là mã duy nhất cho mỗi trạm trong mô hình, nên nhận diện được từng dòng của bảng TRAM và là khóa chính được xét."
+    },
+    "II.2.b": {
+      "answer": false,
+      "explanation": "Cùng một trạm có nhiều tháng trong một năm, nên maTram và nam chưa phân biệt được từng dòng MUA. Theo mô hình mỗi trạm có một giá trị mưa mỗi tháng, còn cần thang."
+    },
+    "II.2.c": {
+      "answer": true,
+      "explanation": "Tên trạm lấy từ TRAM; năm, tháng và lượng mưa lấy từ MUA. Nối hai bảng theo maTram cung cấp các thuộc tính được hỏi, không cần dữ liệu nhiệt độ."
+    },
+    "II.2.d": {
+      "answer": false,
+      "explanation": "Câu truy vấn chỉ nối TRAM và MUA nhưng dùng thuộc tính của NHIETDO chưa được nối. Điều kiện năm2020 không sửa được thiếu quan hệ này."
+    },
+    "II.3.a": {
+      "answer": true,
+      "explanation": "Mô hình phân tích sắc thái tích cực/tiêu cực trong tin tức và bài đăng là ứng dụng xử lý ngôn ngữ, không chỉ dự đoán một giá số."
+    },
+    "II.3.b": {
+      "answer": false,
+      "explanation": "Dữ liệu huấn luyện đã gắn nhãn tích cực/tiêu cực, nên đây là học có giám sát. Không có căn cứ bắt buộc dùng học không giám sát như nhận định."
+    },
+    "II.3.c": {
+      "answer": false,
+      "explanation": "Chỉ dùng toàn bộ dữ liệu thu thập để huấn luyện không cung cấp bước đánh giá độc lập khả năng khái quát. Kết luận bác bỏ yêu cầu chỉ cần huấn luyện như đề nêu; không phải cấm mọi cách huấn luyện cuối cùng với toàn bộ dữ liệu khi đã có đánh giá độc lập."
+    },
+    "II.3.d": {
+      "answer": true,
+      "explanation": "Đề nói có thể: lợi nhuận giao dịch thực tế có thể là một chỉ số kết quả khi triển khai. Nó không phải thước đo duy nhất, không bảo đảm sinh lời và chịu tác động của thị trường cùng các yếu tố khác."
+    },
+    "II.4.a": {
+      "answer": false,
+      "explanation": "Chương trình sắp xếp/truy cập mảng rồi trả một biểu thức số, không thực hiện các thao tác vào-trước-ra-trước của hàng đợi. Mảng có thể dùng để cài hàng đợi trong chương trình khác; không được suy rằng mảng không bao giờ biểu diễn hàng đợi. Khái niệm này thuộc phạm vi chuyên đề CS12.1, không gán thành yêu cầu cốt lõi bắt buộc cho mọi học sinh lớp12."
+    },
+    "II.4.b": {
+      "answer": true,
+      "explanation": "Khi mảng đã không giảm, không có phần tử đứng trước lớn hơn x nên thân while không chạy; các dòng6–7 thực hiện0 lần. Phép gán phía sau vòng while là dòng khác."
+    },
+    "II.4.c": {
+      "answer": false,
+      "explanation": "Sau lần lặp for thứ2, tức i=2, mảng là [5,7,9,2,4,6], chưa phải [2,5,7,9,4,6]. Cần thêm một bước chèn nữa mới có trạng thái được nêu."
+    },
+    "II.4.d": {
+      "answer": true,
+      "explanation": "Mảng sau sắp xếp là [2,3,4,5,6,7,8]; n//2=3 và A[3]=5. Hàm trả (2+5)/2=3,5. Bản C++ dùng2.0 nên giữ phần thập phân; kết quả không phải riêng số trung vị."
+    },
+    "II.5.a": {
+      "answer": false,
+      "explanation": "Công cụ tạo website phù hợp có thể hỗ trợ biểu mẫu đăng ký, trực tiếp hoặc thông qua tích hợp. Khẳng định không hỗ trợ biểu mẫu đăng ký CLB là sai."
+    },
+    "II.5.b": {
+      "answer": false,
+      "explanation": "Không có yêu cầu chung rằng ảnh banner bắt buộc là PNG. Chẳng hạn Google Sites hỗ trợ JPEG,PNG,GIF; cần kiểm định dạng mà công cụ được chọn thực sự hỗ trợ."
+    },
+    "II.5.c": {
+      "answer": true,
+      "explanation": "Yêu cầu xem trên máy tính và điện thoại phù hợp với việc chọn công cụ hỗ trợ bố cục trên hai loại thiết bị. Không suy ra mọi công cụ tự động bảo đảm giao diện di động tốt."
+    },
+    "II.5.d": {
+      "answer": true,
+      "explanation": "Video YouTube có quyền truy cập/nhúng phù hợp có thể được chèn bằng giao diện video/nhúng của công cụ như Google Sites. Việc đưa video và dùng liên kết là khả thi trong công cụ hỗ trợ; dán chữ liên kết tùy ý không luôn tạo trình phát."
+    },
+    "II.6.a": {
+      "answer": true,
+      "explanation": "Dữ liệu nhóm,loại,năm,số lao động có thể trải thành các cột trên một trang tính. Có thể lưu không đồng nghĩa trang tính có đầy đủ chuẩn hóa,ràng buộc quan hệ và chức năng của hệ quản trị CSDL."
+    },
+    "II.6.b": {
+      "answer": true,
+      "explanation": "Trong mô hình mỗi loại có một số lao động cho mỗi năm, cặp maLoai và nam nhận diện một dòng LAODONG. Chỉ maLoai sẽ lặp lại qua các năm; không được bỏ nam khỏi cặp khóa."
+    },
+    "II.6.c": {
+      "answer": false,
+      "explanation": "NHOM liên hệ LOAI bằng maNhom; LOAI liên hệ LAODONG bằng maLoai. LAODONG không có trường maNhom, nên quan hệ trực tiếp NHOM–LAODONG được đề xuất không khớp cấu trúc khóa đã cho."
+    },
+    "II.6.d": {
+      "answer": false,
+      "explanation": "Truy vấn chỉ nối NHOM và LOAI nhưng chọn/lọc thuộc tính LAODONG chưa được nối. Vì thiếu bảng này, tham chiếu LAODONG.nam không hợp lệ; điều kiện năm2022 không khắc phục được lỗi."
+    }
+  },
+  "subject": "Tin học",
+  "grade": 12,
+  "year": 2025,
+  "variant": "0530"
+}

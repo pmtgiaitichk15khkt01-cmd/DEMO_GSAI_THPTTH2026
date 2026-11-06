@@ -1,0 +1,179 @@
+{
+  "method": "All shard records streamed; counts are instances, not unique items. No semantic or psychometric certification.",
+  "counts": {
+    "exam_records": 33679,
+    "question_instances": 948902,
+    "question_missing_stated_cognitive_evidence": 948902,
+    "question_without_teacher_review_metadata": 948902,
+    "question_missing_or_ambiguous_level": 71801,
+    "tf_statement_instances": 458216,
+    "tf_statement_missing_or_ambiguous_level": 244776
+  },
+  "files": [
+    {
+      "file": "exams___a_l_.json.xz",
+      "exam_records": 1840
+    },
+    {
+      "file": "exams_C_ng_ngh_.json.xz",
+      "exam_records": 4240
+    },
+    {
+      "file": "exams_Gi_o_d_c_kinh_t__v__ph_p_lu_t.json.xz",
+      "exam_records": 2400
+    },
+    {
+      "file": "exams_H_a_h_c.json.xz",
+      "exam_records": 1840
+    },
+    {
+      "file": "exams_Khoa_h_c_t__nhi_n.json.xz",
+      "exam_records": 2401
+    },
+    {
+      "file": "exams_L_ch_s_.json.xz",
+      "exam_records": 1840
+    },
+    {
+      "file": "exams_L_ch_s______a_l_.json.xz",
+      "exam_records": 2400
+    },
+    {
+      "file": "exams_Ng__v_n.json.xz",
+      "exam_records": 320
+    },
+    {
+      "file": "exams_Sinh_h_c.json.xz",
+      "exam_records": 1840
+    },
+    {
+      "file": "exams_Ti_ng_Anh.json.xz",
+      "exam_records": 4240
+    },
+    {
+      "file": "exams_Tin_h_c.json.xz",
+      "exam_records": 4240
+    },
+    {
+      "file": "exams_To_n_h_c.json.xz",
+      "exam_records": 4238
+    },
+    {
+      "file": "exams_V_t_l_.json.xz",
+      "exam_records": 1840
+    }
+  ],
+  "question_claims": [
+    {
+      "part": "p1",
+      "claim": "NB",
+      "instances": 456344
+    },
+    {
+      "part": "p1",
+      "claim": "TH",
+      "instances": 185712
+    },
+    {
+      "part": "p1",
+      "claim": "VD",
+      "instances": 74889
+    },
+    {
+      "part": "p1",
+      "claim": "VDC",
+      "instances": 43843
+    },
+    {
+      "part": "p2",
+      "claim": "MISSING",
+      "instances": 622
+    },
+    {
+      "part": "p2",
+      "claim": "TH",
+      "instances": 29598
+    },
+    {
+      "part": "p2",
+      "claim": "TH-VD",
+      "instances": 69840
+    },
+    {
+      "part": "p2",
+      "claim": "VD",
+      "instances": 14455
+    },
+    {
+      "part": "p2",
+      "claim": "VD-VDC",
+      "instances": 39
+    },
+    {
+      "part": "p3",
+      "claim": "MISSING",
+      "instances": 622
+    },
+    {
+      "part": "p3",
+      "claim": "NB",
+      "instances": 356
+    },
+    {
+      "part": "p3",
+      "claim": "TH",
+      "instances": 10818
+    },
+    {
+      "part": "p3",
+      "claim": "VD",
+      "instances": 57135
+    },
+    {
+      "part": "p3",
+      "claim": "VD-VDC",
+      "instances": 678
+    },
+    {
+      "part": "p3",
+      "claim": "VDC",
+      "instances": 2061
+    },
+    {
+      "part": "part_doc_hieu",
+      "claim": "NB",
+      "instances": 355
+    },
+    {
+      "part": "part_doc_hieu",
+      "claim": "TH",
+      "instances": 320
+    },
+    {
+      "part": "part_doc_hieu",
+      "claim": "VD",
+      "instances": 610
+    },
+    {
+      "part": "part_doc_hieu",
+      "claim": "VDC",
+      "instances": 35
+    },
+    {
+      "part": "part_viet",
+      "claim": "VD",
+      "instances": 285
+    },
+    {
+      "part": "part_viet",
+      "claim": "VDC",
+      "instances": 285
+    }
+  ],
+  "statement_claims": {
+    "MISSING": 244776,
+    "TH": 106720,
+    "VD": 53360,
+    "VDC": 53360
+  }
+}

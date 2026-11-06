@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "reviews": [
+    {
+      "id": "kntt-van6-bai3-viet-trai-nghiem-20261101",
+      "subject": "Ngữ văn",
+      "grade": 6,
+      "topics": [
+        "Viết bài văn kể lại một trải nghiệm của em — Ngữ văn 6, Kết nối tri thức với cuộc sống, Bài 3: Yêu thương và chia sẻ."
+      ],
+      "reviewed_on": "2026-11-01",
+      "assessment_decisions": [
+        {
+          "question": "Sau khi hoàn thành bài văn ở câu 1, em hãy tự đánh giá bài viết của mình bằng cách lập một bảng kiểm (Checklist) gồm ít nhất 5 tiêu chí để xem bài văn đã đạt yêu cầu của thể loại kể lại một trải nghiệm hay chưa.",
+          "level": "VD",
+          "reason": "Vận dụng yêu cầu thể loại đã học để lập tiêu chí và tự sửa bài; nhiệm vụ chưa nêu bối cảnh chuyển giao hoặc yêu cầu phân hóa đủ để giữ nhãn VDC."
+        }
+      ],
+      "scope": "Đối chiếu yêu cầu kiểu bài và quy trình viết; chưa phải xác nhận mọi câu hỏi, phản hồi AI hoặc toàn bộ chương trình đã đạt.",
+      "sources": [
+        {
+          "title": "SGV Ngữ văn 6, tập một — Kết nối tri thức với cuộc sống",
+          "url": "https://sachdientu.nxbgd.vn/thu-vien-so/doc-sach/sgv-ngu-van-6-tap-1.4505054581",
+          "locator": "Bài 3: Yêu thương và chia sẻ → Viết bài văn kể lại một trải nghiệm của em → Phân tích yêu cầu cần đạt; Những lưu ý về yêu cầu đối với bài văn; Hoạt động 4 và trả bài.",
+          "page": null,
+          "edition_note": "Nguồn SGV trực tuyến đã đọc; chưa xác minh năm tái bản, không tự gán số trang.",
+          "criteria": [
+            "Ngôi kể thứ nhất; kể trải nghiệm của bản thân.",
+            "Sự việc và chi tiết theo trình tự hợp lí; thể hiện cảm xúc và ý nghĩa trải nghiệm.",
+            "Xác định mục đích/người đọc, tìm ý, lập dàn ý, viết và chỉnh sửa theo yêu cầu thể loại."
+          ]
+        },
+        {
+          "title": "Báo Điện tử Chính phủ — hướng dẫn đổi mới dạy học Ngữ văn, CV 3175/BGDĐT-GDTrH",
+          "url": "https://baochinhphu.vn/bo-gddt-chi-dao-doi-moi-phuong-phap-day-hoc-va-kiem-tra-mon-ngu-van-102220722103501798.htm",
+          "locator": "Các mục Phát huy tính chủ động, sáng tạo; Tránh đọc chép; Đổi mới cách kiểm tra, đánh giá; Tôn trọng cách nghĩ, cách cảm riêng.",
+          "page": null,
+          "edition_note": "Bài giới thiệu chính thức ngày 22/07/2022; dùng đối chiếu định hướng dạy viết, không thay bản gốc công văn.",
+          "criteria": [
+            "Giao nhiệm vụ và sản phẩm phù hợp lứa tuổi; hướng dẫn các bước tạo lập văn bản.",
+            "Khuyến khích ý tưởng và cách thể hiện riêng; không áp đặt văn mẫu cho học sinh."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kntt-khtn8-bai9-base-ph-20261101",
+      "subject": "Khoa học tự nhiên",
+      "grade": 8,
+      "topics": [
+        "Base. Thang pH",
+        "Base. Thang pH — Khoa học tự nhiên 8, Kết nối tri thức với cuộc sống."
+      ],
+      "reviewed_on": "2026-11-01",
+      "scope": "Đối chiếu yêu cầu và nội dung kiến thức của Bài 9; không chứng nhận toàn bộ SGK hoặc mọi phản hồi AI.",
+      "sources": [
+        {
+          "title": "SGV Khoa học tự nhiên 8 — Kết nối tri thức với cuộc sống",
+          "url": "https://sachdientu.nxbgd.vn/thu-vien-so/doc-sach/sgv-khoa-hoc-tu-nhien.4492016197",
+          "locator": "Bài 9: Base. Thang pH → Mục tiêu; Hoạt động 2, 3, 4; phiếu học tập tính chất hóa học của base.",
+          "page": null,
+          "edition_note": "Nguồn SGV trực tuyến đã đọc ngày 01/11/2026; không tự gán số trang hoặc năm tái bản.",
+          "criteria": [
+            "Khái niệm base, kiềm và tra bảng tính tan.",
+            "Chỉ thị màu và phản ứng base với acid tạo muối, nước; giải thích hiện tượng và viết phương trình.",
+            "Thang pH và nhận xét môi trường dung dịch; quan sát thí nghiệm có hướng dẫn, không nhận biết hóa chất bằng nếm/chạm."
+          ]
+        },
+        {
+          "title": "SGK Khoa học tự nhiên 8 — Kết nối tri thức với cuộc sống (bản đọc trên OLM)",
+          "url": "https://sgk.olm.vn/thu-vien-so/doc-sach/shs-khoa-hoc-tu-nhien.4492018196",
+          "locator": "Bài9 mục I, bảng tính tan K/Na/Mg/Ba/Cu/Fe(II)/Fe(III); mục II–III",
+          "page": null,
+          "edition_note": "Đọc văn bản trực tuyến ngày02/11/2026; chưa xác minh năm tái bản. Bảng Bài9 không có Ca, không dùng để gán phân loại Ca(OH)2.",
+          "criteria": [
+            "Phân biệt base/kiềm theo bảng các hydroxide thực sự được liệt kê.",
+            "Phản ứng trung hòa và quá trình CaO gặp nước tạo Ca(OH)2; pH của đất không đủ để tính liều bón vôi.",
+            "Thực hành đo pH và nhận biết dung dịch bằng chỉ thị, có hướng dẫn an toàn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kntt-tin12-html-structure-text-list-20261102",
+      "subject": "Tin học",
+      "grade": 12,
+      "topics": [
+        "Tin học 12 KNTT: cấu trúc HTML và các thẻ văn bản cơ bản"
+      ],
+      "reviewed_on": "2026-11-02",
+      "scope": "Đối chiếu yêu cầu chủ đề tổng hợp cấu trúc HTML, văn bản và danh sách thuộc Bài 7–9; không xác nhận toàn bộ Bài 7–9, mọi câu hỏi hoặc cả cặp môn/lớp đã đạt.",
+      "sources": [
+        {
+          "title": "SGV Tin học 12 — Dành cho cả hai định hướng, Kết nối tri thức với cuộc sống",
+          "url": "https://sachdientu.nxbgd.vn/thu-vien-so/doc-sach/sgv-tin-hoc-danh-cho-ca-hai-dinh-huong.4489779231",
+          "locator": "Bài 7: mục A và C, Hoạt động 1–3; Bài 8: mục A, Hoạt động 2 và củng cố p/br; Bài 9: mục A và Hoạt động 1 tạo danh sách.",
+          "page": null,
+          "edition_note": "Đã đọc văn bản SGV trực tiếp trên sachdientu.nxbgd.vn ngày 02/11/2026 qua HTTPS Windows, HTTP200; chưa xác minh năm tái bản, không tự gán trang.",
+          "criteria": [
+            "Giải thích cấu trúc trang HTML và quan hệ giữa các phần tử; phân biệt thẻ với phần tử.",
+            "Dùng thẻ phù hợp cho tiêu đề, đoạn văn, ngắt dòng và danh sách; phân biệt ý nghĩa với định dạng hiển thị.",
+            "Khoảng cách của p và br trong ví dụ là mặc định, có thể thay đổi bằng định dạng; tự soạn mã và kiểm kết quả trên trình duyệt."
+          ]
+        }
+      ],
+      "assessment_decisions": [
+        {
+          "question": "Một bạn học sinh viết đoạn mã sau nhưng khi chạy trên trình duyệt, các mục trong danh sách không hiện ra đúng dạng danh sách có thứ tự và tiêu đề không to như ý muốn. Em hãy chỉ ra các lỗi sai và hướng dẫn bạn cách sửa:\n<html> <head> Môn học của tôi </head> <body> <h1 Môn Tin học /h1> <li> Bài 1 </li> <li> Bài 2 </li> </body> </html>",
+          "level": "VD",
+          "reason": "Vận dụng quy tắc cấu trúc và cú pháp đã học để phát hiện, giải thích và sửa lỗi; chưa có chuyển giao phức tạp hoặc thiết kế giải pháp mới đủ căn cứ VDC."
+        }
+      ]
+    },
+    {
+      "id": "kntt-toan12-don-dieu-cuc-tri-20261102",
+      "subject": "Toán học",
+      "grade": 12,
+      "topics": [
+        "Tính đơn điệu và cực trị hàm số bậc ba Toán 12 KNTT"
+      ],
+      "reviewed_on": "2026-11-02",
+      "scope": "Đối chiếu mục tiêu, định hướng và HĐ1–3 về tính đơn điệu Bài1 SGV trang27–30; chưa đọc toàn bộ phần cực trị, chưa duyệt toàn bài hoặc phản hồi AI.",
+      "sources": [
+        {
+          "title": "SGV Toán12 — Kết nối tri thức với cuộc sống, NXBGDVN",
+          "url": "https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgv-toan-12.4926451409",
+          "locator": "Bài1: I.Mục tiêu, II.Lưu ý, HĐ1–3 tính đơn điệu và bảng biến thiên; trang in27–30 (ảnh reader28–31).",
+          "page": "27–30",
+          "edition_note": "Đọc ảnh chính thức ngày02/11/2026; năm tái bản chưa xác minh, không suy từ đường dẫn upload.",
+          "criteria": [
+            "Dấu đạo hàm và khoảng biến thiên; thể hiện trong BBT, đọc qua đồ thị.",
+            "Nhận biết điểm/giá trị cực trị qua BBT và đồ thị.",
+            "Mô hình hóa thực tiễn, tư duy lập luận, tự tìm tòi và sáng tạo.",
+            "Gợi ý phù hợp mức học sinh, không mặc định giải hộ."
+          ]
+        },
+        {
+          "title": "Bộ GDĐT — Chương trình GDPT môn Toán, kèm TT32/2018 (bản lưu tại Trường BD cán bộ giáo dục Hà Nội)",
+          "url": "https://boiduonghanoi.edu.vn/pluginfile.php/45/mod_folder/content/0/3-CT-Toan.pdf",
+          "locator": "Lớp12, trang105–106: ứng dụng đạo hàm và khảo sát đồ thị; đã đọc cover xác nhận văn bản.",
+          "page": "105–106",
+          "edition_note": "Bản chương trình gốc2018, đọc02/11/2026; không thay văn bản hợp nhất hoặc xác minh toàn bộ sửa đổi hiện hành.",
+          "criteria": [
+            "Đồng biến/nghịch biến từ dấu đạo hàm cấp một; biểu diễn BBT.",
+            "Nhận biết đơn điệu/cực trị từ BBT/đồ thị.",
+            "Khảo sát cubic và rational1/1,2/1 không suy biến; nhận biết đối xứng.",
+            "Vận dụng đạo hàm cho thực tiễn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kntt-toan12-khao-sat-cubic-rational-20261102",
+      "subject": "Toán học",
+      "grade": 12,
+      "topics": [
+        "Khảo sát hàm số bậc ba",
+        "Khảo sát hàm số bậc hai trên bậc nhất",
+        "Khảo sát hàm số bậc ba y = x^3 - 3x + 1 — Toán 12, Kết nối tri thức, Bài 4"
+      ],
+      "reviewed_on": "2026-11-02",
+      "scope": "Đối chiếu mục tiêu và giới hạn dạng hàm của Bài4 trang57–58; kiến thức hai Part1 cụ thể đã kiểm riêng, không duyệt toàn Bài4 hoặc mọi tương tác.",
+      "sources": [
+        {
+          "title": "SGV Toán12 — Kết nối tri thức với cuộc sống, NXBGDVN",
+          "url": "https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgv-toan-12.4926451409",
+          "locator": "Bài4: I.Mục tiêu, II.Những điểm cần lưu ý, III.Thời lượng; trang in57–58 (ảnh reader58–59).",
+          "page": "57–58",
+          "edition_note": "Đọc ảnh chính thức ngày02/11/2026, không suy năm tái bản từ đường dẫn upload.",
+          "criteria": [
+            "Quy trình khảo sát: tập xác định, biến thiên/cực trị, tiệm cận, BBT và đồ thị; nhận biết đối xứng.",
+            "Hàm1/1 phải c≠0,ad−bc≠0; hàm2/1 phải có tử bậc2,mẫu bậc1 và tử không chia hết cho mẫu.",
+            "Dùng công cụ toán hỗ trợ đồ thị, giữ học sinh tự tìm tòi và sáng tạo."
+          ]
+        },
+        {
+          "title": "Bộ GDĐT — Chương trình GDPT môn Toán, kèm TT32/2018 (bản lưu tại Trường BD cán bộ giáo dục Hà Nội)",
+          "url": "https://boiduonghanoi.edu.vn/pluginfile.php/45/mod_folder/content/0/3-CT-Toan.pdf",
+          "locator": "Lớp12, trang105–106: ứng dụng đạo hàm và khảo sát đồ thị; đã đọc cover xác nhận văn bản.",
+          "page": "105–106",
+          "edition_note": "Bản chương trình gốc2018, đọc02/11/2026; không thay văn bản hợp nhất hoặc xác minh toàn bộ sửa đổi hiện hành.",
+          "criteria": [
+            "Đồng biến/nghịch biến từ dấu đạo hàm cấp một; biểu diễn BBT.",
+            "Nhận biết đơn điệu/cực trị từ BBT/đồ thị.",
+            "Khảo sát cubic và rational1/1,2/1 không suy biến; nhận biết đối xứng.",
+            "Vận dụng đạo hàm cho thực tiễn."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kntt-toan10-menh-de-tiet1-20261102",
+      "subject": "Toán học",
+      "grade": 10,
+      "topics": [
+        "Mệnh đề và mệnh đề chứa biến — Toán 10, Kết nối tri thức, Bài 1, tiết 1. Phân biệt mệnh đề với câu hỏi/câu cảm thán; xác định tính đúng sai; mệnh đề chứa biến chỉ trở thành mệnh đề khi gán giá trị cụ thể. Chỉ trong phạm vi tiết 1, chưa học phủ định, kéo theo và lượng từ."
+      ],
+      "reviewed_on": "2026-11-02",
+      "scope": "Đối chiếu mục tiêu và giới hạn Bài1 tiết1; chưa phải nghiệm thu bài AI, đáp án hoặc toàn bộ môn/lớp.",
+      "sources": [
+        {
+          "title": "SGV Toán10 — Kết nối tri thức với cuộc sống",
+          "url": "https://sachdientu.nxbgd.vn/thu-vien-so/doc-sach/sgv-toan.4491359795",
+          "locator": "ChươngI; Bài1 mụcII Những điểm cần lưu ý; III Gợi ý dạy học, tiết1 HĐ1 về mệnh đề.",
+          "page": null,
+          "edition_note": "SGV trực tuyến đã đọc; chưa xác minh năm tái bản, không tự gán trang.",
+          "criteria": [
+            "Mệnh đề có tính đúng hoặc sai; phân biệt câu không phải mệnh đề và mệnh đề chứa biến.",
+            "Phạm vi tiết1; không ghép phủ định, kéo theo, tương đương hoặc lượng từ của tiết sau.",
+            "Dùng ví dụ thực tiễn, để học sinh tự xác định tính đúng sai trước tổng kết."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kntt-van10-bai1-than-thoai-20261102",
+      "subject": "Ngữ văn",
+      "grade": 10,
+      "topics": [
+        "Truyện về các vị thần sáng tạo thế giới — Ngữ văn 10, Kết nối tri thức, Bài 1: Sức hấp dẫn của truyện kể."
+      ],
+      "reviewed_on": "2026-11-02",
+      "scope": "Đối chiếu đặc trưng đọc hiểu thần thoại của Bài1 và gợi ý SGV; chưa chứng nhận bài AI hoặc mọi câu hỏi.",
+      "sources": [
+        {
+          "title": "SGV Ngữ văn10 tập1 — Kết nối tri thức với cuộc sống",
+          "url": "https://sachdientu.nxbgd.vn/thu-vien-so/doc-sach/sgv-ngu-van-10-tap-1.4503065658",
+          "locator": "Bài1 Sức hấp dẫn của truyện kể → Truyện về các vị thần sáng tạo thế giới → gợi ý đọc hiểu câu hỏi3–6.",
+          "page": null,
+          "edition_note": "SGV trực tuyến đã đọc; không tự gán trang hoặc năm tái bản.",
+          "criteria": [
+            "Thần thoại suy nguyên: nhu cầu lí giải thế giới tự nhiên bằng tưởng tượng và nhân hóa.",
+            "Phân tích hình dáng/hành động/tính cách thần Trụ Trời, thần Sét, thần Gió dựa trên văn bản.",
+            "Phân biệt giá trị văn hóa với tri thức khoa học; tôn trọng cách hiểu có căn cứ của học sinh."
+          ]
+        },
+        {
+          "title": "SGK Ngữ văn 10, tập một — bản đọc số NXBGDVN",
+          "url": "https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-ngu-van-10-tap-mot.21113",
+          "locator": "Trang in 11–14: Truyện về các vị thần sáng tạo thế giới, ba truyện và câu hỏi đọc hiểu; trang thông tin xuất bản ở asset169.",
+          "page": null,
+          "edition_note": "Đã trực tiếp xem ảnh trang 11–14 và trang thông tin sách: mã G1HHXV001h26, ĐKXB7-2026/CXBIPH/126-09/GD, ISBN978-604-0-31112-2. Ô QĐXB/ngày in để trống; chưa xác nhận bản in cuối cùng hoặc toàn bộ sách.",
+          "criteria": [
+            "Nhan đề nhóm văn bản do người biên soạn SGK đặt; không gán nhan đề chung thành tên tác phẩm riêng của Nguyễn Đổng Chi.",
+            "Các văn bản được trích theo tư liệu Nguyễn Đổng Chi; ba truyện là thần Trụ Trời, thần Sét và thần Gió.",
+            "Trang14 yêu cầu đọc hiểu có căn cứ, phân tích nhân vật/tư duy thần thoại; quan niệm dân gian không thay thế tri thức khoa học hoặc chỉ dẫn điều trị."
+          ]
+        }
+      ],
+      "grounded_facts": [
+        "Nhóm văn bản đang học gồm thần Trụ Trời, thần Sét, thần Gió; không tự thêm thần Mưa/thần Nắng/thần Đất vào nhóm này.",
+        "Ông Sáu Sấm không phải nhân vật của ngữ liệu đang học. Nếu dùng làm ví dụ tự đặt phải nói rõ nguồn gốc minh họa.",
+        "Cách giải thích thần thoại phản ánh tư duy văn hóa cổ, không thay bằng chứng khoa học hiện đại."
+      ]
+    },
+    {
+      "id": "english10-family-life-grammar-source-20261104",
+      "subject": "Tiếng Anh",
+      "grade": 10,
+      "topics": [
+        "Unit 1 Family life: Present simple vs present continuous — Tiếng Anh 10 Global Success. Tóm tắt tự học cho HS, ngữ cảnh chia sẻ việc nhà, thói quen và hành động đang diễn ra. Đối chiếu SGK trang8–9, SGV13–14; ví dụ mới do ứng dụng biên tập, không chép hội thoại. Giải thích theo ngữ cảnh, không suy thì chỉ từ từ khóa; MCQ đủ dữ kiện và chỉ một đáp án đúng.",
+        "Unit 1 Family life: Present simple vs present continuous"
+      ],
+      "reviewed_on": "2026-11-04",
+      "scope": "Đối chiếu nội dung ngữ pháp và ngữ cảnh việc nhà của Unit1; không chứng nhận toàn bài AI, câu hỏi, kỹ năng nghe/nói hoặc toàn bộ chương trình.",
+      "sources": [
+        {
+          "title": "SGK Tiếng Anh10 Global Success — NXBGDVN",
+          "url": "https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgk-tieng-anh-10-global-sucess.4879778228",
+          "locator": "Unit1 Family life, trang in8–9: Household chores và câu chia động từ",
+          "page": "8–9",
+          "edition_note": "Đọc trực tiếp ảnh nguồn04/11/2026; chưa xác minh quyết định in cuối. Thông báo cập nhật do cổng sách liên kết chỉ liệt kê trang48/110/116.",
+          "criteria": [
+            "Phân biệt việc làm thường xuyên với hành động đang diễn ra trong đối thoại về việc nhà.",
+            "Ngữ liệu mới do ứng dụng biên tập phải được phân biệt với hội thoại SGK."
+          ]
+        },
+        {
+          "title": "SGV Tiếng Anh10 Global Success — NXBGDVN",
+          "url": "https://taphuan.nxbgd.vn/tap-huan/doc-sach/sgv-tieng-anh-10-global-sucess.5149416522",
+          "locator": "Trang in13–14: Grammar, Present simple vs present continuous, Activity1–2 và khóa đáp án",
+          "page": "13–14",
+          "edition_note": "Đọc trực tiếp ảnh nguồn04/11/2026; chưa xác minh năm tái bản/quyết định in.",
+          "criteria": [
+            "Dựa nghĩa và ngữ cảnh trước khi sử dụng dấu hiệu thời gian.",
+            "Thói quen ổn định cần phân biệt với hoạt động lặp lại tạm thời; giữ đúng quan hệ đại từ."
+          ]
+        }
+      ]
+    }
+  ]
+}

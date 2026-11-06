@@ -1,0 +1,379 @@
+{
+  "date": "2026-11-05",
+  "main": "212c659c0ca8d990024ef8bca7b6e564ca25c134",
+  "release_head": "7374c9e4e4eb0333405d38a2c51229877c4a583a",
+  "release_tree_matches_main": true,
+  "unpublished_local_branch_commits": [],
+  "source_copies_examined": 4,
+  "files_examined": 250,
+  "missing_file_from_source_copies": [
+    "PATCH_REPORT_LEGAL_SOURCE_WATCH_20261031.md (historical report; preserved separately in this release)"
+  ],
+  "old_missing_symbols_reconciled": "numeric_answer_matches and paired_statistics are imported from qa_runtime in current app, not lost features.",
+  "non_ancestor_branches": [
+    {
+      "branch": "codex/bbt-readable-cells",
+      "head": "ea9990a78479f8dc98955dd1de86d4d6b0f651be",
+      "commits_not_ancestors": 2,
+      "cherry": "+ 53d994d92e7149e4f88a67ac6facd2de48621bd8",
+      "files": [
+        "PATCH_REPORT_BBT_CELL_CONTRAST.md",
+        "app.py",
+        "tests/test_bbt_display.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "PATCH_REPORT_BBT_CELL_CONTRAST.md",
+          "present_on_main": false
+        },
+        {
+          "path": "app.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/test_bbt_display.py",
+          "present_on_main": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/clarify-generation-recovery-labels",
+      "head": "949e9cce56566b3e67f1bda9b4cbc403665f693b",
+      "commits_not_ancestors": 1,
+      "cherry": "+ 949e9cce56566b3e67f1bda9b4cbc403665f693b",
+      "files": [
+        "PATCH_REPORT_GENERATION_RECOVERY_LABELS.md",
+        "app.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "PATCH_REPORT_GENERATION_RECOVERY_LABELS.md",
+          "present_on_main": false
+        },
+        {
+          "path": "app.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/math12-basic-survey-method",
+      "head": "589b3584a57ac6098b033f8ad92b36af664e5642",
+      "commits_not_ancestors": 1,
+      "cherry": "+ 589b3584a57ac6098b033f8ad92b36af664e5642",
+      "files": [
+        "PATCH_REPORT_BASIC_SURVEY_METHOD.md",
+        "services/academic_scope.py",
+        "tests/test_three_basic_survey.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "PATCH_REPORT_BASIC_SURVEY_METHOD.md",
+          "present_on_main": false
+        },
+        {
+          "path": "services/academic_scope.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_three_basic_survey.py",
+          "present_on_main": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/restore-pr6",
+      "head": "86c003f92cae005892e5f21ed460cce3771b82b5",
+      "commits_not_ancestors": 3,
+      "cherry": "+ 42ed73ca9677f3538a9603cd4da31aabe90f366f\n+ 352b9b1953904bc4533fb5a4db605f7453f16dec\n+ 86c003f92cae005892e5f21ed460cce3771b82b5",
+      "files": [
+        "PATCH_REPORT_PR6_01_SELECTION_STATE.md",
+        "PATCH_REPORT_PR6_02_LESSON_AND_EXAM_BOUNDARIES.md",
+        "PATCH_REPORT_PR6_03_SPEAKING_AND_LAB_STATE.md",
+        "app.py",
+        "data/socratic_anchors.py",
+        "services/ai_json.py",
+        "services/curriculum_policy.py",
+        "services/english_speaking.py",
+        "services/lab_scope.py",
+        "services/lab_state.py",
+        "services/socratic_context.py",
+        "services/text_boundaries.py",
+        "services/widget_state.py",
+        "tests/fixtures/pr6_lab_presets_payload_sha256.json",
+        "tests/test_ai_json.py",
+        "tests/test_english_speaking_context.py",
+        "tests/test_lab_scope.py",
+        "tests/test_lab_state.py",
+        "tests/test_subject_socratic.py",
+        "tests/test_text_boundaries.py",
+        "tests/test_widget_state.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "PATCH_REPORT_PR6_01_SELECTION_STATE.md",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "PATCH_REPORT_PR6_02_LESSON_AND_EXAM_BOUNDARIES.md",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "PATCH_REPORT_PR6_03_SPEAKING_AND_LAB_STATE.md",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "app.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "data/socratic_anchors.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/ai_json.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/curriculum_policy.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/english_speaking.py",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "services/lab_scope.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/lab_state.py",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "services/socratic_context.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/text_boundaries.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/widget_state.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/fixtures/pr6_lab_presets_payload_sha256.json",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "tests/test_ai_json.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/test_english_speaking_context.py",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "tests/test_lab_scope.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/test_lab_state.py",
+          "present_on_main": true,
+          "identical_to_branch": true
+        },
+        {
+          "path": "tests/test_subject_socratic.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/test_text_boundaries.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "tests/test_widget_state.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/socratic-boundaries",
+      "head": "0b3950fd5c583eaa6a7f721cecc9eb6c122614b7",
+      "commits_not_ancestors": 2,
+      "cherry": "+ 37d61008c62a248cf81ae0eef8d95125e580c344\n+ 0b3950fd5c583eaa6a7f721cecc9eb6c122614b7",
+      "files": [
+        "DOI_SOAT_NHAT_KY_VA_YEU_CAU_20261027.md",
+        "PATCH_REPORT_SOCRATIC_BOUNDARIES.md",
+        "scripts/verify_all_context_ui.py",
+        "services/lesson_contract.py",
+        "tests/test_socratic_false_positives.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "DOI_SOAT_NHAT_KY_VA_YEU_CAU_20261027.md",
+          "present_on_main": false
+        },
+        {
+          "path": "PATCH_REPORT_SOCRATIC_BOUNDARIES.md",
+          "present_on_main": false
+        },
+        {
+          "path": "scripts/verify_all_context_ui.py",
+          "present_on_main": false
+        },
+        {
+          "path": "services/lesson_contract.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_socratic_false_positives.py",
+          "present_on_main": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/t3-confirm-latency",
+      "head": "aeef17b3bf030c3b30a96cc232869c032c6adb9e",
+      "commits_not_ancestors": 1,
+      "cherry": "+ aeef17b3bf030c3b30a96cc232869c032c6adb9e",
+      "files": [
+        "PATCH_REPORT_MATRIX_INTERACTION_20261027.md",
+        "app.py",
+        "scripts/verify_all_context_ui.py",
+        "tests/test_matrix_interaction.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "PATCH_REPORT_MATRIX_INTERACTION_20261027.md",
+          "present_on_main": false
+        },
+        {
+          "path": "app.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "scripts/verify_all_context_ui.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_matrix_interaction.py",
+          "present_on_main": false
+        }
+      ]
+    },
+    {
+      "branch": "codex/unified-pedagogical-speech",
+      "head": "dbc886a8a8fe831c92c8101ccd7f36629bfe1740",
+      "commits_not_ancestors": 1,
+      "cherry": "+ dbc886a8a8fe831c92c8101ccd7f36629bfe1740",
+      "files": [
+        "app.py",
+        "assets/pedagogical_speech.js",
+        "assets/speech_audio_relay.js",
+        "requirements.txt",
+        "services/curriculum_policy.py",
+        "services/lesson_contract.py",
+        "services/math_publication.py",
+        "services/speech_audio.py",
+        "services/speech_service.py",
+        "tests/lesson_samples.py",
+        "tests/speech_engine.test.cjs",
+        "tests/test_lesson_contract.py",
+        "tests/test_speech_service.py",
+        "tests/test_station_ui.py"
+      ],
+      "file_reconciliation": [
+        {
+          "path": "app.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "assets/pedagogical_speech.js",
+          "present_on_main": false
+        },
+        {
+          "path": "assets/speech_audio_relay.js",
+          "present_on_main": false
+        },
+        {
+          "path": "requirements.txt",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/curriculum_policy.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        },
+        {
+          "path": "services/lesson_contract.py",
+          "present_on_main": false
+        },
+        {
+          "path": "services/math_publication.py",
+          "present_on_main": false
+        },
+        {
+          "path": "services/speech_audio.py",
+          "present_on_main": false
+        },
+        {
+          "path": "services/speech_service.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/lesson_samples.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/speech_engine.test.cjs",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_lesson_contract.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_speech_service.py",
+          "present_on_main": false
+        },
+        {
+          "path": "tests/test_station_ui.py",
+          "present_on_main": true,
+          "identical_to_branch": false
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "A branch existing on GitHub is not evidence it is deployed on main.",
+    "Non-ancestor patches need semantic reconciliation; do not merge WIP prototypes over newer code.",
+    "Cloud availability, live BBT and remote voice remain independently unverified/open.",
+    "No secrets, student databases, audio references, model caches, textbook archives or runtime logs belong in the source release."
+  ]
+}

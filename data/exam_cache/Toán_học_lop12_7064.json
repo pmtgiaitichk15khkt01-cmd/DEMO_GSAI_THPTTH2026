@@ -1,0 +1,564 @@
+{
+  "saved_at": "2026-10-29 15:04:43",
+  "subject": "Toán học",
+  "grade": 12,
+  "code": "7064",
+  "data": {
+    "code": "7064",
+    "subject": "Toán học",
+    "topic": "[Lớp 12] Chuyên đề 1: Ứng dụng đạo hàm khảo sát & vẽ đồ thị hàm số (KSHS chuẩn KNTT)",
+    "p1": [
+      {
+        "q": "Đường tiệm cận xiên của đồ thị hàm số $y = \\frac{2x^2 - 3x + 1}{x - 1}$ khi rút gọn trên tập xác định $x \\neq 1$ có dạng là đường thẳng nào?",
+        "opt": [
+          "$y = 2x - 1$",
+          "$y = 2x + 1$",
+          "$y = x - 1$",
+          "Không có tiệm cận xiên"
+        ],
+        "ans": "D",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Đường tiệm cận của đồ thị hàm số (SGK Toán 12 - KNTT)*\n\n- Tiệm cận đứng: Đường thẳng $x = x_0$ nếu ít nhất một giới hạn $\\lim_{x \\to x_0^\\pm} y = \\pm\\infty$.\n- Tiệm cận ngang: Đường thẳng $y = y_0$ nếu $\\lim_{x \\to \\pm\\infty} y = y_0$.\n- Tiệm cận xiên: Đường thẳng $y = ax + b$ với $a = \\lim_{x \\to \\pm\\infty} \\frac{y}{x}$, $b = \\lim_{x \\to \\pm\\infty} (y - ax)$.\n\n💡 **Định hướng tư duy Socratic:**\nVới hàm phân thức, em hãy tìm nghiệm của mẫu số (không triệt tiêu với tử số) để xác định tiệm cận đứng, và xét tỉ số bậc cao nhất khi $x \\to \\pm\\infty$ để tìm tiệm cận ngang/xiên nhé!",
+        "level": "TH",
+        "topic": "Tiệm cận xiên",
+        "qid": "MATH_12_TT26_LQDON_QT_P1_TH_01",
+        "exam_code": "TT26_MATH12_056",
+        "year": "2025 - 2026",
+        "exam_type": "Thi thử Tốt nghiệp THPT",
+        "exam_session": "Thi Thử Tốt Nghiệp THPT (Lần 1)",
+        "province": "Quảng Trị",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 1",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_1",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 1] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "level": "TH",
+        "topic": "Khoảng nghịch biến của hàm phân thức",
+        "q": "Hàm số $y = x + \\frac{4}{x}$ nghịch biến trên khoảng nào dưới đây?",
+        "opt": [
+          "$(-2; 2)$",
+          "$(-2; 0)$",
+          "$(-\\infty; -2)$",
+          "$(2; +\\infty)$"
+        ],
+        "ans": "B",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Tính đơn điệu của hàm số (SGK Toán 12 - KNTT)*\n\nCho hàm số $y = f(x)$ có đạo hàm trên khoảng $(a; b)$:\n- $f'(x) \\ge 0, \\forall x \\in (a; b) \\Rightarrow$ Hàm số **đồng biến** trên $(a; b)$.\n- $f'(x) \\le 0, \\forall x \\in (a; b) \\Rightarrow$ Hàm số **nghịch biến** trên $(a; b)$.\n*(Dấu bằng chỉ xảy ra tại hữu hạn điểm)*\n\n💡 **Định hướng tư duy Socratic:**\nEm hãy tính đạo hàm $f'(x)$, tìm các nghiệm của phương trình $f'(x) = 0$ và xét dấu của $f'(x)$ để kết luận khoảng biến thiên nhé!",
+        "qid": "MATH_12_GK1_SO_HUE_P1_TH_04",
+        "exam_code": "GK1_MATH12_060",
+        "year": "2025 - 2026",
+        "exam_type": "Giữa học kỳ 1",
+        "exam_session": "Kỳ thi Giữa Học Kỳ 1 (Lần 1)",
+        "province": "Thừa Thiên Huế",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 2",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_2",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 2] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên như sau:\n\nKhẳng định nào sau đây là đúng?",
+        "opt": [
+          "Đồ thị hàm số có tiệm cận đứng $x = 1$ và tiệm cận ngang $y = 2$.",
+          "Đồ thị hàm số có tiệm cận đứng $y = 2$ và tiệm cận ngang $x = 1$.",
+          "Hàm số nghịch biến trên khoảng $(-\\infty; 1)$.",
+          "Hàm số đạt cực đại tại $x = 1$."
+        ],
+        "ans": "A",
+        "explain": "🎯 **Bước 1 (Nhận diện bản chất bài toán):** Xác định rõ giả thiết đề bài, dạng toán và công thức định lý tương ứng trong SGK Kết Nối Tri Thức.\n\n🔑 **Bước 2 (Chiến lược tư duy):** Thiết lập phương trình liên hệ giữa các đại lượng đã biết và đại lượng cần tìm, loại trừ các phương án không hợp lý về dấu hoặc đơn vị.\n\n💡 **Gợi mở Socratic:** *Em hãy tự tay thế số liệu từ đề bài vào công thức tổng quát để tính ra đáp số chính xác nhé!*",
+        "level": "NB",
+        "topic": "Tiệm cận đồ thị hàm số",
+        "bbt": "x | -inf | 1 | +inf \n y' | + | || | + \n y | 2 | ↗ | +inf || -inf | ↗ | 2",
+        "qid": "MATH_12_CK1_BNINH_P1_NB_06",
+        "exam_code": "CK1_TOÁ12_28",
+        "year": "2025 - 2026",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "exam_type": "Cuối học kỳ 1",
+        "exam_session": "Kỳ thi Cuối Học Kỳ 1 (Chính thức)",
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 3",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_3",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 3] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Một bác nông dân muốn rào một khu vườn hình chữ nhật có một cạnh giáp bờ tường thẳng (không cần rào cạnh này). Chiều dài hàng rào là $40$ mét. Diện tích lớn nhất của khu vườn mà bác nông dân có thể rào được là:",
+        "opt": [
+          "$200\\text{ m}^2$",
+          "$400\\text{ m}^2$",
+          "$100\\text{ m}^2$",
+          "$300\\text{ m}^2$"
+        ],
+        "ans": "A",
+        "explain": "🎯 **Điểm tựa kiến thức:**\nGọi chiều rộng là $x$ ($0 < x < 20$) Chiều dài là $40 - 2x$\n\n💡 **Thử thách Socratic:** *Dựa vào định lý và công thức nền tảng trên, em hãy tự tay thực hiện phép tính để tìm ra kết quả chính xác nhé!*",
+        "level": "VD",
+        "topic": "Ứng dụng tối ưu hóa thực tế",
+        "qid": "MATH_12_TT26_CSP_P1_VD_04",
+        "exam_code": "TO2512",
+        "year": "2025 - 2026",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "exam_type": "Cuối học kỳ 1",
+        "exam_session": "Kỳ thi Cuối Học Kỳ 1 (Chính thức)",
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 4",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_4",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 4] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số $y = f(x)$ có bảng biến thiên như sau:\n\nTổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số là:",
+        "bbt": "x | -inf | 1 | +inf\ny' | + | || | +\ny | 2 | ↗ | +inf || -inf | ↗ | 2",
+        "opt": [
+          "1",
+          "3",
+          "0",
+          "2"
+        ],
+        "ans": "D",
+        "explain": "🎯 **Kỹ năng đọc Tiệm cận từ BBT (SGK Toán GDPT 2018):**\n- Tiệm cận đứng: Tại $x = x_0$ có dấu hai vạch song song ($||$) và ít nhất một bên $y \\to \\pm\\infty$.\n- Tiệm cận ngang: Giá trị hữu hạn của $y$ khi $x \\to \\pm\\infty$.\n\n💡 **Gợi mở Socratic:** *Em hãy kiểm tra hai đầu vô cực của dòng $x$ và các điểm gián đoạn hai vạch để tìm tiệm cận nhé!*",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_914485",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 5",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_5",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 5] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Giá trị nhỏ nhất của hàm số $y = x^3 - 3x + 5$ trên đoạn $[0; 2]$ là:",
+        "opt": [
+          "3",
+          "5",
+          "7",
+          "0"
+        ],
+        "ans": "A",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Giá trị lớn nhất và nhỏ nhất của hàm số trên đoạn $[a; b]$ (SGK Toán 12 - KNTT)*\n\nQuy tắc tìm GTLN, GTNN trên đoạn $[a; b]$:\n1. Tính đạo hàm $f'(x)$, tìm các nghiệm $x_i \\in (a; b)$ của phương trình $f'(x) = 0$.\n2. Tính các giá trị: $f(a)$, $f(b)$ và các $f(x_i)$.\n3. $\\max_{[a; b]} f(x) = \\max\\{f(a), f(b), f(x_i)\\}$; $\\min_{[a; b]} f(x) = \\min\\{f(a), f(b), f(x_i)\\}$.\n\n💡 **Định hướng tư duy Socratic:**\nEm hãy tìm các nghiệm của $f'(x) = 0$ nằm trong đoạn $[a; b]$, tính giá trị hàm số tại các điểm đó và hai đầu mút rồi so sánh nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_736018",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 6",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_6",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 6] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Đồ thị hàm số $y = \\frac{x^2 - 3x + 3}{x - 2}$ có đường tiệm cận xiên là:",
+        "opt": [
+          "$y = x + 1$",
+          "$y = x - 1$",
+          "$y = x$",
+          "$y = -x + 1$"
+        ],
+        "ans": "B",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Đường tiệm cận của đồ thị hàm số (SGK Toán 12 - KNTT)*\n\n- Tiệm cận đứng: Đường thẳng $x = x_0$ nếu ít nhất một giới hạn $\\lim_{x \\to x_0^\\pm} y = \\pm\\infty$.\n- Tiệm cận ngang: Đường thẳng $y = y_0$ nếu $\\lim_{x \\to \\pm\\infty} y = y_0$.\n- Tiệm cận xiên: Đường thẳng $y = ax + b$ với $a = \\lim_{x \\to \\pm\\infty} \\frac{y}{x}$, $b = \\lim_{x \\to \\pm\\infty} (y - ax)$.\n\n💡 **Định hướng tư duy Socratic:**\nVới hàm phân thức, em hãy tìm nghiệm của mẫu số (không triệt tiêu với tử số) để xác định tiệm cận đứng, và xét tỉ số bậc cao nhất khi $x \\to \\pm\\infty$ để tìm tiệm cận ngang/xiên nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_156909",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 7",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_7",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 7] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số $y = f(x)$ xác định trên $\\mathbb{R} \\setminus \\{2\\}$ và có bảng biến thiên như hình dưới. Khẳng định nào sau đây đúng?",
+        "bbt": "x | -inf | 0 | 2 | 4 | +inf \n y' | - | 0 | + | || | + | 0 | - \n y | +inf | ↘ | 1 | ↗ | || | ↗ | 5 | ↘ | -inf",
+        "opt": [
+          "Hàm số đạt cực đại tại $x = 5$",
+          "Hàm số có giá trị cực tiểu bằng 0",
+          "Hàm số đạt cực tiểu tại $x = 0$",
+          "Hàm số đồng biến trên $(0; 4)$"
+        ],
+        "ans": "C",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Giá trị lớn nhất và nhỏ nhất của hàm số trên đoạn $[a; b]$ (SGK Toán 12 - KNTT)*\n\nQuy tắc tìm GTLN, GTNN trên đoạn $[a; b]$:\n1. Tính đạo hàm $f'(x)$, tìm các nghiệm $x_i \\in (a; b)$ của phương trình $f'(x) = 0$.\n2. Tính các giá trị: $f(a)$, $f(b)$ và các $f(x_i)$.\n3. $\\max_{[a; b]} f(x) = \\max\\{f(a), f(b), f(x_i)\\}$; $\\min_{[a; b]} f(x) = \\min\\{f(a), f(b), f(x_i)\\}$.\n\n💡 **Định hướng tư duy Socratic:**\nEm hãy tìm các nghiệm của $f'(x) = 0$ nằm trong đoạn $[a; b]$, tính giá trị hàm số tại các điểm đó và hai đầu mút rồi so sánh nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_227715",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 8",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_8",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 8] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Đồ thị hàm số $y = \\frac{x-1}{x^2-1}$ có bao nhiêu đường tiệm cận?",
+        "opt": [
+          "1",
+          "2",
+          "3",
+          "0"
+        ],
+        "ans": "B",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Đường tiệm cận của đồ thị hàm số (SGK Toán 12 - KNTT)*\n\n- Tiệm cận đứng: Đường thẳng $x = x_0$ nếu ít nhất một giới hạn $\\lim_{x \\to x_0^\\pm} y = \\pm\\infty$.\n- Tiệm cận ngang: Đường thẳng $y = y_0$ nếu $\\lim_{x \\to \\pm\\infty} y = y_0$.\n- Tiệm cận xiên: Đường thẳng $y = ax + b$ với $a = \\lim_{x \\to \\pm\\infty} \\frac{y}{x}$, $b = \\lim_{x \\to \\pm\\infty} (y - ax)$.\n\n💡 **Định hướng tư duy Socratic:**\nVới hàm phân thức, em hãy tìm nghiệm của mẫu số (không triệt tiêu với tử số) để xác định tiệm cận đứng, và xét tỉ số bậc cao nhất khi $x \\to \\pm\\infty$ để tìm tiệm cận ngang/xiên nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_245499",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 9",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_9",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 9] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x-1)^2(x+2)$. Số điểm cực trị của hàm số đã cho là:",
+        "opt": [
+          "3",
+          "1",
+          "2",
+          "4"
+        ],
+        "ans": "C",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Cực trị của hàm số (SGK Toán 12 - KNTT)*\n\n- Điều kiện cần: Nếu hàm số đạt cực trị tại $x_0$ thì $f'(x_0) = 0$ hoặc $f'(x_0)$ không xác định.\n- Điều kiện đủ: $f'(x)$ đổi dấu từ $(+)$ sang $(-)$ qua $x_0 \\Rightarrow x_0$ là **điểm cực đại**; đổi dấu từ $(-)$ sang $(+) \\Rightarrow x_0$ là **điểm cực tiểu**.\n*(Chỉ các nghiệm bội lẻ mới làm $f'(x)$ đổi dấu và tạo thành cực trị)*\n\n💡 **Định hướng tư duy Socratic:**\nEm hãy giải phương trình $f'(x) = 0$, đếm các nghiệm bội lẻ (nghiệm đơn) làm đạo hàm đổi dấu để tìm số điểm cực trị nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_521603",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 10",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_10",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 10] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Hàm số $y = -x^3 + 3x^2 - 1$ nghịch biến trên khoảng nào?",
+        "opt": [
+          "$(0; 2)$",
+          "$(-\\infty; 0)$ và $(2; +\\infty)$",
+          "$(-\\infty; 2)$",
+          "$(0; +\\infty)$"
+        ],
+        "ans": "B",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Tính đơn điệu của hàm số (SGK Toán 12 - KNTT)*\n\nCho hàm số $y = f(x)$ có đạo hàm trên khoảng $(a; b)$:\n- $f'(x) \\ge 0, \\forall x \\in (a; b) \\Rightarrow$ Hàm số **đồng biến** trên $(a; b)$.\n- $f'(x) \\le 0, \\forall x \\in (a; b) \\Rightarrow$ Hàm số **nghịch biến** trên $(a; b)$.\n*(Dấu bằng chỉ xảy ra tại hữu hạn điểm)*\n\n💡 **Định hướng tư duy Socratic:**\nEm hãy tính đạo hàm $f'(x)$, tìm các nghiệm của phương trình $f'(x) = 0$ và xét dấu của $f'(x)$ để kết luận khoảng biến thiên nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_863658",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 11",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_11",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 11] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Đường tiệm cận ngang của đồ thị hàm số $y = \\frac{1-2x}{x+1}$ là:",
+        "opt": [
+          "$y = 1$",
+          "$y = -2$",
+          "$x = -1$",
+          "$y = 2$"
+        ],
+        "ans": "B",
+        "explain": "🎯 **Điểm tựa lý thuyết SGK Kết Nối Tri Thức:**\n*Đường tiệm cận của đồ thị hàm số (SGK Toán 12 - KNTT)*\n\n- Tiệm cận đứng: Đường thẳng $x = x_0$ nếu ít nhất một giới hạn $\\lim_{x \\to x_0^\\pm} y = \\pm\\infty$.\n- Tiệm cận ngang: Đường thẳng $y = y_0$ nếu $\\lim_{x \\to \\pm\\infty} y = y_0$.\n- Tiệm cận xiên: Đường thẳng $y = ax + b$ với $a = \\lim_{x \\to \\pm\\infty} \\frac{y}{x}$, $b = \\lim_{x \\to \\pm\\infty} (y - ax)$.\n\n💡 **Định hướng tư duy Socratic:**\nVới hàm phân thức, em hãy tìm nghiệm của mẫu số (không triệt tiêu với tử số) để xác định tiệm cận đứng, và xét tỉ số bậc cao nhất khi $x \\to \\pm\\infty$ để tìm tiệm cận ngang/xiên nhé!",
+        "level": "NB",
+        "qid": "NAT_TOÁ_12_p1_996667",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần I - Câu 12",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p1_12",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần I - Câu 12] • Nguồn: GSAI Autonomous Bank 2026"
+      }
+    ],
+    "p2": [
+      {
+        "topic": "Ứng dụng đạo hàm tối ưu hóa chi phí sản xuất",
+        "q": "Một xưởng cơ khí nhận hợp đồng sản xuất $x$ chiếc máy bơm ($10 \\le x \\le 150$). Chi phí sản xuất trung bình cho mỗi chiếc máy bơm được cho bởi hàm số $C(x) = x^2 - 120x + 4000 + \\frac{16000}{x}$ (đơn vị: nghìn đồng).",
+        "stmts": [
+          {
+            "t": "Khi sản xuất $40$ chiếc máy bơm thì chi phí sản xuất trung bình cho mỗi chiếc là $1200$ nghìn đồng.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Đạo hàm của hàm chi phí trung bình là $C'(x) = 2x - 120 - \\frac{16000}{x^2}$.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Hàm số $C(x)$ nghịch biến trên khoảng $(10; 40)$.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Để chi phí trung bình trên mỗi chiếc máy bơm là thấp nhất thì xưởng cần sản xuất $80$ chiếc máy bơm.",
+            "a": false,
+            "ans": false
+          }
+        ],
+        "explain": "🎯 **Định hướng mô hình hóa bài toán Tối ưu thực tế (SGK GDPT 2018):**\n- **Bước 1 (Chọn biến số & Tập xác định):** Gọi ẩn $x$ (hoặc $t, v$) là đại lượng thay đổi kèm điều kiện thực tế (ví dụ: $x > 0$ hoặc $v > 6$).\n- **Bước 2 (Thiết lập hàm mục tiêu):**\n  + Biểu diễn các đại lượng phụ thuộc theo ẩn số (Lợi nhuận = Doanh thu - Chi phí, Năng lượng tiêu hao $E(v) = c v^3 t$, hoặc Diện tích toàn phần $S(x)$).\n  + Xây dựng hàm số mục tiêu cần tối ưu: $f(x)$ (tìm GTLN hoặc GTNN).\n- **Bước 3 (Khảo sát cực trị):** Tính đạo hàm $f'(x) = 0$ hoặc áp dụng BĐT Cauchy để tìm điểm tối ưu.\n\n💡 **Gợi mở Socratic:** *Em hãy lập hàm số mục tiêu theo biến đề bài cho, tính đạo hàm tìm cực trị rồi đối chiếu với câu hỏi nhé!*",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "year": "2025 - 2026",
+        "exam_type": "Giữa học kỳ 2",
+        "exam_session": "Kỳ thi Giữa Học Kỳ 1 (Lần 1)",
+        "level": "TH",
+        "qid": "NAT_TOÁ_12_p2_658359",
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần II - Câu 1",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p2_1",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần II - Câu 1] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Một vật chuyển động theo quy luật $s(t) = -t^3 + 9t^2 + 21t$, với $t$ (giây) là khoảng thời gian tính từ lúc vật bắt đầu chuyển động và $s$ (mét) là quãng đường vật đi được trong khoảng thời gian đó. Xét các mệnh đề sau:",
+        "stmts": [
+          {
+            "t": "Vận tốc của vật tại thời điểm $t = 2$ giây là $45$ m/s.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Vật đạt vận tốc lớn nhất tại thời điểm $t = 3$ giây.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Gia tốc của vật tại thời điểm $t = 3$ giây là $0$ m/s².",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Vận tốc cực đại của vật là $50$ m/s.",
+            "a": false,
+            "ans": false
+          }
+        ],
+        "explain": "🎯 **Chiến lược kiểm định 4 Mệnh đề Đúng/Sai (SGK GDPT 2018):**\n- **Mệnh đề về ĐKXĐ / Tập xác định:** Kiểm tra điều kiện mẫu số khác 0 và biểu thức dưới căn bậc chẵn $\\ge 0$.\n- **Mệnh đề về Đơn điệu / Cực trị:** Tính đạo hàm $f'(x)$ và lập bảng xét dấu độc lập trên từng khoảng.\n- **Mệnh đề về Giá trị cụ thể:** Thay trực tiếp toạ độ / số liệu đề bài vào phương trình ban đầu.\n\n💡 **Gợi mở Socratic:** *Em hãy xét độc lập từng mệnh đề a), b), c), d) theo quy tắc cần và đủ để quyết định Đúng hay Sai nhé!*",
+        "level": "TH",
+        "qid": "NAT_TOÁ_12_p2_686703",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần II - Câu 2",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p2_2",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần II - Câu 2] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ có đồ thị như hình vẽ bên:\n\nXét tính đúng sai của các phát biểu sau:",
+        "f": {
+          "type": "func_3",
+          "a": 1,
+          "b": 0,
+          "c": -3,
+          "d": 0
+        },
+        "stmts": [
+          {
+            "t": "Hệ số $a$ của hàm số mang giá trị dương.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Hàm số đạt cực đại tại điểm $x = 1$.",
+            "a": false,
+            "ans": false
+          },
+          {
+            "t": "Phương trình $f(x) = 0$ có 3 nghiệm phân biệt.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Hàm số nghịch biến trên khoảng $(-1; 1)$.",
+            "a": true,
+            "ans": true
+          }
+        ],
+        "explain": "🎯 **Điểm tựa kiến thức:**\nDựa vào nhánh cuối của đồ thị để xác định dấu của $a$ Nhìn các điểm lồi, lõm của đồ thị để xác định điểm cực trị và các khoảng đơn điệu tương ứng.\n\n💡 **Thử thách Socratic:** *Dựa vào định lý và công thức nền tảng trên, em hãy tự tay thực hiện phép tính để tìm ra kết quả chính xác nhé!*",
+        "tikz": "\\begin{tikzpicture}[scale=0.8, >=stealth]\n\\draw[->] (-2,0) -- (4,0) node[right] {$x$};\n\\draw[->] (0,-3) -- (0,4) node[above] {$y$};\n\\node[below left] at (0,0) {$O$};\n\\draw[domain=-1.2:3.2, smooth, variable=\\x, blue, thick] plot ({\\x}, {\\x*\\x*\\x - 3*\\x*\\x + 2});\n\\end{tikzpicture}",
+        "level": "TH",
+        "qid": "NAT_TOÁ_12_p2_301387",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần II - Câu 3",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p2_3",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần II - Câu 3] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Một doanh nghiệp sản xuất một loại sản phẩm. Biết rằng tổng chi phí sản xuất $x$ sản phẩm là $C(x) = x^2 + 10x + 100$ (triệu đồng). Giá bán mỗi sản phẩm là $120$ triệu đồng. Gọi $L(x)$ là lợi nhuận thu được.",
+        "stmts": [
+          {
+            "t": "Hàm lợi nhuận là $L(x) = -x^2 + 110x - 100$.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Doanh nghiệp bị lỗ nếu chỉ sản xuất 1 sản phẩm.",
+            "a": false,
+            "ans": false
+          },
+          {
+            "t": "Lợi nhuận đạt tối đa khi doanh nghiệp sản xuất $55$ sản phẩm.",
+            "a": true,
+            "ans": true
+          },
+          {
+            "t": "Lợi nhuận tối đa thu được là $2925$ triệu đồng.",
+            "a": true,
+            "ans": true
+          }
+        ],
+        "explain": "🎯 **Định hướng mô hình hóa bài toán Tối ưu thực tế (SGK GDPT 2018):**\n- **Bước 1 (Chọn biến số & Tập xác định):** Gọi ẩn $x$ (hoặc $t, v$) là đại lượng thay đổi kèm điều kiện thực tế (ví dụ: $x > 0$ hoặc $v > 6$).\n- **Bước 2 (Thiết lập hàm mục tiêu):**\n  + Biểu diễn các đại lượng phụ thuộc theo ẩn số (Lợi nhuận = Doanh thu - Chi phí, Năng lượng tiêu hao $E(v) = c v^3 t$, hoặc Diện tích toàn phần $S(x)$).\n  + Xây dựng hàm số mục tiêu cần tối ưu: $f(x)$ (tìm GTLN hoặc GTNN).\n- **Bước 3 (Khảo sát cực trị):** Tính đạo hàm $f'(x) = 0$ hoặc áp dụng BĐT Cauchy để tìm điểm tối ưu.\n\n💡 **Gợi mở Socratic:** *Em hãy lập hàm số mục tiêu theo biến đề bài cho, tính đạo hàm tìm cực trị rồi đối chiếu với câu hỏi nhé!*",
+        "level": "TH",
+        "qid": "NAT_TOÁ_12_p2_223250",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần II - Câu 4",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p2_4",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần II - Câu 4] • Nguồn: GSAI Autonomous Bank 2026"
+      }
+    ],
+    "p3": [
+      {
+        "level": "VD",
+        "topic": "Giá trị nhỏ nhất của hàm lượng giác đổi biến",
+        "q": "Biết giá trị nhỏ nhất của hàm số $f(x) = 2\\cos^3 x - \\cos 2x$ trên đoạn $\\left[-\\frac{\\pi}{3}; \\frac{\\pi}{3}\\right]$ là $\\frac{a}{b}$ với $a, b \\in \\mathbb{N}$ và $\\frac{a}{b}$ tối giản. Khi đó tích $P = a \\cdot b$ bằng bao nhiêu?",
+        "ans": "513",
+        "explain": "🎯 **Chiến lược giải toán Trả lời ngắn & Vận dụng cao (Bộ GD&ĐT):**\n1. **Mô hình hóa:** Nhận diện đối tượng toán học/vật lý trung tâm và thiết lập phương trình liên hệ từ giả thiết bài toán.\n2. **Giải toán:** Áp dụng định lý giải tích, định luật bảo toàn hoặc công thức tọa độ chuyên môn để giải phương trình ẩn số.\n3. **Kiểm tra đáp số:** Rà soát điều kiện thực tế của biến số và làm tròn đúng định dạng phiếu thi (tối đa 4 ký tự).\n\n💡 **Gợi mở Socratic:** *Em hãy bám sát các đại lượng đã cho của đề bài, lập phương trình liên hệ và tính toán cẩn thận từng bước nhé!*",
+        "qid": "MATH_12_GK1_SO_GLAI_P3_VD_03",
+        "exam_code": "GK1_MATH12_083",
+        "year": "2025 - 2026",
+        "exam_type": "Giữa học kỳ 1",
+        "exam_session": "Kỳ thi Giữa Học Kỳ 1 (Lần 1)",
+        "province": "Gia Lai",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 1",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_1",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 1] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Sau khi uống một liều thuốc, nồng độ thuốc $C(t)$ (mg/L) trong máu của bệnh nhân sau $t$ giờ được mô hình hóa bởi hàm số $C(t) = \\frac{4t}{t^2 + 4}$. Sau bao nhiêu giờ kể từ khi uống thuốc thì nồng độ thuốc trong máu bệnh nhân đạt giá trị cao nhất?",
+        "ans": "2",
+        "explain": "🎯 **Định hướng mô hình hóa bài toán Tối ưu thực tế (SGK GDPT 2018):**\n- **Bước 1 (Chọn biến số & Tập xác định):** Gọi ẩn $x$ (hoặc $t, v$) là đại lượng thay đổi kèm điều kiện thực tế (ví dụ: $x > 0$ hoặc $v > 6$).\n- **Bước 2 (Thiết lập hàm mục tiêu):**\n  + Biểu diễn các đại lượng phụ thuộc theo ẩn số (Lợi nhuận = Doanh thu - Chi phí, Năng lượng tiêu hao $E(v) = c v^3 t$, hoặc Diện tích toàn phần $S(x)$).\n  + Xây dựng hàm số mục tiêu cần tối ưu: $f(x)$ (tìm GTLN hoặc GTNN).\n- **Bước 3 (Khảo sát cực trị):** Tính đạo hàm $f'(x) = 0$ hoặc áp dụng BĐT Cauchy để tìm điểm tối ưu.\n\n💡 **Gợi mở Socratic:** *Em hãy lập hàm số mục tiêu theo biến đề bài cho, tính đạo hàm tìm cực trị rồi đối chiếu với câu hỏi nhé!*",
+        "level": "VD",
+        "topic": "Chuyên đề trọng tâm Toán học Lớp 12",
+        "qid": "MATH_12_TT26_BTX_HCM_P3_VD_02",
+        "exam_code": "TT26_MATH12_090",
+        "year": "2025 - 2026",
+        "exam_type": "Thi thử Tốt nghiệp THPT",
+        "exam_session": "Thi Thử Tốt Nghiệp THPT (Lần 1)",
+        "province": "TP.HCM",
+        "is_real_bank_question": false,
+        "is_ai_generated": true,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 2",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_2",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 2] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Cho hàm số $y = x^3 - 3x^2 + 2$. Gọi $A, B$ là hai điểm cực trị của đồ thị hàm số. Độ dài đoạn thẳng $AB$ bằng bao nhiêu? (Làm tròn đến hàng đơn vị).",
+        "ans": "4.5",
+        "explain": "🎯 **Chiến lược giải toán Trả lời ngắn & Vận dụng cao (Bộ GD&ĐT):**\n1. **Mô hình hóa:** Nhận diện đối tượng toán học/vật lý trung tâm và thiết lập phương trình liên hệ từ giả thiết bài toán.\n2. **Giải toán:** Áp dụng định lý giải tích, định luật bảo toàn hoặc công thức tọa độ chuyên môn để giải phương trình ẩn số.\n3. **Kiểm tra đáp số:** Rà soát điều kiện thực tế của biến số và làm tròn đúng định dạng phiếu thi (tối đa 4 ký tự).\n\n💡 **Gợi mở Socratic:** *Em hãy bám sát các đại lượng đã cho của đề bài, lập phương trình liên hệ và tính toán cẩn thận từng bước nhé!*",
+        "level": "VD",
+        "qid": "NAT_TOÁ_12_p3_919970",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 3",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_3",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 3] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Đồ thị hàm số $y = \\frac{ax^2 + bx + c}{x + d}$ có tiệm cận đứng $x = 1$ và tiệm cận xiên $y = x + 2$. Tính giá trị của biểu thức $T = a + d$.",
+        "ans": "0",
+        "explain": "🎯 **Chiến lược giải toán Trả lời ngắn & Vận dụng cao (Bộ GD&ĐT):**\n1. **Mô hình hóa:** Nhận diện đối tượng toán học/vật lý trung tâm và thiết lập phương trình liên hệ từ giả thiết bài toán.\n2. **Giải toán:** Áp dụng định lý giải tích, định luật bảo toàn hoặc công thức tọa độ chuyên môn để giải phương trình ẩn số.\n3. **Kiểm tra đáp số:** Rà soát điều kiện thực tế của biến số và làm tròn đúng định dạng phiếu thi (tối đa 4 ký tự).\n\n💡 **Gợi mở Socratic:** *Em hãy bám sát các đại lượng đã cho của đề bài, lập phương trình liên hệ và tính toán cẩn thận từng bước nhé!*",
+        "level": "VD",
+        "qid": "NAT_TOÁ_12_p3_376182",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 4",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_4",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 4] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Tìm số nguyên dương $m$ nhỏ nhất để hàm số $y = \\frac{1}{3}x^3 - mx^2 + 9x + 1$ đồng biến trên khoảng $(0; +\\infty)$.",
+        "ans": "3",
+        "explain": "🎯 **Chiến lược giải toán Trả lời ngắn & Vận dụng cao (Bộ GD&ĐT):**\n1. **Mô hình hóa:** Nhận diện đối tượng toán học/vật lý trung tâm và thiết lập phương trình liên hệ từ giả thiết bài toán.\n2. **Giải toán:** Áp dụng định lý giải tích, định luật bảo toàn hoặc công thức tọa độ chuyên môn để giải phương trình ẩn số.\n3. **Kiểm tra đáp số:** Rà soát điều kiện thực tế của biến số và làm tròn đúng định dạng phiếu thi (tối đa 4 ký tự).\n\n💡 **Gợi mở Socratic:** *Em hãy bám sát các đại lượng đã cho của đề bài, lập phương trình liên hệ và tính toán cẩn thận từng bước nhé!*",
+        "level": "VD",
+        "qid": "NAT_TOÁ_12_p3_145894",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 5",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_5",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 5] • Nguồn: GSAI Autonomous Bank 2026"
+      },
+      {
+        "q": "Một nông trại dự kiến thu hoạch 20 tấn cam với giá bán 30 triệu đồng/tấn. Cứ mỗi tấn tăng thêm thì giá bán giảm đi 1 triệu đồng/tấn. Hỏi nông trại nên thu hoạch bao nhiêu tấn để doanh thu đạt cực đại?",
+        "ans": "25",
+        "explain": "🎯 **Định hướng mô hình hóa bài toán Tối ưu thực tế (SGK GDPT 2018):**\n- **Bước 1 (Chọn biến số & Tập xác định):** Gọi ẩn $x$ (hoặc $t, v$) là đại lượng thay đổi kèm điều kiện thực tế (ví dụ: $x > 0$ hoặc $v > 6$).\n- **Bước 2 (Thiết lập hàm mục tiêu):**\n  + Biểu diễn các đại lượng phụ thuộc theo ẩn số (Lợi nhuận = Doanh thu - Chi phí, Năng lượng tiêu hao $E(v) = c v^3 t$, hoặc Diện tích toàn phần $S(x)$).\n  + Xây dựng hàm số mục tiêu cần tối ưu: $f(x)$ (tìm GTLN hoặc GTNN).\n- **Bước 3 (Khảo sát cực trị):** Tính đạo hàm $f'(x) = 0$ hoặc áp dụng BĐT Cauchy để tìm điểm tối ưu.\n\n💡 **Gợi mở Socratic:** *Em hãy lập hàm số mục tiêu theo biến đề bài cho, tính đạo hàm tìm cực trị rồi đối chiếu với câu hỏi nhé!*",
+        "level": "VD",
+        "qid": "NAT_TOÁ_12_p3_788887",
+        "is_ai_generated": true,
+        "is_real_bank_question": false,
+        "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+        "portal": "GSAI Autonomous Bank 2026",
+        "orig_pos": "Phần III - Câu 6",
+        "orig_exam_code": "7064",
+        "audit_id": "GSAI_AI_7064_p3_6",
+        "source": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh) • Độc Bản Tự Sinh (2025 - 2026) • [Mã 7064 - Phần III - Câu 6] • Nguồn: GSAI Autonomous Bank 2026"
+      }
+    ],
+    "is_ai_generated": true,
+    "is_real_exam": false,
+    "exam_source_type": "ai_generated",
+    "is_blended_real": true,
+    "exam_count": 1,
+    "grade": 12,
+    "portal": "GSAI Autonomous Bank 2026",
+    "audit_trail": [],
+    "source": "Đề thi chuẩn hóa GDPT 2018 (Trợ lý AI Khảo Thí biên soạn mới 100%)",
+    "school": "Hệ Thống Gia Sư AI (Độc Bản Tự Sinh)",
+    "is_real_bank_question": true,
+    "is_ai_harvested": true
+  }
+}

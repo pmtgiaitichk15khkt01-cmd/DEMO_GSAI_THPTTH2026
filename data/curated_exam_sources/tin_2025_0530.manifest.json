@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "filename": "tin_2025_0530.json.xz",
+  "subject": "Tin học",
+  "year": 2025,
+  "variant": "0530",
+  "grade": 12,
+  "curriculum": "CT2018",
+  "station": 3,
+  "archive_sha256": "685700c87d4fcf11e30516e1a0567c6cc56a92c9e6660258eae65f597786bc0e",
+  "content_sha256": "5452bf64dc513ee1114a40b1550c3254df29e1857969940f538974a30e0351be",
+  "compressed_bytes": 17788,
+  "uncompressed_bytes": 76078,
+  "response_units": 48,
+  "common_reviewed_units": 31,
+  "source_hold": [
+    "I.7"
+  ],
+  "routing_holds": [
+    "II.3",
+    "II.4",
+    "II.5",
+    "II.6"
+  ],
+  "whole_paper_delivery_held": true,
+  "publisher_of_photo": "Tuoi Tre newspaper, not Ministry-hosted question PDF",
+  "official_ministry_level_claim": false,
+  "reviewed_on": "2026-11-05",
+  "runtime_import_allowed": true,
+  "runtime_scope": "reviewed_common_units_with_explicit_holds"
+}

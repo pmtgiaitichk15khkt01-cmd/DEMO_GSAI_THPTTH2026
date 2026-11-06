@@ -1,0 +1,1974 @@
+{
+  "schema_version": 1,
+  "scope": "Independently reviewed question anchors for T1/T3. Empty reviews means no approved anchors; never fall back to legacy flags or AI claims.",
+  "reviews": {
+    "8fc86ea0b12781f762b18e77df11f5e80018da3ea0ff58046c95a0437ee52d58": {
+      "content_adn": "8fc86ea0b12781f762b18e77df11f5e80018da3ea0ff58046c95a0437ee52d58",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.1; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.1:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.1",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "ID selector wins the color conflict, so red. Class font-weight:bold and ID font-style:italic do not conflict and both apply.",
+          "reason": "Interpret competing and compatible CSS declarations, not author a new stylesheet.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "38dc21d97796559495e36214c6593f31f3f474aa7d5bf0b2fde5595598c7c428": {
+      "content_adn": "38dc21d97796559495e36214c6593f31f3f474aa7d5bf0b2fde5595598c7c428",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.2; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.2:grade12,CTpages[51, 52]",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.2",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Recognition from camera images is computer vision; alternatives concern speech, robot control or language.",
+          "reason": "Recognise the taught application category; no model or pipeline design requested.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "09078e0d3eddba7d232c5eaefea1656ca08881cd3960152fa2d44d3ef5bfafd9": {
+      "content_adn": "09078e0d3eddba7d232c5eaefea1656ca08881cd3960152fa2d44d3ef5bfafd9",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.3; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.3:grade10,CTpages42",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.3",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Terabyte > Megabyte > Kilobyte under both decimal and binary magnitude conventions; no numerical conversion required.",
+          "reason": "Recall order of storage-unit magnitudes.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "521291253791f9292a1f4ca535ef22ba4f34deab410f35dab227ead2d23cfb35": {
+      "content_adn": "521291253791f9292a1f4ca535ef22ba4f34deab410f35dab227ead2d23cfb35",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.4; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.4:grade12,CTpages52",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.4",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Conventional Ethernet switch forwarding uses destination MAC addresses; inter-network routing and DNS resolution are different functions.",
+          "reason": "Identify the taught principal function; do not generalise to every multilayer-switch capability.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "e6753a39eff7fd00ac42c377128919b15ff7fcc214b146581c7d46079a974e84": {
+      "content_adn": "e6753a39eff7fd00ac42c377128919b15ff7fcc214b146581c7d46079a974e84",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.5; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.5:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.5",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Requested font size/margin/padding maps to font-size25px/margin20px/padding30px, regardless of declaration ordering.",
+          "reason": "Interpret named CSS properties and requested output order.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "aa9670fb24b7fa735d44d9c96ce72b94e77c2c3df07e883f911f4d77e66cc40c": {
+      "content_adn": "aa9670fb24b7fa735d44d9c96ce72b94e77c2c3df07e883f911f4d77e66cc40c",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.6; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.6:grade12,CTpages[51, 52]",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.6",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Generating program text from natural-language requirements produces new content; other listed tasks classify/count/predict.",
+          "reason": "Recognise the presented example of generative AI.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "1ca5255dc20587b11a2f07182388e8673794ee20098ce8bc99b2f413fba38dc6": {
+      "content_adn": "1ca5255dc20587b11a2f07182388e8673794ee20098ce8bc99b2f413fba38dc6",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.7; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.7:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.7",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Network interaction can broaden social relationships. It still depends on technology and never guarantees visible attitudes or absolute confidentiality.",
+          "reason": "Identify a taught advantage, without constructing a response to an ethical case.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "9d4b9f34e9a8164eac270f577c9ab9d07ee2377747873dc79a1f17a0501b44e9": {
+      "content_adn": "9d4b9f34e9a8164eac270f577c9ab9d07ee2377747873dc79a1f17a0501b44e9",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.8; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.8:grade10,CTpages45",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.8",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Successive loop-end states (x,a): (4,5),(20,6),(3,7),(21,8); stop and display21. All operands positive, so Python integer division and C++ integer division agree here.",
+          "reason": "Execute familiar given while/if operations over a fixed small input.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "964e5db53c0887eea1eb0f0925fcb1787bc1ea6416867c380b8fb0f79ef4928a": {
+      "content_adn": "964e5db53c0887eea1eb0f0925fcb1787bc1ea6416867c380b8fb0f79ef4928a",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.9; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.9:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.9",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A private constructive message addresses unverified sharing while respecting the friend; public shaming, gossip or simple disconnection do not provide that supportive correction.",
+          "reason": "Interpret a concrete familiar communication case and select the respectful response; not every life context is VD.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "7dd99361abb813b8064e3cfe31e2b4c164471bb2fd1dd22748c640e5ee97113e": {
+      "content_adn": "7dd99361abb813b8064e3cfe31e2b4c164471bb2fd1dd22748c640e5ee97113e",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+      "paper_page_sha256": [
+        "44cdbe91ffdaa8717175a7332f3556a52ed18a1224653b0e89340c2a42e3dc05",
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.10; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.10:grade11,CTpages49",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.10",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Selecting film names matching a date is retrieval; changing price, removing records and adding films are updates.",
+          "reason": "Distinguish retrieval from insert/delete/update in supplied table.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "b3768471154ec05d85034bf282e9d4f845dec3324aaba74304e82586676a0805": {
+      "content_adn": "b3768471154ec05d85034bf282e9d4f845dec3324aaba74304e82586676a0805",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.11; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.11:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.11",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "li defines a list item. ol/ul define list containers, td a table cell.",
+          "reason": "Recall li is list-item tag.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "5306a5f0ced92bb75b20f1838ca6c224f657e54e69ad7d231af521a3c7a9eef0": {
+      "content_adn": "5306a5f0ced92bb75b20f1838ca6c224f657e54e69ad7d231af521a3c7a9eef0",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.12; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.12:grade10,CTpages45",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.12",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Prefix sums for i=0,1,2 are2,7,11; k alternates+1,-1,+1 outside inner loop. T=2-7+11=6.",
+          "reason": "Trace supplied nestedfor/range,sign change outside innerloop; familiar finite execution,not algorithm invention.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "624bdf387755bb4e1456c9ae07fdfeace2a2dadac872deeda4077a82225ca91e": {
+      "content_adn": "624bdf387755bb4e1456c9ae07fdfeace2a2dadac872deeda4077a82225ca91e",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.13; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.13:grade12,CTpages[51, 52]",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.13",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Copilot supplies an AI conversational assistant; manufacturer source supports this named example, not a claim the brand appears in KNTT.",
+          "reason": "Recognize AIchatbot among named alternatives;primarymanufacturer supportsbrand.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "853201cf6c9337991cebd106378f4079d6a695a25fc3b4cdb98b57aba7a761aa": {
+      "content_adn": "853201cf6c9337991cebd106378f4079d6a695a25fc3b4cdb98b57aba7a761aa",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.15; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.15:grade12,CTpages52",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.15",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Open file manager(4),select folder(1),select users(3),set editing permission(2). A supplied workflow ordering task, not independent administration design.",
+          "reason": "Sequence supplied familiar file-sharing workflow.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "47723d4d4bdba691a9a826525f51df3f7a4d060e1310cfe426c335e54f5ebbce": {
+      "content_adn": "47723d4d4bdba691a9a826525f51df3f7a4d060e1310cfe426c335e54f5ebbce",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.16; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.16:grade10,CTpages45",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.16",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Loop continues while neither divisor divides n. On exit at least one divides n. Increasing from1 reaches min(a,b), the smallest positive multiple of a OR b, not necessarily a common multiple.",
+          "reason": "Negate conjunction stopping condition to divisibility by a OR b; firstpositivehit,min(a,b).",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "3a158aba2db409d28d0c920e01a9c6b372fb7a1edfb2e74fc27f0662fa236462": {
+      "content_adn": "3a158aba2db409d28d0c920e01a9c6b372fb7a1edfb2e74fc27f0662fa236462",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.17; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.17:grade11,CTpages49",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.17",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "A DBMS is a conceptual component of a database system along with database and applications; hardware/cloud storage is infrastructure rather than the requested component classification.",
+          "reason": "Recall DBMS is database-systemcomponent.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "19ddfe7472e133a3c3b63900cb7317d226dc4e2e4f7493aed49b717e447048bd": {
+      "content_adn": "19ddfe7472e133a3c3b63900cb7317d226dc4e2e4f7493aed49b717e447048bd",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.18; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.18:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.18",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "href=#binhluan targets matching id, not merely textarea name. rows=10 and cols=8 meet dimensions. Only optionC meets all conditions.",
+          "reason": "Combine fragment-id matching and rows/cols conditions.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "c64c702bdd3d8321f5fda598bd4ee0f152806a7e6fdb60c8f34a1933cec25f30": {
+      "content_adn": "c64c702bdd3d8321f5fda598bd4ee0f152806a7e6fdb60c8f34a1933cec25f30",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3",
+      "paper_page_sha256": [
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.19; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.19:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.19",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Private explanation preserves dignity and avoids further classroom interruption. Public criticism/gossip or encouragement to interrupt does not meet the stated respectful aim.",
+          "reason": "Select respectful corrective response in supplied socialcase.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "e4c541017f72260396b9d368b28ac42d00c7365c3c9f5e6efcc82b321eb0914b": {
+      "content_adn": "e4c541017f72260396b9d368b28ac42d00c7365c3c9f5e6efcc82b321eb0914b",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+        "a342151775905be1146362a848906cef9f18ab8bfcae39aedde8c91b7ea2ccb3"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.20; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.20:grade12,CTpages[51, 52]",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.20",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Fabricated AI content can mislead and threaten information integrity, corroborated by NIST risk evidence. Infrastructure cost or blanket speed/storage claims are not the specified information-safety risk.",
+          "reason": "Recall identified risk of fabricated content; do not confuse with statistical model performance.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "5999ce24588035a639e3f11e637ce065191f58b6629984f33789f12e56a057c7": {
+      "content_adn": "5999ce24588035a639e3f11e637ce065191f58b6629984f33789f12e56a057c7",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.21; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.21:grade11,CTpages51",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.21",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Installing/updating DBMS is a principal database-administration task; other options describe application development, network security or software testing.",
+          "reason": "Identify learned database-administrator task.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "e96e062633982a4b3cf40b6545f6fb67f6b0f1341fa7103649455cd6a6bfd0c0": {
+      "content_adn": "e96e062633982a4b3cf40b6545f6fb67f6b0f1341fa7103649455cd6a6bfd0c0",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.22; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.22:grade10,CTpages45",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.22",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Within the taught core programming-career knowledge classification, graphics-design software is not a general prerequisite. This does not imply no programmer ever needs graphic tools; role-specific needs differ.",
+          "reason": "Identify programming-job core knowledge; negated stem is not itself higher demand.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "e4569881a9b42f4e05bc7fc760b8d15802a7648f5a9ff78b833fc51230e9316c": {
+      "content_adn": "e4569881a9b42f4e05bc7fc760b8d15802a7648f5a9ff78b833fc51230e9316c",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.23; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.23:grade12,CTpages54",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.23",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Computer repair/maintenance is the service category in this curricular taxonomy; network/system administration and security are neighbouring administration categories. Not a universal economic classification.",
+          "reason": "Recall service-job category used by curriculum.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "35fe09fb2df9b79cb53733fb6857b9c1f8227304ea07a67e02e57568cc25e5e0": {
+      "content_adn": "35fe09fb2df9b79cb53733fb6857b9c1f8227304ea07a67e02e57568cc25e5e0",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 I.24; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "I.24:grade12,CTpages54",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.24",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Installing and tuning network performance is directly a network-administrator task; dismantling or repairing hardware belongs primarily to repair roles.",
+          "reason": "Identify direct network-administrator task among neighbouring jobs.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "5bf5a04ae56af8f767ea687d91f266411390b85468bda3fd7a11ade04ef94590": {
+      "content_adn": "5bf5a04ae56af8f767ea687d91f266411390b85468bda3fd7a11ade04ef94590",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.1; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.1.a:grade12,CTpages53; II.1.b:grade12,CTpages53; II.1.c:grade12,CTpages53; II.1.d:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.1.a",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Two text/email entry controls and one submit control are explicitly present.",
+          "reason": "Identify explicit control types in supplied markup.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Empty value is valid initial input state. Neither field has required; empty email is not a type mismatch. This does not prove server-side processing accepts every submission.",
+          "reason": "Distinguish initial value from mandatory-entry validation.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "For a normal valid submission, action targets dangki.php relative to current document. This is the intended destination, not proof that an endpoint exists or network delivery always succeeds.",
+          "reason": "Interpret action attribute in the given form.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Radio controls have distinct names, so they are separate groups and both can be selected. To enforce mutual exclusion use a common name within the same form/group.",
+          "reason": "Apply radio grouping semantics to the supplied two controls.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "bba06a6515c7806069d89f540b7c3c176f7574addf140f2eafcf7ae3324c8ccf": {
+      "content_adn": "bba06a6515c7806069d89f540b7c3c176f7574addf140f2eafcf7ae3324c8ccf",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.2; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.2.a:grade12,CTpages52; II.2.b:grade12,CTpages52; II.2.c:grade12,CTpages52; II.2.d:grade12,CTpages52",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.2.a",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "HTTPS denotes HTTP secured with TLS for web resources; SMTP handles email transport, not HTTPS.",
+          "reason": "Recognise protocol purpose, despite the email context.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Domain name provides a human-readable web locator resolved through DNS rather than requiring the user to enter a numeric IP. Not necessarily a permanent one-to-one mapping.",
+          "reason": "Explain domain/address relationship in the given website.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The address can remain usable after server IP changes if DNS MX/address records and mail service are correctly maintained. Possibility is true; unconditional delivery is not guaranteed.",
+          "reason": "Explain stable email naming under infrastructure change; preserve can-versus-always distinction.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A phone can access through an appropriate wireless access point/router or mobile network; direct connection to an ordinary wired switch is not required. Ethernet adapters are possible and do not make the necessity claim true.",
+          "reason": "Distinguish access technologies and reject an unnecessary direct-switch requirement.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "5705fcbfd898fe013fce200f77428691d0181683251692118029728b9afba4c5": {
+      "content_adn": "5705fcbfd898fe013fce200f77428691d0181683251692118029728b9afba4c5",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+      "paper_page_sha256": [
+        "6b207fc0fd53cf1e5ae3fc8c68b7cd3b82d0ce2f297fa6e95f111445f832a287",
+        "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.3; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.3.a:grade10,CTpages45; II.3.b:grade10,CTpages45; II.3.c:grade10,CTpages45; II.3.d:grade10,CTpages45",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.3.a",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "F declares A and n, two formal parameters.",
+          "reason": "Identify parameters directly from the signature.",
+          "official_level": null
+        },
+        {
+          "id": "II.3.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The routine places odd values before even values. Input[2,1] becomes[1,2], where an even element has a larger index than an odd one, refuting the statement.",
+          "reason": "Interpret the partition operation of the supplied routine; counterexample illustrates the interpreted direction.",
+          "official_level": null
+        },
+        {
+          "id": "II.3.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "For[2,7,6,1,4,3,5], final array[7,1,3,5,4,6,2] returns7+2=9.",
+          "reason": "Trace fixed supplied input through the given swaps.",
+          "official_level": null
+        },
+        {
+          "id": "II.3.d",
+          "reviewed_app_level": "VD",
+          "solution_rubric": "Permutation can change returned endpoints: [1,3,2] returns3;[3,1,2] returns5. Same multiset does not imply same result.",
+          "reason": "Construct/select a discriminating pair for a universal invariance claim; see dedicated adjudication, not official Ministry label.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "12b6412c291e27f01fdedaa802a9b5a1e9b577b411385ef5c7e879e7fa2a76cd": {
+      "content_adn": "12b6412c291e27f01fdedaa802a9b5a1e9b577b411385ef5c7e879e7fa2a76cd",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1",
+      "paper_page_sha256": [
+        "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.4; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.4.a:grade12,CTpages54; II.4.b:grade12,CTpages54; II.4.c:grade12,CTpages54; II.4.d:grade12,CTpages54",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.4.a",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Observed feature records are paired with engineer-supplied healthy/diseased target labels, hence supervised classification.",
+          "reason": "Interpret labelled data in the supplied agricultural context.",
+          "official_level": null
+        },
+        {
+          "id": "II.4.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Healthy and diseased are target categories; soil,humidity,temperature,light and variety are predictors.",
+          "reason": "Distinguish output labels from input features in this dataset.",
+          "official_level": null
+        },
+        {
+          "id": "II.4.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The described predictive workflow needs relevant feature information for the new lot in a representation compatible with training. No missing-data mechanism is supplied. This is not a universal theorem that every model must always receive every original feature.",
+          "reason": "Apply the stated training/prediction workflow to new-case inputs, with scope limited to the described system.",
+          "official_level": null
+        },
+        {
+          "id": "II.4.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Predicting crop status supports decisions; it does not by itself establish pesticide choice,dose,safety or professional judgement. Full replacement is unsupported.",
+          "reason": "Distinguish predictive support from the broader professional decision.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "79467672111ebccc7193507470b18cf58dd5753a4a0784ecd48ad54e04c9c8e2": {
+      "content_adn": "79467672111ebccc7193507470b18cf58dd5753a4a0784ecd48ad54e04c9c8e2",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1",
+      "paper_page_sha256": [
+        "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.5; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.5.a:grade11,CTpages49; II.5.b:grade11,CTpages49; II.5.c:grade11,CTpages49; II.5.d:grade11,CTpages49",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.5.a",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Creating/naming table, defining fields and types,then establishing primary key is a valid table-definition workflow in the taught tool context. Not the only possible SQL or interface ordering.",
+          "reason": "Interpret valid schema-creation workflow.",
+          "official_level": null
+        },
+        {
+          "id": "II.5.b",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "An integer auto-increment maLC can serve as a unique identifier, with appropriate DBMS constraints. The schema does not forbid that type.",
+          "reason": "Recognise available key-field type/auto-increment capability.",
+          "official_level": null
+        },
+        {
+          "id": "II.5.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A statistics record for a real garden must reference an existing VUON_CAY.maVC; the intended foreign-key relationship prevents orphan identifiers. Nullability is not a licence to invent nonexistent garden identifiers.",
+          "reason": "Apply referential integrity to the supplied parent/child fields.",
+          "official_level": null
+        },
+        {
+          "id": "II.5.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "VUON_CAY has no maLC field. The second proposed join is invalid; LOAI_CAY must join THONG_KE via maLC while VUON_CAY joins THONG_KE via maVC. Filtering2025 and >3000 does not repair the wrong join.",
+          "reason": "Check the proposed query against the given schema, not construct an entirely new database.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "36fc39579d50af23e3e546264c92edea65a72ad1e7b6a9268a0e00c7b6e78c08": {
+      "content_adn": "36fc39579d50af23e3e546264c92edea65a72ad1e7b6a9268a0e00c7b6e78c08",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://xaydungchinhsach.chinhphu.vn/thi-tot-nghiep-thpt-2026-de-thi-mon-tin-hoc-goi-y-dap-an-119260612145639712.htm",
+      "paper_sha256": "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1",
+      "paper_page_sha256": [
+        "d3978818bc4ebf5cd3c7f27d3b1093aca3dc0c8a781435a4116518c1076bc8f1"
+      ],
+      "answer_source_url": "https://baochinhphu.vn/cong-bo-dap-an-chinh-thuc-cac-mon-thi-tot-nghiep-thpt-2026-102260619180653891.htm",
+      "answer_sha256": "78505aace07f75aa2e2e8fbb8e8086ae21bcdb9e63f78d17f6da04b4a047ace0",
+      "source_locator": "Tin2026 printed0525 II.6; official keyPDFpage2,column0525",
+      "reviewer": "Codex external official-paper source review",
+      "reviewed_on": "2026-11-03",
+      "curriculum_outcome_locator": "II.6.a:grade12,CTpages53; II.6.b:grade12,CTpages53; II.6.c:grade12,CTpages53; II.6.d:grade12,CTpages53",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.6.a",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A faculty logo image can be used as a hyperlink to the corresponding faculty page.",
+          "reason": "Apply image-link affordance to the stated site structure.",
+          "official_level": null
+        },
+        {
+          "id": "II.6.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Navigation is not restricted to the home page; a shared navigation area can appear across pages to support movement.",
+          "reason": "Interpret navigation purpose and reject the only-home restriction.",
+          "official_level": null
+        },
+        {
+          "id": "II.6.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A suitable online form can be created and linked from recruitment page; publication/access permissions must permit candidates to use it.",
+          "reason": "Recognise a feasible composition of website and online form tools.",
+          "official_level": null
+        },
+        {
+          "id": "II.6.d",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "A published website is normally viewed with a browser; visitors need not install the authoring software.",
+          "reason": "Distinguish viewing from authoring software roles.",
+          "official_level": null
+        }
+      ],
+      "transcription_limit": "Normalized introductory wording, not diplomatic original; no handwritten marks",
+      "runtime_status": "local_installed_source_review_not_ministry_certification"
+    },
+    "2d0d2f7665153a0272051f8c59337b8ec5de8b4cf1b3d9152373f21159d958df": {
+      "content_adn": "2d0d2f7665153a0272051f8c59337b8ec5de8b4cf1b3d9152373f21159d958df",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.1",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.1: Tin p53 HTML/web",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.1",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Recall the HTML image element img; distinguish hyperlink, paragraph and ordered-list elements.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "d18ae0a5b19c53209834891bc51910e96b39c6f4b12043c4019313a80696b3ae": {
+      "content_adn": "d18ae0a5b19c53209834891bc51910e96b39c6f4b12043c4019313a80696b3ae",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.2",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.2: Tin p53 HTML/web",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.2",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Combine uppercase Roman numbering type I with integer start 2. A Roman string II is not a valid integer start; style/begin do not replace the required numbering attributes.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "da4a5a5f23b7078159b55128502a59ba670b4218cd25fdaa6af8f691dd46c9fc": {
+      "content_adn": "da4a5a5f23b7078159b55128502a59ba670b4218cd25fdaa6af8f691dd46c9fc",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.3",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.3: Tin pp51-52, AI capabilities/applications/limitations",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.3",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Individual contribution to group work is not directly recoverable from the final product alone. This is the difficult evaluation among the supplied education tasks, not a universal claim that AI cannot assist assessment. Compare the observational limitation with content preparation and information support.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "5e1a98f4c79272f6c98903b89b1c3d3885fa1fe51aa490b3bb67a676db1a57cc": {
+      "content_adn": "5e1a98f4c79272f6c98903b89b1c3d3885fa1fe51aa490b3bb67a676db1a57cc",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.4",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.4: Tin p52, networking devices",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.4",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Access Point supplies wireless LAN access. Identify its function rather than routing or the ordinary wired hub/switch function.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "97ca1291f503c51dada5c875552a8a55378646bb41d9821d56f79141500a2609": {
+      "content_adn": "97ca1291f503c51dada5c875552a8a55378646bb41d9821d56f79141500a2609",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.5",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.5: Tin p53, humane digital interaction",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.5",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Report an unreceived order through customer service. This addresses the dispute constructively; insulting staff, a public boycott call or blaming unrelated shippers does not. Select a respectful response to the supplied familiar case, without inventing a universal dispute-resolution rule.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "fea8694d476b1b2a7bd646283f8b73cffd518fbf3111b924f5703b126b4bdbb3": {
+      "content_adn": "fea8694d476b1b2a7bd646283f8b73cffd518fbf3111b924f5703b126b4bdbb3",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.6",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.6: Tin p54, service/administration careers",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.6",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Building business application software is development rather than the principal repair/maintenance responsibilities in the supplied career classification. This does not assert a repair professional can never program.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "6f745b37d0ee75ee2dc005cb3b0d7b7c353dcfaf8cf0f55b0ad157c3d18e1214": {
+      "content_adn": "6f745b37d0ee75ee2dc005cb3b0d7b7c353dcfaf8cf0f55b0ad157c3d18e1214",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.8",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.8: Tin p53, structured HTML web content",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.8",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The given table has three tr elements with two cells each, without row/column spans. The first row uses th and the next two td. Percentage width/height do not change the row/column count.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "3483f7e6ba537f962bbad83870ddbe02ce1d197a8c8cfe76feaf0ca6af3383c8": {
+      "content_adn": "3483f7e6ba537f962bbad83870ddbe02ce1d197a8c8cfe76feaf0ca6af3383c8",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.9",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.9: Tin p45, basic programming/iteration",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.9",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Given n=11,i=7,S=0, the loop body runs at i7 and i9; i then becomes11 and the strict less-than condition fails. There are two iterations. The requested quantity is iteration count, not final sum16 or final i11. Python and the supplied positive-integer C++ loop agree.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "b560c38da67e4ecb61b099256cf9f01fb8db5c3c56af86cbd586a304f761b8df": {
+      "content_adn": "b560c38da67e4ecb61b099256cf9f01fb8db5c3c56af86cbd586a304f761b8df",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.10",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.10: Tin p52, network communication protocols",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.10",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "TCP provides reliable ordered byte-stream transport. It is not malware removal, DHCP address assignment or an application-level guarantee that mail reaches a recipient despite failures. Recall the protocol service; reliability does not mean delivery can never fail under a broken connection.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "16becf44b03d33a71f4eff7fc91cd2759fa671e4a8df7f2fa423278ab474d49a": {
+      "content_adn": "16becf44b03d33a71f4eff7fc91cd2759fa671e4a8df7f2fa423278ab474d49a",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.11",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.11: Tin pp51-52, AI capabilities and limitations",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.11",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "The absolute-accuracy diagnosis claim exceeds what AI guarantees. Conversational language, handwriting recognition and product recommendation are established capability categories. This distinguishes a guarantee from assistance; it is not clinical advice or a claim AI cannot help diagnosis.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "632ba9f7e7bffc8e2cb1cd06e96f892d57f573e5101f2a5af8fe84363074457e": {
+      "content_adn": "632ba9f7e7bffc8e2cb1cd06e96f892d57f573e5101f2a5af8fe84363074457e",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.12",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.12: Tin p53 HTML/CSS",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.12",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "5px supplies the requested width and solid the continuous border. Groove, dashed and double do not satisfy the stated style. Interpret both property-value conditions, not a new design task.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "adb299798f49253bbb565fb13827571681cc45b813c3682e8d12d47e19911e9b": {
+      "content_adn": "adb299798f49253bbb565fb13827571681cc45b813c3682e8d12d47e19911e9b",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.13",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.13: Tin p53 HTML/web structure",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.13",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "html is the document root containing head/body and their descendants, unlike the other listed elements. Exact KNTT HTML-structure page40-41 reading remains to be completed; no precise page-content approval inferred from an index.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "d74a828cf5b1916e0550d0cac273c519856891b887040c230070cf9e8da0dfef": {
+      "content_adn": "d74a828cf5b1916e0550d0cac273c519856891b887040c230070cf9e8da0dfef",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.14",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.14: Tin p45 basic programming",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.14",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "For i5,6,7 the positive integer x changes6→3→9→4; zero-based index4 in DOI_MOI_SANG_TAO is M. Both supplied languages agree for these positive divisions. Earlier loop evidence is reusable, but exact KNTT string-indexing content still needs reading.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "87de9e44b433f41d1b8da7fb1758cade2f3288b21216e948fbe8dedab048b507": {
+      "content_adn": "87de9e44b433f41d1b8da7fb1758cade2f3288b21216e948fbe8dedab048b507",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.15",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.15: Tin pp51-52 AI capabilities",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.15",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Text summarization concerns language content. Face recognition, satellite-weather prediction and image-based fire prediction are different task categories; identify the taught language capability.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "1d341026fa3df1ba870dda39090cc825f329640ecfe14bb6cf4b260c8543f99a": {
+      "content_adn": "1d341026fa3df1ba870dda39090cc825f329640ecfe14bb6cf4b260c8543f99a",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.16",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.16: Tin p53 CSS selectors",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.16",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The paragraph declares class mau without id mau. The class selector applies green and italic; the ID selector does not match and therefore contributes neither red nor bold. Specificity is considered only among matching rules, not an unconditional ID-wins shortcut.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "ab9edc23c77d3d06c3dbf1685d949d3de156496e3fee32a3e8dd4eec540cbc07": {
+      "content_adn": "ab9edc23c77d3d06c3dbf1685d949d3de156496e3fee32a3e8dd4eec540cbc07",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.17",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.17: Tin p53 humane digital interaction",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.17",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Share the positive environmental message constructively. Ridicule, denying the value of small actions or imposing on the friend do not meet the humane-interaction aim. Select a response to a familiar case, not a universal duty to repost.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "1b1df37b5f2a0bce57de754a5ad6b9870cb6334998f886984d0bd3f330da0e0a": {
+      "content_adn": "1b1df37b5f2a0bce57de754a5ad6b9870cb6334998f886984d0bd3f330da0e0a",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.18",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.18: Tin p53 responsible/safe digital interaction",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.18",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Verify an unexpected prize email before deciding. Following its link immediately, using another person's machine or forwarding the message does not establish legitimacy. This is the safe selection in the given case, not a promise any verification procedure is infallible.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "0948e801fff94f75c95e690f2cdd5baff0ab6c173f14d7542cd3b058c4f1af40": {
+      "content_adn": "0948e801fff94f75c95e690f2cdd5baff0ab6c173f14d7542cd3b058c4f1af40",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.19",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.19: Tin p53 CSS text formatting",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.19",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "font-family names the font family; font-weight, font-size and font-style specify other text properties. Handwritten B is not used as an answer source.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "b63be020b83b9b164234b7a357b4955af1f1cef16f2518c4a531447c20f9eef5": {
+      "content_adn": "b63be020b83b9b164234b7a357b4955af1f1cef16f2518c4a531447c20f9eef5",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.20",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.20: Tin p54 IT administration careers",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.20",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Information-system security belongs to the administration group in the taught career taxonomy. Testing, graphic design and repair are other listed roles; do not infer a universal economic classification or rigid boundary between every professional job.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "be9b4fdb75d3c57eece819fd29bb0bb6eab2b95a570c5d57fc91323d3ec68e60": {
+      "content_adn": "be9b4fdb75d3c57eece819fd29bb0bb6eab2b95a570c5d57fc91323d3ec68e60",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.21",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.21: Tin p52 network-resource sharing",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.21",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "Sharing a folder containing the printer driver is not intrinsically necessary: client drivers may be obtained by other supported installation methods. This differs from installing/configuring the shared printer and access. Exact KNTT printer-sharing workflow pages30-33 remains unread; prior file/folder-sharing pages26-29 do not substitute for it.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "eed22a5c9f0ed8be1b761fbde31921c8b8b3146dfbfe19019c3877326b2267c8": {
+      "content_adn": "eed22a5c9f0ed8be1b761fbde31921c8b8b3146dfbfe19019c3877326b2267c8",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.22",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.22: Tin p54 repair/maintenance service careers",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.22",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Updating an operating system is software maintenance. Replacing failed parts, advising on hardware upgrades and installing network devices are the hardware/network alternatives in this question.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "145e5494fa5924444ed95d591ff0a2807fd522f3fa2d015f64baded256a8afe0": {
+      "content_adn": "145e5494fa5924444ed95d591ff0a2807fd522f3fa2d015f64baded256a8afe0",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.23",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.23: Tin p52 network devices",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.23",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "A conventional switch connects and forwards data within a LAN. Digital/analog signal conversion, wireless access and routing between networks are other device functions; do not generalize this basic role to exclude every multilayer-switch capability.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "7f38bb99f241b21299a5188a4cacdd5c437bb893b84a19a47f76409c224e2b26": {
+      "content_adn": "7f38bb99f241b21299a5188a4cacdd5c437bb893b84a19a47f76409c224e2b26",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p1",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 I.24",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "I.24: Tin pp51-52 AI capabilities/limitations",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "I.24",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "Learning and solving every natural and social problem is the unsupported unrestricted capability. Existing task-specific learning and recommendation do not imply such universality. Scope is the practical AI capability classification in this2025question, not a prediction that future AI can never change.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "c9aa5354e1993c526c935522985e35e78b6dac5226c70cf49a8eeb478ea9cadb": {
+      "content_adn": "c9aa5354e1993c526c935522985e35e78b6dac5226c70cf49a8eeb478ea9cadb",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 II.1",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "II.1.a: Tin p52 networking; II.1.b: Tin p52 networking; II.1.c: Tin p52 networking; II.1.d: Tin p52 networking",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.1.a",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "In the described ordinary home setup, smartphones use the modem's integrated Wi-Fi instead of mobile data. Interpret the given connectivity model, not an unrestricted theorem that every internet-connected phone proves a modem has Wi-Fi.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A correctly connected and configured access point placed near weak-coverage rooms can extend home Wi-Fi access. Physical proximity alone without a working modem uplink does not guarantee internet service.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "For the given desktops without wireless capability, an Ethernet cable to the modem is the straightforward connection. The source says simplest, not only possible. Rejecting this statement merely because adapters or switched alternatives exist would change the source claim.",
+          "official_level": null
+        },
+        {
+          "id": "II.1.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "An isolated switch connects the desktops locally but has no described path to the modem/internet. The statement explicitly omits that connection; local connectivity alone does not supply the required gateway.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    },
+    "9d78256e356c60e46ec99abea2d65a41b71ea66ff06cc257feb137a937368084": {
+      "content_adn": "9d78256e356c60e46ec99abea2d65a41b71ea66ff06cc257feb137a937368084",
+      "subject": "Tin học",
+      "grade": 12,
+      "part": "p2",
+      "paper_source_url": "https://tuoitre.vn/de-mon-tin-hoc-thi-tot-nghiep-thpt-2025-2025062709314197.htm",
+      "paper_sha256": "b0b8da12e506811f0db7546be9bcc9f815b24dc1557488bb9a386fc5ca18b909",
+      "paper_digest_scope": "SHA256 of concatenated page SHA256 strings, not a Ministry PDF",
+      "paper_page_sha256": [
+        "07dcfa20765d22a994f12f2002a0c669f3b33f545e46c8a638c496d54e65ee0d",
+        "b0f48ac322ad25f2cce1b3cbb246a64a784b55e5fe4d3c2411ed123c63ad01ea",
+        "66c366ee86c5b39cce93eb404c9d7e7fef8ea7208ac0835380ad8bc55946692a",
+        "d1cc84ccb5d0af0d62697e4ed4f47b8fd37accc81cda9d08744e893685617923"
+      ],
+      "answer_source_url": "https://bcp.cdnchinhphu.vn/334894974524682240/2025/7/6/05-tinhoc-2018-1751791994486747517318.pdf",
+      "answer_sha256": "349dd2ce2b9fbc38b5df8adedde5891e5d7c8ca509c14b3ce5b8ef18d17dad40",
+      "source_locator": "Tin2025 printed0530 II.2",
+      "reviewer": "Codex independent external source and answer review",
+      "reviewed_on": "2026-11-05",
+      "curriculum_outcome_locator": "II.2.a: Tin p49 database structure/keys; II.2.b: Tin p49 database structure/keys; II.2.c: Tin p49 relational retrieval; II.2.d: Tin p49 relational retrieval",
+      "original_item_match": "passed",
+      "answer_check": "passed",
+      "curriculum_mapping": "passed",
+      "unresolved_issues": [],
+      "source_provenance_limit": "Newspaper photograph republication; matching government-published Ministry answer key; normalized typography",
+      "cognitive_unit_reviews": [
+        {
+          "id": "II.2.a",
+          "reviewed_app_level": "NB",
+          "solution_rubric": "The schema explicitly gives each station a unique maTram; this identifies TRAM rows and supplies the intended primary key.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.b",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "A station can have multiple monthly rainfall rows in one year. maTram plus nam therefore does not uniquely identify MUA rows; thang is also needed in the stated one-value-per-station-month model. Two different months in2020 are a direct counterexample.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.c",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "TRAM supplies station name and MUA supplies year, month and rainfall. Joining those two on maTram supplies all requested attributes; temperature data is not requested.",
+          "official_level": null
+        },
+        {
+          "id": "II.2.d",
+          "reviewed_app_level": "TH",
+          "solution_rubric": "The proposed join includes TRAM and MUA, but projection/filter use NHIETDO. Without joining the temperature table those attributes are unavailable. A2020condition does not repair the missing relation.",
+          "official_level": null
+        }
+      ],
+      "runtime_status": "source_calibration_reference_not_ministry_level_certification"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "checked_on": "2026-11-02",
+      "source_url": "https://www.thsqg.vn/sach/toan-12-tap-mot-tn/doc#7",
+      "title": "Trường học số - Đọc sách",
+      "visible_index": "Toán 12 tập 1\nThoát\nCHƯƠNG I. ỨNG DỤNG ĐẠO HÀM ĐỂ KHẢO SÁT VÀ VẼ ĐỒ THỊ HÀM SỐ\nBài 1. Tính đơn điệu và cực trị của hàm số\nBài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số\nBài 3. Đường tiệm cận của đồ thị hàm số\nBài 4. Khảo sát sự biến thiên và vẽ đồ thị của hàm số\nBài 5. Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn\nBài tập cuối chương I\nCHƯƠNG II. VECTƠ VÀ HỆ TRỤC TOẠ ĐỘ TRONG KHÔNG GIAN\nCHƯƠNG III. CÁC SỐ ĐẶC TRƯNG ĐO MỨC ĐỘ PHÂN TÁN CỦA MẪU SỐ LIỆU GHÉP NHÓM\nHOẠT ĐỘNG THỰC HÀNH TRẢI NGHIỆM",
+      "scope": "Visible table of contents archived; book pages and all other books are not certified reviewed.",
+      "publisher_catalog": "https://truonghocsoquocgia.nxbgd.vn/books",
+      "catalog": "https://www.thsqg.vn/sach",
+      "status": "local_reference_navigation_integrated"
+    }
+  ]
+}

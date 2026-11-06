@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "coverage": "Pilot only: three visually checked amendment items, not a complete curriculum or KNTT map.",
+  "source_code": "17/2025/TT-BGDĐT",
+  "source_registry_code": "17/2025/TT-BGDĐT",
+  "checked_at": "2026-10-30",
+  "effective_from": "2025-09-12",
+  "verification": "Chrome MCP original PDF, physical page 17; visual comparison, not raw OCR import",
+  "textbook_alignment_verified": false,
+  "items": [
+    {
+      "id": "tt17-2025-annex-iv-item-3",
+      "subject": "Địa lý",
+      "grade": 12,
+      "topic": "Sử dụng lao động",
+      "locator": "Phụ lục IV, mục 3; PDF trang 17, trang in 1; chương trình gốc trang 30, dòng 9–10 từ trên",
+      "operation": "replace_outcome",
+      "summary": "Trình bày đặc điểm nguồn lao động; phân tích việc sử dụng lao động theo ngành và thành phần kinh tế ở Việt Nam."
+    },
+    {
+      "id": "tt17-2025-annex-iv-item-4",
+      "subject": "Địa lý",
+      "grade": 12,
+      "topic": "Đô thị hóa",
+      "locator": "Phụ lục IV, mục 4; PDF trang 17, trang in 1; chương trình gốc trang 30",
+      "operation": "replace_content_and_outcome",
+      "summary": "Điều chỉnh nội dung phân bố mạng lưới đô thị; yêu cầu sau điều chỉnh là trình bày đặc điểm đô thị hóa ở Việt Nam."
+    },
+    {
+      "id": "tt17-2025-annex-iv-item-5",
+      "subject": "Địa lý",
+      "grade": 12,
+      "topic": "Chuyển dịch cơ cấu kinh tế theo ngành, theo thành phần kinh tế, theo lãnh thổ",
+      "locator": "Phụ lục IV, mục 5; PDF trang 17, trang in 1; chương trình gốc trang 31, dòng 8–10 từ trên",
+      "operation": "remove_content_and_outcome",
+      "summary": "Bãi bỏ nội dung và yêu cầu cần đạt tại vị trí chương trình nêu trên.",
+      "limit": "Không phải lệnh cấm mọi lần nhắc tới khái niệm cơ cấu kinh tế, dữ kiện lịch sử hoặc câu hỏi của môn/lớp khác."
+    }
+  ]
+}
