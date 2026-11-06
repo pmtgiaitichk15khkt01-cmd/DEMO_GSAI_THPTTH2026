@@ -3233,6 +3233,20 @@ def parse_and_align_bbt(raw_bbt):
 def format_pedagogical_bbt_html(raw_bbt, is_dark_mode=False):
     if not raw_bbt:
         return ""
+    raw_str = str(raw_bbt).strip()
+    if raw_str.lower() in ["null", "none", "{}", "undefined", "nil", "nan", "[]"] or len(raw_str) < 5:
+        return ""
+
+    # Hỗ trợ tự động chuyển đổi mã TikZ tkz-tab (\tkzTabInit) sang SVG/HTML chuẩn Bộ GD&ĐT
+    if "tkzTabInit" in raw_str:
+        try:
+            from services.tikz_pedagogical_spec import parse_tkz_tab_to_bbt_rows
+            x_r, yp_r, y_r, is_sign = parse_tkz_tab_to_bbt_rows(raw_str)
+            if x_r and yp_r:
+                return _build_svg_bbt_from_rows(x_r, yp_r, y_r, is_sign_table=is_sign, is_dark_mode=is_dark_mode)
+        except Exception:
+            pass
+
     try:
         import precision_visual_engine as pve
         raw_bbt = pve.heal_bbt_mathematics(raw_bbt)
@@ -3241,8 +3255,6 @@ def format_pedagogical_bbt_html(raw_bbt, is_dark_mode=False):
     if not raw_bbt:
         return ""
     raw_str = str(raw_bbt).strip()
-    if raw_str.lower() in ["null", "none", "{}", "undefined", "nil", "nan", "[]"] or len(raw_str) < 5:
-        return ""
 
     raw_str = re.sub(r'\\+nearrow\b|\\nearrow', '↗', raw_str)
     raw_str = re.sub(r'\\+searrow\b|\\searrow', '↘', raw_str)
@@ -8793,6 +8805,24 @@ def render_pedagogical_lesson_visuals(markdown_text: str, subject: str = "", gra
         text,
         flags=re.IGNORECASE
     )
+
+    # 0. TỰ ĐỘNG BẮT VÀ CHUYỂN ĐỔI MÃ TIKZ tkz-tab THÀNH BẢNG BIẾN THIÊN / BẢNG XÉT DẤU SVG/HTML
+    def _replace_tikz_tkz_tab(match):
+        raw_tikz = match.group(0)
+        try:
+            from services.tikz_pedagogical_spec import parse_tkz_tab_to_bbt_rows
+            x_r, yp_r, y_r, is_sign = parse_tkz_tab_to_bbt_rows(raw_tikz)
+            if x_r and yp_r:
+                return "\n\n" + _build_svg_bbt_from_rows(x_r, yp_r, y_r, is_sign_table=is_sign) + "\n\n"
+        except Exception:
+            pass
+        return match.group(0)
+
+    tikz_tab_pattern = re.compile(
+        r'(?:\\begin\{tikzpicture\}[\s\S]*?\\tkzTabInit[\s\S]*?\\end\{tikzpicture\})|(?:\\tkzTabInit(?:\[[^\]]*\])?\{[^}]+\}\{[^}]+\}[\s\S]*?\\tkzTabLine\{[^}]+\}(?:[\s\S]*?\\tkzTabVar\{[^}]+\})?(?:[\s\S]*?\\end\{tikzpicture\})?)',
+        flags=re.IGNORECASE
+    )
+    text = tikz_tab_pattern.sub(_replace_tikz_tkz_tab, text)
 
     # 1. TỰ ĐỘNG BẮT VÀ NÂNG CẤP BẢNG BIẾN THIÊN (BBT) THÔ THÀNH ĐỒ HỌA CHUẨN BỘ
     def _replace_bbt_table(match):

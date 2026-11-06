@@ -83,6 +83,29 @@ class TestBBTDarkModeAndTikZSpec(unittest.TestCase):
         self.assertTrue(any("patterns" in p for p in pkgs))
         self.assertTrue(any("pgfplots" in p for p in pkgs))
 
+    def test_render_tikz_tab_in_lesson_markdown(self):
+        """Kiểm thử giải mã TikZ tkz-tab thành đồ họa SVG BBT trong bài giảng (Khắc phục lỗi không hiển thị BBT)."""
+        from app import render_pedagogical_lesson_visuals
+        sample_md = (
+            "### PHẦN 1: BÀI HỌC\n\n"
+            "Bảng biến thiên: \\begin{tikzpicture} \\tkzTabInit[nocadre, lgt=1.5, espcl=2.5]{$x$/0.7, $y'/0.7, $y$/2}{$-\\infty$, $-1$, $1$, $+\\infty$} "
+            "\\tkzTabLine{,+,0,-,0,+,} \\tkzTabVar{-/ $-\\infty$, +/ $2$, -/ $-2$, +/ $+\\infty$} \\end{tikzpicture}\n\n"
+            "(Kéo xuống Phòng Lab ảo bên dưới để trực quan hóa nhé!)"
+        )
+        rendered = render_pedagogical_lesson_visuals(sample_md, subject="Toán", grade=12)
+        self.assertNotIn(r"\begin{tikzpicture}", rendered, "Raw TikZ code must be converted into visual graphics.")
+        self.assertIn("BẢNG BIẾN THIÊN", rendered, "Must contain rendered BBT banner.")
+        self.assertIn("<svg", rendered, "Must contain SVG arrows for variation table.")
+
+    def test_format_pedagogical_bbt_html_with_tikz_code(self):
+        """Kiểm thử format_pedagogical_bbt_html tự động chuyển đổi mã TikZ sang HTML."""
+        sample_tikz = r"\begin{tikzpicture} \tkzTabInit[nocadre, lgt=1.5, espcl=2.5]{$x$/0.7, $y'/0.7, $y$/2}{$-\infty$, $-1$, $1$, $+\infty$} \tkzTabLine{,+,0,-,0,+,} \tkzTabVar{-/ $-\infty$, +/ $2$, -/ $-2$, +/ $+\infty$} \end{tikzpicture}"
+        html = format_pedagogical_bbt_html(sample_tikz, is_dark_mode=True)
+        self.assertIn("BẢNG BIẾN THIÊN", html)
+        self.assertIn("bbt-dark-forced", html)
+        self.assertIn("<svg", html)
+
 
 if __name__ == '__main__':
     unittest.main()
+
