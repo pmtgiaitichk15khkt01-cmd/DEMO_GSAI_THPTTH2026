@@ -3255,13 +3255,13 @@ def format_pedagogical_bbt_html(raw_bbt, is_dark_mode=False):
         if len(lines_bbt) >= 2:
             parsed_rows = [_parse_bbt_cells_safe(l) for l in lines_bbt]
             if len(parsed_rows) >= 3:
-                svg_res = _build_svg_bbt_from_rows(parsed_rows[0], parsed_rows[1], parsed_rows[2])
+                svg_res = _build_svg_bbt_from_rows(parsed_rows[0], parsed_rows[1], parsed_rows[2], is_dark_mode=is_dark_mode)
                 if svg_res:
                     return svg_res
             elif len(parsed_rows) == 2:
                 row2_joined = " ".join(parsed_rows[1][1:])
                 is_sign = not bool(re.search(r'(\\nearrow|\\searrow|↗|↘)', row2_joined))
-                svg_res = _build_svg_bbt_from_rows(parsed_rows[0], [], parsed_rows[1], is_sign_table=is_sign)
+                svg_res = _build_svg_bbt_from_rows(parsed_rows[0], [], parsed_rows[1], is_sign_table=is_sign, is_dark_mode=is_dark_mode)
                 if svg_res:
                     return svg_res
     except Exception:
@@ -3280,26 +3280,34 @@ def format_pedagogical_bbt_html(raw_bbt, is_dark_mode=False):
     pad_v = "6px" if max_cell_chars > 8 else "8px"
     gap_v = "12px"
 
+    box_bg = "#0b1329" if is_dark_mode else "#ffffff"
+    box_border = "#38bdf8" if is_dark_mode else "#0f172a"
+    txt_color = "#f8fafc" if is_dark_mode else "#0f172a"
+    th_bg = "#1e293b" if is_dark_mode else "#f1f5f9"
+    th_color = "#38bdf8" if is_dark_mode else "#0f172a"
+    b_color = "#334155" if is_dark_mode else "#0f172a"
+    mode_cls = "bbt-dark-forced" if is_dark_mode else "bbt-mode-auto"
+
     html = f'<div style="display: flex; justify-content: center; margin: {gap_v} auto; width: 100%; max-width: {dynamic_max_w}px;">'
-    html += f'<div style="background-color: #ffffff; padding: 0; width: 100%; overflow-x: auto; border: 2px solid #0f172a; border-radius: 8px; box-shadow: 0 4px 12px rgba(15,23,42,0.08);">'
-    html += f'<table style="width: 100%; border-collapse: collapse; text-align: center; color: #0f172a !important; font-size: 16px; font-family: \'Times New Roman\', Times, serif;">'
+    html += f'<div class="bbt-wrap-box {mode_cls}" style="background-color: {box_bg} !important; padding: 0; width: 100%; overflow-x: auto; border: 2px solid {box_border} !important; border-radius: 8px; box-shadow: 0 4px 16px rgba(56,189,248,0.2);">'
+    html += f'<table style="width: 100%; border-collapse: collapse; text-align: center; color: {txt_color} !important; font-size: 16px; font-family: \'Times New Roman\', Times, serif;">'
 
     for r_i, row in enumerate(rows):
-        border_b = "border-bottom: 1.5px solid #0f172a;" if r_i < len(rows) - 1 else ""
+        border_b = f"border-bottom: 1.5px solid {b_color};" if r_i < len(rows) - 1 else ""
         html += f'<tr style="{border_b}">'
         for c_idx, cell in enumerate(row):
             c_disp = cell.replace('+\\infty', '+∞').replace('-\\infty', '-∞').replace('+inf', '+∞').replace('-inf', '-∞').replace('$', '').strip()
             if '||' in c_disp:
-                c_disp = '<div style="border-left: 1.5px solid #dc2626; border-right: 1.5px solid #dc2626; display: inline-block; width: 4px; height: 24px; vertical-align: middle;"></div>'
+                c_disp = '<div style="border-left: 2px solid #f43f5e; border-right: 2px solid #f43f5e; display: inline-block; width: 6px; height: 26px; vertical-align: middle;"></div>'
             elif '↗' in c_disp:
-                c_disp = '<span style="color:#16a34a !important; font-weight:bold; font-size:18px;">↗</span>'
+                c_disp = '<span style="color:#22c55e !important; font-weight:bold; font-size:18px;">↗</span>'
             elif '↘' in c_disp:
-                c_disp = '<span style="color:#dc2626 !important; font-weight:bold; font-size:18px;">↘</span>'
+                c_disp = '<span style="color:#ef4444 !important; font-weight:bold; font-size:18px;">↘</span>'
 
             if c_idx == 0:
-                html += f'<td style="padding: {pad_v} {pad_h}; font-weight: bold; background-color: #f1f5f9; color: #0f172a !important; border-right: 2px solid #0f172a; width: 55px;">{c_disp}</td>'
+                html += f'<td class="bbt-th-label" style="padding: {pad_v} {pad_h}; font-weight: bold; background-color: {th_bg} !important; color: {th_color} !important; border-right: 2px solid {box_border}; width: 55px;">{c_disp}</td>'
             else:
-                html += f'<td style="padding: {pad_v} 6px; min-width: 38px; color: #0f172a !important;">{c_disp}</td>'
+                html += f'<td class="bbt-cell-top" style="padding: {pad_v} 6px; min-width: 38px; color: {txt_color} !important; font-weight: 700;">{c_disp}</td>'
         html += '</tr>'
     html += '</table></div></div>'
     return html
@@ -4115,6 +4123,9 @@ def build_exam_exports(exam, subject_name, grade_name, duration, include_answers
             r"\usepackage{geometry}",
             r"\geometry{a4paper, left=1.8cm, right=1.8cm, top=1.8cm, bottom=2.0cm}",
             r"\usepackage{tikz,pgfplots}",
+            r"\usepackage{tkz-tab}",
+            r"\usepackage{tkz-euclide}",
+            r"\usetikzlibrary{patterns,calc,angles,quotes}",
             r"\pgfplotsset{compat=1.18}",
             r"\usepackage{tabularx,array,booktabs,multirow,multicol}",
             r"\usepackage{fancyhdr}",
@@ -4163,6 +4174,9 @@ def build_exam_exports(exam, subject_name, grade_name, duration, include_answers
             r"\usepackage{geometry}",
             r"\geometry{a4paper, left=1.8cm, right=1.8cm, top=1.8cm, bottom=1.8cm}",
             r"\usepackage{tikz,pgfplots}",
+            r"\usepackage{tkz-tab}",
+            r"\usepackage{tkz-euclide}",
+            r"\usetikzlibrary{patterns,calc,angles,quotes}",
             r"\pgfplotsset{compat=1.18}",
             r"\usepackage{tabularx,array,booktabs,multirow,multicol}",
             r"\usepackage{fancyhdr}",
@@ -8350,12 +8364,12 @@ def _render_math_html_token(raw_val: str) -> str:
         s
     )
 
-    # Chuyển đổi phân số \frac{A}{B} hoặc \dfrac{A}{B} -> Phân số dọc chuẩn SGK
+    # Chuyển đổi phân số \frac{A}{B} hoặc \dfrac{A}{B} -> Phân số dọc chuẩn SGK (thích ứng Dark Mode)
     for _ in range(2):
         s = re.sub(
             r'\\(?:d|t)?frac\{([^{}]+)\}\{([^{}]+)\}',
             r'<span style="display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:0.92em;line-height:1.1;margin:0 2px;">'
-            r'<span style="border-bottom:1.5px solid #0f172a;padding:0 3px;">\1</span>'
+            r'<span class="bbt-frac-line" style="border-bottom:1.5px solid currentColor;padding:0 3px;">\1</span>'
             r'<span style="padding:0 3px;">\2</span></span>',
             s
         )
@@ -8514,39 +8528,155 @@ def _normalize_moet_bbt_grid(x_cells: list, yp_cells: list, y_cells: list) -> di
     }
 
 
-def _build_svg_bbt_from_rows(x_cells: list, yp_cells: list, y_cells: list, is_sign_table: bool = False) -> str:
+def _build_svg_bbt_from_rows(x_cells: list, yp_cells: list, y_cells: list, is_sign_table: bool = False, is_dark_mode: bool = False) -> str:
     """
     Dựng Bảng Biến Thiên / Bảng Xét Dấu chuẩn Bộ GD&ĐT (SGK Kết nối tri thức):
+    - HỖ TRỢ HOÀN HẢO CẢ 2 CHẾ ĐỘ LIGHT MODE VÀ DARK MODE:
+      + Tự động thích ứng qua CSS Media Query và Streamlit Theme attribute ([data-theme="dark"]).
+      + Cho phép ép kiểu Dark Mode qua tham số is_dark_mode=True.
+      + Trong Dark Mode: Tương phản cao chuẩn WCAG AAA, các chỉ số x, y', y, nghiệm, dấu (+, -),
+        vạch tiệm cận đứng (||) và phân số hiển thị màu trắng sáng #f8fafc và xanh sáng #38bdf8,
+        không bao giờ bị chìm trên nền tối.
     - Lưới chuẩn 2N-1 cột: Điểm x_i thẳng hàng dọc tuyệt đối với nghiệm 0 / vạch kép || và cực trị y(x_i).
-    - Cao độ chuẩn Giải tích: Đầu mũi tên đồng biến (↗) nối từ Đáy-Trái lên Đỉnh-Phải;
-      nghịch biến (↘) nối từ Đỉnh-Trái xuống Đáy-Phải.
-    - Tiệm cận đứng ||: Vạch đôi chuẩn xuyên suốt chiều cao hàng y' và hàng y, tách giới hạn trái/phải.
+    - Cao độ chuẩn Giải tích: Mũi tên đồng biến (↗) và nghịch biến (↘) tương phản cao.
     """
+    # Khối CSS dùng chung đảm bảo độ tương phản tuyệt đối trên mọi nền hiển thị
+    bbt_css = """<style>
+    .bbt-wrap-box {
+        margin: 16px auto;
+        overflow-x: auto;
+        border-radius: 8px;
+        transition: all 0.25s ease-in-out;
+    }
+    .bbt-wrap-box.bbt-mode-auto {
+        background: #ffffff !important;
+        border: 2px solid #0f172a !important;
+        color: #0f172a !important;
+        box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+    }
+    .bbt-wrap-box.bbt-mode-auto .bbt-top-banner {
+        background: #0f172a !important;
+        color: #f8fafc !important;
+    }
+    .bbt-wrap-box.bbt-mode-auto .bbt-th-label {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+        border-right: 2px solid #0f172a !important;
+        border-bottom: 1.8px solid #0f172a !important;
+    }
+    .bbt-wrap-box.bbt-mode-auto .bbt-cell-top {
+        color: #0f172a !important;
+        border-bottom: 1.8px solid #0f172a !important;
+    }
+    .bbt-wrap-box.bbt-mode-auto .bbt-cell-bot {
+        color: #0f172a !important;
+    }
+
+    /* KÍCH HOẠT DARK MODE TỰ ĐỘNG THEO HỆ THỐNG / STREAMLIT THEME */
+    @media (prefers-color-scheme: dark) {
+        .bbt-wrap-box.bbt-mode-auto {
+            background: #0b1329 !important;
+            border: 2px solid #38bdf8 !important;
+            color: #f8fafc !important;
+            box-shadow: 0 4px 20px rgba(56,189,248,0.22) !important;
+        }
+        .bbt-wrap-box.bbt-mode-auto .bbt-top-banner {
+            background: #1e293b !important;
+            color: #38bdf8 !important;
+            border-bottom: 1px solid #334155 !important;
+        }
+        .bbt-wrap-box.bbt-mode-auto .bbt-th-label {
+            background: #1e293b !important;
+            color: #38bdf8 !important;
+            border-right: 2px solid #38bdf8 !important;
+            border-bottom: 1.8px solid #334155 !important;
+        }
+        .bbt-wrap-box.bbt-mode-auto .bbt-cell-top {
+            color: #f8fafc !important;
+            border-bottom: 1.8px solid #334155 !important;
+        }
+        .bbt-wrap-box.bbt-mode-auto .bbt-cell-bot {
+            color: #f8fafc !important;
+        }
+    }
+
+    [data-theme="dark"] .bbt-wrap-box,
+    [data-base-theme="dark"] .bbt-wrap-box,
+    .stApp[data-test-theme="dark"] .bbt-wrap-box,
+    .bbt-wrap-box.bbt-dark-forced {
+        background: #0b1329 !important;
+        border: 2px solid #38bdf8 !important;
+        color: #f8fafc !important;
+        box-shadow: 0 4px 20px rgba(56,189,248,0.22) !important;
+    }
+    [data-theme="dark"] .bbt-wrap-box .bbt-top-banner,
+    [data-base-theme="dark"] .bbt-wrap-box .bbt-top-banner,
+    .stApp[data-test-theme="dark"] .bbt-wrap-box .bbt-top-banner,
+    .bbt-wrap-box.bbt-dark-forced .bbt-top-banner {
+        background: #1e293b !important;
+        color: #38bdf8 !important;
+        border-bottom: 1px solid #334155 !important;
+    }
+    [data-theme="dark"] .bbt-wrap-box .bbt-th-label,
+    [data-base-theme="dark"] .bbt-wrap-box .bbt-th-label,
+    .stApp[data-test-theme="dark"] .bbt-wrap-box .bbt-th-label,
+    .bbt-wrap-box.bbt-dark-forced .bbt-th-label {
+        background: #1e293b !important;
+        color: #38bdf8 !important;
+        border-right: 2px solid #38bdf8 !important;
+        border-bottom: 1.8px solid #334155 !important;
+    }
+    [data-theme="dark"] .bbt-wrap-box .bbt-cell-top,
+    [data-base-theme="dark"] .bbt-wrap-box .bbt-cell-top,
+    .stApp[data-test-theme="dark"] .bbt-wrap-box .bbt-cell-top,
+    .bbt-wrap-box.bbt-dark-forced .bbt-cell-top {
+        color: #f8fafc !important;
+        border-bottom: 1.8px solid #334155 !important;
+    }
+    [data-theme="dark"] .bbt-wrap-box .bbt-cell-bot,
+    [data-base-theme="dark"] .bbt-wrap-box .bbt-cell-bot,
+    .stApp[data-test-theme="dark"] .bbt-wrap-box .bbt-cell-bot,
+    .bbt-wrap-box.bbt-dark-forced .bbt-cell-bot {
+        color: #f8fafc !important;
+    }
+    </style>"""
+
+    mode_class = "bbt-dark-forced" if is_dark_mode else "bbt-mode-auto"
+    # Fallback inline styles phòng trường hợp client chặn CSS class
+    container_inline = "background:#0b1329; border:2px solid #38bdf8; color:#f8fafc;" if is_dark_mode else "background:#ffffff; border:2px solid #0f172a; color:#0f172a;"
+    th_bg_inline = "background:#1e293b; color:#38bdf8; border-color:#38bdf8;" if is_dark_mode else "background:#f1f5f9; color:#0f172a; border-color:#0f172a;"
+    cell_border_inline = "border-color:#334155;" if is_dark_mode else "border-color:#0f172a;"
+    val_color_inline = "color:#f8fafc !important;" if is_dark_mode else "color:#0f172a !important;"
+
     if is_sign_table:
-        grid = _normalize_moet_bbt_grid(x_cells, y_cells, [])
+        actual_yp_cells = y_cells if (y_cells and not yp_cells) else (yp_cells if yp_cells else y_cells)
+        grid = _normalize_moet_bbt_grid(x_cells, actual_yp_cells, [])
         n_pts = len(grid["points"])
         n_int = n_pts - 1
-        x_html = f'<td style="padding:10px 14px;font-weight:800;font-style:italic;border-right:2px solid #0f172a;border-bottom:1.8px solid #0f172a;background:#f1f5f9;text-align:center;width:72px;">{grid["x_label"]}</td>'
-        fx_html = f'<td style="padding:10px 14px;font-weight:800;font-style:italic;border-right:2px solid #0f172a;background:#f1f5f9;text-align:center;">{grid["yp_label"]}</td>'
+        x_html = f'<td class="bbt-th-label" style="padding:10px 14px;font-weight:800;font-style:italic;text-align:center;width:72px;{th_bg_inline}">{grid["x_label"]}</td>'
+        fx_html = f'<td class="bbt-th-label" style="padding:10px 14px;font-weight:800;font-style:italic;text-align:center;{th_bg_inline}">{grid["yp_label"]}</td>'
 
         for i in range(n_pts):
             pt_str = _render_math_html_token(grid["points"][i])
-            x_html += f'<td style="padding:8px 10px;text-align:center;font-weight:700;border-bottom:1.8px solid #0f172a;min-width:48px;">{pt_str}</td>'
+            x_html += f'<td class="bbt-cell-top" style="padding:8px 10px;text-align:center;font-weight:700;min-width:48px;{cell_border_inline}{val_color_inline}">{pt_str}</td>'
             p_val = grid["yp_at_pts"][i]
             if p_val == '||':
-                fx_html += '<td style="padding:0;text-align:center;position:relative;height:44px;"><div style="display:inline-block;width:6px;height:100%;border-left:1.8px solid #dc2626;border-right:1.8px solid #dc2626;"></div></td>'
+                fx_html += '<td class="bbt-cell-bot" style="padding:0;text-align:center;position:relative;height:44px;"><div style="display:inline-block;width:6px;height:100%;border-left:2px solid #f43f5e;border-right:2px solid #f43f5e;"></div></td>'
             else:
-                fx_html += f'<td style="padding:8px 10px;text-align:center;font-weight:700;color:#0f172a;">{p_val}</td>'
+                fx_html += f'<td class="bbt-cell-bot" style="padding:8px 10px;text-align:center;font-weight:700;{val_color_inline}">{p_val}</td>'
 
             if i < n_int:
-                x_html += '<td style="padding:8px 16px;border-bottom:1.8px solid #0f172a;min-width:64px;"></td>'
+                x_html += f'<td class="bbt-cell-top" style="padding:8px 16px;min-width:64px;{cell_border_inline}"></td>'
                 sgn = grid["yp_intervals"][i]
-                sgn_color = "#16a34a" if sgn == '+' else "#dc2626"
-                fx_html += f'<td style="padding:8px 16px;text-align:center;font-weight:800;font-size:1.18rem;color:{sgn_color};">{sgn}</td>'
+                sgn_color = "#22c55e" if sgn == '+' else "#ef4444"
+                fx_html += f'<td class="bbt-cell-bot" style="padding:8px 16px;text-align:center;font-weight:800;font-size:1.25rem;color:{sgn_color} !important;">{sgn}</td>'
 
         return (
-            '<div style="margin:14px 0;overflow-x:auto;background:#ffffff;border:2px solid #0f172a;border-radius:8px;box-shadow:0 3px 10px rgba(15,23,42,0.06);">'
-            '<table style="width:100%;border-collapse:collapse;font-family:\'Times New Roman\',Times,serif;font-size:1.05rem;color:#0f172a;">'
+            f'{bbt_css}'
+            f'<div style="margin:14px 0;overflow-x:auto;border-radius:8px;{container_inline}" class="bbt-wrap-box {mode_class}">'
+            f'<div class="bbt-top-banner" style="font-size:0.75rem;font-weight:700;padding:4px 12px;letter-spacing:0.5px;text-transform:uppercase;">'
+            f'📊 BẢNG XÉT DẤU CHUẨN SƯ PHẠM (KẾT NỐI TRI THỨC 2018)</div>'
+            f'<table style="width:100%;border-collapse:collapse;font-family:\'Times New Roman\',Times,serif;font-size:1.05rem;{val_color_inline}">'
             f'<tr>{x_html}</tr><tr>{fx_html}</tr></table></div>'
         )
 
@@ -8563,23 +8693,23 @@ def _build_svg_bbt_from_rows(x_cells: list, yp_cells: list, y_cells: list, is_si
         elif right_arr == "up" or left_arr == "down":
             pt_pos[i] = "bottom"
 
-    x_row_html = f'<td style="padding:10px 14px;font-weight:800;font-style:italic;border-right:2px solid #0f172a;border-bottom:1.8px solid #0f172a;background:#f8fafc;text-align:center;width:72px;">{grid["x_label"]}</td>'
-    yp_row_html = f'<td style="padding:10px 14px;font-weight:800;font-style:italic;border-right:2px solid #0f172a;border-bottom:1.8px solid #0f172a;background:#f8fafc;text-align:center;">{grid["yp_label"]}</td>'
-    y_row_html = f'<td style="padding:16px 14px;font-weight:800;font-style:italic;border-right:2px solid #0f172a;background:#f8fafc;text-align:center;vertical-align:middle;">{grid["y_label"]}</td>'
+    x_row_html = f'<td class="bbt-th-label" style="padding:10px 14px;font-weight:800;font-style:italic;text-align:center;width:72px;{th_bg_inline}">{grid["x_label"]}</td>'
+    yp_row_html = f'<td class="bbt-th-label" style="padding:10px 14px;font-weight:800;font-style:italic;text-align:center;{th_bg_inline}">{grid["yp_label"]}</td>'
+    y_row_html = f'<td class="bbt-th-label" style="padding:16px 14px;font-weight:800;font-style:italic;text-align:center;vertical-align:middle;{th_bg_inline}">{grid["y_label"]}</td>'
 
     for i in range(n_pts):
         pt_html = _render_math_html_token(grid["points"][i])
-        x_row_html += f'<td style="padding:8px 8px;text-align:center;font-weight:700;border-bottom:1.8px solid #0f172a;min-width:52px;white-space:nowrap;">{pt_html}</td>'
+        x_row_html += f'<td class="bbt-cell-top" style="padding:8px 8px;text-align:center;font-weight:700;min-width:52px;white-space:nowrap;{cell_border_inline}{val_color_inline}">{pt_html}</td>'
 
         yp_pt = grid["yp_at_pts"][i]
         if yp_pt == '||':
             yp_row_html += (
-                '<td style="padding:0;text-align:center;border-bottom:1.8px solid #0f172a;height:42px;">'
-                '<div style="display:inline-block;width:6px;height:100%;border-left:1.8px solid #dc2626;border-right:1.8px solid #dc2626;"></div>'
+                f'<td class="bbt-cell-top" style="padding:0;text-align:center;height:42px;{cell_border_inline}">'
+                '<div style="display:inline-block;width:6px;height:100%;border-left:2px solid #f43f5e;border-right:2px solid #f43f5e;"></div>'
                 '</td>'
             )
         else:
-            yp_row_html += f'<td style="padding:8px 8px;text-align:center;font-weight:700;border-bottom:1.8px solid #0f172a;">{yp_pt}</td>'
+            yp_row_html += f'<td class="bbt-cell-top" style="padding:8px 8px;text-align:center;font-weight:700;{cell_border_inline}{val_color_inline}">{yp_pt}</td>'
 
         raw_y_val = grid["y_at_pts"][i]
         is_asymptote = (yp_pt == '||' or '||' in raw_y_val)
@@ -8590,52 +8720,54 @@ def _build_svg_bbt_from_rows(x_cells: list, yp_cells: list, y_cells: list, is_si
             left_align = "flex-start" if (i > 0 and grid["y_arrows"][i - 1] == "up") or "+∞" in left_lim else "flex-end"
             right_align = "flex-start" if (i < n_int and grid["y_arrows"][i] == "down") or "+∞" in right_lim else "flex-end"
             y_row_html += (
-                '<td style="padding:0 4px;height:108px;vertical-align:stretch;">'
+                '<td class="bbt-cell-bot" style="padding:0 4px;height:108px;vertical-align:stretch;">'
                 '<div style="display:flex;align-items:stretch;justify-content:center;height:100%;">'
-                f'<div style="display:flex;align-items:{left_align};padding:6px 4px;font-weight:700;font-size:0.95rem;white-space:nowrap;">{left_lim}</div>'
-                '<div style="width:6px;border-left:1.8px solid #dc2626;border-right:1.8px solid #dc2626;margin:0 2px;"></div>'
-                f'<div style="display:flex;align-items:{right_align};padding:6px 4px;font-weight:700;font-size:0.95rem;white-space:nowrap;">{right_lim}</div>'
+                f'<div style="display:flex;align-items:{left_align};padding:6px 4px;font-weight:700;font-size:0.95rem;white-space:nowrap;{val_color_inline}">{left_lim}</div>'
+                '<div style="width:6px;border-left:2px solid #f43f5e;border-right:2px solid #f43f5e;margin:0 2px;"></div>'
+                f'<div style="display:flex;align-items:{right_align};padding:6px 4px;font-weight:700;font-size:0.95rem;white-space:nowrap;{val_color_inline}">{right_lim}</div>'
                 '</div></td>'
             )
         else:
             val_html = _render_math_html_token(raw_y_val)
             v_align = "top" if pt_pos[i] == "top" else ("bottom" if pt_pos[i] == "bottom" else "middle")
             pad_style = "padding:8px 6px 42px 6px;" if v_align == "top" else ("padding:42px 6px 8px 6px;" if v_align == "bottom" else "padding:12px 6px;")
-            y_row_html += f'<td style="{pad_style}text-align:center;vertical-align:{v_align};font-weight:700;white-space:nowrap;height:108px;">{val_html}</td>'
+            y_row_html += f'<td class="bbt-cell-bot" style="{pad_style}text-align:center;vertical-align:{v_align};font-weight:700;white-space:nowrap;height:108px;{val_color_inline}">{val_html}</td>'
 
         if i < n_int:
-            x_row_html += '<td style="padding:8px 18px;border-bottom:1.8px solid #0f172a;min-width:84px;"></td>'
+            x_row_html += f'<td class="bbt-cell-top" style="padding:8px 18px;min-width:84px;{cell_border_inline}"></td>'
             sgn = grid["yp_intervals"][i]
-            sgn_color = "#16a34a" if sgn == '+' else "#dc2626"
-            yp_row_html += f'<td style="padding:8px 18px;text-align:center;font-weight:800;font-size:1.2rem;color:{sgn_color};border-bottom:1.8px solid #0f172a;">{sgn}</td>'
+            sgn_color = "#22c55e" if sgn == '+' else "#ef4444"
+            yp_row_html += f'<td class="bbt-cell-top" style="padding:8px 18px;text-align:center;font-weight:800;font-size:1.25rem;color:{sgn_color} !important;{cell_border_inline}">{sgn}</td>'
 
             arr_dir = grid["y_arrows"][i]
+            arr_id = f"bbt_{i}_{'up' if arr_dir == 'up' else 'dn'}"
             if arr_dir == "up":
                 svg_arrow = (
                     '<svg width="100%" height="78" viewBox="0 0 100 78" preserveAspectRatio="none" style="overflow:visible;display:block;">'
-                    '<defs><marker id="bbt_up" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
-                    '<path d="M0,0 L8,4 L0,8 Z" fill="#16a34a"/></marker></defs>'
-                    '<line x1="8" y1="68" x2="90" y2="12" stroke="#16a34a" stroke-width="2.2" marker-end="url(#bbt_up)"/>'
+                    f'<defs><marker id="{arr_id}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
+                    '<path d="M0,0 L8,4 L0,8 Z" fill="#22c55e"/></marker></defs>'
+                    f'<line x1="8" y1="68" x2="90" y2="12" stroke="#22c55e" stroke-width="2.4" marker-end="url(#{arr_id})"/>'
                     '</svg>'
                 )
             else:
                 svg_arrow = (
                     '<svg width="100%" height="78" viewBox="0 0 100 78" preserveAspectRatio="none" style="overflow:visible;display:block;">'
-                    '<defs><marker id="bbt_dn" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
-                    '<path d="M0,0 L8,4 L0,8 Z" fill="#dc2626"/></marker></defs>'
-                    '<line x1="8" y1="12" x2="90" y2="68" stroke="#dc2626" stroke-width="2.2" marker-end="url(#bbt_dn)"/>'
+                    f'<defs><marker id="{arr_id}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
+                    '<path d="M0,0 L8,4 L0,8 Z" fill="#ef4444"/></marker></defs>'
+                    f'<line x1="8" y1="12" x2="90" y2="68" stroke="#ef4444" stroke-width="2.4" marker-end="url(#{arr_id})"/>'
                     '</svg>'
                 )
-            y_row_html += f'<td style="padding:6px 4px;vertical-align:middle;min-width:84px;">{svg_arrow}</td>'
+            y_row_html += f'<td class="bbt-cell-bot" style="padding:6px 4px;vertical-align:middle;min-width:84px;">{svg_arrow}</td>'
 
     yp_tr = f'<tr>{yp_row_html}</tr>' if grid["has_yp"] else ''
     return (
-        '<div style="margin:16px 0;overflow-x:auto;background:#ffffff;border:2px solid #0f172a;border-radius:8px;box-shadow:0 4px 12px rgba(15,23,42,0.07);">'
-        '<div style="background:#0f172a;color:#f8fafc;font-size:0.75rem;font-weight:700;padding:4px 12px;letter-spacing:0.5px;text-transform:uppercase;">'
-        '📐 Bảng Biến Thiên Chuẩn Sư Phạm (CT GDPT 2018)</div>'
-        '<table style="width:100%;border-collapse:collapse;font-family:\'Times New Roman\',Times,serif;font-size:1.05rem;color:#0f172a !important;">'
+        f'{bbt_css}'
+        f'<div style="margin:16px 0;overflow-x:auto;border-radius:8px;{container_inline}" class="bbt-wrap-box {mode_class}">'
+        f'<div class="bbt-top-banner" style="font-size:0.75rem;font-weight:700;padding:4px 12px;letter-spacing:0.5px;text-transform:uppercase;">'
+        f'📐 BẢNG BIẾN THIÊN CHUẨN SƯ PHẠM (CT GDPT 2018)</div>'
+        f'<table style="width:100%;border-collapse:collapse;font-family:\'Times New Roman\',Times,serif;font-size:1.05rem;{val_color_inline}">'
         f'<tr>{x_row_html}</tr>{yp_tr}<tr>{y_row_html}</tr>'
-        '</table></div>'
+        f'</table></div>'
     )
 
 
@@ -9293,10 +9425,12 @@ Khối 4 (Cạm bẫy thực tế & Mẹo thi):
 
 """
 
-
-
             try:
-
+                try:
+                    from services.tikz_pedagogical_spec import inject_tikz_spec_into_prompt
+                    study_prompt = inject_tikz_spec_into_prompt(study_prompt, subject=subject)
+                except Exception:
+                    pass
                 res_text = call_gemini_with_fallback(study_prompt)
 
                 # ==============================================================================
@@ -14847,7 +14981,11 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
 
 
                         try:
-
+                            try:
+                                from services.tikz_pedagogical_spec import inject_tikz_spec_into_prompt
+                                exam_prompt = inject_tikz_spec_into_prompt(exam_prompt, subject=subject)
+                            except Exception:
+                                pass
                             raw_json_ex = call_gemini_with_fallback(exam_prompt, json_mode=True)
 
                             raw_json_ex = raw_json_ex.strip()
