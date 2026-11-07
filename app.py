@@ -624,6 +624,18 @@ def sanitize_katex_latex(text: str) -> str:
 
     s = str(text)
 
+    # 0. BẢOVỆ TIKZ: Mask các khối TikZ trước mọi xử lý $...$ để tránh phá vỡ cấu trúc
+    _tikz_blocks = []
+    def _save_tikz(m):
+        _tikz_blocks.append(m.group(0))
+        return f'__TIKZ_{len(_tikz_blocks)-1}__'
+    _tikz_protect_pat = re.compile(
+        r'(?:\\\\begin\{tikzpicture\}[\s\S]*?\\\\end\{tikzpicture\})'
+        r'|(?:\\\\tkzTabInit[\s\S]{0,800}?(?:\\\\end\{tikzpicture\}|(?=\\\\begin\{tikzpicture\})|$))',
+        re.IGNORECASE | re.MULTILINE
+    )
+    s = _tikz_protect_pat.sub(_save_tikz, s)
+
     # 0. Chuyển đổi chuẩn LaTeX \(...\) và \[...\] sang $...$ và $$...$$
 
     s = re.sub(r'\\\(', '$', s)
@@ -776,6 +788,9 @@ def sanitize_katex_latex(text: str) -> str:
         return ''.join(healed_parts)
 
     s = '\n'.join(_heal_naked_latex_line(l) for l in s.split('\n'))
+
+    for _idx, _blk in enumerate(_tikz_blocks):
+        s = s.replace(f'__TIKZ_{_idx}__', _blk)
 
     return s
 
@@ -952,11 +967,48 @@ def auto_extract_mslgn(q_obj):
 
 
 
+
+def _pre_render_tikz_in_text(text: str) -> str:
+    """
+    Giải mã TRƯỚC tất cả các khối TikZ tkz-tab trong văn bản thành BBT SVG/HTML
+    trước khi format_pedagogical_math chạy TOKEN-MASKING.
+    Điều này ngăn các lệnh LaTeX trong tkzTabVar/tkzTabLine bị bọc thành $...$ 
+    khiến TikZ parser parse sai và hiện __MATH_N__ placeholder ra màn hình.
+    """
+    if not text or 'tkzTabInit' not in text:
+        return text
+    try:
+        from services.tikz_pedagogical_spec import parse_tkz_tab_to_bbt_rows
+        tikz_pat = re.compile(
+            r'(?:\\begin\{tikzpicture\}[\s\S]*?\\tkzTabInit[\s\S]*?\\end\{tikzpicture\})'
+            r'|(?:\\tkzTabInit(?:\[[^\]]*\])?\{[^}]+\}\{[^}]+\}[\s\S]*?\\tkzTabLine\{[^}]+\}(?:[\s\S]*?\\tkzTabVar\{[^}]+\})?)',
+            re.IGNORECASE | re.MULTILINE
+        )
+        def _replace_tikz(m):
+            raw = m.group(0)
+            try:
+                x_r, yp_r, y_r, is_sign = parse_tkz_tab_to_bbt_rows(raw)
+                if x_r and yp_r:
+                    svg = _build_svg_bbt_from_rows(x_r, yp_r, y_r if y_r else [], is_sign_table=is_sign)
+                    if svg:
+                        return "\n\n" + svg + "\n\n"
+            except Exception:
+                pass
+            return ""  # Xóa TikZ thô tránh hiện code lộ ra màn hình
+        text = tikz_pat.sub(_replace_tikz, text)
+    except Exception:
+        pass
+    return text
+
 def clean_question_bbt_text(q_text):
 
     if not q_text: return ""
 
     s = str(q_text)
+
+    # 0. TRÍCH XUẤT VÀ RENDER TIKZ TRƯỚC KHI TOKENIZER MATH CHẠY
+    # (ngăn __MATH_N__ placeholder lộ ra màn hình do tokenizer bọc TikZ lệnh vào $...$)
+    s = _pre_render_tikz_in_text(s)
 
 
 

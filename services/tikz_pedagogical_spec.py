@@ -105,21 +105,35 @@ def parse_tkz_tab_to_bbt_rows(tikz_code: str):
 
         y_label = headers[2] if len(headers) > 2 and headers[2] else 'y'
         y_cells = [y_label]
+        # TikZ tkz-tab convention:
+        #   '+' prefix = điểm cực đại hoặc nơi hàm tăng đến (đỉnh)
+        #   '-' prefix = điểm cực tiểu hoặc nơi hàm giảm đến (đáy)
+        # Mũi tên trên khoảng [i -> i+1] xác định bởi tag của ĐIỂM ĐẾN (i+1):
+        #   next_tag bắt đầu bằng '+' → hàm tăng lên đến cực đại → '↗'
+        #   next_tag bắt đầu bằng '-' → hàm giảm xuống cực tiểu → '↘'
         for i, (pos_tag, val) in enumerate(y_vals):
-            if 'D' in pos_tag or '||' in val:
-                parts = val.split('/') if '/' in val else [val]
-                y_cells.append(' || '.join([p.strip() for p in parts]))
+            # Xử lý tiệm cận đứng (ký hiệu D trong pos_tag của tkz-tab)
+            is_asymptote = ('D' in pos_tag)
+            if is_asymptote:
+                parts = [p.strip() for p in val.split('/') if p.strip()] if '/' in val else [val, '']
+                if len(parts) >= 2:
+                    y_cells.append(parts[0] + ' || ' + parts[1])
+                else:
+                    y_cells.append(val)
             else:
                 y_cells.append(val)
 
             if i < len(y_vals) - 1:
-                next_tag = y_vals[i+1][0]
-                if pos_tag.startswith('-') and next_tag.startswith('+'):
-                    y_cells.append('↗')
-                elif pos_tag.startswith('+') and next_tag.startswith('-'):
-                    y_cells.append('↘')
+                next_tag = y_vals[i + 1][0]
+                interval_signs = [t for t in clean_line if t in ('+', '-')]
+                if 'D' in next_tag:
+                    y_cells.append('↗' if (i < len(interval_signs) and interval_signs[i] == '+') else '↘')
+                elif next_tag.startswith('+'):
+                    y_cells.append('↗')  # tang den cuc dai
+                elif next_tag.startswith('-'):
+                    y_cells.append('↘')  # giam den cuc tieu
                 else:
-                    y_cells.append('↗' if (i < len(clean_line) and clean_line[i] == '+') else '↘')
+                    y_cells.append('↗' if (i < len(interval_signs) and interval_signs[i] == '+') else '↘')
 
         return x_row, yp_row, y_cells, False
     except Exception:
