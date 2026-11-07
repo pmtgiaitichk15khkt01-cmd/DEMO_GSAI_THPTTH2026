@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-03",
+  "scope": "Tin12 CSS legal-source discovery; not approved anchor",
+  "sources": [
+    {
+      "url": "https://vbpl.moj.gov.vn/bogiaoducdaotao/Pages/vbpq-toanvan.aspx?ItemID=146721",
+      "status": "web_fetch_502",
+      "content_read": false
+    },
+    {
+      "url": "https://moet.gov.vn/content/vanban/Lists/VBDT/Attachments/1582/10-mon-tin-hoc-ngay-29-3-2022.pdf",
+      "status": "web_fetch_timeout",
+      "content_read": false,
+      "document_status": "unverified; do not infer final CT2018 from ministry domain or CSS search snippet"
+    },
+    {
+      "url": "https://thcsandong.haiphong.edu.vn/van-ban-bo-gddt/chuong-trinh-giao-duc-pho-thong-mon-tin-hoc-ban-hanh-kem-theo-thong-tu-so-32201/vbct/20343/91441",
+      "status": "school_landing_read_attachment_410",
+      "content_read": "landing_metadata_only",
+      "metadata_warning": "School page labels effective date 26/12/2018, same as issuance; conflicts with TT32 Article3 effective 15/02/2019 seen in national legal database search. Do not import school field as legal effectivity. Verify original instrument before approval."
+    }
+  ],
+  "local_pdf_downloaded": false,
+  "ai_calls": 0,
+  "approved_anchor_added": false,
+  "next": "Use primary original appendix or another publicly available authenticated reproduction; retain no-approval until full legal/purpose/rubric checks."
+}

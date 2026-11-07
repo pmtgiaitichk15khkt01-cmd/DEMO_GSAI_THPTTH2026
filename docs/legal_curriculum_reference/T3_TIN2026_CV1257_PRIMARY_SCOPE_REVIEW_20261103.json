@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-03",
+  "document": "1257/BGDDT-QLCL,19/03/2026",
+  "source": {
+    "url": "https://xdcs.cdnchinhphu.vn/446259493575335936/2026/3/19/cv-2026-1257-1-b25d7-1-17739074902021572153297.pdf",
+    "index": "https://xaydungchinhsach.chinhphu.vn/cong-van-1257-bgddt-qlcl-huong-dan-to-chuc-ky-thi-tot-nghiep-thpt-2026-119260319150811.htm",
+    "sha256": "ad2bf0484c3c73e90ab3a4d3f0e1aa1a73a558bb9510cb72258128bc0cc95065",
+    "bytes": 7129362,
+    "pages": 16,
+    "role": "Ministry scan republished by Government portal; digital signature not validated",
+    "AI_calls": 0
+  },
+  "actual_visual_pages_read": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "identity": "Page1 handwritten issue19/3/2026; page4 signature/seal visually present, not cryptographically validated",
+  "informatics_rule": {
+    "locator": "sectionII.2c, bottompage2/toppage3",
+    "common_TF": 2,
+    "choose_one_pathway_TF": 2,
+    "both_pathways_answered": "No points for all questions belonging to the two pathway sections; not asserted to cancel common questions or MCQ"
+  },
+  "application": "Confirms40 candidate response units per pathway versus48 offered units in0525; no change to answer keys",
+  "source_discrepancy": "Other school PDF search snippet displays19/8/2026; do not import that snippet date over actual Government scan19/3/2026",
+  "scope_limits": [
+    "Only main letter pages1-4 read; appendices5-16 not reviewed",
+    "No per-item cognitive label or full current legal completeness",
+    "No Ministry-hosted-original download claim; Government republication"
+  ],
+  "approved_anchor": false,
+  "AI_calls": 0
+}

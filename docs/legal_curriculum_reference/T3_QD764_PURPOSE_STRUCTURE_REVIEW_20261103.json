@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-03",
+  "document": "764/QĐ-BGDĐT,08/03/2024",
+  "source_role": "signed/sealed scan hosted by school; no cryptographic signature validation claimed",
+  "archive": {
+    "url": "https://thptkrongana.edu.vn/wp-content/uploads/quyet-dinh-764-qd-bgddt-2024-cau-truc-de-thi-ky-thi-tot-nghiep-thpt-tu-2025.pdf",
+    "status": "archived_rendered",
+    "ai_calls": 0,
+    "sha256": "1862c32f7bb3426b842196de0f3a75c7bb7e9abd18f36ec6fc81bdbeb6c2681a",
+    "local_file": "F:\\FINAL KHKT 2026\\qa_evidence\\corpus_sources\\qd764_school.pdf",
+    "pages": 3
+  },
+  "pages_read": [
+    1,
+    2,
+    3
+  ],
+  "purpose": "graduation exam structure from2025",
+  "effective_clause": "Article2: from signing date",
+  "informatics": {
+    "minutes": 50,
+    "partI": 24,
+    "partII_offered": 6,
+    "partII_common": 2,
+    "partII_CS": 2,
+    "partII_ICT": 2,
+    "partIII": 0,
+    "warning": "Do not sum six offered T/F items as six required responses: choose correct pathway; verify current exam instructions."
+  },
+  "scope_boundary": "Specifies formats/counts/scoring, not per-item NB/TH/VD labels or a universal difficulty rubric. Does not independently establish current2026 amendment status.",
+  "candidate_0525_q1_demand": {
+    "given": "CSS declarations, matching id/class and four output descriptions",
+    "student_operations": [
+      "Recognise both selectors match",
+      "Resolve conflicting color by selector priority",
+      "Combine nonconflicting font-weight and font-style",
+      "Compare resulting properties against four alternatives"
+    ],
+    "observed_answer": "C",
+    "limit": "Recognition/execution of familiar rules; no independent web design or unfamiliar strategy demanded. Grade12 base/KNTT content mapping exists; cognitive label still pending purpose-specific adjudication."
+  },
+  "reviewed_level": null,
+  "approved_anchor": false
+}

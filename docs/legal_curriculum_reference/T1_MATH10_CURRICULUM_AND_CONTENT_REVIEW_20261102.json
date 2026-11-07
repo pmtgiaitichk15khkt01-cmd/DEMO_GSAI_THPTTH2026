@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-02",
+  "lesson_id": "GSAI-C32606A2CEDB",
+  "source": "https://boiduonghanoi.edu.vn/pluginfile.php/45/mod_folder/content/0/3-CT-Toan.pdf",
+  "document": "Ministry Mathematics appendix to32/2018, hosted institutional copy",
+  "locator": "Printed79/PDFindex78, grade10 Algebra, Sets/Propositions",
+  "mapped_requirement": "Determine truth or falsity of a mathematical proposition in simple cases.",
+  "scope": "Bai1 tiet1 subset; negation/converse/equivalence/quantifiers belong to broader curriculum, not required in this single-period sample.",
+  "KNTT_source": "T1_MATH10_OFFICIAL_SOURCE_READ_20261102.json",
+  "year_guidance": "CV5208/2026 implementation chain already read; use existing legal mapping, no claim of exhaustive consolidated legal certificate",
+  "independent_checks": {
+    "mcq": [
+      "3 is prime -> B",
+      "polynomial at0,1,3,-1 =2,0,2,6 -> B",
+      "question rather than false statement -> C"
+    ],
+    "essay": [
+      "15 is composite -> true proposition",
+      "encouragement is imperative -> not proposition",
+      "x^2+1=0 has real solution -> false proposition",
+      "n<10 divisible3 inN including0 ->0,3,6,9"
+    ]
+  },
+  "accepted": false,
+  "remaining": "same-lesson Lab request pending; export visual/source check still to finish"
+}

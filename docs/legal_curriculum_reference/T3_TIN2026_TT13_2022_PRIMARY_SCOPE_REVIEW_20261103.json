@@ -1,0 +1,20 @@
+{
+  "document": "13/2022/TT-BGDDT",
+  "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/08/13-bgddt.signed.pdf",
+  "sha256": "62ceeae5c15897470d4c949bd9c532650fe9d7013f90a0503d5cbbcad50f575c",
+  "actual_visual_pages_read": [
+    1,
+    2,
+    3
+  ],
+  "effective_date": "2022-08-03",
+  "findings": {
+    "article_1": "Amends overall upper-secondary educational plan: History compulsory; Informatics among nine elective subjects, students choose four. Informatics 70 periods/year/class; elective specialization clusters separate. Also amends social-science educational orientation.",
+    "article_2": "Amends History subject curriculum with attached History curriculum.",
+    "article_3": "Effective 03 August 2022; signature/seal visible on page 3."
+  },
+  "tin_scope_conclusion": "Relevant to overall subject selection/timetable. Articles 1-3 do not replace Informatics subject outcomes or prescribe per-question cognitive labels. Do not use the History appendix as Informatics curriculum.",
+  "limitations": "Only instrument pages 1-3 visually reviewed; History appendix pages 4-68 not reviewed and not required to claim Informatics-specific outcomes. Other amendment applicability remains separately tracked.",
+  "semantic_approval": false,
+  "approved_anchors": 0
+}

@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-02",
+  "kind": "shared_policy_effective_date_fix",
+  "files": [
+    "app.py",
+    "services/curriculum_policy.py",
+    "tests/test_policy_evaluation_date.py"
+  ],
+  "revision": 2026110212,
+  "problem": "Sidebar future notice used static review date and stale upcoming label even after effective day.",
+  "fix": "Filter future notices using effective_from against Vietnam application day; preserve separate source review date; exclude drafts.",
+  "tests": "38 passed in2.088s: policy_evaluation_date and curriculum_policy; py_compile and Windows-aware diffcheck pass",
+  "browser": {
+    "page": 174,
+    "url": "http://127.0.0.1:8506/",
+    "observed": "89/2026 effective2026-12-01; not applied on2026-11-02",
+    "exceptions": 0,
+    "scope": "Actual local sidebar, no AI and not whole-lesson academic acceptance"
+  },
+  "legal_lookup": {
+    "vbpl_moj": "502/unavailable",
+    "vbpl_vn_alternate": "403",
+    "conclusion": "No inference of current legal status from unavailability; do not repeat same endpoints next turn without reason."
+  },
+  "pending_api": false
+}

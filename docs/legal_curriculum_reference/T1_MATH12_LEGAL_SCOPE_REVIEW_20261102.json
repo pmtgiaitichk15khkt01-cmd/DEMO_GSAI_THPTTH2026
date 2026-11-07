@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-02",
+  "lesson_id": "GSAI-8F6D869A1C72",
+  "scope": "Grade12 cubic survey representative lesson; not all Mathematics topics or all65pairs",
+  "sources_read": [
+    {
+      "code": "13/2022/TT-BGDDT",
+      "url": "https://vanban.chinhphu.vn/?docid=206343&pageid=27160",
+      "pdf_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/08/13-bgddt.signed.pdf",
+      "pages_read": [
+        1,
+        2,
+        3
+      ],
+      "finding": "Article1 general THPT plan: Mathematics compulsory105periods/year/class; Article2 replaces History curriculum. These articles do not replace Mathematics subject appendix.",
+      "visual_evidence": [
+        "legal_read_13_2022_p1.png",
+        "legal_read_13_2022_p2.png",
+        "legal_read_13_2022_p3.png"
+      ]
+    },
+    {
+      "code": "17/2025/TT-BGDDT",
+      "pdf_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/17-bgddt.pdf",
+      "locator": "Article1 paragraphs1-5",
+      "finding": "Five amended subject scopes exclude Mathematics; effective date taken from official metadata, not garbled PDF OCR."
+    }
+  ],
+  "prior_mapping": "T1_MATH12_CT2018_APPENDIX_MAPPING_20261102.json",
+  "validation": {
+    "unit_tests": "37 passed: test_curriculum_policy and test_policy_evaluation_date,2.115s",
+    "diff_check": "passed with cr-at-eol Windows line ending configuration; default reports CR as trailing whitespace"
+  },
+  "limits": [
+    "Current consolidated legal status was not independently certified: VBPL live endpoint unavailable; search result dated months ago is insufficient for latest-status certification.",
+    "2026 draft found in official search is not treated as binding law."
+  ],
+  "api_calls": 0,
+  "next": "Resolve dated current-status evidence; preserve owner-closed visuals and voice; do not regenerate Math12."
+}
