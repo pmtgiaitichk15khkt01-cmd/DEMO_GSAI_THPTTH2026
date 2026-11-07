@@ -2455,6 +2455,28 @@ def heal_bbt_mathematics(raw_bbt: str) -> str:
     clean_signs = re.findall(r'[+-]', line_yp.split('|', 1)[-1] if '|' in line_yp else line_yp)
     has_double_bar = ('||' in line_yp) or ('||' in line_y) or ('║' in line_yp) or ('║' in line_y)
 
+    # 0. HÀM PHÂN THỨC BẬC NHẤT TRÊN BẬC NHẤT 1/1 (M = 3 mốc: -∞, x0, +∞)
+    # Chuẩn GDPT 2018: Tại tiệm cận đứng x0, đạo hàm y' KHÔNG XÁC ĐỊNH (||), hàm y KHÔNG XÁC ĐỊNH (||)
+    if M == 3:
+        clean_y_str = _clean(line_y)
+        raw_tokens = [t for t in re.findall(r'[+-]?\s*∞|[-+]?\d+(?:[.,/]\d+)?', clean_y_str) if t]
+        y0_candidates = [t for t in raw_tokens if '∞' not in t]
+        y0_val = y0_candidates[0] if y0_candidates else "2"
+
+        is_increasing = True
+        if len(clean_signs) >= 1:
+            is_increasing = (clean_signs[0] == '+')
+        elif '↘' in line_y or '\\searrow' in line_y:
+            is_increasing = False
+
+        s_char = '+' if is_increasing else '-'
+        new_yp_line = f"y' | | {s_char} | || | {s_char} | |"
+        if is_increasing:
+            new_y_line = f"y | {y0_val} | ↗ | +\\infty || -\\infty | ↗ | {y0_val}"
+        else:
+            new_y_line = f"y | {y0_val} | ↘ | -\\infty || +\\infty | ↘ | {y0_val}"
+        return f"{lines[0]}\n{new_yp_line}\n{new_y_line}"
+
     # 1. HÀM BẬC 4 TRÙNG PHƯƠNG / ĐA THỨC (M = 5 mốc: -∞, x1, x2, x3, +∞)
     if M == 5 and not has_double_bar and len(clean_signs) == 4:
         clean_y_str = _clean(line_y)

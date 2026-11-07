@@ -630,8 +630,8 @@ def sanitize_katex_latex(text: str) -> str:
         _tikz_blocks.append(m.group(0))
         return f'__TIKZ_{len(_tikz_blocks)-1}__'
     _tikz_protect_pat = re.compile(
-        r'(?:\\\\begin\{tikzpicture\}[\s\S]*?\\\\end\{tikzpicture\})'
-        r'|(?:\\\\tkzTabInit[\s\S]{0,800}?(?:\\\\end\{tikzpicture\}|(?=\\\\begin\{tikzpicture\})|$))',
+        r'(?:\\+begin\{tikzpicture\}[\s\S]*?\\+end\{tikzpicture\})'
+        r'|(?:\\+tkzTabInit[\s\S]{0,1500}?(?:\\+end\{tikzpicture\}|(?=\\+begin\{tikzpicture\})|$))',
         re.IGNORECASE | re.MULTILINE
     )
     s = _tikz_protect_pat.sub(_save_tikz, s)
@@ -837,6 +837,17 @@ def format_pedagogical_math(text):
     if not text: return ""
     s = str(text)
 
+    # 0. BẢO VỆ TUYỆT ĐỐI MÃ TIKZ tkz-tab (Ngăn Token-Masking băm TikZ thành __MATH_N__)
+    _fpm_tikz_blocks = []
+    def _fpm_save_tikz(m):
+        _fpm_tikz_blocks.append(m.group(0))
+        return f"⟦TIKZ_FPM_{len(_fpm_tikz_blocks)-1}⟧"
+    _fpm_tikz_pat = re.compile(
+        r'(?:\\+begin\{tikzpicture\}[\s\S]*?\\+end\{tikzpicture\})|(?:\\+tkzTabInit[\s\S]{0,1500}?(?:\\+end\{tikzpicture\}|(?=\\+begin\{tikzpicture\})|$))',
+        re.IGNORECASE | re.MULTILINE
+    )
+    s = _fpm_tikz_pat.sub(_fpm_save_tikz, s)
+
     # 1. Khử ký tự điều khiển ẩn và chuẩn hóa escape
     s = s.replace('\x0c', r'\f').replace('\x08', r'\b')
     s = s.replace(r'\$', '$')
@@ -928,6 +939,9 @@ def format_pedagogical_math(text):
         parts[-1] = parts[-1].rstrip() + "$"
         s = "$".join(parts)
 
+    for _idx, _blk in enumerate(_fpm_tikz_blocks):
+        s = s.replace(f"⟦TIKZ_FPM_{_idx}⟧", _blk)
+
     s = re.sub(r'[ \t]+', ' ', s)
     return s.strip()
 
@@ -970,32 +984,19 @@ def auto_extract_mslgn(q_obj):
 
 def _pre_render_tikz_in_text(text: str) -> str:
     """
-    Giải mã TRƯỚC tất cả các khối TikZ tkz-tab trong văn bản thành BBT SVG/HTML
-    trước khi format_pedagogical_math chạy TOKEN-MASKING.
-    Điều này ngăn các lệnh LaTeX trong tkzTabVar/tkzTabLine bị bọc thành $...$ 
-    khiến TikZ parser parse sai và hiện __MATH_N__ placeholder ra màn hình.
+    Loại bỏ sạch sẽ mã nguồn TikZ tkz-tab thô khỏi văn bản câu hỏi,
+    tránh để rò rỉ mã lệnh LaTeX và placeholder __MATH_N__ ra màn hình.
+    (BBT đã được trích xuất độc lập và render bằng đồ họa WebP/SVG chuẩn Bộ GD&ĐT).
     """
     if not text or 'tkzTabInit' not in text:
         return text
     try:
-        from services.tikz_pedagogical_spec import parse_tkz_tab_to_bbt_rows
         tikz_pat = re.compile(
-            r'(?:\\begin\{tikzpicture\}[\s\S]*?\\tkzTabInit[\s\S]*?\\end\{tikzpicture\})'
-            r'|(?:\\tkzTabInit(?:\[[^\]]*\])?\{[^}]+\}\{[^}]+\}[\s\S]*?\\tkzTabLine\{[^}]+\}(?:[\s\S]*?\\tkzTabVar\{[^}]+\})?)',
+            r'(?:\\+begin\{tikzpicture\}[\s\S]*?\\+end\{tikzpicture\})'
+            r'|(?:\\+tkzTabInit[\s\S]{0,1500}?(?:\\+end\{tikzpicture\}|(?=\\+begin\{tikzpicture\})|$))',
             re.IGNORECASE | re.MULTILINE
         )
-        def _replace_tikz(m):
-            raw = m.group(0)
-            try:
-                x_r, yp_r, y_r, is_sign = parse_tkz_tab_to_bbt_rows(raw)
-                if x_r and yp_r:
-                    svg = _build_svg_bbt_from_rows(x_r, yp_r, y_r if y_r else [], is_sign_table=is_sign)
-                    if svg:
-                        return "\n\n" + svg + "\n\n"
-            except Exception:
-                pass
-            return ""  # Xóa TikZ thô tránh hiện code lộ ra màn hình
-        text = tikz_pat.sub(_replace_tikz, text)
+        text = tikz_pat.sub('', text)
     except Exception:
         pass
     return text
@@ -6554,12 +6555,24 @@ def parse_quiz_questions(text):
                     if opt == correct_text:
                         new_correct = letter
             # TỰ ĐỘNG BÓC TÁCH BBT TỪ NỘI DUNG CÂU HỎI TRẠM 1 (ĐỒNG BỘ NGUYÊN BẢN TRẠM 3)
-            raw_q_lines = [l for l in q_text_lines if l.strip()]
-            q_bbt_lines = [l for l in raw_q_lines if "|" in l and any(k in l.lower() for k in ["x", "y'", "y", "f'(x)", "f(x)", "daoham", "đạohàm"])]
+            raw_q_str = "\n".join(q_text_lines).strip()
             extracted_bbt = ""
-            if len(q_bbt_lines) >= 2:
-                extracted_bbt = "\n".join(q_bbt_lines).strip()
-                q_text_lines = [l for l in raw_q_lines if l not in q_bbt_lines and not re.match(r'^[|\s:-]+$', l.strip())]
+            tikz_q_pat = re.compile(
+                r'(?:\\+begin\{tikzpicture\}[\s\S]*?\\+end\{tikzpicture\})|(?:\\+tkzTabInit[\s\S]{0,1500}?(?:\\+end\{tikzpicture\}|(?=\\+begin\{tikzpicture\})|$))',
+                re.IGNORECASE | re.MULTILINE
+            )
+            m_tikz = tikz_q_pat.search(raw_q_str)
+            if m_tikz:
+                extracted_bbt = m_tikz.group(0).strip()
+                raw_q_str = tikz_q_pat.sub('', raw_q_str).strip()
+                raw_q_lines = [l.strip() for l in raw_q_str.split('\n') if l.strip()]
+                q_text_lines = raw_q_lines
+            else:
+                raw_q_lines = [l for l in q_text_lines if l.strip()]
+                q_bbt_lines = [l for l in raw_q_lines if "|" in l and any(k in l.lower() for k in ["x", "y'", "y", "f'(x)", "f(x)", "daoham", "đạohàm"])]
+                if len(q_bbt_lines) >= 2:
+                    extracted_bbt = "\n".join(q_bbt_lines).strip()
+                    q_text_lines = [l for l in raw_q_lines if l not in q_bbt_lines and not re.match(r'^[|\s:-]+$', l.strip())]
 
             full_question_text = "\n".join(q_text_lines).strip()
             if not extracted_bbt and ('|' in full_question_text and any(k in full_question_text.lower() for k in ["bảng biến thiên", "bbt", "bảng xét dấu"])):
@@ -8569,8 +8582,33 @@ def _normalize_moet_bbt_grid(x_cells: list, yp_cells: list, y_cells: list) -> di
         elif not y_arrows[i]:
             y_arrows[i] = 'up' if i % 2 == 0 else 'down'
 
+    # TỰ ĐỘNG CHỮA LÀNH TIỆM CẬN ĐỨNG HÀM PHÂN THỨC (CT GDPT 2018):
+    # - Đạo hàm y' tại điểm gián đoạn x0 KHÔNG XÁC ĐỊNH (BẮT BUỘC là '||', tuyệt đối cấm để '0')
+    # - Giá trị y tại x0 phân tách rõ 2 nhánh trái và phải bằng vạch kép '||'
     for i in range(1, n_pts - 1):
-        if '||' in y_at_pts[i] and not yp_at_pts[i]:
+        val_y = y_at_pts[i]
+        has_asym_slash = bool(re.search(r'(?:\\infty|∞|inf)\s*(?:/|\|\||║|\|)\s*[-+]?(?:\\infty|∞|inf)', val_y, re.IGNORECASE))
+        is_double_bar = ('||' in val_y) or ('║' in val_y) or (yp_at_pts[i] in ('||', '║'))
+        is_frac_1_1_same_sign = (n_pts == 3 and len(yp_intervals) >= 2 and ((yp_intervals[0] == '+' and yp_intervals[1] == '+') or (yp_intervals[0] in ('−', '-') and yp_intervals[1] in ('−', '-'))))
+
+        if has_asym_slash or is_double_bar or is_frac_1_1_same_sign:
+            yp_at_pts[i] = '||'
+            if '||' not in val_y and '║' not in val_y:
+                if '/' in val_y:
+                    p_parts = [p.strip() for p in val_y.split('/') if p.strip()]
+                elif '|' in val_y:
+                    p_parts = [p.strip() for p in val_y.split('|') if p.strip()]
+                else:
+                    p_parts = []
+                if len(p_parts) == 2:
+                    y_at_pts[i] = f"{p_parts[0]} || {p_parts[1]}"
+                else:
+                    left_sign = yp_intervals[i-1] if i > 0 else '+'
+                    right_sign = yp_intervals[i] if i < n_int else '+'
+                    left_lim = '+\\infty' if left_sign == '+' else '-\\infty'
+                    right_lim = '-\\infty' if right_sign == '+' else '+\\infty'
+                    y_at_pts[i] = f"{left_lim} || {right_lim}"
+        elif '||' in y_at_pts[i] and not yp_at_pts[i]:
             yp_at_pts[i] = '||'
         elif yp_at_pts[i] == "" and y_at_pts[i] != "":
             yp_at_pts[i] = '0'
@@ -12500,6 +12538,17 @@ if selected_station == station_labels[2]:
             q.pop("f", None)
             q.pop("tikz", None)
 
+        # Khử triệt để việc gắn nhầm đồ thị hàm số vào bài toán hình học / tối ưu thực tế (cửa sổ bán nguyệt, chiếc hộp...):
+        is_real_world_shape_fast = any(k in q_txt_fast for k in [
+            "cửa sổ", "bán nguyệt", "dây thép", "chiếc hộp", "cái hộp", "hộp không nắp",
+            "uốn thành", "chu vi", "diện tích lớn nhất", "thể tích lớn nhất", "bình nước",
+            "quả cầu", "bể bơi", "mảnh đất", "hàng rào"
+        ])
+        if is_real_world_shape_fast:
+            has_explicit_graph_fast = False
+            q.pop("f", None)
+            q.pop("tikz", None)
+
         is_geom_3d_spatial_fast = any(k in q_txt_fast for k in [
             "tứ diện", "mặt cầu", "khối chóp", "hình chóp", "lăng trụ", "hình hộp",
             "oxyz", "bán kính", "khối nón", "khối trụ", "hình nón", "hình trụ",
@@ -12531,6 +12580,14 @@ if selected_station == station_labels[2]:
         if isinstance(f_obj, dict) and subject == "Toán học":
             f_type = f_obj.get("type")
             if f_type == "func_3":
+                # ĐỒNG BỘ DẤU HỆ SỐ a VỚI MỆNH ĐỀ ĐÚNG/SAI PHẦN II:
+                stmts_txt = " ".join(str(s.get("s", "")) for s in q.get("stmts", [])).lower()
+                if any(k in stmts_txt for k in ["a mang giá trị dương", "a dương", "a > 0", "hệ số a > 0"]):
+                    if f_obj.get("a", 0.0) < 0:
+                        q["f"] = {"type": "func_3", "a": 1.0, "b": 0.0, "c": -3.0, "d": 0.0}
+                        if pve and hasattr(pve, "build_cubic_tikz"):
+                            q["tikz"] = pve.build_cubic_tikz(1.0, 0.0, -3.0, 0.0)
+
                 has_rat_ev = any(k in combined_ev for k in ["frac", "/", "phân thức", "tiệm cận", "x^2", "x-1", "x+1", "x-2", "x+2"])
                 has_cub_ev = any(k in combined_ev for k in ["bậc ba", "bậc 3", "ax^3", "x^3", "x^{3}"])
                 if has_rat_ev and not has_cub_ev and pve:
@@ -16009,15 +16066,28 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
 
 
         if st.button("🏁 Nộp bài & Chấm điểm tức thì", width="stretch"):
+            # ĐỒNG BỘ 100% CÂU TRẢ LỜI TỪ TẤT CẢ WIDGET KEYS VÀO EXAM_ANSWERS:
+            if exam.get("p1"):
+                for idx in range(len(exam["p1"])):
+                    w_val = st.session_state.get(f"t3_p1_{idx}")
+                    if w_val is not None:
+                        st.session_state.exam_answers[f"p1_{idx}"] = w_val
+            if exam.get("p2"):
+                for idx in range(len(exam["p2"])):
+                    for s_idx in range(len(exam["p2"][idx].get("stmts", []))):
+                        w_val = st.session_state.get(f"t3_p2_{idx}_{s_idx}")
+                        if w_val is not None:
+                            st.session_state.exam_answers[f"p2_{idx}_{s_idx}"] = w_val
+            if exam.get("p3"):
+                for idx in range(len(exam["p3"])):
+                    w_val = st.session_state.get(f"t3_p3_{idx}")
+                    if w_val is not None and str(w_val).strip():
+                        st.session_state.exam_answers[f"p3_{idx}"] = str(w_val).strip()
 
             st.session_state.exam_state = "graded"
-
             st.session_state.tram3_count = st.session_state.get("tram3_count", 0) + 1
-
             st.session_state.pop("exam_deadline", None)
-
             st.session_state.exam_submitted_at = get_vn_time()
-
             st.rerun()
 
 
@@ -16176,91 +16246,48 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
         else:
 
             # 1. Chấm Phần I (Trắc nghiệm 4 lựa chọn)
-
             p1_items = exam.get("p1", [])
-
             base_p1 = 10.0 if subject == "Tiếng Anh" else (3.0 if subject == "Toán học" else (4.5 if is_natural_science_subject(subject) else (6.0 if is_social_or_tech_subject(subject) else 4.0)))
-
             base_p2 = 0.0 if subject == "Tiếng Anh" else 4.0
-
             base_p3 = max(0.0, 10.0-base_p1-base_p2)
-
             active_max = sum(weight for part, weight in zip(("p1", "p2", "p3"), (base_p1, base_p2, base_p3)) if exam.get(part))
-
             scale = 10.0/active_max if active_max else 0.0
-
             w_p1_total = base_p1*scale if exam.get("p1") else 0.0
-
             p1_correct = 0
-
             if p1_items:
-
                 for idx, q in enumerate(p1_items):
-
-                    user_a = st.session_state.exam_answers.get(f"p1_{idx}", "")
-
+                    user_a = st.session_state.exam_answers.get(f"p1_{idx}") or st.session_state.get(f"t3_p1_{idx}") or ""
                     user_letter = re.sub(r'[^A-D]', '', user_a.strip()[:3]).upper()[:1] if user_a else ""
-
                     if mcq_answer_matches(q, user_a): p1_correct += 1
-
                 score_p1 = round((p1_correct / len(p1_items)) * w_p1_total, 2)
 
-
-
             # 2. Chấm Phần II (Trắc nghiệm Đúng/Sai bậc 0.1 - 0.25 - 0.5 - 1.0)
-
             p2_items = exam.get("p2", [])
-
             w_p2_total = base_p2*scale if exam.get("p2") else 0.0
-
             if p2_items:
-
                 w_per_q2 = w_p2_total / len(p2_items)
-
                 for idx, q in enumerate(p2_items):
-
                     correct_stmts_cnt = 0
-
                     stmts = q.get("stmts", [])
-
                     for s_idx, stmt in enumerate(stmts):
-
-                        user_choice = st.session_state.exam_answers.get(f"p2_{idx}_{s_idx}", "")
-
+                        user_choice = st.session_state.exam_answers.get(f"p2_{idx}_{s_idx}") or st.session_state.get(f"t3_p2_{idx}_{s_idx}") or ""
                         expected_bool = normalize_bool(stmt["a"] if "a" in stmt else stmt.get("ans"))
-
                         if (user_choice == "Đúng" and expected_bool is True) or (user_choice == "Sai" and expected_bool is False):
-
                             correct_stmts_cnt += 1
 
-
-
                     score_p2 += calculate_part2_statement_score(correct_stmts_cnt) * w_per_q2
-
                 score_p2 = round(score_p2, 2)
 
-
-
             # 3. Chấm Phần III (Trả lời ngắn)
-
             p3_items = exam.get("p3", [])
-
             w_p3_total = base_p3*scale if exam.get("p3") else 0.0
-
             p3_correct = 0
-
             if p3_items:
-
                 for idx, q in enumerate(p3_items):
-
-                    user_ans_str = str(st.session_state.exam_answers.get(f"p3_{idx}", "")).strip().replace(',', '.')
-
+                    user_ans_str = str(st.session_state.exam_answers.get(f"p3_{idx}") or st.session_state.get(f"t3_p3_{idx}") or "").strip().replace(',', '.')
                     expected_ans_str = str(q.get("ans", "")).strip().replace(',', '.')
-
                     if numeric_answer_matches(user_ans_str, expected_ans_str, q.get("rounding_decimals")):
-
                         p3_correct += 1
-
                 score_p3 = round((p3_correct / len(p3_items)) * w_p3_total, 2)
 
 
@@ -16364,8 +16391,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                     st.markdown("##### 🔹 Phần I: Trắc nghiệm 4 lựa chọn (Năng lực Nhận biết & Thông hiểu)")
 
                 for idx, q in enumerate(exam["p1"]):
-
-                    user_c = str(st.session_state.exam_answers.get(f"p1_{idx}", "Chưa chọn")).strip()
+                    user_c = str(st.session_state.exam_answers.get(f"p1_{idx}") or st.session_state.get(f"t3_p1_{idx}") or "Chưa chọn").strip()
 
                     correct_a = str(q.get("ans", "")).strip()
 
@@ -16408,7 +16434,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
                     render_fast_visual(q, f"sol_p2_{idx}")
                     for s_idx, stmt in enumerate(q.get("stmts", [])):
-                        user_ans_s = st.session_state.exam_answers.get(f"p2_{idx}_{s_idx}", "Chưa chọn")
+                        user_ans_s = st.session_state.exam_answers.get(f"p2_{idx}_{s_idx}") or st.session_state.get(f"t3_p2_{idx}_{s_idx}") or "Chưa chọn"
                         expected_bool_rev = stmt["a"] if "a" in stmt else stmt.get("ans", True)
                         expected_str = "Đúng" if expected_bool_rev else "Sai"
                         mark_icon = "✅" if user_ans_s == expected_str else "❌"
@@ -16423,7 +16449,7 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
                 for idx, q in enumerate(exam["p3"]):
                     if q.get("source"):
                         st.markdown(f'<div style="font-size: 11.5px; color: #38bdf8; background: rgba(56, 189, 248, 0.08); border-left: 3px solid #38bdf8; padding: 2px 8px; margin-bottom: 6px; border-radius: 3px;">🏛️ <b>Nguồn tham khảo:</b> {html.escape(str(q["source"]))}</div>', unsafe_allow_html=True)
-                    user_val = str(st.session_state.exam_answers.get(f"p3_{idx}", "Chưa điền")).strip()
+                    user_val = str(st.session_state.exam_answers.get(f"p3_{idx}") or st.session_state.get(f"t3_p3_{idx}") or "Chưa điền").strip()
                     correct_val = str(q.get("ans", "")).strip()
                     st.markdown(f"**Câu {idx+1}:** {q.get('q')}")
                     render_fast_visual(q, f"sol_p3_{idx}")
