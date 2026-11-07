@@ -16405,12 +16405,13 @@ Xuất DUY NHẤT 1 khối JSON hợp lệ có dạng:
 
 
 
-                    is_p1_right = (re.sub(r'[^A-D]', '', user_c[:3]).upper()[:1] == correct_a)
-
+                    is_p1_right = mcq_answer_matches(q, user_c)
                     badge_p1 = "✅ Làm đúng" if is_p1_right else "❌ Làm sai"
-
                     opt_match = next((o for o in q.get("opt", []) if o.strip().startswith(correct_a + ".")), "")
-
+                    if not opt_match and q.get("opt"):
+                        c_idx = ord(correct_a) - ord('A')
+                        if 0 <= c_idx < len(q.get("opt", [])):
+                            opt_match = f"{correct_a}. {q['opt'][c_idx]}"
                     opt_full = opt_match if opt_match else f"{correct_a}. {correct_a}"
 
                     st.markdown(f"- **Đáp án em chọn:** {user_c}")
